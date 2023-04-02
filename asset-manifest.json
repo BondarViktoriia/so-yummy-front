@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/BondarViktoriia/so-yummy-front/static/css/main.7acaea2f.css",
+    "main.js": "/BondarViktoriia/so-yummy-front/static/js/main.b10ac1d4.js",
+    "index.html": "/BondarViktoriia/so-yummy-front/index.html",
+    "main.7acaea2f.css.map": "/BondarViktoriia/so-yummy-front/static/css/main.7acaea2f.css.map",
+    "main.b10ac1d4.js.map": "/BondarViktoriia/so-yummy-front/static/js/main.b10ac1d4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.b10ac1d4.js"
+  ]
+}
