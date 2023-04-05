@@ -5,9 +5,9 @@ import Container from "../components/Container/Container";
 
 export const App = () => {
   const theme = useSelector(selectTheme);
-  return <Theme themeValue={theme}>
+  return( <Theme themeValue={theme}>
     <>
     <Container/>
     </>
-  </Theme>;
+  </Theme>)
 };
