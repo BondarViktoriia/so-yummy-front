@@ -7,13 +7,9 @@ import RecipePage from '../pages/RecipePage';
 
 export const App = () => {
   const theme = useSelector(selectTheme);
-
   return (
     <Theme themeValue={theme}>
-      <Container />
-      <Routes>
-        <Route path="/recipe/:recipeId" element={<RecipePage />} />
-      </Routes>
+      <></>
     </Theme>
   );
 };
