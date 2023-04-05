@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/BondarViktoriia/so-yummy-front/static/css/main.075bb4b1.css",
-    "main.js": "/BondarViktoriia/so-yummy-front/static/js/main.6e90e331.js",
-    "index.html": "/BondarViktoriia/so-yummy-front/index.html",
-    "main.075bb4b1.css.map": "/BondarViktoriia/so-yummy-front/static/css/main.075bb4b1.css.map",
-    "main.6e90e331.js.map": "/BondarViktoriia/so-yummy-front/static/js/main.6e90e331.js.map"
+    "main.css": "/static/css/main.075bb4b1.css",
+    "main.js": "/static/js/main.ffbe5de4.js",
+    "index.html": "/index.html",
+    "main.075bb4b1.css.map": "/static/css/main.075bb4b1.css.map",
+    "main.ffbe5de4.js.map": "/static/js/main.ffbe5de4.js.map"
   },
   "entrypoints": [
     "static/css/main.075bb4b1.css",
-    "static/js/main.6e90e331.js"
+    "static/js/main.ffbe5de4.js"
   ]
 }
