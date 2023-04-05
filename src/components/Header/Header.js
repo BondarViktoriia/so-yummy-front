@@ -1,7 +1,9 @@
+import { HeaderBox } from './Header.styled';
 
-
-const Header = () => {
-    
-}
-
-export default Header;
+export const Header = () => {
+  return (
+    <HeaderBox>
+      <p>Hello!</p>
+    </HeaderBox>
+  );
+};
