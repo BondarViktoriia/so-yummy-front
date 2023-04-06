@@ -7,9 +7,9 @@ import Desc1x from '../../image/my-recipes-page/my-recipe-bg-dekstop-1x.jpg';
 import Desc2x from '../../image/my-recipes-page/my-recipe-bg-dekstop-2x.jpg';
 
 export const Wrapper = styled.div`
-  position: fixed;
-  left: 0px;
-  top: 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-image: url(${Mob1x});
   background-size: cover;
   background-position: center;
@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  z-index: -1;
   @media only screen and (min-width: 768px) {
     background-image: url(${Tablet1x});
     height: 495px;

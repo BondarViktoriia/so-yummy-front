@@ -19,6 +19,7 @@ const lightTheme = {
     regTextLight: 'rgba(0, 0, 0, 1)',
     darkText: '#23262A',
     greyText: '#7E7E7E',
+    ingredItemBcg: '#ebf3d4',
 
     inputCorrect: '#3CBC81',
     inputWarning: '#F6C23E',
@@ -46,6 +47,8 @@ const darkTheme = {
     regTextLight: '#FAFAFA',
     darkText: '#FAFAFA',
     greyText: 'rgba(250, 250, 250, 0.6)',
+
+    ingredItemBcg: '#2A2C36',
 
     inputCorrect: '#3CBC81',
     inputWarning: '#F6C23E',
