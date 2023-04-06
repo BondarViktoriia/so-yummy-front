@@ -9,12 +9,15 @@ import {
   RegistrationButton,
 } from './WelcomePage.styled';
 
+import logo from '../../image/icons/logo-1x.png';
+
 const Welcome = () => {
   return (
     <>
       <BackgroundImg>
         <WelcomeContent>
           <WelcomeIcon />
+          <img src={logo} alt="" />
 
           <WelcomeTextFormat>
             <WelcomeTitle>Welcome to the app!</WelcomeTitle>

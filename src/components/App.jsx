@@ -3,7 +3,7 @@ import Theme from '../Theme';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/theme/themeSelectors';
 import RecipePage from '../pages/RecipePage';
-// import StartPage from "../pages/StartPage";
+// import StartPage from '../pages/StartPage';
 import RegistrationPage from '../pages/RegistrationPage';
 import SignInPage from '../pages/SignInPage';
 import CategoriesPage from '../pages/CategoriesPage';
