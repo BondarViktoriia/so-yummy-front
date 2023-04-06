@@ -18,7 +18,6 @@ import {SharedLayout} from "./SharedLayout/SharedLayout";
 
 export const App = () => {
   const theme = useSelector(selectTheme);
-
   return (
     <Theme themeValue={theme}>
       <Routes>
