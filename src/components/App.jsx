@@ -1,13 +1,12 @@
 import Theme from '../Theme';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/theme/themeSelectors';
-import Container from "../components/Container/Container";
+import {SearchPage} from "../pages/SearchPage";
 
 export const App = () => {
   const theme = useSelector(selectTheme);
-  return <Theme themeValue={theme}>
-    <>
-    <Container/>
-    </>
-  </Theme>;
+  return (
+  <Theme themeValue={theme}>
+    <SearchPage/>
+  </Theme>)
 };
