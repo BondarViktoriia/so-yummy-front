@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import bgi from '../../image/start-page/main-pic-dekstop-1x.jpg';
+
 export const WelcomeContent = styled.div`
   position: absolute;
   top: 50%;
@@ -19,6 +21,7 @@ export const BackgroundImg = styled.div`
       rgba(0, 0, 0, 0.345172) 78.98%,
       rgba(0, 0, 0, 0) 100%
     ),
+    url(${bgi});
 `;
 
 export const WelcomeIcon = styled.div`
@@ -41,12 +44,12 @@ export const WelcomeTitle = styled.div`
   font-size: 28px;
   line-height: 1;
   letter-spacing: -0.02em;
-  /* color:*/
+  color: #fafafa;
   margin-bottom: 14px;
 `;
 
 export const WelcomeText = styled.div`
-  /* color:  */
+  color: #fafafa;
   font-size: 14px;
   line-height: 1.3;
   text-align: center;
@@ -65,5 +68,5 @@ export const RegistrationButton = styled.div`
   height: 45px;
   font-size: 14px;
   font-size: inherit;
-  line-height: 1.5;
+  line-height: 1.5'\;
 `;
