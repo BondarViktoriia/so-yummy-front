@@ -13,7 +13,7 @@ import FavoritesPage from '../pages/FavoritesPage';
 import ShoppingList from '../pages/ShoppingList';
 import SearchPage from '../pages/SearchPage';
 import MainPage from '../pages/MainPage';
-import ErrorPage from '../pages/Error/ErrorPage';
+import ErrorPage from '../pages/ErrorPage';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 
 export const App = () => {

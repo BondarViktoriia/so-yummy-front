@@ -1,6 +1,6 @@
 import { Container } from 'components/Container/Container';
 import { Title } from 'components/Title/Title';
-import { ErrorCont, TextError, ImgCont } from './Error.styled';
+import { ErrorCont, TextError, ImgCont } from './Error/Error.styled';
 import errorMob1 from '../../images/error-page/error-mobile-1x.png';
 import errorMob2 from '../../images/error-page/error-mobile-2x.png';
 import errorTablet1 from '../../images/bg/bgError/error-tablet-1x.png';
