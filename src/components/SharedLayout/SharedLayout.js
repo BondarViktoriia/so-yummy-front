@@ -1,17 +1,16 @@
 import { Outlet } from 'react-router-dom';
-import Container from '../Container/Container';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
-import { MainBox } from './SharedLayout.styled';
+import { MainBox, Box } from './SharedLayout.styled';
 
 export const SharedLayout = () => {
   return (
-    <Container>
+    <Box>
       <Header />
       <MainBox>
         <Outlet />
       </MainBox>
       <Footer />
-    </Container>
+    </Box>
   );
 };
