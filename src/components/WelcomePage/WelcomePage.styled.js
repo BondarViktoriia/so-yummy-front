@@ -19,7 +19,6 @@ export const BackgroundImg = styled.div`
       rgba(0, 0, 0, 0.345172) 78.98%,
       rgba(0, 0, 0, 0) 100%
     ),
-    url('../../image/start-page/auth-illustration-dekstop-1x.png');
 `;
 
 export const WelcomeIcon = styled.div`
