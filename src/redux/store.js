@@ -11,6 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { themeReducer } from './theme/themeSlice';
+import { shoppingListSlice } from './shoppingList/shoppingListSlice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -28,6 +29,7 @@ const persistConfig = {
 export const store = configureStore({
   reducer: {
     theme: persistReducer(persistConfig, themeReducer),
+    shoppingList: shoppingListSlice.reducer,
   },
   middleware,
 });
