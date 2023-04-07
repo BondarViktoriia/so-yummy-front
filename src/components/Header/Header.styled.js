@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const HeaderBox = styled.div`
-  outline: 1px solid green;
   display: flex;
   margin-top: 18px;
   margin-left: 16px;
@@ -12,5 +11,11 @@ export const HeaderBox = styled.div`
 `;
 export const MenuThumb = styled.div`
   display: flex;
+  align-items: center;
 `;
-export const BurgerOpen = styled.button``;
+export const BurgerOpen = styled.button`
+  border: none;
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+`;
