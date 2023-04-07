@@ -2,19 +2,19 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {SelectComponent} from './Select'
 
-export const SearchInput = () => {
+export const SearchInput = ({submitSearch}) => {
 
   const options = [
-    { value: 'title', label: 'Title' },
+    { value: 'recipes', label: 'Title' },
     { value: 'ingredients', label: 'Ingredients' },
   ]
 
   const formik = useFormik({
     initialValues: {
       query: '',
-      options: 'title'
+      options: 'recipes'
     },
-    onSubmit: values => {console.log(values)},
+    onSubmit: (values) => {submitSearch(values)},
     validationSchema: Yup.object().shape({
         query: Yup.string().required("Please enter query")
     })
