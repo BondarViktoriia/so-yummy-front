@@ -25,17 +25,10 @@ import {
   Description,
 } from './AddRecipeForm.styled';
 import addRecipe from '../../image/addRecipe.png';
+import {Counter} from '../AddRecipe/Counter'
 
-const AddRecipeForm = () => {
-  //   const [count, setCount] = useState(0);
+const AddRecipeForm = ({counter,handleDecrement,handleIncrement}) => {
 
-  //   const handleIncrement = () => {
-  //     setCount(state => state + 1);
-  //   };
-
-  //   const handleDecrement = () => {
-  //     setCount(state => state - 1);
-  //   };
   return (
     <Wrap>
       <Title>Add recipe</Title>
@@ -107,11 +100,11 @@ const AddRecipeForm = () => {
         <MainWrapIngredients>
           <WrapIngredients>
             <TitleIngredients>Ingredients</TitleIngredients>
-            {/* <Counter
-              count={count}
+            <Counter
+              counter={counter}
               handleIncrement={handleIncrement}
               handleDecrement={handleDecrement}
-            /> */}
+            />
           </WrapIngredients>
 
           <InputIngredientsWrap>

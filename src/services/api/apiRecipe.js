@@ -58,3 +58,35 @@ export const deleteFromFavorite = async (id) => {
       console.log(error.message)
   }
 }
+
+export const getOwnRecipes = async(page, per_page) => {
+  try {
+    if (page && per_page) {
+      const response = await axios.get(`/ownRecipes?page=${page}&per_page=${per_page}`)
+      return response.data;
+    }
+          const response = await axios.get('/ownRecipes')
+      return response.data;
+  } catch (error) {
+    console.log(error.message)
+  }
+};
+
+export const addOwnRecipe = async body => {
+  try {
+    const response = await axios.get('/ownRecipes', body);
+    return response.data;
+
+  } catch (error) {
+    console.log(error.message)
+  }
+};
+
+export const deleteOwnRecipe = async id => {
+  try {
+    const response = await axios.delete(`/own-recipes/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(error.message)
+  }
+}
