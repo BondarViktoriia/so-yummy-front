@@ -1,5 +1,20 @@
-import { UserMenuBox } from './UserMenu.styled';
+import {
+  Avatar,
+  AvatarCont,
+  UserName,
+  UserNameCont,
+  UserMenuBox,
+} from './UserMenu.styled';
 
 export const UserMenu = () => {
-  return <UserMenuBox>UserMenu</UserMenuBox>;
+  return (
+    <UserMenuBox>
+      <AvatarCont>
+        <Avatar />
+      </AvatarCont>
+      <UserNameCont>
+        <UserName>UserName</UserName>
+      </UserNameCont>
+    </UserMenuBox>
+  );
 };

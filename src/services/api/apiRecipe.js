@@ -90,3 +90,13 @@ export const deleteOwnRecipe = async id => {
     console.log(error.message)
   }
 }
+
+export const getPopularRecipes = async () => {
+  try {
+    const response = await axios.get('popular-recipe');
+     return response.data;
+
+  } catch (error) {
+     console.log(error.message)
+  }
+}

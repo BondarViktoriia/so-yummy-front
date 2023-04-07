@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-import bgi from '../../image/start-page/main-pic-dekstop-1x.jpg';
+import bgiDesktop from '../../image/start-page/main-pic-dekstop-1x.jpg';
+import bgiMobile from '../../image/start-page/main-pic-mobile-1x.jpg';
+import bgiTablet from '../../image/start-page/main-pic-tablet-1x.jpg';
+import bgiDesktopRetina from '../../image/start-page/main-pic-dekstop-2x.jpg';
+import bgiMobileRetina from '../../image/start-page/main-pic-mobile-2x.jpg';
+import bgiTabletRetina from '../../image/start-page/main-pic-tablet-2x.jpg';
 
 export const WelcomeContent = styled.div`
   position: absolute;
@@ -10,18 +15,72 @@ export const WelcomeContent = styled.div`
 `;
 
 export const BackgroundImg = styled.div`
-  position: relative;
-  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
-  background-size: cover;
-  background-repeat: no-repeat;
+  width: 100vw;
+  padding: 35px;
   background-image: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.6) 58.58%,
       rgba(0, 0, 0, 0.345172) 78.98%,
       rgba(0, 0, 0, 0) 100%
     ),
-    url(${bgi});
+    url(${bgiMobile});
+  background-size: cover;
+  background-repeat: no-repeat;
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.6) 58.58%,
+        rgba(0, 0, 0, 0.345172) 78.98%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      url(${bgiMobileRetina});
+  }
+  @media screen and (min-width: 768px) {
+    background-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.6) 58.58%,
+        rgba(0, 0, 0, 0.345172) 78.98%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      url(${bgiTablet});
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.6) 58.58%,
+          rgba(0, 0, 0, 0.345172) 78.98%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        url(${bgiTabletRetina});
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    background-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.6) 58.58%,
+        rgba(0, 0, 0, 0.345172) 78.98%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      url(${bgiDesktop});
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.6) 58.58%,
+          rgba(0, 0, 0, 0.345172) 78.98%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        url(${bgiDesktopRetina});
+    }
+  }
 `;
 
 export const WelcomeIcon = styled.div`
@@ -39,28 +98,50 @@ export const WelcomeTextFormat = styled.div`
   max-width: 305px;
 `;
 
-export const WelcomeTitle = styled.div`
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: #fafafa;
+export const WelcomeTitle = styled.h1`
   margin-bottom: 14px;
+  text-align: center;
+  color: #fafafa;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  @media screen and (min-width: 768px) {
+    font-size: 28px;
+    line-height: 28px;
+  } ;
 `;
 
-export const WelcomeText = styled.div`
-  color: #fafafa;
+export const WelcomeText = styled.p`
+  margin-bottom: 44px;
+  max-width: 305px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
   font-size: 14px;
-  line-height: 1.3;
+  line-height: 18px;
   text-align: center;
   letter-spacing: -0.02em;
+  color: #fafafa;
+  @media screen and (min-width: 768px) {
+    max-width: 505px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 540px;
+  } ;
 `;
 
 export const ButtonGroup = styled.div`
-  width: 239px;
   display: flex;
+  justify-content: center;
   gap: 12px;
-  margin: 0 auto;
+  @media screen and (min-width: 768px) {
+    gap: 18px;
+  } ;
 `;
 
 export const RegistrationButton = styled.div`
@@ -68,5 +149,5 @@ export const RegistrationButton = styled.div`
   height: 45px;
   font-size: 14px;
   font-size: inherit;
-  line-height: 1.5'\;
+  line-height: 1.5;
 `;

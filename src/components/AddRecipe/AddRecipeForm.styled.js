@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 export const Wrap = styled.div`
   padding-top: 50px;
-  padding-bottom: 72px;
+ 
 `;
 export const ImageBox = styled.div`
   width: 279px;
   height: 268px;
-  /* background-color: ${props => props.theme.colors.accentGreen}; */
+  margin: 0 auto;
   background-color:grey;
 border-radius: 8px;
     display: flex;
@@ -34,21 +34,28 @@ export const ImageInput = styled.input`
 `;
 
 export const Title = styled.h2`
-  margin-bottom: 72px;
-
   line-height: 1;
   letter-spacing: -0.02em;
   font-feature-settings: 'liga' off;
+  margin-bottom:50px;
+  @media only screen and (min-width: 768px) {
+  margin-bottom: 72px;
+  margin-left:32px;
+  }
 `;
 
 export const Form = styled.form`
-  display: flex;
+@media screen and (min-width: 768px){
+    display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
 `;
 
 export const Description = styled.div`
+justify-content:center;
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: space-between;
@@ -65,11 +72,24 @@ export const ImgUploadWrap = styled.div`
   margin-bottom: 32px;
 `;
 
+export const InputWrap = styled.div`
+margin: 0 auto;
+`
 
 export const InputDescriptionWrap = styled.div`
   position: relative;
-  margin-top: 24px;
+  margin-top:32px;
+  text-align:center;
+
+   @media screen and (min-width: 768px){
+     margin-top: 24px;
+  margin-left: 32px;
+   }
+      @media screen and (min-width: 768px){
+     margin-top: 24px;
   margin-left: 50px;
+   }
+ 
 `;
 
 export const InputDescription = styled.input`
@@ -91,7 +111,6 @@ export const SelectDescription = styled.select`
 
 export const MainWrapIngredients = styled.div`
   margin-top: 44px;
-  margin-bottom: 18px;
   width: 100%;
 `;
 
@@ -99,6 +118,7 @@ export const WrapIngredients = styled.div`
   margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
+  
 `;
 
 export const TitleIngredients = styled.h2``;
