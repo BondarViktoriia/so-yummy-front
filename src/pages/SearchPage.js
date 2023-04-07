@@ -1,26 +1,24 @@
 // import Container from '../components/Container/Container';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { getSearchRecipe } from '../services/api/ApiSearchRecipes';
 import { SearchInput } from '../components/Search/SearchInput';
 import { SearchList } from '../components/Search/SearchList';
 
-
- const SearchPage = () => {
-  const location = useLocation();
+const SearchPage = () => {
+  // const location = useLocation();
   const [results, setResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [IsLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
   const page = searchParams.get('page');
   const options = searchParams.get('options');
 
-
+  console.log(IsLoading);
   const submitSearch = ({ query, options }) => {
     setSearchParams({ options: options, query: query, page: 1 });
     setResults([]);
   };
-
 
   // const incrementPage = () => {
   //   setSearchParams({ options: options, query: query, page: Number(page) + 1 });
@@ -40,7 +38,6 @@ import { SearchList } from '../components/Search/SearchList';
           return;
         }
         setResults(p => [...result, ...p]);
-        
       } catch (error) {
         console.error(error);
       }
@@ -53,7 +50,7 @@ import { SearchList } from '../components/Search/SearchList';
       <div>
         <h1>Search</h1>
         <SearchInput submitSearch={submitSearch} />
-        <SearchList results={results}/>
+        <SearchList results={results} />
       </div>
     </main>
   );
