@@ -1,12 +1,12 @@
 // import Container from '../components/Container/Container';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { getSearchRecipe } from '../services/api/apiSearchRecipes.js';
+import { getSearchRecipe } from '../services/api/ApiSearchRecipes';
 import { SearchInput } from '../components/Search/SearchInput';
 import { SearchList } from '../components/Search/SearchList';
 
 
-export const SearchPage = () => {
+ const SearchPage = () => {
   const location = useLocation();
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -58,3 +58,5 @@ export const SearchPage = () => {
     </main>
   );
 };
+
+export default SearchPage;
