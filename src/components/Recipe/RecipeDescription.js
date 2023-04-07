@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ClockIcon } from './Clock';
 import {
@@ -11,7 +11,6 @@ import {
 } from './RecipeDescription.styled';
 import { addToFavorite } from '../../redux/recipePage/recipeOperations';
 import { selectIsFavorite } from '../../redux/recipePage/recipeSelectors';
-
 
 const RecipeDescription = ({ title, description, time }) => {
   const { recipeId } = useParams();

@@ -7,18 +7,18 @@ import { RecipeList } from '../components/Recipe';
 
 import {
   selectRecipe,
-  selectIsLoading,
-  selectError,
-  selectOwnRecipe,
+  // selectIsLoading,
+  // selectError,
+  // selectOwnRecipe,
 } from '../redux/recipePage/recipeSelectors';
 import { fetchRecipe } from '../redux/recipePage/recipeOperations';
 
 const RecipePage = () => {
   const dispatch = useDispatch();
   const currentRecipe = useSelector(selectRecipe);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-  const ownRecipe = useSelector(selectOwnRecipe);
+  // const isLoading = useSelector(selectIsLoading);
+  // const error = useSelector(selectError);
+  // const ownRecipe = useSelector(selectOwnRecipe);
 
   const { recipeId } = useParams();
 
