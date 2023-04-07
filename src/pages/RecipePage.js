@@ -1,4 +1,7 @@
-import RecipeDescription from '../components/Recipe';
+import { RecipeDescription } from '../components/Recipe';
+import { ingreds } from '../components/Recipe/ingredsTest';
+import { RecipeList } from '../components/Recipe';
+
 const testRecipe = {
   _id: {
     $oid: '6426a8c69388c4008e826738',
@@ -96,6 +99,7 @@ const RecipePage = () => {
         description={testRecipe.description}
         time={testRecipe.time}
       ></RecipeDescription>
+      <RecipeList ingreds={ingreds}></RecipeList>
     </>
   );
 };

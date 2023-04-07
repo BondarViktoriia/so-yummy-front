@@ -1,3 +1,4 @@
 import RecipeDescription from '../Recipe/RecipeDescription';
+import RecipeList from './RecipeList';
 
-export default RecipeDescription;
+export { RecipeDescription, RecipeList };
