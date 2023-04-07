@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const FollowUsContainer = styled.div`
+display: none;
+
+@media only screen and (min-width: 768px){
   display: flex;
   gap: 20px;
   margin-bottom: 100px;
@@ -13,4 +16,7 @@ export const FollowUsContainer = styled.div`
       background-color: #8BAA36;
     }
   }
+}
+
+
 `;

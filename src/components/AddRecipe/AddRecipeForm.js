@@ -23,6 +23,7 @@ import {
   ButtonAdd,
   WrapButtonAdd,
   Description,
+  InputWrap
 } from './AddRecipeForm.styled';
 import addRecipe from '../../image/addRecipe.png';
 import {Counter} from '../AddRecipe/Counter'
@@ -44,7 +45,7 @@ const AddRecipeForm = ({counter,handleDecrement,handleIncrement}) => {
               accept="image/png, image/jpeg"
             />
           </ImageBox>
-          <div>
+          <InputWrap>
             <InputDescriptionWrap>
               <InputDescription
                 type="text"
@@ -95,7 +96,7 @@ const AddRecipeForm = ({counter,handleDecrement,handleIncrement}) => {
                 <option value="">5 min</option>
               </SelectDescription>
             </InputDescriptionWrap>
-          </div>
+          </InputWrap>
         </Description>
         <MainWrapIngredients>
           <WrapIngredients>

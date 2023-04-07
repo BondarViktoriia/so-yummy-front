@@ -3,8 +3,10 @@ import styled from 'styled-components';
 
 export const WrapperPopular = styled.div`
   margin-top: 72px;
+  margin-bottom:100px;
+ 
   @media screen and (min-width: 1440px) {
-    margin-top: 0;
+    margin-top: 100px;
   }
 `;
 
