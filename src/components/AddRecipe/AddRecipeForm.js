@@ -3,11 +3,11 @@ import { IoCloseOutline } from 'react-icons/io5';
 
 // import { Counter } from './Counter/Counter';
 import {
-    ImageBox,
-    ImageInput,
+  ImageBox,
+  ImageInput,
   Title,
   Wrap,
-    Form,
+  Form,
   InputDescriptionWrap,
   InputDescription,
   SelectDescription,
@@ -24,29 +24,34 @@ import {
   WrapButtonAdd,
   Description,
 } from './AddRecipeForm.styled';
-// import recipeButtonImage from "images/add-recipe-placeholder-button.png"
+import addRecipe from '../../image/addRecipe.png';
 
- const AddRecipeForm = () => { 
-//   const [count, setCount] = useState(0);
+const AddRecipeForm = () => {
+  //   const [count, setCount] = useState(0);
 
-//   const handleIncrement = () => {
-//     setCount(state => state + 1);
-//   };
+  //   const handleIncrement = () => {
+  //     setCount(state => state + 1);
+  //   };
 
-//   const handleDecrement = () => {
-//     setCount(state => state - 1);
-//   };
- return ( <Wrap>
-  <Title>Add recipe</Title>
-  <Form>
-    <Description>
-<ImageBox >
-  <label htmlFor="file-input">
-    {/* <img src="icon.png" alt="Upload image" /> */}
-  </label>
-  <ImageInput id="file-input" type="file"  />
-</ImageBox>
-  <div>
+  //   const handleDecrement = () => {
+  //     setCount(state => state - 1);
+  //   };
+  return (
+    <Wrap>
+      <Title>Add recipe</Title>
+      <Form>
+        <Description>
+          <ImageBox>
+            <label htmlFor="file-input">
+              <img src={addRecipe} alt="addRecipe" />
+            </label>
+            <ImageInput
+              id="file-input"
+              type="file"
+              accept="image/png, image/jpeg"
+            />
+          </ImageBox>
+          <div>
             <InputDescriptionWrap>
               <InputDescription
                 type="text"

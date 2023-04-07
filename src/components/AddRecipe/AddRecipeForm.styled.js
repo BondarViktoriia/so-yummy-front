@@ -8,15 +8,29 @@ export const Wrap = styled.div`
 export const ImageBox = styled.div`
   width: 279px;
   height: 268px;
-  background-color: ${props => props.theme.colors.accentGreen}; ;
+  /* background-color: ${props => props.theme.colors.accentGreen}; */
+  background-color:grey;
+border-radius: 8px;
+    display: flex;
+
+    align-items: center;
+  
+    justify-content: center;
+    cursor: pointer;
+
+    overflow: hidden;
+    background-image: unset;
+    background-size: cover;
 @media only screen and (min-width: 1440px){
    width: 357px;
   height: 344px;
 }
-
 `;
-export const ImageInput = styled.div`
-  display: none;
+
+export const ImageInput = styled.input`
+  visibility: hidden;
+  width: 0;
+  height: 0;
 `;
 
 export const Title = styled.h2`
@@ -51,15 +65,11 @@ export const ImgUploadWrap = styled.div`
   margin-bottom: 32px;
 `;
 
-export const InputUpload = styled.input`
-  visibility: hidden;
-  width: 0;
-  height: 0;
-`;
 
 export const InputDescriptionWrap = styled.div`
   position: relative;
   margin-top: 24px;
+  margin-left: 50px;
 `;
 
 export const InputDescription = styled.input`
