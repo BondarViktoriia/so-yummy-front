@@ -99,6 +99,12 @@ export const Button = styled.button`
   @media only screen and (min-width: 1440px) {
     margin-bottom: 48px;
   }
+
+  &:hover,
+  &:focus {
+    background-color: #8baa36;
+    color: #fafafa;
+  }
 `;
 
 export const Time = styled.p`

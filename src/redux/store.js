@@ -11,8 +11,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { themeReducer } from './theme/themeSlice';
+import { recipeReducer } from './recipePage/recipeSlice';
 import ownRecipesSlice from './ownRecipe/ownRecipesSlice';
-
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -30,7 +30,8 @@ const persistConfig = {
 export const store = configureStore({
   reducer: {
     theme: persistReducer(persistConfig, themeReducer),
-    ownRecipes:persistReducer(persistConfig,ownRecipesSlice)
+    ownRecipes: persistReducer(persistConfig, ownRecipesSlice),
+    recipe: persistReducer(persistConfig, recipeReducer),
   },
   middleware,
 });
