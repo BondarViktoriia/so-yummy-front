@@ -22,9 +22,8 @@ const RecipeList = ({ ingreds }) => {
       </ListTitle>
       <ListStyled>
         {ingreds.map(({ _id, ttl, thb, measure }) => {
-          const { $oid: id } = _id;
           return (
-            <ListItemStyled key={id}>
+            <ListItemStyled key={_id}>
               <WrapForContent>
                 <Thumb>
                   <Image src={thb} alt={ttl}></Image>
