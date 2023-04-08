@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -12,26 +12,36 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { themeReducer } from './theme/themeSlice';
 import { shoppingListSlice } from './shoppingList/shoppingListSlice';
-
-const middleware = [
-  ...getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
-];
+import { recipeReducer } from './recipePage/recipeSlice';
+// import ownRecipesSlice from './ownRecipe/ownRecipesSlice';
+import { authReducer } from './auth/authSlice';
 
 const persistConfig = {
   key: 'root',
+  storage: storage,
+  whitelist: ['token'],
+};
+
+const themePersistedConfig = {
+  key: 'theme',
   storage,
 };
 
+const rootReducer = combineReducers({
+  auth: persistReducer(persistConfig, authReducer),
+  theme: persistReducer(themePersistedConfig, themeReducer),
+  recipe: persistReducer(persistConfig, recipeReducer),
+  shoppingList: shoppingListSlice.reducer,
+});
+
 export const store = configureStore({
-  reducer: {
-    theme: persistReducer(persistConfig, themeReducer),
-    shoppingList: shoppingListSlice.reducer,
-  },
-  middleware,
+  reducer: rootReducer,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);

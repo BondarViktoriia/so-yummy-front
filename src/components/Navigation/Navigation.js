@@ -1,7 +1,16 @@
 import { FiSearch } from 'react-icons/fi';
-import { NavItem, NavList, Link } from './Navigation.styled';
+import { IconContext } from 'react-icons';
+import { useMediaQuery } from 'react-responsive';
+import {
+  NavItem,
+  NavList,
+  Link,
+  SearchThumb,
+  SearchText,
+} from './Navigation.styled';
 
-export const Navigation = () => {
+export const Navigation = Х => {
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1239px)' });
   return (
     <nav>
       <NavList>
@@ -21,9 +30,14 @@ export const Navigation = () => {
           <Link to="/shopping-list">Shopping list</Link>
         </NavItem>
         <NavItem>
-          <Link to="/search">
-            <FiSearch />
-          </Link>
+          <IconContext.Provider value={{ style: { width: 24, height: 24 } }}>
+            <Link to="/search">
+              <SearchThumb>
+                <FiSearch />
+                {isTabletOrMobile && <SearchText>Search</SearchText>}
+              </SearchThumb>
+            </Link>
+          </IconContext.Provider>
         </NavItem>
       </NavList>
     </nav>

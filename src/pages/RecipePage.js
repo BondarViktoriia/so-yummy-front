@@ -1,101 +1,48 @@
-import RecipeDescription from '../components/Recipe';
-const testRecipe = {
-  _id: {
-    $oid: '6426a8c69388c4008e826738',
-  },
-  title: 'Chicken Couscous',
-  category: 'Chicken',
-  area: 'Moroccan',
-  instructions:
-    'Heat the olive oil in a large frying pan and cook the onion for 1-2 mins just until softened. Add the chicken and fry for 7-10 mins until cooked through and the onions have turned golden. Grate over the ginger, stir through the harissa to coat everything and cook for 1 min more.\r\n\r\nTip in the apricots, chickpeas and couscous, then pour over the stock and stir once. Cover with a lid or tightly cover the pan with foil and leave for about 5 mins until the couscous has soaked up all the stock and is soft. Fluff up the couscous with a fork and scatter over the coriander to serve. Serve with extra harissa, if you like.',
-  description:
-    'A flavorful dish made with chicken, couscous, and vegetables. Easy to make and packed with nutrients.',
-  thumb: 'https://www.themealdb.com/images/media/meals/qxytrx1511304021.jpg',
-  preview:
-    'https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560539/qwsi0utjnchqht2hv0pn.jpg',
-  time: '25',
-  popularity: 0,
-  favorites: [],
-  likes: [],
-  youtube: 'https://www.youtube.com/watch?v=GZQGy9oscVk',
-  tags: [],
-  createdAt: {
-    $date: '2023-03-11T19:25:33.242Z',
-  },
-  updatedAt: {
-    $date: '2023-03-17T11:56:31.324Z',
-  },
-  ingredients: [
-    {
-      id: {
-        $oid: '640c2dd963a319ea671e372c',
-      },
-      measure: '1 tbsp',
-    },
-    {
-      id: {
-        $oid: '640c2dd963a319ea671e37ae',
-      },
-      measure: '1 chopped',
-    },
-    {
-      id: {
-        $oid: '640c2dd963a319ea671e3693',
-      },
-      measure: '200g',
-    },
-    {
-      id: {
-        $oid: '640c2dd963a319ea671e36e8',
-      },
-      measure: 'pinch',
-    },
-    {
-      id: {
-        $oid: '640c2dd963a319ea671e36fb',
-      },
-      measure: '2 tblsp ',
-    },
-    {
-      id: {
-        $oid: '640c2dd963a319ea671e37d2',
-      },
-      measure: '10',
-    },
-    {
-      id: {
-        $oid: '640c2dd963a319ea671e3698',
-      },
-      measure: '220g',
-    },
-    {
-      id: {
-        $oid: '640c2dd963a319ea671e37c1',
-      },
-      measure: '200g',
-    },
-    {
-      id: {
-        $oid: '640c2dd963a319ea671e3696',
-      },
-      measure: '200ml',
-    },
-    {
-      id: {
-        $oid: '640c2dd963a319ea671e36af',
-      },
-      measure: 'Handful',
-    },
-  ],
-};
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { RecipeDescription } from '../components/Recipe';
+import { RecipeList } from '../components/Recipe';
+import { RecipePreparation } from '../components/Recipe';
+
+import {
+  selectRecipe,
+  // selectIsLoading,
+  // selectError,
+  // selectOwnRecipe,
+} from '../redux/recipePage/recipeSelectors';
+import { fetchRecipe } from '../redux/recipePage/recipeOperations';
+
 const RecipePage = () => {
+  const dispatch = useDispatch();
+  const currentRecipe = useSelector(selectRecipe);
+  // const isLoading = useSelector(selectIsLoading);
+  // const error = useSelector(selectError);
+  // const ownRecipe = useSelector(selectOwnRecipe);
+
+  const { recipeId } = useParams();
+
+  useEffect(() => {
+    dispatch(fetchRecipe(recipeId));
+  }, [dispatch, recipeId]);
+
   return (
     <>
-      <RecipeDescription
-        title={testRecipe.title}
-        description={testRecipe.description}
-        time={testRecipe.time}
-      ></RecipeDescription>
+      {/* {error && <h1>There will be error component</h1>} */}
+
+      <>
+        <RecipeDescription
+          title={currentRecipe.title}
+          description={currentRecipe.description}
+          time={currentRecipe.time}
+        ></RecipeDescription>
+        <RecipeList ingreds={currentRecipe.ingredients}></RecipeList>
+        <RecipePreparation
+          instructions={currentRecipe.instructions}
+          image={currentRecipe.thumb}
+        ></RecipePreparation>
+      </>
     </>
   );
 };

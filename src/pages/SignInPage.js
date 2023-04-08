@@ -1,3 +1,19 @@
-const SignInPage = () => {};
+import React from 'react';
 
-export default SignInPage;
+import { SignIn } from '../components/Auth/SignIn';
+
+import {
+  AuthMain,
+  AuthImage,
+  AuthBackground,
+} from '../pages/RegistrationPage/RegistrationPage.styled';
+
+export const SignInPage = () => {
+  return (
+    <AuthMain>
+      <AuthImage></AuthImage>
+      <SignIn />
+      <AuthBackground></AuthBackground>
+    </AuthMain>
+  );
+};

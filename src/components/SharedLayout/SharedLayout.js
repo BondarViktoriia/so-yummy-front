@@ -6,11 +6,17 @@ import { MainBox, Box } from './SharedLayout.styled';
 export const SharedLayout = () => {
   return (
     <Box>
-      <Header />
+      {/* <SharedLayoutContainer>
+      <SharedLayoutBg> */}
+              <Header />
       <MainBox>
         <Outlet />
       </MainBox>
       <Footer />
+      {/* </SharedLayoutBg>
+      </SharedLayoutContainer> */}
+
+
     </Box>
   );
 };
