@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/so-yummy-front/static/css/main.a887ada5.css",
-    "main.js": "/so-yummy-front/static/js/main.a2505ec2.js",
+    "main.js": "/so-yummy-front/static/js/main.fb702c97.js",
     "static/media/my-recipe-bg-tablet-2x.jpg": "/so-yummy-front/static/media/my-recipe-bg-tablet-2x.9e36cde389427a15b2df.jpg",
     "static/media/my-recipe-bg-dekstop-2x.jpg": "/so-yummy-front/static/media/my-recipe-bg-dekstop-2x.f35df6729099ccdc3dcc.jpg",
     "static/media/spinach-bottom-right-tablet-2x.png": "/so-yummy-front/static/media/spinach-bottom-right-tablet-2x.94fc91b522d2b531cbcf.png",
@@ -17,10 +17,10 @@
     "static/media/symbol.svg": "/so-yummy-front/static/media/symbol.da66c83c62e5543f38684440afffd840.svg",
     "index.html": "/so-yummy-front/index.html",
     "main.a887ada5.css.map": "/so-yummy-front/static/css/main.a887ada5.css.map",
-    "main.a2505ec2.js.map": "/so-yummy-front/static/js/main.a2505ec2.js.map"
+    "main.fb702c97.js.map": "/so-yummy-front/static/js/main.fb702c97.js.map"
   },
   "entrypoints": [
     "static/css/main.a887ada5.css",
-    "static/js/main.a2505ec2.js"
+    "static/js/main.fb702c97.js"
   ]
 }
