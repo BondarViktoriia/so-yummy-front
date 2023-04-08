@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { IconContext } from 'react-icons';
 import { IoCloseOutline, IoAddOutline } from 'react-icons/io5';
 import {
@@ -13,15 +14,28 @@ import {
   BtnText,
   Input,
   InputCont,
+  UserIcon,
   //   Form,
 } from './EditProfile.styled';
 
-export const EditProfile = () => {
+export const EditProfile = ({ closeEdit }) => {
+  useEffect(() => {
+    window.addEventListener('keydown', handleEsc);
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  });
+  const handleEsc = e => {
+    if (e.code === 'Escape') {
+      closeEdit();
+    }
+  };
+
   return (
     <EditProfileCont>
       <CloseBtnCont>
         <IconContext.Provider value={{ style: { width: 24, height: 24 } }}>
-          <CloseBtn>
+          <CloseBtn onClick={closeEdit}>
             <IoCloseOutline />
           </CloseBtn>
         </IconContext.Provider>
@@ -41,9 +55,9 @@ export const EditProfile = () => {
       <FormCont>
         <form>
           <InputCont>
-            <div></div>
+            <UserIcon />
+
             <Input />
-            <div></div>
           </InputCont>
           <SubmitBtn type="submit">
             <BtnText>Save changes</BtnText>
