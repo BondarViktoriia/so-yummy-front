@@ -8,9 +8,10 @@ export const HeaderBox = styled.div`
   height: 46px;
   justify-content: space-between;
   align-items: center;
-  /* position: absolute; */
-  /* top: 0; */
+  position: absolute;
+  top: 0;
 `;
+
 export const MenuThumb = styled.div`
   display: flex;
   align-items: center;
