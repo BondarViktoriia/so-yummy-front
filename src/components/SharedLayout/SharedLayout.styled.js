@@ -7,7 +7,7 @@ export const MainBox = styled.div`
 `;
 
 export const Box = styled.div`
-  outline: 1px solid red;
+  /* position: relative; */
   display: flex;
   flex-direction: column;
   width: 375px;
