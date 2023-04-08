@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { IconContext } from 'react-icons';
@@ -13,10 +14,15 @@ import {
   LogoutText,
   LogoutTextThumb,
 } from './UserProfile.styled';
+import { EditProfile } from './EditProfile';
 
 const modalRoot = document.querySelector('#modal-root');
 
 const UserProfile = ({ onClose }) => {
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const openEdit = () => setIsEditOpen(true);
+  const closeEdit = () => setIsEditOpen(false);
+
   useEffect(() => {
     window.addEventListener('keydown', handleEsc);
     return () => {
@@ -40,7 +46,7 @@ const UserProfile = ({ onClose }) => {
           <EditCont>
             <EditText>Edit profile</EditText>
             <IconContext.Provider value={{ style: { width: 14, height: 14 } }}>
-              <EditBtn>
+              <EditBtn onClick={openEdit}>
                 <FiEdit2 />
               </EditBtn>
             </IconContext.Provider>
@@ -59,6 +65,8 @@ const UserProfile = ({ onClose }) => {
           </LogoutBtn>
         </Cont>
       </ModalBox>
+
+      {isEditOpen && <EditProfile closeEdit={closeEdit} />}
     </Backdrop>,
     modalRoot
   );

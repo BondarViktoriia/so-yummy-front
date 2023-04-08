@@ -8,7 +8,6 @@ import { Navigation } from '../Navigation/Navigation';
 import { UserMenu } from '../UserMenu/UserMenu';
 import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
-import { EditProfile } from '../UserProfile/EditProfile';
 
 export const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,7 +33,6 @@ export const Header = () => {
         </MenuThumb>
       </HeaderBox>
       {isModalOpen && <MobileMenu onClose={closeModal} />}
-      <EditProfile />
     </>
   );
 };

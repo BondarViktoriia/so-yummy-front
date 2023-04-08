@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FiUser } from 'react-icons/fi';
 
 export const EditProfileCont = styled.div`
   position: relative;
@@ -76,6 +77,7 @@ export const BtnText = styled.span`
 `;
 
 export const InputCont = styled.div`
+  position: relative;
   margin-bottom: 24px;
 `;
 
@@ -107,4 +109,12 @@ export const Input = styled.input`
     order: 1;
     flex-grow: 0;
   }
+`;
+
+export const UserIcon = styled(FiUser)`
+  position: absolute;
+  top: 15px;
+  left: 14px;
+  width: 18px;
+  height: 18px;
 `;
