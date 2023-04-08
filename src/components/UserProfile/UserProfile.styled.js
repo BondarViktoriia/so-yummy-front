@@ -30,6 +30,7 @@ export const Cont = styled.div`
   padding-top: 18px;
   padding-left: 18px;
   padding-right: 18px;
+  background-color: #fafafa;
   @media (min-width: 768px) {
     border-color: transparent;
   }

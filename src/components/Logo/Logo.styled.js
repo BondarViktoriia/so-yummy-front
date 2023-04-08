@@ -11,3 +11,12 @@ export const LogoImg = styled.img`
     margin-right: 187px;
   }
 `;
+
+export const LogoLightImg = styled.img`
+  width: 32px;
+  height: 32px;
+  @media (min-width: 768px) {
+    width: 44px;
+    height: 44px;
+  }
+`;
