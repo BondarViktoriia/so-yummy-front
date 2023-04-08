@@ -28,10 +28,12 @@ const RecipeDescription = ({ title, description, time }) => {
       >
         {fav === true ? 'Remove from favorite' : 'Add to favorite'}
       </Button>
-      <Time>
-        <ClockIcon />
-        <span> {time} min</span>
-      </Time>
+      {time !== '' && (
+        <Time>
+          <ClockIcon />
+          <span> {time} min</span>
+        </Time>
+      )}
     </Wrapper>
   );
 };
