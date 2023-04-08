@@ -4,7 +4,7 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://so-yummy-7n94.onrender.com/';
 
 const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzA0YTEyOTg4ZDE1MDU5ZGFjYTU4NiIsImlhdCI6MTY4MDg4NzE5NiwiZXhwIjoxNjgwOTY5OTk2fQ.I9mjHZfsE1dxi8Tgk48ASHEZ-KiYuauCgZwKS7U0zyE';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzA0YTEyOTg4ZDE1MDU5ZGFjYTU4NiIsImlhdCI6MTY4MDk3NjIyOCwiZXhwIjoxNjgxMDU5MDI4fQ.klbMIYx0X2YDeiatZbdBqhXgvDKcCxt9HmvMTtr7w80';
 
 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 

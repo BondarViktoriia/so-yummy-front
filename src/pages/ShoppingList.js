@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import styled from 'styled-components';
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,10 +22,26 @@ const ShoppingList = () => {
       <h1>Shopping list</h1>
       <ul>
         <li> Product Number Remove</li>
-        {/* {shopList.map(() => {})} */}
+        {shopList.map(({ _id, ttl, thb, measure }) => {
+          return (
+            <li key={_id}>
+              <img src={thb} width="60" alt="qwe" />
+              <p>{ttl}</p>
+
+              <p>{measure}</p>
+              <button type="button">
+                <svg></svg>
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
 };
+
+const deleteButton = styled.button`
+  background-color: transparent;
+`;
 
 export default ShoppingList;
