@@ -9,7 +9,7 @@ import {
   SearchText,
 } from './Navigation.styled';
 
-export const Navigation = () => {
+export const Navigation = Х => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1239px)' });
   return (
     <nav>
