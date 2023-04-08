@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { IoCloseOutline } from 'react-icons/io5';
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,30 +19,40 @@ const ShoppingList = () => {
   console.log(shopList);
 
   return (
-    <div>
+    <Container>
       <h1>Shopping list</h1>
       <ul>
         <li> Product Number Remove</li>
         {shopList.map(({ _id, ttl, thb, measure }) => {
           return (
-            <li key={_id}>
+            <ListItem key={_id}>
               <img src={thb} width="60" alt="qwe" />
               <p>{ttl}</p>
 
               <p>{measure}</p>
-              <button type="button">
-                <svg></svg>
-              </button>
-            </li>
+              <DeleteButton type="button">
+                <IoCloseOutline></IoCloseOutline>
+              </DeleteButton>
+            </ListItem>
           );
         })}
       </ul>
-    </div>
+    </Container>
   );
 };
 
-const deleteButton = styled.button`
+const DeleteButton = styled.button`
   background-color: transparent;
+`;
+
+const Container = styled.div`
+  margin-top: 66px;
+`;
+
+const ListItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 `;
 
 export default ShoppingList;

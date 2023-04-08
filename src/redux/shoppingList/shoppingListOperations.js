@@ -12,7 +12,7 @@ export const getShoppingList = createAsyncThunk(
   'shoppingList/get',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('api/shoppingList');
+      const response = await axios.get('shoppingList');
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
