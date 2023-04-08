@@ -7,9 +7,6 @@ import Desc1x from '../../image/my-recipes-page/my-recipe-bg-dekstop-1x.jpg';
 import Desc2x from '../../image/my-recipes-page/my-recipe-bg-dekstop-2x.jpg';
 
 export const Wrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
   background-image: url(${Mob1x});
   background-size: cover;
   background-position: center;

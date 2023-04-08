@@ -117,8 +117,9 @@ const AddRecipeForm = ({counter,handleDecrement,handleIncrement}) => {
                 <option value="Dessert">kg</option>
                 <option value="Goat">g</option>
               </SelectIngredients>
+                          <IoCloseOutline size={18} />
+
             </div>
-            <IoCloseOutline size={18} />
           </InputIngredientsWrap>
           <InputIngredientsWrap>
             <div>
@@ -129,8 +130,9 @@ const AddRecipeForm = ({counter,handleDecrement,handleIncrement}) => {
                 <option value="Dessert">kg</option>
                 <option value="Goat">g</option>
               </SelectIngredients>
+                          <IoCloseOutline size={18} />
+
             </div>
-            <IoCloseOutline size={18} />
           </InputIngredientsWrap>
 
           <WrapPreparation>
