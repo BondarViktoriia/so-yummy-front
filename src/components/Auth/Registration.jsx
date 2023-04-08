@@ -5,8 +5,8 @@ import { Formik, Form } from 'formik';
 
 import { Button } from '../../components/WelcomePage/Button';
 import {
-  FormWrapper,
-  FormTitle,
+  FormChange,
+  Title,
   FormInputWrapper,
   FormInput,
   FormLabel,
@@ -37,8 +37,8 @@ export const AuthForm = ({ login }) => {
       initialValues={!login ? initialValuesRegister : initialValuesLogin}
       onSubmit={handleSubmit}
     >
-      <FormWrapper>
-        <FormTitle>{!login ? 'Registration' : 'Sign In'}</FormTitle>
+      <FormChange>
+        <Title>{!login ? 'Registration' : 'Sign In'}</Title>
         <Form>
           <FormInputWrapper>
             {!login && (
@@ -78,7 +78,7 @@ export const AuthForm = ({ login }) => {
         ) : (
           <FormLink to="/register">Registration</FormLink>
         )}
-      </FormWrapper>
+      </FormChange>
     </Formik>
   );
 };
