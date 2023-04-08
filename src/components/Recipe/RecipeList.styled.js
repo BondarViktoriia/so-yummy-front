@@ -3,7 +3,6 @@ import CheckedIcon from '../../image/icons/pick.png';
 
 export const Wrapper = styled.div`
   width: 100%;
-  transform: translateY(425px);
   padding-left: 16px;
   padding-right: 16px;
   margin-bottom: 50px;
@@ -11,7 +10,6 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 768px) {
     padding-left: 32px;
     padding-right: 32px;
-    transform: translateY(480px);
   }
 
   @media screen and (min-width: 1440px) {
