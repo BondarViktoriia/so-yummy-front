@@ -30,13 +30,12 @@ export const useMedia = () => {
     }
   };
   useEffect(() => {
-    const handler = [];
-    RESOLUTION_LIST.forEach(({ type, size }, index) => {
+    const handlers = [];
+    RESOLUTION_LIST.forEach(({ type, size }, idx) => {
       let rule = `(min-width: ${size}px)`;
-
-      if (RESOLUTION_LIST[index + 1]?.size) {
-        const nextSize = RESOLUTION_LIST[index + 1].size - 1;
-        rule += `and (max-width: ${nextSize}px)`;
+      if (RESOLUTION_LIST[idx + 1]?.size) {
+        const nextSize = RESOLUTION_LIST[idx + 1].size - 1;
+        rule += ` and (max-width: ${nextSize}px)`;
       }
 
       const MQ = window.matchMedia(rule);
@@ -44,13 +43,12 @@ export const useMedia = () => {
       const listener = e => setMatches(type, size, e);
 
       MQ.addEventListener('change', listener);
-      handler.push({ elem: MQ, listener });
+      handlers.push({ el: MQ, listener });
     });
-    return () => {
-      handler.forEach(({ elem, listener }) => {
-        elem.removeEventListener('change', listener);
-      });
-    };
+    return () =>
+      handlers.forEach(({ el, listener }) =>
+        el.removeEventListener('change', listener)
+      );
   }, []);
   return { screenType, isMobileScreen, isTabletScreen, isDesktopScreen };
 };
