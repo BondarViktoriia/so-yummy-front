@@ -63,7 +63,7 @@ export const FormLabel = styled.label`
 export const IconName = styled(FiUser)`
   position: absolute;
   top: 50%;
-  /* color:  */
+  color: #fafafa;
   transform: translate(13px, -50%);
   @media screen and (min-width: 768px) {
     width: 24px;
@@ -74,7 +74,7 @@ export const IconName = styled(FiUser)`
 export const IconEmail = styled(HiOutlineMail)`
   position: absolute;
   top: 50%;
-  /* color:  */
+  color: #fafafa;
   transform: translate(13px, -50%);
   @media screen and (min-width: 768px) {
     width: 24px;
@@ -84,7 +84,7 @@ export const IconEmail = styled(HiOutlineMail)`
 export const IconPassword = styled(FiLock)`
   position: absolute;
   top: 50%;
-  /* color: */
+  color: #fafafa;
   transform: translate(13px, -50%);
   @media screen and (min-width: 768px) {
     width: 24px;
@@ -96,7 +96,7 @@ export const FormInput = styled(Field)`
   width: 100%;
   height: 45px;
   padding-left: 40px;
-  /* color: */
+  color: #fafafa;
   background-color: transparent;
   border: 1px solid #fafafa;
   border-radius: 6px;
