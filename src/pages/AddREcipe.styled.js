@@ -6,14 +6,9 @@ export const AddRecipeWrapper = styled.div`
 `
 export const TitleFollowUs = styled.h3`
  
-display:none;
-  @media screen and (min-width: 768px) {
-    margin-bottom: 40px;
-     color: #3E4462;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: -0.24px;
+
+  @media screen and (max-width: 1439px) {
+    display:none;
   }
    @media screen and (min-width: 1440px) {
     margin-bottom: 32px;

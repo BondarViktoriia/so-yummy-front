@@ -52,13 +52,13 @@ const RecipeItem = ({ recipe, page }) => {
         </div>
         <RecipeText>{time} min</RecipeText>
       </Wrapper>
-      // Кнопка видалити рецепт з favorite
+      {/* // Кнопка видалити рецепт з favorite */}
       {page === 'favorite' && (
         <DeleteButtonFav type="button">
           <RiDeleteBinLine size={iconSize()} />
         </DeleteButtonFav>
       )}
-      // Кнопка see recipe відображається на десктопі та на планшеті
+      {/* // Кнопка see recipe відображається на десктопі та на планшеті */}
       {page === 'favorite' && !media.isMobileScreen && (
         <RecipeButtonFav type="button" onClick={handleSubmit}>
           See recipe
