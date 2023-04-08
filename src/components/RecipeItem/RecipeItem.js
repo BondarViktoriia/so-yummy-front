@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { RiDeleteBinLine } from 'react-icons/ri';
 
-import { useMedia } from 'hooks';
+import { useMedia } from 'hooks/useMedia';
 
 import {
   DeleteButtonFav,
@@ -22,20 +22,26 @@ const RecipeItem = ({ recipe, page }) => {
 
   const splitDescr = description.split('\n');
 
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
   const media = useMedia();
 
   const iconSize = () => {
-    if (media.isMobileScreen) return 14;
+    if (media.isMobileScreen) {
+      return 14;
+    }
 
-    if (media.isTabletScreen) return 22;
+    if (media.isTabletScreen) {
+      return 22;
+    }
 
-    if (media.isDesktopScreen) return 24;
+    if (media.isDesktopScreen) {
+      return 24;
+    }
   };
 
   const handleSubmit = () => {
-    nav(`/recipe/${recipe._id}`);
+    navigate(`/recipe/${recipe._id}`);
   };
 
   return (
@@ -53,12 +59,15 @@ const RecipeItem = ({ recipe, page }) => {
         <RecipeText>{time} min</RecipeText>
       </Wrapper>
       {/* // Кнопка видалити рецепт з favorite */}
+
       {page === 'favorite' && (
         <DeleteButtonFav type="button">
           <RiDeleteBinLine size={iconSize()} />
         </DeleteButtonFav>
       )}
+
       {/* // Кнопка see recipe відображається на десктопі та на планшеті */}
+
       {page === 'favorite' && !media.isMobileScreen && (
         <RecipeButtonFav type="button" onClick={handleSubmit}>
           See recipe
