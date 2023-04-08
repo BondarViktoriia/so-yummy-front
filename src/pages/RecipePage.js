@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import { RecipeDescription } from '../components/Recipe';
 import { RecipeList } from '../components/Recipe';
+import { RecipePreparation } from '../components/Recipe';
 
 import {
   selectRecipe,
@@ -30,6 +31,7 @@ const RecipePage = () => {
     <>
       {/* {error && <h1>There will be error component</h1>} */}
       {currentRecipe && (
+      {Object.keys(currentRecipe).length > 0 && (
         <>
           <RecipeDescription
             title={currentRecipe.title}
@@ -37,6 +39,10 @@ const RecipePage = () => {
             time={currentRecipe.time}
           ></RecipeDescription>
           <RecipeList ingreds={currentRecipe.ingredients}></RecipeList>
+          <RecipePreparation
+            instructions={currentRecipe.instructions}
+            image={currentRecipe.thumb}
+          ></RecipePreparation>
         </>
       )}
     </>

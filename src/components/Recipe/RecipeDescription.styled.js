@@ -16,7 +16,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: -1;
   @media only screen and (min-width: 768px) {
     background-image: url(${Tablet1x});
     height: 495px;

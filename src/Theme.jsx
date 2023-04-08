@@ -20,6 +20,7 @@ const lightTheme = {
     darkText: '#23262A',
     greyText: '#7E7E7E',
     ingredItemBcg: '#ebf3d4',
+    ingredListText: 'rgba(0, 0, 0, 0.8)',
 
     inputCorrect: '#3CBC81',
     inputWarning: '#F6C23E',
@@ -49,6 +50,7 @@ const darkTheme = {
     greyText: 'rgba(250, 250, 250, 0.6)',
 
     ingredItemBcg: '#2A2C36',
+    ingredListText: '#FAFAFA',
 
     inputCorrect: '#3CBC81',
     inputWarning: '#F6C23E',
