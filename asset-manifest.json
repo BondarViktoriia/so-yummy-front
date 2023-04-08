@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/so-yummy-front/static/css/main.a887ada5.css",
-    "main.js": "/so-yummy-front/static/js/main.77f9ffa9.js",
+    "main.js": "/so-yummy-front/static/js/main.4e60e08e.js",
     "static/media/my-recipe-bg-tablet-2x.jpg": "/so-yummy-front/static/media/my-recipe-bg-tablet-2x.9e36cde389427a15b2df.jpg",
     "static/media/my-recipe-bg-dekstop-2x.jpg": "/so-yummy-front/static/media/my-recipe-bg-dekstop-2x.f35df6729099ccdc3dcc.jpg",
     "static/media/spinach-bg-leaf-desktop@2x.png": "/so-yummy-front/static/media/spinach-bg-leaf-desktop@2x.60636b5ced64d8c541b1.png",
@@ -13,25 +13,20 @@
     "static/media/spinach-bg-leaf-mob@2x.png": "/so-yummy-front/static/media/spinach-bg-leaf-mob@2x.ce55e997c7e242592e58.png",
     "static/media/spinach-bg-leaf-tablet.png": "/so-yummy-front/static/media/spinach-bg-leaf-tablet.1f67ae79ca99649a6be4.png",
     "static/media/my-recipe-bg-tablet-1x.jpg": "/so-yummy-front/static/media/my-recipe-bg-tablet-1x.9359efa8112d21afc0b4.jpg",
-    "static/media/auth-illustration-dekstop-2x.png": "/so-yummy-front/static/media/auth-illustration-dekstop-2x.5691778fa90cbc28c7c0.png",
     "static/media/error-tablet-2x.png": "/so-yummy-front/static/media/error-tablet-2x.174263e0933834535ad5.png",
     "static/media/error-desktop-2x.png": "/so-yummy-front/static/media/error-desktop-2x.1e9f157f444d57246ec0.png",
-    "static/media/auth-illustration-tablet-2x.png": "/so-yummy-front/static/media/auth-illustration-tablet-2x.ad6a75b0fb55b5f235a6.png",
     "static/media/my-recipe-bg-mobile-1x.jpg": "/so-yummy-front/static/media/my-recipe-bg-mobile-1x.565b32681de30a81118b.jpg",
-    "static/media/auth-illustration-mobile-2x.png": "/so-yummy-front/static/media/auth-illustration-mobile-2x.196412dde7e4ca847a6a.png",
     "static/media/spinach-bg-leaf-mob.png": "/so-yummy-front/static/media/spinach-bg-leaf-mob.aaa5a520a7cf001ebcbb.png",
     "static/media/error-mobile-2x.png": "/so-yummy-front/static/media/error-mobile-2x.99f19d3a8b7e4ea3e5b4.png",
-    "static/media/auth-illustration-dekstop-1x.png": "/so-yummy-front/static/media/auth-illustration-dekstop-1x.4a925aa2ee3f6de6c24a.png",
     "static/media/error-tablet-1x.png": "/so-yummy-front/static/media/error-tablet-1x.ee40ba90804884188ab3.png",
     "static/media/error-dekstop-1x.png": "/so-yummy-front/static/media/error-dekstop-1x.d1f0b2fa1e8ec2321bfb.png",
-    "static/media/auth-illustration-tablet-1x.png": "/so-yummy-front/static/media/auth-illustration-tablet-1x.d69697d14a30f231976b.png",
     "static/media/symbol.svg": "/so-yummy-front/static/media/symbol.da66c83c62e5543f38684440afffd840.svg",
     "index.html": "/so-yummy-front/index.html",
     "main.a887ada5.css.map": "/so-yummy-front/static/css/main.a887ada5.css.map",
-    "main.77f9ffa9.js.map": "/so-yummy-front/static/js/main.77f9ffa9.js.map"
+    "main.4e60e08e.js.map": "/so-yummy-front/static/js/main.4e60e08e.js.map"
   },
   "entrypoints": [
     "static/css/main.a887ada5.css",
-    "static/js/main.77f9ffa9.js"
+    "static/js/main.4e60e08e.js"
   ]
 }
