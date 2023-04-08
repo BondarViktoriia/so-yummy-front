@@ -5,7 +5,7 @@ import { FiUser } from 'react-icons/fi';
 import { HiOutlineMail } from 'react-icons/hi';
 import { FiLock } from 'react-icons/fi';
 
-export const FormWrapper = styled.div`
+export const FormChange = styled.div`
   position: absolute;
   top: 305px;
   right: 50%;
@@ -32,7 +32,7 @@ export const FormWrapper = styled.div`
   }
 `;
 
-export const FormTitle = styled.h1`
+export const Title = styled.h1`
   margin-bottom: 18px;
   /* font-weight: 
   font-size: 
