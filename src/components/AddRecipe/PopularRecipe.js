@@ -13,6 +13,7 @@ import {
   WrapperPopular,
 } from './PopularRecipie.styled';
 // import {getPopularRecipes} from '../../services/api/apiRecipe'
+import {useMediaQuery } from 'react-responsive';
 
  const PopularRecipe = () => {
   const [recipes, setRecipes] = useState([]);
@@ -39,13 +40,14 @@ import {
     popularRecipes();
   }, []);
 
-    console.log("recipes",recipes)
+   console.log("recipes", recipes)
+   
+  const isTablet = useMediaQuery({ minWidth:768, maxWidth:1439 });
   return (
     <WrapperPopular>
       <TitlePopular>Popular recipe</TitlePopular>
-      {
-        <ListPopular>
-          {recipes.map(({ _id, title, description, thumb }) => (
+      {isTablet?(<ListPopular>
+          {recipes.slice(0, 2).map(({ _id, title, description, thumb }) => (
             <ListItemPopular key={_id}>
               <ListLinkPopular to={`/recipe/${_id}`} state={{ from: location }}>
                 <ItemImg src={thumb} alt="recipe-appearance" />
@@ -56,8 +58,20 @@ import {
               </ListLinkPopular>
             </ListItemPopular>
           ))}
-        </ListPopular>
-      }
+                </ListPopular>):<ListPopular>
+          {recipes.slice(0, 4).map(({ _id, title, description, thumb }) => (
+            <ListItemPopular key={_id}>
+              <ListLinkPopular to={`/recipe/${_id}`} state={{ from: location }}>
+                <ItemImg src={thumb} alt="recipe-appearance" />
+                <ItemWrapper>
+                  <ItemTitle>{title}</ItemTitle>
+                  <ItemText>{description}</ItemText>
+                </ItemWrapper>
+              </ListLinkPopular>
+            </ListItemPopular>
+          ))}
+                </ListPopular>}
+
 
     </WrapperPopular>
   );
