@@ -12,7 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { themeReducer } from './theme/themeSlice';
 import { recipeReducer } from './recipePage/recipeSlice';
-import ownRecipesSlice from './ownRecipe/ownRecipesSlice';
+// import ownRecipesSlice from './ownRecipe/ownRecipesSlice';
 import { authReducer } from './auth/authSlice';
 
 
