@@ -30,21 +30,19 @@ const RecipePage = () => {
   return (
     <>
       {/* {error && <h1>There will be error component</h1>} */}
-      {currentRecipe && (
-      {Object.keys(currentRecipe).length > 0 && (
-        <>
-          <RecipeDescription
-            title={currentRecipe.title}
-            description={currentRecipe.description}
-            time={currentRecipe.time}
-          ></RecipeDescription>
-          <RecipeList ingreds={currentRecipe.ingredients}></RecipeList>
-          <RecipePreparation
-            instructions={currentRecipe.instructions}
-            image={currentRecipe.thumb}
-          ></RecipePreparation>
-        </>
-      )}
+
+      <>
+        <RecipeDescription
+          title={currentRecipe.title}
+          description={currentRecipe.description}
+          time={currentRecipe.time}
+        ></RecipeDescription>
+        <RecipeList ingreds={currentRecipe.ingredients}></RecipeList>
+        <RecipePreparation
+          instructions={currentRecipe.instructions}
+          image={currentRecipe.thumb}
+        ></RecipePreparation>
+      </>
     </>
   );
 };
