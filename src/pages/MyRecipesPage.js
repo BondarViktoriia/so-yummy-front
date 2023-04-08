@@ -1,14 +1,14 @@
 import React from 'react';
-import { RecipeList } from 'components/RecipeList';
-import { Title } from 'components/Title';
-import Container from 'components/Container/Container.styled';
+import RecipeList from 'components/RecipeList/RecipeList';
+import Title from 'components/Title/Title';
+import { ContainerStyled } from 'components/Container/Container.styled';
 
 const MyRecipesPage = () => {
   return (
-    <Container>
+    <ContainerStyled>
       <Title>My recipes</Title>
       <RecipeList recipes={[]} page="my" />
-    </Container>
+    </ContainerStyled>
   );
 };
 

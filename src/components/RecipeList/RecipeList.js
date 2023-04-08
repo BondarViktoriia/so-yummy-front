@@ -1,14 +1,14 @@
-import { RecipeItem } from 'components/RecipeItem';
+import RecipeItem from 'components/RecipeItem';
 
-import { List } from 'styled-components';
+import { ListS } from './RecipeList.styled';
 
 const RecipeList = ({ recipes, page }) => {
   return (
-    <List>
+    <ListS>
       {recipes.map(recipe => {
         return <RecipeItem key={recipe._id} recipe={recipe} page={page} />;
       })}
-    </List>
+    </ListS>
   );
 };
 
