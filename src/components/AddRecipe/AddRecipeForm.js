@@ -15,21 +15,152 @@ import {
   WrapIngredients,
   InputIngredientsWrap,
   MainWrapIngredients,
-  InputIngredients,
-  SelectIngredients,
+
   TitlePreparation,
   WrapPreparation,
   TextAreaPreparation,
   ButtonAdd,
   WrapButtonAdd,
   Description,
-  InputWrap
+  InputWrap,IngredientsTitle,IngredientsList
 } from './AddRecipeForm.styled';
 import addRecipe from '../../image/addRecipe.png';
-import {Counter} from '../AddRecipe/Counter'
+import { Counter } from '../AddRecipe/Counter';
+import { useSelector } from 'react-redux';
+import {getIngredients} from '../../redux/ingredients/ingredientsSelectors'
+import store from "store";
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getAllIngredients } from '../../redux/ingredients/ingredientsOperation';
+import { nanoid } from '@reduxjs/toolkit';
+import {IngredientsItem,ValueInputWrapper,InputUnitValue,ButtonRemoveItem} from './AddRecipeForm.styled'
+import Select from 'react-select';
 
-const AddRecipeForm = ({counter,handleDecrement,handleIncrement}) => {
+const init = {
+  recipe: '',
+  title: '',
+  about: '',
+  category: '',
+  time: '',
+  unitValue: '',
+};
 
+const AddRecipeForm = ({ counter }) => {
+  const dispatch = useDispatch();
+    const [inputs, setInputs] = useState(() => {
+    const inputs = store.get('userInputs');
+    return inputs ? inputs : init;
+  });
+
+  const optionsIngredients = useSelector(getIngredients);
+   const [userIngredients, setUserIngredients] = useState(() => {
+    const ingredients = store.get('userIngredients');
+    return ingredients ? ingredients : [];
+   });
+    useEffect(() => {
+    store.set('userInputs', inputs);
+    store.set('userIngredients', userIngredients);
+  }, [inputs, userIngredients]);
+  useEffect(() => {
+    dispatch(getAllIngredients());
+
+  }, [dispatch]);
+
+   const handleDecrement = () => {
+    if (userIngredients.length <= 0) return;
+    setUserIngredients(prev => [...prev.slice(0, prev.length - 1)]);
+  };
+
+  const handleIncrement = () => {
+    setUserIngredients(prev => [
+      ...prev,
+      { id: nanoid(), ingredient: 'Beef', unitValue: 100, qty: 'g' },
+    ]);
+  };
+
+
+const ingredientsOptionsList = list => {
+  return list.map(({ strIngredient }) => ({
+    label: strIngredient,
+    value: strIngredient,
+  }));
+  };
+    const handleUserIngredient = (...args) => {
+    const [{ value }, { name: dirtyName }] = args;
+    const [name, id] = dirtyName.split(' ');
+
+    setUserIngredients(prev => {
+      const idx = prev.findIndex(el => el.id === id);
+      const [item] = prev.filter(el => el.id === id);
+      item[name] = value;
+      prev[idx] = item;
+      return [...prev];
+    });
+  };
+  
+  const handleUnitValue = ({ currentTarget }) => {
+    const { id, value, name } = currentTarget;
+    setInputs(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+    setUserIngredients(prev => {
+      const idx = prev.findIndex(el => el.id === id);
+      const [item] = prev.filter(el => el.id === id);
+      item[name] = value;
+      prev[idx] = item;
+      return [...prev];
+    });
+  };
+  const unitsOptionsList = [
+  { value: 'tbs', label: 'tbs' },
+  { value: 'tsp', label: 'tsp' },
+  { value: 'kg', label: 'kg' },
+  { value: 'g', label: 'g' },
+  ];
+   const handleRemove = ({ currentTarget }) => {
+    const newList = userIngredients.filter(el => el.id !== currentTarget.id);
+    setUserIngredients(newList);
+  };
+
+
+    const userIngredientsList = userIngredients.map(
+    ({ id, unitValue, ingredient, qty }) => {
+      return (
+        <IngredientsItem key={id}>
+          <Select
+            options={ingredientsOptionsList(optionsIngredients)}
+            defaultValue={{ label: ingredient, value: ingredient }}
+            placeholder=" "
+            onChange={handleUserIngredient}
+            name={`ingredient ${id}`}
+          />
+          <ValueInputWrapper >
+            <InputUnitValue
+
+              type="text"
+              name="unitValue"
+              onChange={handleUnitValue}
+              defaultValue={unitValue}
+              autoComplete="off"
+              id={id}
+            />
+            <Select
+              options={unitsOptionsList}
+              defaultValue={{ label: qty, value: qty }}
+              placeholder=" "
+              onChange={handleUserIngredient}
+              isSearchable={false}
+              name={`qty ${id}`}
+            />
+          </ValueInputWrapper>
+          <ButtonRemoveItem type="button" id={id} onClick={handleRemove}>
+           <IoCloseOutline/>
+          </ButtonRemoveItem>
+        </IngredientsItem>
+      );
+    }
+  );
   return (
     <Wrap>
       <Title>Add recipe</Title>
@@ -101,14 +232,35 @@ const AddRecipeForm = ({counter,handleDecrement,handleIncrement}) => {
         <MainWrapIngredients>
           <WrapIngredients>
             <TitleIngredients>Ingredients</TitleIngredients>
-            <Counter
+            {/* <Counter
               counter={counter}
               handleIncrement={handleIncrement}
               handleDecrement={handleDecrement}
-            />
+            /> */}
           </WrapIngredients>
 
           <InputIngredientsWrap>
+            {/* <div>
+              <InputIngredients type="text" name="" id="" placeholder="" />
+              <SelectIngredients name="ingredients" id="ingredients">
+                <option value="Beef">tbs</option>
+                <option value="Breakfast">tsp</option>
+                <option value="Dessert">kg</option>
+                <option value="Goat">g</option>
+              </SelectIngredients>
+                          <IoCloseOutline size={18} />
+
+            </div> */}
+                  <IngredientsTitle>
+        <Counter
+          counter={counter}
+          handleDecrement={handleDecrement}
+          handleIncrement={handleIncrement}
+        />
+      </IngredientsTitle>
+      <IngredientsList>{userIngredientsList}</IngredientsList>
+          </InputIngredientsWrap>
+          {/* <InputIngredientsWrap>
             <div>
               <InputIngredients type="text" name="" id="" placeholder="" />
               <SelectIngredients name="ingredients" id="ingredients">
@@ -120,20 +272,7 @@ const AddRecipeForm = ({counter,handleDecrement,handleIncrement}) => {
                           <IoCloseOutline size={18} />
 
             </div>
-          </InputIngredientsWrap>
-          <InputIngredientsWrap>
-            <div>
-              <InputIngredients type="text" name="" id="" placeholder="" />
-              <SelectIngredients name="ingredients" id="ingredients">
-                <option value="Beef">tbs</option>
-                <option value="Breakfast">tsp</option>
-                <option value="Dessert">kg</option>
-                <option value="Goat">g</option>
-              </SelectIngredients>
-                          <IoCloseOutline size={18} />
-
-            </div>
-          </InputIngredientsWrap>
+          </InputIngredientsWrap> */}
 
           <WrapPreparation>
             <TitlePreparation>Recipe Preparation</TitlePreparation>
