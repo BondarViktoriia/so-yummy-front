@@ -21,15 +21,9 @@ export const Button = ({
         to={to}
         type={type}
         width={width}
-        widthTablet={widthTablet}
-        widthDesktop={widthDesktop}
         height={heigth}
-        heigthTablet={heigthTablet}
-        heigthDesktop={heigthDesktop}
         look={look}
         fontSize={fontSize}
-        fontSizeTablet={fontSizeTablet}
-        fontSizeDesktop={fontSizeDesktop}
       >
         {children}
       </LinkStyled>
@@ -39,15 +33,9 @@ export const Button = ({
     <ButtonStyled
       type={type}
       width={width}
-      widthTablet={widthTablet}
-      widthDesktop={widthDesktop}
       height={heigth}
-      heigthTablet={heigthTablet}
-      heigthDesktop={heigthDesktop}
       look={look}
       fontSize={fontSize}
-      fontSizeTablet={fontSizeTablet}
-      fontSizeDesktop={fontSizeDesktop}
     >
       {children}
     </ButtonStyled>

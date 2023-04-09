@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { getSearchRecipe } from '../services/api/ApiSearchRecipes';
 import { SearchInput } from '../components/Search/SearchInput';
 import { SearchList } from '../components/Search/SearchList';
+
 import { SearchWrapper, Title, PictureSearch, LookingP } from './SearchPage.styled';
 import searchMob1x from '../image/search-page/search-mobile-1x.png';
 import searchMob2x from '../image/search-page/search-mobile-2x.png';
@@ -11,6 +12,7 @@ import searchTablet1x from '../image/search-page/search-tablet-1x.png';
 import searchTablet2x from '../image/search-page/search-tablet-2x.png';
 import searchDesktop1x from '../image/search-page/search-dekstop-1x.png';
 import searchDesktop2x from '../image/search-page/search-desktop-2x.png';
+
 
 const SearchPage = () => {
   // const location = useLocation();
@@ -27,6 +29,7 @@ const SearchPage = () => {
   };
 
   console.log(isLoading);
+
 
   // const incrementPage = () => {
   //   setSearchParams({ options: options, query: query, page: Number(page) + 1 });
@@ -57,6 +60,7 @@ const SearchPage = () => {
       <SearchWrapper>
         <Title>Search</Title>
         <SearchInput submitSearch={submitSearch} />
+
         {results.length > 0 && <SearchList results={results} />}
         {results.length === 0 && (
           <PictureSearch>
@@ -77,6 +81,7 @@ const SearchPage = () => {
         )}
         {results.length === 0 && <LookingP>Looking for something else</LookingP>}
       </SearchWrapper>
+
     </main>
   );
 };

@@ -83,7 +83,7 @@ export const InputCont = styled.div`
 
 export const Input = styled.input`
   padding: 8px 8px 8px 36px;
-  border: 1px solid #c4c4c4;
+  border: 1px solid ${props => props.theme.colors.placeholder};
   border-radius: 8px;
   width: 100%;
   height: 48px;

@@ -6,6 +6,7 @@ import {
   WelcomeTitle,
   WelcomeText,
   ButtonGroup,
+  ImgIcon,
 } from './WelcomePage.styled';
 
 import logo from '../../image/icons/logo-1x.png';
@@ -17,7 +18,7 @@ const Welcome = () => {
       <BackgroundImg>
         <WelcomeContent>
           <WelcomeIcon />
-          <img src={logo} alt="" />
+          <ImgIcon src={logo} alt="" />
 
           <WelcomeTextFormat>
             <WelcomeTitle>Welcome to the app!</WelcomeTitle>

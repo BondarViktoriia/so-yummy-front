@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import bgImg from '../../image/shared-layout/spinach-bottom-right-tablet-2x.png';
+import bgImg from '../../image/shared-layout/mob-menu-tablet@2x.png';
 
 export const MobileMenuContainer = styled.div`
   position: relative;
@@ -20,11 +20,13 @@ export const CloseBtn = styled.button`
   background-color: transparent;
   width: 32px;
   height: 32px;
+  z-index: 9999;
 `;
 export const NavCont = styled.div`
   display: flex;
   flex-grow: 1;
   justify-content: center;
+  z-index: 9999;
 `;
 export const NavThumb = styled.div`
   text-align: center;
@@ -47,18 +49,24 @@ export const Backdrop = styled.div`
 `;
 
 export const ModalBox = styled.div`
-  width: 100vw;
+  width: 375px;
   height: 100vh;
+  @media (min-width: 768px) {
+    width: 768px;
+  }
 `;
 
 export const BackImage = styled.div`
   background-image: url('${bgImg}');
+  background-size: contain;
+  background-position: right bottom;
+  background-repeat: no-repeat;
   position: absolute;
-  width: 360px;
-  height: 550px;
-  left: 609px;
-  top: 366px;
-  filter: blur(4.5px);
-  transform: rotate(83deg);
-  z-index: 11;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  @media (min-width: 768px) {
+    width: 582px;
+  }
 `;

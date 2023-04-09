@@ -1,7 +1,9 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { SelectComponent } from './Select';
+
 import { Input, Button, InputWrapper, Form, InputWrapperBlock } from './SearchInput.styled';
+
 
 export const SearchInput = ({ submitSearch }) => {
   const options = [
@@ -23,6 +25,7 @@ export const SearchInput = ({ submitSearch }) => {
   });
   return (
     <Form onSubmit={formik.handleSubmit} position="relative">
+
       <InputWrapperBlock>
         <InputWrapper>
           <Input
@@ -36,6 +39,7 @@ export const SearchInput = ({ submitSearch }) => {
           <Button type="submit">Search</Button>
         </InputWrapper>
       </InputWrapperBlock>
+
       <SelectComponent
         options={options}
         value={formik.values.options}

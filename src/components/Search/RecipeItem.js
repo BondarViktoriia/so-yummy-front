@@ -8,6 +8,7 @@ import {
   TitleWrapper,
 } from './RecipeItem.styled';
 
+
 export const RecipeItem = ({ title, preview, id }) => {
   const location = useLocation();
   return (
@@ -21,5 +22,6 @@ export const RecipeItem = ({ title, preview, id }) => {
         </ImgWrapper>
       </LinkItem>
     </ListItem>
+
   );
 };
