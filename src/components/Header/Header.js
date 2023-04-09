@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { IconContext } from 'react-icons';
 import { HiOutlineMenuAlt2 } from 'react-icons/hi';
+import Container from '../Container/Container';
 import { HeaderBox, BurgerOpen, MenuThumb } from './Header.styled';
 import { Logo } from '../Logo/Logo';
 import { Navigation } from '../Navigation/Navigation';
@@ -13,10 +14,10 @@ export const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  const isDesktop = useMediaQuery({ query: '(min-width: 1240px)' });
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1239px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1439px)' });
   return (
-    <>
+    <Container>
       <HeaderBox>
         <Logo />
         {isDesktop && <Navigation />}
@@ -33,6 +34,6 @@ export const Header = () => {
         </MenuThumb>
       </HeaderBox>
       {isModalOpen && <MobileMenu onClose={closeModal} />}
-    </>
+    </Container>
   );
 };
