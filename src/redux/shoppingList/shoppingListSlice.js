@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getShoppingList } from './shoppingListOperations';
+import {
+  getShoppingList,
+  deleteFromShoppingList,
+} from './shoppingListOperations';
 
 const initialState = {
   shoppingList: [],
@@ -23,8 +26,19 @@ export const shoppingListSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    [deleteFromShoppingList.pending](state) {
+      state.isLoading = true;
+    },
+    [deleteFromShoppingList.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.shoppingList = state.shoppingList.filter(
+        item => item._id !== action.meta.arg
+      );
+    },
+    [deleteFromShoppingList.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
-
-// export const { fetchingInProgress, fetchingSuccess, fetchingError } =
-//   shoppingListSlice.actions;

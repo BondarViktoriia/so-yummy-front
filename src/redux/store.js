@@ -34,11 +34,19 @@ const ingredientsPersistConfig = {
   whitelist: ['ingredients'],
 };
 
+const persistShoppingListConfig = {
+  key: 'shoppingList',
+  storage,
+};
+
 const rootReducer = combineReducers({
   auth: persistReducer(persistConfig, authReducer),
   theme: persistReducer(themePersistedConfig, themeReducer),
   recipe: persistReducer(persistConfig, recipeReducer),
-  shoppingList: shoppingListSlice.reducer,
+  shoppingList: persistReducer(
+    persistShoppingListConfig,
+    shoppingListSlice.reducer
+  ),
   ingredients: persistReducer(ingredientsPersistConfig, ingredientsReducer),
 });
 

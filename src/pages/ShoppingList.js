@@ -5,7 +5,10 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectShoppingList } from '../redux/shoppingList/shoppingListSelectors';
-import { getShoppingList } from '../redux/shoppingList/shoppingListOperations';
+import {
+  getShoppingList,
+  deleteFromShoppingList,
+} from '../redux/shoppingList/shoppingListOperations';
 
 import Container from '../components/Container/Container';
 
@@ -16,9 +19,13 @@ const ShoppingList = () => {
     dispatch(getShoppingList());
   }, [dispatch]);
 
+  const contactDeleter = id => {
+    dispatch(deleteFromShoppingList(id));
+  };
+
   const shopList = useSelector(selectShoppingList);
 
-  console.log(shopList);
+  // console.log(shopList);
 
   return (
     <Container>
@@ -27,8 +34,8 @@ const ShoppingList = () => {
         <ListHeader>
           <p>Product</p>
           <RemoveHeader>
-            <p>Number</p>
-            <p>Remove</p>
+            <span>Number</span>
+            <span>Remove</span>
           </RemoveHeader>
         </ListHeader>
         <List>
@@ -44,10 +51,15 @@ const ShoppingList = () => {
 
                 <RightWrapper>
                   <Measure>
-                    <p>{measure}</p>
+                    <span>{measure}</span>
                   </Measure>
-                  <DeleteButton type="button">
-                    <IoCloseOutline></IoCloseOutline>
+                  <DeleteButton
+                    type="button"
+                    onClick={() => {
+                      contactDeleter(_id);
+                    }}
+                  >
+                    <Cross />
                   </DeleteButton>
                 </RightWrapper>
               </ListItem>
@@ -90,7 +102,7 @@ const PageHeader = styled.h1`
   }
 `;
 
-const ListHeader = styled.p`
+const ListHeader = styled.div`
   background-color: ${props => props.theme.colors.accentGreen};
 
   color: ${props => props.theme.colors.background};
@@ -248,6 +260,8 @@ const DeleteButton = styled.button`
   background-color: transparent;
   border: none;
   padding: 0;
+  margin: 0;
+
   width: 14px;
   height: 14px;
 
@@ -256,10 +270,42 @@ const DeleteButton = styled.button`
   justify-content: center;
 
   @media (min-width: 768px) {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
 
-    font-size: 20px;
+    font-size: 25px;
+  }
+`;
+
+const Cross = styled(IoCloseOutline)``;
+
+const EmptyList = styled.h2`
+  background-color: ${props => props.theme.colors.accentGreen};
+
+  color: ${props => props.theme.colors.background};
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.5;
+
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 32px;
+  margin-left: 8px;
+  margin-right: 8px;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+
+    padding: 20px;
+
+    margin-bottom: 50px;
+    margin-left: 32px;
+    margin-right: 32px;
   }
 `;
 
