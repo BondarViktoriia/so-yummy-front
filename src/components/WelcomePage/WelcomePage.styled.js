@@ -151,3 +151,17 @@ export const RegistrationButton = styled.div`
   font-size: inherit;
   line-height: 1.5;
 `;
+
+export const ImgIcon = styled.img`
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media screen and (min-width: 768px) {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 44px;
+  }
+`;
