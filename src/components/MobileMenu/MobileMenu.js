@@ -40,7 +40,6 @@ export const MobileMenu = ({ onClose }) => {
     <Backdrop onClick={handleBackdropClick}>
       <ModalBox>
         <MobileMenuContainer>
-          <BackImage />
           <MobNav>
             <Logo />
             <IconContext.Provider value={{ style: { width: 32, height: 32 } }}>
@@ -49,7 +48,7 @@ export const MobileMenu = ({ onClose }) => {
               </CloseBtn>
             </IconContext.Provider>
           </MobNav>
-          <NavCont>
+          <NavCont onClick={onClose}>
             <NavThumb>
               <Navigation />
             </NavThumb>
@@ -57,6 +56,7 @@ export const MobileMenu = ({ onClose }) => {
           <TogglerThumb>
             <ThemeToggler />
           </TogglerThumb>
+          <BackImage />
         </MobileMenuContainer>
       </ModalBox>
     </Backdrop>,
