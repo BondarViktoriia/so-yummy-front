@@ -5,9 +5,26 @@ import Container from '../Container/Container';
 import {
   FooterSection,
   Link,
+  FooterNav,
+  NavItem,
   LogoCont,
   LogoText,
   FooterThumb,
+  DeskWrap,
+  NavWrap,
+  DescrCont,
+  DescrList,
+  DescrItem,
+  FormCont,
+  SubscrTitle,
+  SubscrText,
+  Form,
+  InputCont,
+  Input,
+  LetterIcon,
+  SubmitBtn,
+  BtnText,
+  FollowUsCont,
   InfoList,
   InfoItem,
   ArrText,
@@ -16,47 +33,78 @@ import {
 
 export const Footer = () => {
   const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 768px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   return (
     <footer>
       <FooterSection>
         <Container>
           <FooterThumb>
-            <LogoCont>
-              <LogoLight />
-              <LogoText>So Yummy</LogoText>
-            </LogoCont>
-            {isTabletOrDesktop && (
-              <ul>
-                <li>Database of recipes that can be replenished </li>
-                <li>Flexible search for desired and unwanted ingredients</li>
-                <li>Ability to add your own recipes with photos</li>
-                <li>Convenient and easy to use</li>
-              </ul>
-            )}
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/search">Ingredients</Link>
-                </li>
-                <li>
-                  <Link to="/add">Add recipes</Link>
-                </li>
-                <li>
-                  <Link to="/my">My recipes</Link>
-                </li>
-                <li>
-                  <Link to="/favorite">Favorite</Link>
-                </li>
-                <li>
-                  <Link to="/shopping-list">Shopping list</Link>
-                </li>
-              </ul>
-            </nav>
-            <form>
-              <input />
-              <button type="submit">Subcribe</button>
-            </form>
-            <FollowUs />
+            <DeskWrap>
+              <NavWrap>
+                <DescrCont>
+                  <LogoCont>
+                    <LogoLight />
+                    <LogoText>So Yummy</LogoText>
+                  </LogoCont>
+                  {isTabletOrDesktop && (
+                    <DescrList>
+                      <DescrItem>
+                        Database of recipes that can be replenished{' '}
+                      </DescrItem>
+                      <DescrItem>
+                        Flexible search for desired and unwanted ingredients
+                      </DescrItem>
+                      <DescrItem>
+                        Ability to add your own recipes with photos
+                      </DescrItem>
+                      <DescrItem>Convenient and easy to use</DescrItem>
+                    </DescrList>
+                  )}
+                </DescrCont>
+                <FooterNav>
+                  <ul>
+                    <NavItem>
+                      <Link to="/search">Ingredients</Link>
+                    </NavItem>
+                    <NavItem>
+                      <Link to="/add">Add recipes</Link>
+                    </NavItem>
+                    <NavItem>
+                      <Link to="/my">My recipes</Link>
+                    </NavItem>
+                    <NavItem>
+                      <Link to="/favorite">Favorite</Link>
+                    </NavItem>
+                    <NavItem>
+                      <Link to="/shopping-list">Shopping list</Link>
+                    </NavItem>
+                  </ul>
+                </FooterNav>
+              </NavWrap>
+              <FormCont>
+                {isDesktop && (
+                  <div>
+                    <SubscrTitle>Subscribe to our Newsletter</SubscrTitle>
+                    <SubscrText>
+                      Subscribe up to our newsletter. Be in touch with latest
+                      news and special offers, etc.
+                    </SubscrText>
+                  </div>
+                )}
+                <Form>
+                  <InputCont>
+                    <LetterIcon />
+                    <Input placeholder="Enter your email address" />
+                  </InputCont>
+                  <SubmitBtn type="submit">
+                    <BtnText>Subcribe</BtnText>
+                  </SubmitBtn>
+                </Form>
+              </FormCont>
+            </DeskWrap>
+            <FollowUsCont>
+              <FollowUs />
+            </FollowUsCont>
           </FooterThumb>
         </Container>
       </FooterSection>
