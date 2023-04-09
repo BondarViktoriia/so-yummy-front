@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { RiDeleteBinLine } from 'react-icons/ri';
 
 import { useMedia } from 'hooks/useMedia';
+import { deleteFromFavorite } from '../../services/api/apiRecipe'
 
 import {
   DeleteButtonFav,
@@ -44,6 +45,10 @@ const RecipeItem = ({ recipe, page }) => {
     navigate(`/recipe/${recipe._id}`);
   };
 
+  const handleDeleteFav = (id) => {
+ deleteFromFavorite(id)
+  }
+
   return (
     <Item>
       <RecipePic src={thumb} alt={title} />
@@ -61,7 +66,7 @@ const RecipeItem = ({ recipe, page }) => {
       {/* // Кнопка видалити рецепт з favorite */}
 
       {page === 'favorite' && (
-        <DeleteButtonFav type="button">
+        <DeleteButtonFav type="button" onClick={handleDeleteFav}>
           <RiDeleteBinLine size={iconSize()} />
         </DeleteButtonFav>
       )}
