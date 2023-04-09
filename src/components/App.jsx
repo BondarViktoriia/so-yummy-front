@@ -3,10 +3,10 @@ import Theme from '../Theme';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/theme/themeSelectors';
 import RecipePage from '../pages/RecipePage';
-import StartPage from '../pages/StartPage';
+// import StartPage from '../pages/StartPage';
 
-import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
-import { SignInPage } from '../pages/SignInPage';
+// import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
+// import { SignInPage } from '../pages/SignInPage';
 
 import CategoriesPage from '../pages/CategoriesPage';
 import AddRecipe from '../pages/AddRecipe';
@@ -23,10 +23,10 @@ export const App = () => {
   return (
     <Theme themeValue={theme}>
       <Routes>
-        <Route path="/" element={<StartPage />} />
+        {/* <Route path="/" element={<StartPage />} /> */}
 
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/signin" element={<SignInPage />} />
+        {/* <Route path="/register" element={<RegistrationPage />} /> */}
+        {/* <Route path="/signin" element={<SignInPage />} /> */}
         <Route path="/" element={<SharedLayout />}>
           <Route
             path="/categories/:categoryName"

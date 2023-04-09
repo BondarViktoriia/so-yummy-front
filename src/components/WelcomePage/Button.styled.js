@@ -5,13 +5,19 @@ export const ButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${({ width }) => width && width};
-  height: ${({ height }) => height && height};
+  width: 132;
+  height: 45;
+
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 14px;
   font-size: ${({ fontSize }) => (fontSize ? fontSize : '16px')};
   line-height: 21px;
+  @media screen and (min-width: 768px) {
+    width: 184px;
+    height: 67px;
+    font-size: 16px;
+  }
   color: ${({ look }) => (look === 'cancel' ? '#23262A' : '#fafafa')};
   background-color: ${({ look }) => {
     switch (look) {
@@ -54,18 +60,7 @@ export const ButtonStyled = styled.button`
     }
   }};
   transition: color 250ms ease, background-color 250ms ease, border 250ms ease;
-  @media screen and (min-width: 768px) {
-    width: ${({ widthTablet }) => widthTablet && widthTablet};
-    height: ${({ heigthTablet }) => heigthTablet && heigthTablet};
-    font-size: ${({ fontSizeTablet }) =>
-      fontSizeTablet ? fontSizeTablet : '16px'};
-  }
-  @media screen and (min-width: 1440px) {
-    width: ${({ widthDesktop }) => widthDesktop && widthDesktop};
-    height: ${({ heigthDesktop }) => heigthDesktop && heigthDesktop};
-    font-size: ${({ fontSizeDesktop }) =>
-      fontSizeDesktop ? fontSizeDesktop : '16px'};
-  }
+
   :hover,
   :focus {
     background-color: ${({ look }) => {
