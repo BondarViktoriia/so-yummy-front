@@ -30,7 +30,7 @@ import {
   ArrText,
   TermsText,
   BgImg,
-  BgUpImg,
+  // BgUpImg,
 } from './Footer.styled';
 
 export const Footer = () => {
@@ -40,7 +40,7 @@ export const Footer = () => {
     <footer>
       <FooterSection>
         <Container>
-          <BgUpImg />
+          {/* <BgUpImg /> */}
           <FooterThumb>
             <DeskWrap>
               <NavWrap>

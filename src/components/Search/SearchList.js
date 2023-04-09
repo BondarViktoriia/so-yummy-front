@@ -1,5 +1,6 @@
 import { RecipeItem } from './RecipeItem';
 
+
 export const SearchList = ({ isLoading, results }) => {
   return (
     <ul>
@@ -12,5 +13,6 @@ export const SearchList = ({ isLoading, results }) => {
         />
       ))}
     </ul>
+
   );
 };

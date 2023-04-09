@@ -27,7 +27,7 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await axios.post('/auth/login', credentials);
+      const res = await axios.post('/auth/signin', credentials);
       setAuthToken(res.data.token);
 
       return res.data;

@@ -1,8 +1,5 @@
 import React from 'react';
-
-import { SignIn } from '../components/Auth/SignIn';
-import GoToTop from '../services/auth/scrollToTop';
-
+import { AuthForm } from '../components/Auth/Registration';
 import {
   AuthMain,
   AuthImage,
@@ -13,8 +10,7 @@ export const SignInPage = () => {
   return (
     <AuthMain>
       <AuthImage></AuthImage>
-      <SignIn />
-      <GoToTop />
+      <AuthForm login />
       <AuthBackground></AuthBackground>
     </AuthMain>
   );

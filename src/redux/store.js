@@ -11,11 +11,11 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { themeReducer } from './theme/themeSlice';
+import { shoppingListSlice } from './shoppingList/shoppingListSlice';
 import { recipeReducer } from './recipePage/recipeSlice';
 // import ownRecipesSlice from './ownRecipe/ownRecipesSlice';
 import { authReducer } from './auth/authSlice';
 import { ingredientsReducer } from './ingredients/ingredientsSlice';
-
 
 const persistConfig = {
   key: 'root',
@@ -34,11 +34,20 @@ const ingredientsPersistConfig = {
   whitelist: ['ingredients'],
 };
 
+const persistShoppingListConfig = {
+  key: 'shoppingList',
+  storage,
+};
+
 const rootReducer = combineReducers({
   auth: persistReducer(persistConfig, authReducer),
   theme: persistReducer(themePersistedConfig, themeReducer),
   recipe: persistReducer(persistConfig, recipeReducer),
-  ingredients:persistReducer(ingredientsPersistConfig,ingredientsReducer)
+  shoppingList: persistReducer(
+    persistShoppingListConfig,
+    shoppingListSlice.reducer
+  ),
+  ingredients: persistReducer(ingredientsPersistConfig, ingredientsReducer),
 });
 
 export const store = configureStore({
