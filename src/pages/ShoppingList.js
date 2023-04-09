@@ -332,15 +332,15 @@ const EmptyList = styled.h2`
   margin-left: 16px;
   margin-right: 16px;
 
+  border-radius: 10px;
+
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
   font-size: 28px;
   line-height: 1;
-
   letter-spacing: -0.02em;
   font-feature-settings: 'liga' off;
-
   color: ${props => props.theme.colors.title};
 
   @media (min-width: 768px) {
