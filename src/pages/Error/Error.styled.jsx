@@ -62,17 +62,17 @@ export const ImgCont = styled.div`
   width: 259px;
   height: 171px;
   margin: 0 auto;
-  margin-top: -28px;
+ margin-top:100px;
 
   @media screen and (min-width: 768px) {
     width: 498px;
     height: 327px;
-    margin-top: -76px;
+
   }
 
   @media screen and (min-width: 1440px) {
     width: 498px;
     height: 331px;
-    margin-top: -110px;
+   margin-top:138px; 
   }
 `;

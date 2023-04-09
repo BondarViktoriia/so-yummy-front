@@ -1,5 +1,4 @@
-import Container from 'components/Container/Container';
-import Title from 'components/Title/Title';
+
 import { ErrorCont, TextError, ImgCont } from './Error/Error.styled';
 import errorMob1 from '../image/error-page/error-mobile-1x.png';
 import errorMob2 from '../image/error-page/error-mobile-2x.png';
@@ -11,8 +10,6 @@ import errorDesktop2 from '../image/error-page/error-desktop-2x.png';
 const ErrorPage = () => {
   return (
     <ErrorCont>
-      <Container>
-        <Title></Title>
         <ImgCont>
           <picture>
             <source
@@ -34,8 +31,7 @@ const ErrorPage = () => {
           <h3>We are sorry,</h3>
           <p>but the page you were looking for can’t be found..</p>
         </TextError>
-      </Container>
-    </ErrorCont>
+      </ErrorCont>
   );
 };
 
