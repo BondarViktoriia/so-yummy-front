@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const NavList = styled.ul`
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     display: flex;
   }
 `;
@@ -11,7 +11,7 @@ export const NavItem = styled.li`
     margin-bottom: 32px;
   }
 
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     &:not(:last-child) {
       margin-right: 30px;
       margin-bottom: 0;
@@ -19,20 +19,20 @@ export const NavItem = styled.li`
   }
 `;
 export const Link = styled(NavLink)`
-  color: #23262a;
+  color: ${props => props.theme.colors.darkText};
   font-weight: 500;
   font-size: 18px;
   line-height: 18px;
   letter-spacing: -0.02em;
   &.active {
-    color: #8baa36;
+    color: ${props => props.theme.colors.accentGreen};
     font-weight: 600;
   }
   @media (min-width: 768px) {
     font-size: 24px;
     line-height: 24px;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 0;

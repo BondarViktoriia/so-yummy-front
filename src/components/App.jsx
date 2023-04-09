@@ -36,6 +36,7 @@ export const App = () => {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/recipe/:recipeId" element={<RecipePage />} />
+          <Route path="/error" element={<ErrorPage />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>

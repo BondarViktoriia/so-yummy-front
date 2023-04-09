@@ -5,7 +5,7 @@ export const MobileMenuContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: #ebf3d4;
+  background-color: ${props => props.theme.colors.mobMenuBgc};
   padding: 18px 16px;
   height: 100%;
 `;

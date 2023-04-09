@@ -1,21 +1,35 @@
+import { useMediaQuery } from 'react-responsive';
+
 import AddRecipeForm from '../components/AddRecipe/AddRecipeForm';
 import PopularRecipe from '../components/AddRecipe/PopularRecipe';
 import FollowUs from '../components/AddRecipe/FollowUs';
-import {TitleFollowUs,WrapperFollowUs} from './AddREcipe.styled'
+import {
+  TitleFollowUs,
+  WrapperFollowUs,
+  FollowUsThumb,
+} from './AddREcipe.styled';
+
+import MainSection from "../components/MainSection/MainSection"
 
 const AddRecipe = () => {
-    return (
-        <div>
-            <AddRecipeForm />
-            <WrapperFollowUs>
-                <TitleFollowUs>Follow us</TitleFollowUs>
-                <FollowUs />
-                  <PopularRecipe/>
-            </WrapperFollowUs>
-          
 
-        </div>
-    )
- };
+  const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
+  return (
+    <div>
+      <AddRecipeForm />
+      <WrapperFollowUs>
+        {isDesktop && (
+          <FollowUsThumb>
+            <TitleFollowUs>Follow us</TitleFollowUs>
+            <FollowUs />
+          </FollowUsThumb>
+        )}
+        <PopularRecipe />
+        <MainSection/>
+      </WrapperFollowUs>
+    </div>
+  );
+
+}
 
 export default AddRecipe;

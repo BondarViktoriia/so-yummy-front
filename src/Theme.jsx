@@ -6,6 +6,7 @@ const lightTheme = {
     footer: '#22252A',
     listItemBcg: '#FFFFFF',
     accentGreen: '#8BAA36',
+    mobMenuBgc: '#EBF3D4',
 
     btnGreen: '#8AA936',
     logoLight: '#EBF3D4',
@@ -21,6 +22,8 @@ const lightTheme = {
     greyText: '#7E7E7E',
     ingredItemBcg: '#ebf3d4',
     ingredListText: 'rgba(0, 0, 0, 0.8)',
+    footerText: '#FAFAFA',
+    infoText: '#22252A',
 
     inputCorrect: '#3CBC81',
     inputWarning: '#F6C23E',
@@ -36,6 +39,7 @@ const darkTheme = {
     footer: '#8BAA36',
     listItemBcg: '#2A2C36',
     accentGreen: '#8BAA36',
+    mobMenuBgc: '#2A2C36',
 
     btnGreen: '#8AA936',
     logoLight: '#EBF3D4',
@@ -48,6 +52,8 @@ const darkTheme = {
     regTextLight: '#FAFAFA',
     darkText: '#FAFAFA',
     greyText: 'rgba(250, 250, 250, 0.6)',
+    footerText: '#FAFAFA',
+    infoText: '#FAFAFA',
 
     ingredItemBcg: '#2A2C36',
     ingredListText: '#FAFAFA',
