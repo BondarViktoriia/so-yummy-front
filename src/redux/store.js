@@ -15,6 +15,7 @@ import { shoppingListSlice } from './shoppingList/shoppingListSlice';
 import { recipeReducer } from './recipePage/recipeSlice';
 // import ownRecipesSlice from './ownRecipe/ownRecipesSlice';
 import { authReducer } from './auth/authSlice';
+import { ingredientsReducer } from './ingredients/ingredientsSlice';
 
 const persistConfig = {
   key: 'root',
@@ -27,11 +28,18 @@ const themePersistedConfig = {
   storage,
 };
 
+const ingredientsPersistConfig = {
+  key: 'ingredients',
+  storage,
+  whitelist: ['ingredients'],
+};
+
 const rootReducer = combineReducers({
   auth: persistReducer(persistConfig, authReducer),
   theme: persistReducer(themePersistedConfig, themeReducer),
   recipe: persistReducer(persistConfig, recipeReducer),
   shoppingList: shoppingListSlice.reducer,
+  ingredients: persistReducer(ingredientsPersistConfig, ingredientsReducer),
 });
 
 export const store = configureStore({

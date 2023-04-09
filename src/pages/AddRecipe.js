@@ -8,14 +8,13 @@ import {
   WrapperFollowUs,
   FollowUsThumb,
 } from './AddREcipe.styled';
-
-import MainSection from "../components/MainSection/MainSection"
+import Container from '../components/Container/Container'
 
 const AddRecipe = () => {
 
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   return (
-    <div>
+    <Container>
       <AddRecipeForm />
       <WrapperFollowUs>
         {isDesktop && (
@@ -25,9 +24,9 @@ const AddRecipe = () => {
           </FollowUsThumb>
         )}
         <PopularRecipe />
-        <MainSection/>
+      
       </WrapperFollowUs>
-    </div>
+    </Container>
   );
 
 }

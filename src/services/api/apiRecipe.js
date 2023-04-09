@@ -100,3 +100,9 @@ export const getPopularRecipes = async () => {
      console.log(error.message)
   }
 }
+
+export const getAllIngredientsAPI = () => {
+  return axios.get('/ingredients/list').then(({ data }) => {
+    return data;
+  });
+};
