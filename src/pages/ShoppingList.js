@@ -138,6 +138,7 @@ const ImgThumb = styled.div`
   background-color: ${props => props.theme.colors.logoLight};
 
   margin-right: 10px;
+  padding: 6px;
 `;
 
 const IngredTtl = styled.p`
