@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectShoppingList } from '../redux/shoppingList/shoppingListSelectors';
 import { getShoppingList } from '../redux/shoppingList/shoppingListOperations';
 
+import Container from '../components/Container/Container';
+
 const ShoppingList = () => {
   const dispatch = useDispatch();
 
@@ -20,53 +22,52 @@ const ShoppingList = () => {
 
   return (
     <Container>
-      <PageHeader>Shopping list</PageHeader>
-      <ListHeader>
-        <p>Product</p>
-        <RemoveHeader>
-          <p>Number</p>
-          <p>Remove</p>
-        </RemoveHeader>
-      </ListHeader>
-      <List>
-        {shopList.map(({ _id, ttl, thb, measure }) => {
-          return (
-            <ListItem key={_id}>
-              <LeftWrapper>
-                <ImgThumb>
-                  <img src={thb} width="60" alt="qwe" />
-                </ImgThumb>
-                <IngredTtl>{ttl}</IngredTtl>
-              </LeftWrapper>
+      <CoContainer>
+        <PageHeader>Shopping list</PageHeader>
+        <ListHeader>
+          <p>Product</p>
+          <RemoveHeader>
+            <p>Number</p>
+            <p>Remove</p>
+          </RemoveHeader>
+        </ListHeader>
+        <List>
+          {shopList.map(({ _id, ttl, thb, measure }) => {
+            return (
+              <ListItem key={_id}>
+                <LeftWrapper>
+                  <ImgThumb>
+                    <img src={thb} alt="qwe" />
+                  </ImgThumb>
+                  <IngredTtl>{ttl}</IngredTtl>
+                </LeftWrapper>
 
-              <RightWrapper>
-                <Measure>
-                  <p>{measure}</p>
-                </Measure>
-                <DeleteButton type="button">
-                  <IoCloseOutline></IoCloseOutline>
-                </DeleteButton>
-              </RightWrapper>
-            </ListItem>
-          );
-        })}
-      </List>
+                <RightWrapper>
+                  <Measure>
+                    <p>{measure}</p>
+                  </Measure>
+                  <DeleteButton type="button">
+                    <IoCloseOutline></IoCloseOutline>
+                  </DeleteButton>
+                </RightWrapper>
+              </ListItem>
+            );
+          })}
+        </List>
+      </CoContainer>
     </Container>
   );
 };
 
-const Container = styled.div`
-  margin-top: 66px;
-
-  /* padding-left: 16px;
-  padding-right: 16px; */
+const CoContainer = styled.div`
+  margin-top: 64px;
 `;
 
 const PageHeader = styled.h1`
-  margin-top: 50px;
-  margin-bottom: 50px;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-left: 16px;
+  margin-right: 16px;
 
   font-family: 'Poppins';
   font-style: normal;
@@ -78,6 +79,15 @@ const PageHeader = styled.h1`
   font-feature-settings: 'liga' off;
 
   color: ${props => props.theme.colors.title};
+
+  @media (min-width: 768px) {
+    padding-top: 72px;
+    padding-bottom: 72px;
+    margin-left: 32px;
+    margin-right: 32px;
+
+    font-size: 32px;
+  }
 `;
 
 const ListHeader = styled.p`
@@ -97,17 +107,40 @@ const ListHeader = styled.p`
 
   margin-bottom: 32px;
   margin-left: 8px;
-  margin-right: 9px;
+  margin-right: 8px;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+
+    padding: 20px;
+
+    margin-bottom: 50px;
+    margin-left: 32px;
+    margin-right: 32px;
+  }
 `;
 
 const RemoveHeader = styled.p`
   display: flex;
   gap: 34px;
+
+  @media (min-width: 768px) {
+    gap: 95px;
+  }
 `;
 
 const List = styled.ul`
   padding-left: 16px;
   padding-right: 16px;
+
+  margin-bottom: 100px;
+
+  @media (min-width: 768px) {
+    padding-left: 32px;
+    padding-right: 32px;
+
+    margin-bottom: 200px;
+  }
 `;
 
 const ListItem = styled.li`
@@ -119,10 +152,18 @@ const ListItem = styled.li`
 
   padding-bottom: 24px;
   margin-bottom: 24px;
+
+  @media (min-width: 768px) {
+    padding-bottom: 43px;
+    margin-bottom: 44px;
+  }
 `;
 
 const LeftWrapper = styled.div`
   display: flex;
+
+  @media (min-width: 768px) {
+  }
 `;
 
 const ImgThumb = styled.div`
@@ -139,6 +180,16 @@ const ImgThumb = styled.div`
 
   margin-right: 10px;
   padding: 6px;
+
+  @media (min-width: 768px) {
+    width: 93px;
+    height: 97px;
+
+    border-radius: 8px;
+
+    padding: 8px 6px;
+    margin-right: 16px;
+  }
 `;
 
 const IngredTtl = styled.p`
@@ -147,18 +198,26 @@ const IngredTtl = styled.p`
   font-weight: 500;
   font-size: 10px;
   line-height: 1.2;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.5;
+  }
 `;
 
 const RightWrapper = styled.div`
   display: flex;
   margin-right: 19px;
+
+  @media (min-width: 768px) {
+    margin-right: 45px;
+  }
 `;
 
 const Measure = styled.p`
   background-color: ${props => props.theme.colors.accentGreen};
   width: 57px;
-  height: 23px;
-
+  padding: 4px;
   margin-right: 46px;
 
   border-radius: 4px;
@@ -174,6 +233,15 @@ const Measure = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 768px) {
+    width: 104px;
+
+    font-size: 18px;
+    line-height: 1.5;
+
+    margin-right: 110px;
+  }
 `;
 
 const DeleteButton = styled.button`
@@ -186,6 +254,13 @@ const DeleteButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+
+    font-size: 20px;
+  }
 `;
 
 export default ShoppingList;
