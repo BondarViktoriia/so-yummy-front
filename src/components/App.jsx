@@ -26,12 +26,12 @@ export const App = () => {
       <Routes>
 
 
-        <Route
+        {/* <Route
           path="/register"
           element={<RegistrationPage />}
           redirectTo="/main"
         />
-        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/signin" element={<SignInPage />} /> */}
 
         <Route path="/" element={<SharedLayout />}>
           <Route
