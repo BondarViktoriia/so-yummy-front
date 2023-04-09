@@ -5,10 +5,9 @@ import { ListSt } from '../RecipeList/RecipesList.styled';
 const Favorites = ({recipes, page}) => {
     return (
       <ListSt>
-        <div>Hello</div>
-        {recipes.map(recipe => {
+      {!recipes ? <p>The list is empty</p> : (recipes.map(recipe => {
           return <RecipeItem key={recipe._id} recipe={recipe} page={page}/>;
-        })}
+        }))}
        </ListSt>
     )
 }
