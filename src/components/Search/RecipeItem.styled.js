@@ -3,13 +3,31 @@ import { Link } from 'react-router-dom';
 
 export const ListItem = styled.li`
   list-style: none;
+  
+  @media screen and (min-width: 768px) {
+    
+  }
+  @media screen and (min-width: 1440px) {
+    
+  }
+  
 `;
 export const LinkItem = styled(Link)`
   text-decoration: none;
+ 
 `;
 export const ImgItem = styled.img`
   border-radius: 8px;
+  max-width: 343px;
+  display: inline-block;
+
+  @media screen and (min-width: 768px) {
+    max-width: 336px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width:300px} 
 `;
+
 export const ImgTitle = styled.h2`
   font-family: 'Poppins';
   font-style: normal;
@@ -18,16 +36,20 @@ export const ImgTitle = styled.h2`
   line-height: 1.25;
   letter-spacing: -0.24px;
   color: ${props => props.theme.colors.textPrimary};
+
+  @media screen and (min-width: 768px) {
+    
+  }
+  @media screen and (min-width: 1440px) {
+  }
 `;
 
 export const ImgWrapper = styled.div`
-  width: 100%;
   position: relative;
 
   @media screen and (min-width: 768px) {
-    width: calc((100% - 60px) / 3)
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1440px) {
   }
 `;
 
@@ -44,4 +66,12 @@ export const TitleWrapper = styled.div`
   padding: 16px;
   display: flex;
   align-items: center;
+
+  @media screen and (min-width: 768px) {
+
+  }
+  @media screen and (min-width: 1440px) {
+    width: 268px;
+    
+  }
 `;

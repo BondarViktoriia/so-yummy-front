@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { getSearchRecipe } from '../services/api/ApiSearchRecipes';
 import { SearchInput } from '../components/Search/SearchInput';
 import { SearchList } from '../components/Search/SearchList';
-import { SearchWrapper, Title } from './SearchPage.styled';
+import { SearchWrapper, Title, PictureSearch, LookingP } from './SearchPage.styled';
 import searchMob1x from '../image/search-page/search-mobile-1x.png';
 import searchMob2x from '../image/search-page/search-mobile-2x.png';
 import searchTablet1x from '../image/search-page/search-tablet-1x.png';
@@ -26,7 +26,7 @@ const SearchPage = () => {
     setResults([]);
   };
 
-  console.log(isLoading)
+  console.log(isLoading);
 
   // const incrementPage = () => {
   //   setSearchParams({ options: options, query: query, page: Number(page) + 1 });
@@ -57,8 +57,9 @@ const SearchPage = () => {
       <SearchWrapper>
         <Title>Search</Title>
         <SearchInput submitSearch={submitSearch} />
-        {results.length > 0 && (<SearchList results={results} />)}
-        {results.length === 0 && (<div><picture>
+        {results.length > 0 && <SearchList results={results} />}
+        {results.length === 0 && (
+          <PictureSearch>
             <source
               media="(min-width: 1440px)"
               srcSet={`${searchDesktop1x}, ${searchDesktop2x} 2x`}
@@ -72,10 +73,10 @@ const SearchPage = () => {
               srcSet={`${searchMob1x}, ${searchMob2x} 2x`}
               alt="Ошибка"
             />
-          </picture></div>)}
-        {results.length === 0 && (<p>Looking for something else</p>)}
+          </PictureSearch>
+        )}
+        {results.length === 0 && <LookingP>Looking for something else</LookingP>}
       </SearchWrapper>
-      
     </main>
   );
 };
