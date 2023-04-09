@@ -29,6 +29,8 @@ import {
   InfoItem,
   ArrText,
   TermsText,
+  BgImg,
+  BgUpImg,
 } from './Footer.styled';
 
 export const Footer = () => {
@@ -38,6 +40,7 @@ export const Footer = () => {
     <footer>
       <FooterSection>
         <Container>
+          <BgUpImg />
           <FooterThumb>
             <DeskWrap>
               <NavWrap>
@@ -117,6 +120,7 @@ export const Footer = () => {
             <TermsText>Terms of Service</TermsText>
           </InfoItem>
         </InfoList>
+        <BgImg />
       </Container>
     </footer>
   );

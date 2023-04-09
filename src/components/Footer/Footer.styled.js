@@ -2,8 +2,16 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { FiMail } from 'react-icons/fi';
 
+import BgMob from '../../image/footer/bgc-mob.png';
+import BgTab from '../../image/footer/bgc-tab.png';
+import BgDesk from '../../image/footer/bgc-desk.png';
+import BgUpMob from '../../image/footer/bgc-up-mob.png';
+import BgUpTab from '../../image/footer/bgc-up-tab.png';
+import BgUpDesk from '../../image/footer/bgc-up-desk.png';
+
 export const FooterSection = styled.section`
   background-color: ${props => props.theme.colors.footer};
+  z-index: 9999;
 `;
 
 export const FooterThumb = styled.div`
@@ -13,6 +21,7 @@ export const FooterThumb = styled.div`
   justify-content: center;
   padding-top: 28px;
   padding-bottom: 18px;
+  z-index: 9999;
 
   @media (min-width: 768px) {
     padding-top: 50px;
@@ -336,5 +345,47 @@ export const TermsText = styled.span`
   @media (min-width: 768px) {
     font-size: 14px;
     line-height: 14px;
+  }
+`;
+
+export const BgImg = styled.div`
+  background-image: url('${BgMob}');
+  background-size: cover;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 185px;
+  height: 100%;
+  @media (min-width: 768px) {
+    background-image: url('${BgTab}');
+    width: 350px;
+  }
+  @media (min-width: 1440px) {
+    background-image: url('${BgDesk}');
+    width: 500px;
+  }
+`;
+
+export const BgUpImg = styled.div`
+  background-image: url('${BgUpMob}');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  position: absolute;
+  left: 0;
+  top: -250px;
+  width: 256px;
+  height: 100%;
+  @media (min-width: 768px) {
+    background-image: url('${BgUpTab}');
+    width: 350px;
+    top: -150px;
+  }
+  @media (min-width: 1440px) {
+    background-image: url('${BgUpDesk}');
+    width: 500px;
+    top: -50px;
   }
 `;
