@@ -24,10 +24,10 @@ export const App = () => {
     <Theme themeValue={theme}>
       <Routes>
 
-        {/* <Route path="/" element={<StartPage />} />
+        {/* {/* <Route path="/" element={<StartPage />} /> */}
 
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/signin" element={<SignInPage />} />
+        {/* <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/signin" element={<SignInPage />} /> */}
         <Route path="/" element={<SharedLayout />}>
           <Route
             path="/categories/:categoryName"
