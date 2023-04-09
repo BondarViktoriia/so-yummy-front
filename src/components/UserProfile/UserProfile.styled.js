@@ -25,12 +25,12 @@ export const Cont = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 2px solid #8baa36;
+  border: 2px solid ${props => props.theme.colors.accentGreen};
   border-radius: 16px;
   padding-top: 18px;
   padding-left: 18px;
   padding-right: 18px;
-  background-color: #fafafa;
+  background-color: ${props => props.theme.colors.background};
   @media (min-width: 768px) {
     border-color: transparent;
   }
@@ -40,7 +40,7 @@ export const EditText = styled.span`
   font-weight: 500;
   font-size: 14px;
   line-height: 22px;
-  color: #23262a;
+  color: ${props => props.theme.colors.darkText};
 `;
 
 export const EditBtn = styled.button`
@@ -55,7 +55,7 @@ export const EditCont = styled.div`
 
 export const LogoutBtn = styled.button`
   border: none;
-  background-color: #8baa36;
+  background-color: ${props => props.theme.colors.accentGreen};
   padding: 40px 36px;
   clip-path: inset(25% 0 25% 0 round 15% 35% 15% 30%);
 `;
@@ -64,7 +64,7 @@ export const LogoutText = styled.span`
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
-  color: #fafafa;
+  color: ${props => props.theme.colors.footerText};
   /* margin-right: 2px; */
 `;
 

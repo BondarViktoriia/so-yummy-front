@@ -4,14 +4,14 @@ import { FiUser } from 'react-icons/fi';
 export const EditProfileCont = styled.div`
   position: relative;
   width: 330px;
-  background: #fafafa;
+  background: ${props => props.theme.colors.background};
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
   border-radius: 24px;
   padding: 32px 24px;
   @media (min-width: 768px) {
     width: 480px;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     width: 500px;
   }
 `;
@@ -32,7 +32,7 @@ export const AddAvatarBtn = styled.button`
   bottom: 0;
   right: 0;
   border: none;
-  background-color: #8baa36;
+  background-color: ${props => props.theme.colors.accentGreen};
   border-radius: 50%;
   width: 24px;
   height: 24px;
@@ -49,7 +49,7 @@ export const AvatarThumb = styled.div`
   width: 88px;
   height: 88px;
   border-radius: 50%;
-  background-color: #d9d9d9;
+  background-color: ${props => props.theme.colors.userLogo};
 `;
 
 export const AvatarImg = styled.div``;
@@ -64,13 +64,13 @@ export const SubmitBtn = styled.button`
   width: 100%;
   padding-top: 14px;
   padding-bottom: 14px;
-  background-color: #8baa36;
+  background-color: ${props => props.theme.colors.accentGreen};
   border-radius: 6px;
   border-color: transparent;
 `;
 
 export const BtnText = styled.span`
-  color: #fafafa;
+  color: ${props => props.theme.colors.footerText};
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
@@ -91,7 +91,7 @@ export const Input = styled.input`
   line-height: 21px;
   &:focus {
     outline: none;
-    border: 2px solid #8baa36;
+    border: 2px solid ${props => props.theme.colors.placeholder};
     size: 18px;
   }
   ::placeholder {
@@ -103,7 +103,7 @@ export const Input = styled.input`
     font-size: 18px;
     line-height: 27px;
     letter-spacing: -0.02em;
-    color: #23262a;
+    color: ${props => props.theme.colors.darkText};
     opacity: 0.8;
     flex: none;
     order: 1;
