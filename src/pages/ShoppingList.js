@@ -11,6 +11,7 @@ import {
 } from '../redux/shoppingList/shoppingListOperations';
 
 import Container from '../components/Container/Container';
+// import TitleS from '../components/Title/Title';
 
 const ShoppingList = () => {
   const dispatch = useDispatch();
@@ -24,8 +25,6 @@ const ShoppingList = () => {
   };
 
   const shopList = useSelector(selectShoppingList);
-
-  console.log(shopList);
 
   return (
     <Container>
@@ -155,14 +154,14 @@ const ListHeader = styled.div`
 
 const RemoveHeader = styled.p`
   display: flex;
-  gap: 34px;
+  gap: 39px;
 
   @media (min-width: 768px) {
-    gap: 95px;
+    gap: 110px;
   }
 
   @media (min-width: 1440px) {
-    gap: 142px;
+    gap: 116px;
   }
 `;
 
@@ -270,7 +269,7 @@ const RightWrapper = styled.div`
 
 const Measure = styled.p`
   background-color: ${props => props.theme.colors.accentGreen};
-  width: 57px;
+  width: 66px;
   padding: 4px;
   margin-right: 46px;
 
