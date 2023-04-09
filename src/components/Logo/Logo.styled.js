@@ -7,7 +7,7 @@ export const LogoImg = styled.img`
     width: 44px;
     height: 44px;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     margin-right: 187px;
   }
 `;

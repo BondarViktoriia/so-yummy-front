@@ -10,7 +10,7 @@ import {
 } from './Navigation.styled';
 
 export const Navigation = Х => {
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1239px)' });
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1439px)' });
   return (
     <nav>
       <NavList>
