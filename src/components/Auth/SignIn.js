@@ -29,11 +29,11 @@ export const SignIn = ({ login }) => {
   };
 
   const handleSubmit = values => {
-    !login ? dispatch(registrationUser(values)) : dispatch(loginUser(values));
+    login ? dispatch(registrationUser(values)) : dispatch(loginUser(values));
   };
   return (
     <Formik
-      initialValues={!login ? initialValuesRegister : initialValuesLogin}
+      initialValues={login ? initialValuesRegister : initialValuesLogin}
       onSubmit={handleSubmit}
     >
       <FormChange>

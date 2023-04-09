@@ -8,6 +8,7 @@ import RecipePage from '../pages/RecipePage';
 // import RegistrationPage from '../pages/RegistrationPage';
 // import SignInPage from '../pages/SignInPage';
 
+
 import CategoriesPage from '../pages/CategoriesPage';
 import AddRecipe from '../pages/AddRecipe';
 import MyRecipesPage from '../pages/MyRecipesPage';
@@ -24,10 +25,14 @@ export const App = () => {
     <Theme themeValue={theme}>
       <Routes>
 
-        {/* {/* <Route path="/" element={<StartPage />} /> */}
 
-        {/* <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/signin" element={<SignInPage />} /> */}
+        <Route
+          path="/register"
+          element={<RegistrationPage />}
+          redirectTo="/main"
+        />
+        <Route path="/signin" element={<SignInPage />} />
+
         <Route path="/" element={<SharedLayout />}>
           <Route
             path="/categories/:categoryName"
