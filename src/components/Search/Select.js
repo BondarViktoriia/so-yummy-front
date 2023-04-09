@@ -1,4 +1,5 @@
-import Select from 'react-select';
+
+import {SelectStyled} from './Select.styled'
 
 export const SelectComponent = ({ onChange, options, value }) => {
   const defaultValue = (options, value) => {
@@ -7,7 +8,9 @@ export const SelectComponent = ({ onChange, options, value }) => {
 
   return (
     <div>
-      <Select
+      <label for="select">Search by:</label>
+      <SelectStyled
+        id="select"
         value={defaultValue(options, value)}
         onChange={value => onChange(value)}
         options={options}
@@ -15,3 +18,5 @@ export const SelectComponent = ({ onChange, options, value }) => {
     </div>
   );
 };
+
+
