@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/theme/themeSelectors';
 import RecipePage from '../pages/RecipePage';
 import StartPage from '../pages/StartPage';
-
+// import { RestrictedRoute } from '../components/RestrictedRoute/RestrictedRoute';
 import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
 import { SignInPage } from '../pages/SignInPage';
 
@@ -25,7 +25,11 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<StartPage />} />
 
-        <Route path="/register" element={<RegistrationPage />} />
+        <Route
+          path="/register"
+          element={<RegistrationPage />}
+          redirectTo="/main"
+        />
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/" element={<SharedLayout />}>
           <Route
