@@ -1,6 +1,7 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://so-yummy-7n94.onrender.com/api";
+// axios.defaults.baseURL = "https://so-yummy-7n94.onrender.com/api";
+axios.defaults.baseURL = "https://localhost:3001/api";
 
 export const getRecipeById = async id => {
   try {
@@ -34,8 +35,8 @@ export const getMainPage = async () => {
 
 export const getFavorite = async () => {
   try {
-    const response = await axios.get('/favorite');
-    return response.data;
+    const {data} = await axios.get('/favorite');
+    return data;
   } catch (error) {
     console.log(error.message)
   }
