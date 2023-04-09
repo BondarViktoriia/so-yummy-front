@@ -42,6 +42,4 @@ export const Label = styled.label`
   }
 `;
 
-width: 146px;
-`
 
