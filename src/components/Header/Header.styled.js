@@ -9,7 +9,16 @@ export const HeaderBox = styled.div`
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  top: 0;
+  z-index: 10;
+  right: 0;
+  left: 0;
+  max-width: 375px;
+  @media (min-width: 768px) {
+    max-width: 768px;
+  }
+  @media (min-width: 1240px) {
+    max-width: 1240px;
+  }
 `;
 
 export const MenuThumb = styled.div`
