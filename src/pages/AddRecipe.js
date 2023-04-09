@@ -10,20 +10,9 @@ import {
 } from './AddREcipe.styled';
 
 import MainSection from "../components/MainSection/MainSection"
+
 const AddRecipe = () => {
-<<<<<<< HEAD
-    return (
-        <div>
-            <AddRecipeForm />
-            <WrapperFollowUs>
-                <TitleFollowUs>Follow us</TitleFollowUs>
-                <FollowUs />
-                <PopularRecipe />
-                
-                <MainSection/>
-            </WrapperFollowUs>
-          
-=======
+
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   return (
     <div>
@@ -36,10 +25,11 @@ const AddRecipe = () => {
           </FollowUsThumb>
         )}
         <PopularRecipe />
+        <MainSection/>
       </WrapperFollowUs>
     </div>
   );
-};
->>>>>>> 54f5b115a9f57dbc2657bc0e83844b46f976516e
+
+}
 
 export default AddRecipe;
