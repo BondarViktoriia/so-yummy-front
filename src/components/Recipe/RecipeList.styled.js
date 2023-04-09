@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import CheckedIcon from '../../image/icons/pick.png';
+import checked from '../../image/icons/pick.svg';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -18,7 +18,6 @@ export const Wrapper = styled.div`
     padding-left: 0;
     padding-right: 0;
     margin-top: 100px;
-   
   }
 `;
 
@@ -198,7 +197,7 @@ export const OriginalCheckbox = styled.input`
     width: 18px;
     height: 18px;
     border-radius: 4px;
-    background-image: url(${CheckedIcon});
+    background-image: url(${checked});
     background-size: 10px, 10px;
     background-repeat: no-repeat;
     background-position: center;
