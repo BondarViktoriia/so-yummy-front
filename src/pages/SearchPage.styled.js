@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 
 export const SearchWrapper = styled.div`
+width: 375px;
 margin-top: 114px;
-margin-left: auto;
-margin-bottom: auto;
+padding: 0 16px;
 `
 
 export const Title = styled.h1`

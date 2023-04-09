@@ -5,6 +5,12 @@ import { getSearchRecipe } from '../services/api/ApiSearchRecipes';
 import { SearchInput } from '../components/Search/SearchInput';
 import { SearchList } from '../components/Search/SearchList';
 import { SearchWrapper, Title } from './SearchPage.styled';
+import searchMob1x from '../image/search-page/search-mobile-1x.png';
+import searchMob2x from '../image/search-page/search-mobile-2x.png';
+import searchTablet1x from '../image/search-page/search-tablet-1x.png';
+import searchTablet2x from '../image/search-page/search-tablet-2x.png';
+import searchDesktop1x from '../image/search-page/search-dekstop-1x.png';
+import searchDesktop2x from '../image/search-page/search-desktop-2x.png';
 
 const SearchPage = () => {
   // const location = useLocation();
@@ -33,7 +39,6 @@ const SearchPage = () => {
     async function fetchData() {
       try {
         setIsLoading(true);
-        console.log(query, page, options);
         const result = await getSearchRecipe(query, page, options);
         if (result === 0 || !result) {
           console.log('Nothing found for your request :(');
@@ -53,6 +58,21 @@ const SearchPage = () => {
         <Title>Search</Title>
         <SearchInput submitSearch={submitSearch} />
         {results.length > 0 && (<SearchList results={results} />)}
+        {results.length === 0 && (<div><picture>
+            <source
+              media="(min-width: 1440px)"
+              srcSet={`${searchDesktop1x}, ${searchDesktop2x} 2x`}
+            />
+            <source
+              media="(min-width: 768px)"
+              srcSet={`${searchTablet1x}, ${searchTablet2x} 2x`}
+            />
+            <img
+              src={searchMob1x}
+              srcSet={`${searchMob1x}, ${searchMob2x} 2x`}
+              alt="Ошибка"
+            />
+          </picture></div>)}
         {results.length === 0 && (<p>Looking for something else</p>)}
       </SearchWrapper>
       
