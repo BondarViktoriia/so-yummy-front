@@ -3,6 +3,7 @@ import PopularRecipe from '../components/AddRecipe/PopularRecipe';
 import FollowUs from '../components/AddRecipe/FollowUs';
 import {TitleFollowUs,WrapperFollowUs} from './AddREcipe.styled'
 
+import MainSection from "../components/MainSection/MainSection"
 const AddRecipe = () => {
     return (
         <div>
@@ -10,7 +11,9 @@ const AddRecipe = () => {
             <WrapperFollowUs>
                 <TitleFollowUs>Follow us</TitleFollowUs>
                 <FollowUs />
-                  <PopularRecipe/>
+                <PopularRecipe />
+                
+                <MainSection/>
             </WrapperFollowUs>
           
 
