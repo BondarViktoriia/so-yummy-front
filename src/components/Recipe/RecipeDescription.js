@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 // import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { ClockIcon } from './Clock';
+import {Clock} from './ClockIcon';
+
 import {
   Wrapper,
   Title,
@@ -30,7 +31,7 @@ const RecipeDescription = ({ title, description, time }) => {
       </Button>
       {time !== '' && (
         <Time>
-          <ClockIcon />
+          <Clock></Clock>
           <span> {time} min</span>
         </Time>
       )}

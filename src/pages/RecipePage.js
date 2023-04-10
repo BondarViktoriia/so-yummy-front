@@ -13,7 +13,10 @@ import {
   // selectError,
   // selectOwnRecipe,
 } from '../redux/recipePage/recipeSelectors';
-import { fetchRecipe } from '../redux/recipePage/recipeOperations';
+import {
+  fetchRecipe,
+  fetchShoppingList,
+} from '../redux/recipePage/recipeOperations';
 import { Loader } from '../components/Loader/Loader';
 
 const RecipePage = () => {
@@ -27,6 +30,7 @@ const RecipePage = () => {
 
   useEffect(() => {
     dispatch(fetchRecipe(recipeId));
+    dispatch(fetchShoppingList());
   }, [dispatch, recipeId]);
 
   return (
