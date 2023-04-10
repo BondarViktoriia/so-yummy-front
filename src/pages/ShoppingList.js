@@ -11,7 +11,7 @@ import {
 } from '../redux/shoppingList/shoppingListOperations';
 
 import Container from '../components/Container/Container';
-// import TitleS from '../components/Title/Title';
+import Title from '../components/Title/Title';
 
 const ShoppingList = () => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const ShoppingList = () => {
   return (
     <Container>
       <CoContainer>
-        <PageHeader>Shopping list</PageHeader>
+        <Title style={{}}>Shopping list</Title>
         {shopList.length > 0 ? (
           <>
             <ListHeader>
@@ -80,41 +80,6 @@ const CoContainer = styled.div`
   margin-top: 64px;
 `;
 
-const PageHeader = styled.h1`
-  padding-top: 50px;
-  padding-bottom: 50px;
-  margin-left: 16px;
-  margin-right: 16px;
-
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 1;
-
-  letter-spacing: -0.02em;
-  font-feature-settings: 'liga' off;
-
-  color: ${props => props.theme.colors.title};
-
-  @media (min-width: 768px) {
-    padding-top: 72px;
-    padding-bottom: 72px;
-    margin-left: 32px;
-    margin-right: 32px;
-
-    font-size: 32px;
-  }
-
-  @media (min-width: 1440px) {
-    padding-top: 100px;
-    margin-left: 100px;
-    margin-right: 100px;
-
-    font-size: 44px;
-  }
-`;
-
 const ListHeader = styled.div`
   background-color: ${props => props.theme.colors.accentGreen};
 
@@ -134,6 +99,8 @@ const ListHeader = styled.div`
   margin-left: 8px;
   margin-right: 8px;
 
+  margin-top: 50px;
+
   @media (min-width: 768px) {
     font-size: 18px;
 
@@ -142,6 +109,7 @@ const ListHeader = styled.div`
     margin-bottom: 50px;
     margin-left: 32px;
     margin-right: 32px;
+    margin-top: 72px;
   }
 
   @media (min-width: 1440px) {
@@ -323,8 +291,6 @@ const DeleteButton = styled.button`
   @media (min-width: 1440px) {
   }
 `;
-
-const Cross = styled(IoCloseOutline)``;
 
 const EmptyList = styled.h2`
   padding-top: 50px;
