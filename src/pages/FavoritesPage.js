@@ -50,7 +50,7 @@ useEffect(() => {
   console.log(recipes)
 
   addFavorite()
-}, [])
+})
 
     return (
       <Container>
