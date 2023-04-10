@@ -9,15 +9,19 @@ export const Wrapper = styled.div`
   margin-bottom: 100px;
 
   @media screen and (min-width: 768px) {
+    width: 704px;
     padding: 0 32px;
     margin-bottom: 200px;
   }
 
   @media screen and (min-width: 1440px) {
+    width: 1240px;
     display: flex;
     gap: 50px;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 200px;
   }
 `;
 export const Title = styled.h2`

@@ -1,8 +1,9 @@
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
 <symbol id="icon-clock" viewBox="0 0 32 32">
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.9714" d="M15.998 29.334c7.364 0 13.333-5.97 13.333-13.333s-5.97-13.333-13.333-13.333-13.333 5.97-13.333 13.333c0 7.364 5.97 13.333 13.333 13.333z"></path>
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.9714" d="M16 8v8l5.333 2.667"></path>
+
+<path d="M6.99935 12.8334C10.221 12.8334 12.8327 10.2217 12.8327 7.00002C12.8327 3.77836 10.221 1.16669 6.99935 1.16669C3.77769 1.16669 1.16602 3.77836 1.16602 7.00002C1.16602 10.2217 3.77769 12.8334 6.99935 12.8334Z" stroke="#23262A" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7 3.5V7L9.33333 8.16667" stroke="#23262A" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
 </symbol>
 <symbol id="icon-edit" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.1895" d="M3.791 24.546c0.077-0.696 0.116-1.045 0.221-1.37 0.093-0.289 0.226-0.564 0.393-0.817 0.188-0.285 0.436-0.533 0.932-1.029l17.33-17.33c1.473-1.473 3.861-1.473 5.333 0v0c1.473 1.473 1.473 3.861 0 5.333l-17.33 17.33c-0.495 0.495-0.743 0.743-1.029 0.932-0.253 0.167-0.528 0.299-0.817 0.393-0.325 0.105-0.674 0.144-1.37 0.221l-4.121 0.458 0.458-4.121z"></path>

@@ -18,7 +18,6 @@ export const ThemeToggler = () => {
           id="theme-switcher"
           checked={selectedMode === 'dark'}
           onChange={() => {
-            console.log('clicked!!!');
             changeTheme();
           }}
         />

@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
   padding-right: 16px;
   margin-bottom: 50px;
   margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   @media screen and (min-width: 768px) {
     padding-left: 32px;
@@ -69,12 +72,15 @@ export const ListStyled = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
 
   @media screen and (min-width: 768px) {
     gap: 24px;
+    width: 704px;
   }
 
   @media screen and (min-width: 1440px) {
+    width: 1240px;
   }
 `;
 
