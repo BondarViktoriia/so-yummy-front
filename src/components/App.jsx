@@ -1,14 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import Theme from '../Theme';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectTheme } from 'redux/theme/themeSelectors';
-
+import { selectIsRefreshing } from '../redux/auth/authSelectors';
+import { registrationUser } from '../redux/auth/authOperations';
 import CategoriesByName from '../components/Categories/CategoriesByName';
 import RecipePage from '../pages/RecipePage';
 
+import StartPage from '../pages/StartPage';
 import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
 import { SignInPage } from '../pages/SignInPage';
-import StartPage from '../pages/StartPage';
 import { RestrictedRoute } from '../components/RestrictedRoute/RestrictedRoute';
 
 import CategoriesPage from '../pages/CategoriesPage';
@@ -22,11 +24,17 @@ import ErrorPage from '../pages/ErrorPage';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 
 export const App = () => {
+  const dispatch = useDispatch();
+  const userLoggedIn = useSelector(selectIsRefreshing);
+  useEffect(() => {
+    dispatch(registrationUser());
+  }, [dispatch]);
   const theme = useSelector(selectTheme);
-  return (
+  return !userLoggedIn ? (
     <Theme themeValue={theme}>
       <Routes>
-        <Route path="/" element={<StartPage />} />
+        <Route path="/" index element={<StartPage />} />
+
         <Route
           path="/register"
           element={
@@ -54,5 +62,7 @@ export const App = () => {
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Theme>
+  ) : (
+    <div>.........</div>
   );
 };
