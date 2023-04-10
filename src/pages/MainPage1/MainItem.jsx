@@ -1,4 +1,4 @@
-import {MainLi, MainImage, MainImageTitle, MainImageText} from "./MainPage"
+import {MainLi, MainImage, MainImageTitle, MainImageText} from "./MainPage.styled"
 
 const MainItem = ({ meal }) => {
     return (<>

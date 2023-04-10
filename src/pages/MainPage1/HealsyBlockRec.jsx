@@ -1,4 +1,4 @@
-import { Block, BlockText, BlockLink } from './MainPage'
+import { Block, BlockText, BlockLink } from './MainPage.styled'
 // import { FaBeer  } from  'react-icons/fa';
 import { BsArrowRight } from "react-icons/bs";
 

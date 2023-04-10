@@ -17,6 +17,7 @@ import { nanoid } from '@reduxjs/toolkit';
 
 import { getAllIngredients } from '../redux/ingredients/ingredientsOperation';
 
+
 const init = {
   recipe: '',
   title: '',
