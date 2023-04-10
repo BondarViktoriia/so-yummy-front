@@ -1,24 +1,26 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
+import ErrorPage from './ErrorPage';
 import { RecipeDescription } from '../components/Recipe';
 import { RecipeList } from '../components/Recipe';
 import { RecipePreparation } from '../components/Recipe';
+import Container from '../components/Container/Container';
 
 import {
   selectRecipe,
-  // selectIsLoading,
+  selectIsLoading,
   // selectError,
   // selectOwnRecipe,
 } from '../redux/recipePage/recipeSelectors';
 import { fetchRecipe } from '../redux/recipePage/recipeOperations';
+import { Loader } from '../components/Loader/Loader';
 
 const RecipePage = () => {
   const dispatch = useDispatch();
   const currentRecipe = useSelector(selectRecipe);
-  // const isLoading = useSelector(selectIsLoading);
-  // const error = useSelector(selectError);
+  console.log('RecipePage   currentRecipe:', currentRecipe);
+  const isLoading = useSelector(selectIsLoading);
   // const ownRecipe = useSelector(selectOwnRecipe);
 
   const { recipeId } = useParams();
@@ -28,22 +30,25 @@ const RecipePage = () => {
   }, [dispatch, recipeId]);
 
   return (
-    <>
-      {/* {error && <h1>There will be error component</h1>} */}
-
-      <>
-        <RecipeDescription
-          title={currentRecipe.title}
-          description={currentRecipe.description}
-          time={currentRecipe.time}
-        ></RecipeDescription>
-        <RecipeList ingreds={currentRecipe.ingredients}></RecipeList>
-        <RecipePreparation
-          instructions={currentRecipe.instructions}
-          image={currentRecipe.thumb}
-        ></RecipePreparation>
-      </>
-    </>
+    <Container>
+      {currentRecipe !== null && !isLoading ? (
+        <>
+          <RecipeDescription
+            title={currentRecipe.title}
+            description={currentRecipe.description}
+            time={currentRecipe.time}
+          ></RecipeDescription>
+          <RecipeList ingreds={currentRecipe.ingredients}></RecipeList>
+          <RecipePreparation
+            instructions={currentRecipe.instructions}
+            image={currentRecipe.thumb}
+          ></RecipePreparation>
+        </>
+      ) : (
+        <ErrorPage></ErrorPage>
+      )}
+      {isLoading && <Loader></Loader>}
+    </Container>
   );
 };
 

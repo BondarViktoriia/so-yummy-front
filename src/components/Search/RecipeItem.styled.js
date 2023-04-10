@@ -72,6 +72,6 @@ export const TitleWrapper = styled.div`
   }
   @media screen and (min-width: 1440px) {
     width: 268px;
-    
+
   }
 `;

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Select from 'react-select';
 
 export const SelectStyled = styled(Select)`
-
   width: 146px;
   margin-left: 15px;
   font-family: 'Poppins';
@@ -41,5 +40,3 @@ export const Label = styled.label`
     line-height: 1.5;
   }
 `;
-
-

@@ -2,12 +2,14 @@ import { Routes, Route } from 'react-router-dom';
 import Theme from '../Theme';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/theme/themeSelectors';
+
 import CategoriesByName from '../components/Categories/CategoriesByName';
 import RecipePage from '../pages/RecipePage';
 
-// import StartPage from '../pages/StartPage';
-// import RegistrationPage from '../pages/RegistrationPage';
-// import SignInPage from '../pages/SignInPage';
+
+// import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
+// import { SignInPage } from '../pages/SignInPage';
+// import { RestrictedRoute } from '../components/RestrictedRoute/RestrictedRoute';
 
 import CategoriesPage from '../pages/CategoriesPage';
 import AddRecipe from '../pages/AddRecipe';
@@ -24,10 +26,15 @@ export const App = () => {
   return (
     <Theme themeValue={theme}>
       <Routes>
-        {/* <Route
+      {/* <Route path="/" element={<StartPage />} />
+        <Route
           path="/register"
-          element={<RegistrationPage />}
-          redirectTo="/main"
+          element={
+            <RestrictedRoute
+              redirectTo="/main"
+              component={<RegistrationPage />}
+            />
+          }
         />
         <Route path="/signin" element={<SignInPage />} /> */}
 
@@ -48,4 +55,5 @@ export const App = () => {
       </Routes>
     </Theme>
   );
+
 };

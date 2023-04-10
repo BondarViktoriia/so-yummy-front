@@ -11,8 +11,19 @@ import {
   MeasureStyled,
   OriginalCheckbox,
 } from './RecipeList.styled';
+// import {
+//   addToShoppingList,
+//   removeFromShoppingList,
+// } from '../../redux/recipePage/recipeOperations';
+
+import RecipeImgPlaceholder from '../../image/recipe-page/recipe-img-tablet2x.png';
 
 const RecipeList = ({ ingreds }) => {
+  const handleCheckboxChange = event => {
+    const { id, checked } = event.target;
+    console.log('handleCheckboxChange   id, checked:', id, checked);
+  };
+
   return (
     <Wrapper>
       <ListTitle>
@@ -26,14 +37,20 @@ const RecipeList = ({ ingreds }) => {
             <ListItemStyled key={_id}>
               <WrapForContent>
                 <Thumb>
-                  <Image src={thb} alt={ttl}></Image>
+                  <Image src={thb ?? RecipeImgPlaceholder} alt={ttl}></Image>
                 </Thumb>
 
                 <TitleIngred>{ttl}</TitleIngred>
               </WrapForContent>
               <WrapForContent>
-                <MeasureStyled>{measure ?? '3 tbs'}</MeasureStyled>
-                <OriginalCheckbox type="checkbox"></OriginalCheckbox>
+                <MeasureStyled>{measure ?? 'Unknown'}</MeasureStyled>
+                <OriginalCheckbox
+                  id={_id}
+                  value={_id}
+                  type="checkbox"
+                  checked={true}
+                  onChange={handleCheckboxChange}
+                ></OriginalCheckbox>
               </WrapForContent>
             </ListItemStyled>
           );
