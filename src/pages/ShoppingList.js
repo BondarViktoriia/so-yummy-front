@@ -220,6 +220,8 @@ const IngredTtl = styled.p`
   font-size: 10px;
   line-height: 1.2;
 
+  color: ${props => props.theme.colors.textPrimary};
+
   @media (min-width: 768px) {
     font-size: 16px;
     line-height: 1.5;
@@ -287,6 +289,8 @@ const DeleteButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  color: ${props => props.theme.colors.title};
 
   @media (min-width: 768px) {
     width: 25px;
