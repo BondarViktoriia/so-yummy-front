@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import { updateUserData } from '../../services/auth/auth';
+
 axios.defaults.baseURL = 'https://so-yummy-7n94.onrender.com/api';
 
 const setAuthToken = token => {
@@ -66,6 +68,18 @@ export const refreshUser = createAsyncThunk(
       return res.data;
     } catch (error) {
       return thunkApi.rejectWithValue;
+    }
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  'auth/update',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const data = await updateUserData(credentials);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );

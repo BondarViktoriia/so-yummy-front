@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FiEdit2, FiArrowRight } from 'react-icons/fi';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -48,6 +49,12 @@ export const EditBtn = styled.button`
   background-color: transparent;
 `;
 
+export const EditIcon = styled(FiEdit2)`
+  width: 14px;
+  height: 14px;
+  color: ${props => props.theme.colors.darkText};
+`;
+
 export const EditCont = styled.div`
   display: flex;
   justify-content: space-between;
@@ -73,4 +80,10 @@ export const LogoutTextThumb = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const LogoutIcon = styled(FiArrowRight)`
+  width: 14px;
+  height: 14px;
+  color: #fafafa;
 `;

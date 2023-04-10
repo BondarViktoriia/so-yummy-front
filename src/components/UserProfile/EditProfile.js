@@ -1,24 +1,34 @@
-import { useEffect } from 'react';
-import { IconContext } from 'react-icons';
-import { IoCloseOutline, IoAddOutline } from 'react-icons/io5';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { updateUser } from '../../redux/auth/authOperations';
+
 import {
   CloseBtn,
   AddAvatarBtn,
+  AddIcon,
   AvatarCont,
   AvatarThumb,
   AvatarImg,
+  AvatarPlug,
   EditProfileCont,
   CloseBtnCont,
+  CloseIcon,
   SubmitBtn,
   FormCont,
   BtnText,
   Input,
   InputCont,
   UserIcon,
-  //   Form,
+  EdinIcon,
+  Form,
+  AvatarInput,
 } from './EditProfile.styled';
 
-export const EditProfile = ({ closeEdit }) => {
+export const EditProfile = ({ closeEdit, id, name, avatar }) => {
+  const [image, setImage] = useState(avatar);
+  const [username, setUsername] = useState(name);
+  const dispatch = useDispatch();
   useEffect(() => {
     window.addEventListener('keydown', handleEsc);
     return () => {
@@ -31,39 +41,69 @@ export const EditProfile = ({ closeEdit }) => {
     }
   };
 
+  const changeAvatar = e => {
+    if (e.target.files[0]) {
+      const path = window.URL.createObjectURL(e.target.files[0]);
+      setImage(path);
+      console.log(path);
+      console.log(e.target.files[0]);
+    }
+  };
+  const changeName = e => {
+    setUsername(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(e.target.elements[0].files[0]);
+    const file = e.target.files[0];
+    const formData = new FormData();
+    if (file) {
+      formData.append('avatar', file);
+    }
+    if (username) {
+      formData.append('name', username);
+    }
+    dispatch(updateUser(formData));
+  };
+
   return (
     <EditProfileCont>
       <CloseBtnCont>
-        <IconContext.Provider value={{ style: { width: 24, height: 24 } }}>
-          <CloseBtn onClick={closeEdit}>
-            <IoCloseOutline />
-          </CloseBtn>
-        </IconContext.Provider>
+        <CloseBtn onClick={closeEdit}>
+          <CloseIcon />
+        </CloseBtn>
       </CloseBtnCont>
-      <AvatarCont>
-        <AvatarThumb>
-          <AvatarImg></AvatarImg>
-          <IconContext.Provider
-            value={{ style: { width: 18, height: 18, color: '#FAFAFA' } }}
-          >
-            <AddAvatarBtn>
-              <IoAddOutline />
+      <Form onSubmit={handleSubmit}>
+        <AvatarCont>
+          <AvatarThumb>
+            {image ? (
+              <AvatarImg style={{ backgroundImage: `${avatar}` }} />
+            ) : (
+              <AvatarPlug />
+            )}
+            <AddAvatarBtn htmlFor="file-input">
+              <AddIcon />
+              <AvatarInput
+                id="file-input"
+                type="file"
+                accept="image/*"
+                onChange={changeAvatar}
+              />
             </AddAvatarBtn>
-          </IconContext.Provider>
-        </AvatarThumb>
-      </AvatarCont>
-      <FormCont>
-        <form>
+          </AvatarThumb>
+        </AvatarCont>
+        <FormCont>
           <InputCont>
             <UserIcon />
-
-            <Input />
+            <Input value={username} onChange={changeName} />
+            <EdinIcon />
           </InputCont>
           <SubmitBtn type="submit">
             <BtnText>Save changes</BtnText>
           </SubmitBtn>
-        </form>
-      </FormCont>
+        </FormCont>
+      </Form>
     </EditProfileCont>
   );
 };
