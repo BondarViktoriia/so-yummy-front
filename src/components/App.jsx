@@ -9,6 +9,7 @@ import RecipePage from '../pages/RecipePage';
 // import StartPage from '../pages/StartPage';
 import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
 import { SignInPage } from '../pages/SignInPage';
+import { RestrictedRoute } from '../components/RestrictedRoute/RestrictedRoute';
 
 
 import CategoriesPage from '../pages/CategoriesPage';
