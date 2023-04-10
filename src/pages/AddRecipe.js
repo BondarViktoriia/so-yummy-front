@@ -10,6 +10,7 @@ import {
 } from './AddREcipe.styled';
 import Container from '../components/Container/Container'
 
+
 const AddRecipe = () => {
 
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
@@ -26,6 +27,7 @@ const AddRecipe = () => {
         <PopularRecipe />
       
       </WrapperFollowUs>
+
     </Container>
   );
 

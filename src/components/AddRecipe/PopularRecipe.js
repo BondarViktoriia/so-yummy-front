@@ -27,7 +27,6 @@ import {useMediaQuery } from 'react-responsive';
         const response = await axios.get(
           'https://so-yummy-7n94.onrender.com/api/popular-recipe'
           );
-          console.log("response",response)
 
         if (response) {
          
@@ -40,7 +39,6 @@ import {useMediaQuery } from 'react-responsive';
     popularRecipes();
   }, []);
 
-   console.log("recipes", recipes)
    
   const isTablet = useMediaQuery({ minWidth:768, maxWidth:1439 });
   return (
