@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/so-yummy-front/static/css/main.a887ada5.css",
-    "main.js": "/so-yummy-front/static/js/main.8b2354b9.js",
+    "main.js": "/so-yummy-front/static/js/main.32f6f9c7.js",
     "static/media/bgc-up-desk.png": "/so-yummy-front/static/media/bgc-up-desk.088180e00dd0b716a522.png",
     "static/media/my-recipe-bg-tablet-2x.jpg": "/so-yummy-front/static/media/my-recipe-bg-tablet-2x.9e36cde389427a15b2df.jpg",
     "static/media/bgc-up-tab.png": "/so-yummy-front/static/media/bgc-up-tab.315208ec35d471abc100.png",
@@ -28,11 +28,13 @@
     "static/media/error-dekstop-1x.png": "/so-yummy-front/static/media/error-dekstop-1x.d1f0b2fa1e8ec2321bfb.png",
     "static/media/symbol.svg": "/so-yummy-front/static/media/symbol.da66c83c62e5543f38684440afffd840.svg",
     "index.html": "/so-yummy-front/index.html",
+    "static/media/clock.svg": "/so-yummy-front/static/media/clock.defd098d95bef93ce77d4e49ee9f96ab.svg",
+    "static/media/pick.svg": "/so-yummy-front/static/media/pick.247b86d0e6a26346bf0885b5b0408bd8.svg",
     "main.a887ada5.css.map": "/so-yummy-front/static/css/main.a887ada5.css.map",
-    "main.8b2354b9.js.map": "/so-yummy-front/static/js/main.8b2354b9.js.map"
+    "main.32f6f9c7.js.map": "/so-yummy-front/static/js/main.32f6f9c7.js.map"
   },
   "entrypoints": [
     "static/css/main.a887ada5.css",
-    "static/js/main.8b2354b9.js"
+    "static/js/main.32f6f9c7.js"
   ]
 }
