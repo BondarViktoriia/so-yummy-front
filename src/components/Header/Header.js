@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { IconContext } from 'react-icons';
-import { HiOutlineMenuAlt2 } from 'react-icons/hi';
 import Container from '../Container/Container';
-import { HeaderBox, BurgerOpen, MenuThumb } from './Header.styled';
+import { HeaderBox, BurgerOpen, MenuThumb, BurgerIcon } from './Header.styled';
 import { Logo } from '../Logo/Logo';
 import { Navigation } from '../Navigation/Navigation';
 import { UserMenu } from '../UserMenu/UserMenu';
@@ -25,11 +23,9 @@ export const Header = () => {
           <UserMenu />
           {isDesktop && <ThemeToggler />}
           {isTabletOrMobile && (
-            <IconContext.Provider value={{ style: { width: 24, height: 24 } }}>
-              <BurgerOpen onClick={openModal}>
-                <HiOutlineMenuAlt2 />
-              </BurgerOpen>
-            </IconContext.Provider>
+            <BurgerOpen onClick={openModal}>
+              <BurgerIcon />
+            </BurgerOpen>
           )}
         </MenuThumb>
       </HeaderBox>
