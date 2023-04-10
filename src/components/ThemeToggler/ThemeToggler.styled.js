@@ -13,7 +13,7 @@ export const Checkbox = styled.input`
   position: absolute;
   left: 0;
   top: 0;
-  &:checked + label > span {
+  &:checked + span {
     transform: translateX(30px);
   }
 `;
@@ -30,6 +30,7 @@ export const Label = styled.label`
   box-shadow: inset 0px 6px 8px 3px rgba(0, 0, 0, 0.1);
   border-radius: 50px;
   cursor: pointer;
+  background-color: ${p => p.theme.colors.themeSwitcher};
 `;
 
 export const Ball = styled.span`
@@ -37,7 +38,7 @@ export const Ball = styled.span`
   display: block;
   width: 21px;
   height: 21px;
-  background-image: linear-gradient(to bottom, #ffffff 0%, #e8eaea 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #e8eaea 100%);
   border-radius: 50%;
   filter: drop-shadow(2px 1px 6px rgba(0, 0, 0, 0.25));
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
