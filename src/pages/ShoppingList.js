@@ -4,7 +4,10 @@ import { IoCloseOutline } from 'react-icons/io5';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectShoppingList } from '../redux/shoppingList/shoppingListSelectors';
+import {
+  selectShoppingList,
+  isLoading,
+} from '../redux/shoppingList/shoppingListSelectors';
 import {
   getShoppingList,
   deleteFromShoppingList,
@@ -12,6 +15,7 @@ import {
 
 import Container from '../components/Container/Container';
 import Title from '../components/Title/Title';
+import { Loader } from '../components/Loader/Loader';
 
 const ShoppingList = () => {
   const dispatch = useDispatch();
@@ -26,10 +30,13 @@ const ShoppingList = () => {
 
   const shopList = useSelector(selectShoppingList);
 
+  const itisLoading = useSelector(isLoading);
+
   return (
     <Container>
       <CoContainer>
-        <Title style={{}}>Shopping list</Title>
+        <Title>Shopping list</Title>
+        {itisLoading && <Loader />}
         {shopList.length > 0 ? (
           <>
             <ListHeader>
