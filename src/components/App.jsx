@@ -6,9 +6,9 @@ import { selectTheme } from 'redux/theme/themeSelectors';
 import CategoriesByName from '../components/Categories/CategoriesByName';
 import RecipePage from '../pages/RecipePage';
 
-// import StartPage from '../pages/StartPage';
 import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
 import { SignInPage } from '../pages/SignInPage';
+import StartPage from '../pages/StartPage';
 import { RestrictedRoute } from '../components/RestrictedRoute/RestrictedRoute';
 
 import CategoriesPage from '../pages/CategoriesPage';
@@ -26,8 +26,7 @@ export const App = () => {
   return (
     <Theme themeValue={theme}>
       <Routes>
-        {/* <Route path="/" element={<StartPage />} /> */}
-
+        <Route path="/" element={<StartPage />} />
         <Route
           path="/register"
           element={
