@@ -3,12 +3,14 @@ import Theme from '../Theme';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/theme/themeSelectors';
 
+import CategoriesByName from '../components/Categories/CategoriesByName';
 import RecipePage from '../pages/RecipePage';
 
-// import StartPage from '../pages/StartPage';
+
 // import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
 // import { SignInPage } from '../pages/SignInPage';
 // import { RestrictedRoute } from '../components/RestrictedRoute/RestrictedRoute';
+
 import CategoriesPage from '../pages/CategoriesPage';
 import AddRecipe from '../pages/AddRecipe';
 import MyRecipesPage from '../pages/MyRecipesPage';
@@ -24,7 +26,7 @@ export const App = () => {
   return (
     <Theme themeValue={theme}>
       <Routes>
-        {/* <Route path="/" element={<StartPage />} />
+      {/* <Route path="/" element={<StartPage />} />
         <Route
           path="/register"
           element={
@@ -37,10 +39,9 @@ export const App = () => {
         <Route path="/signin" element={<SignInPage />} /> */}
 
         <Route path="/" element={<SharedLayout />}>
-          <Route
-            path="/categories/:categoryName"
-            element={<CategoriesPage />}
-          />
+          <Route path="/categories" element={<CategoriesPage />}>
+            <Route path=":categoryName" element={<CategoriesByName />} />
+          </Route>
           <Route path="/add" element={<AddRecipe />} />
           <Route path="/my" element={<MyRecipesPage />} />
           <Route path="/favorite" element={<FavoritesPage />} />
