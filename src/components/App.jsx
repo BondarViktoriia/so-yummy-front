@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Theme from '../Theme';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/theme/themeSelectors';
+
 import RecipePage from '../pages/RecipePage';
 
 // import StartPage from '../pages/StartPage';
@@ -53,4 +54,5 @@ export const App = () => {
       </Routes>
     </Theme>
   );
+
 };
