@@ -1,6 +1,5 @@
 import {
   HeroSection,
-  Continer,
   HeroTitle,
   HeroWrap,
   HeroText,
@@ -31,17 +30,10 @@ import arrowtablet2 from '../../image/home-page/arrow-tablet-2x.png';
 export const SectionHero = () => {
   const navigate = useNavigate();
 
-  const initialValues = {
-    search: '',
-  };
-
-  const handleFormSubmit = (values, actions) => {
-    navigate(`/Search/ingredients`);
-  };
+ 
 
   return (
-    <HeroSection>
-      <Continer>
+    <HeroSection>     
         <HeroWrap>
           <HeroBox>
             <HeroTitle>
@@ -52,13 +44,13 @@ export const SectionHero = () => {
               cookbook. You can add your own recipes to save them for the
               future.
             </HeroText>
-            <Formik initialValues={initialValues} onSubmit={handleFormSubmit}>
+            
               <Form>
                 <Input type="text" />
                 <HeroButtont type="submit">Search</HeroButtont>
                 navigate()
               </Form>
-            </Formik>
+           
           </HeroBox>
           <HeroBox>
             <HealsyBlockRec />
@@ -137,7 +129,7 @@ export const SectionHero = () => {
             </ArrowPicture>
           </HeroBox>
         </HeroWrap>
-      </Continer>
+
     </HeroSection>
   );
 };

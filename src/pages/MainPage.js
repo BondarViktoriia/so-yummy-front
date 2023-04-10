@@ -6,8 +6,8 @@ const MainPage = () => {
 
         <Container>
             <SectionHero />
-            <MainSection/>
-    </Container>
+           
+         </Container>
 )
   
 };
