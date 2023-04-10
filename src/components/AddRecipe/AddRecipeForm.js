@@ -26,16 +26,14 @@ import {
 } from './AddRecipeForm.styled';
 import addRecipe from '../../image/addRecipe.png';
 import { Counter } from '../AddRecipe/Counter';
-import { useSelector } from 'react-redux';
-import {getIngredients} from '../../redux/ingredients/ingredientsSelectors'
+
 import store from "store";
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getAllIngredients } from '../../redux/ingredients/ingredientsOperation';
 import { nanoid } from '@reduxjs/toolkit';
 import {IngredientsItem,ValueInputWrapper,InputUnitValue,ButtonRemoveItem} from './AddRecipeForm.styled'
 import Select from 'react-select';
-
+import axios from 'axios'
 
 const init = {
   recipe: '',
@@ -46,49 +44,45 @@ const init = {
   unitValue: '',
 };
 
-const AddRecipeForm = ({ counter }) => {
+const AddRecipeForm = () => {
   const dispatch = useDispatch();
     const [inputs, setInputs] = useState(() => {
     const inputs = store.get('userInputs');
     return inputs ? inputs : init;
     });
   console.log("inputs",inputs)
-    //  const [userIngredients, setUserIngredients] = useState([])
 
 
-  const optionsIngredients = useSelector(getIngredients);
+
    const [userIngredients, setUserIngredients] = useState(() => {
     const ingredients = store.get('userIngredients');
     return ingredients ? ingredients : [];
    });
+  const [ingredients,setIngredients]=useState([])
     useEffect(() => {
     store.set('userInputs', inputs);
     store.set('userIngredients', userIngredients);
   }, [inputs, userIngredients]);
+
+
   useEffect(() => {
-    dispatch(getAllIngredients());
-
-  }, [dispatch]);
-
-  // useEffect(() => {
-  //   const optionsIngredients = async () => {
-  //     try {
-  //               const response = await axios.get(
-  //         'https://so-yummy-7n94.onrender.com/api/ingredients/list'
-  //         );
-  //       console.log("response", response)
-  //        if (response) {
+    const optionsIngredients = async () => {
+      try {
+                const response = await axios.get(
+          'https://so-yummy-7n94.onrender.com/api/ingredients/list'
+          );
+        console.log("response", response)
+         if (response) {
          
-  //         setUserIngredients(response.data);
-  //       }
-  //     } catch (error) {
-  //        console.log(error.message)
-  //     }
-  //   }
-  //     optionsIngredients();
-  // }, [dispatch])
+          setIngredients(response.data);
+        }
+      } catch (error) {
+         console.log(error.message)
+      }
+    }
+      optionsIngredients();
+  }, [dispatch])
   
-  console.log("userIngredients",userIngredients)
 
    const handleDecrement = () => {
     if (userIngredients.length <= 0) return;
@@ -147,18 +141,18 @@ const ingredientsOptionsList = list => {
     setUserIngredients(newList);
   };
 
-
+console.log("userIngredients",userIngredients)
     const userIngredientsList = userIngredients.map(
     ({ id, ttl,qty,unitValue }) => {
       return (
         <IngredientsItem key={id}>
           <Select
             styles={stylesIngredient}
-            options={ingredientsOptionsList(optionsIngredients)}
-            defaultValue={{ label: ttl, value: ttl }}
+            options={ingredientsOptionsList(ingredients)}
+            defaultValue={{  value: ttl }}
             placeholder=" "
             onChange={handleUserIngredient}
-            name={`ingredient ${id}`}
+            name={`ttl ${id}`}
           />
           <ValueInputWrapper >
             <InputUnitValue
@@ -187,6 +181,7 @@ const ingredientsOptionsList = list => {
       );
     }
   );
+  const counter = userIngredients.length
   return (
     <Wrap>
       <Title>Add recipe</Title>
@@ -258,25 +253,10 @@ const ingredientsOptionsList = list => {
         <MainWrapIngredients>
           <WrapIngredients>
             <TitleIngredients>Ingredients</TitleIngredients>
-            {/* <Counter
-              counter={counter}
-              handleIncrement={handleIncrement}
-              handleDecrement={handleDecrement}
-            /> */}
+
           </WrapIngredients>
 
           <InputIngredientsWrap>
-            {/* <div>
-              <InputIngredients type="text" name="" id="" placeholder="" />
-              <SelectIngredients name="ingredients" id="ingredients">
-                <option value="Beef">tbs</option>
-                <option value="Breakfast">tsp</option>
-                <option value="Dessert">kg</option>
-                <option value="Goat">g</option>
-              </SelectIngredients>
-                          <IoCloseOutline size={18} />
-
-            </div> */}
                   <IngredientsTitle>
         <Counter
           counter={counter}
