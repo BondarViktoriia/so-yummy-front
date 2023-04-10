@@ -13,7 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import { themeReducer } from './theme/themeSlice';
 import { shoppingListSlice } from './shoppingList/shoppingListSlice';
 import { recipeReducer } from './recipePage/recipeSlice';
-// import ownRecipesSlice from './ownRecipe/ownRecipesSlice';
+import { ownRecipeReducer } from './ownRecipe/ownRecipesSlice';
 import { authReducer } from './auth/authSlice';
 import { ingredientsReducer } from './ingredients/ingredientsSlice';
 
@@ -39,6 +39,11 @@ const persistShoppingListConfig = {
   storage,
 };
 
+const ownRecipePersistConfig = {
+  key: 'ownRecipes',
+  storage,
+};
+
 const rootReducer = combineReducers({
   auth: persistReducer(persistConfig, authReducer),
   theme: persistReducer(themePersistedConfig, themeReducer),
@@ -48,6 +53,7 @@ const rootReducer = combineReducers({
     shoppingListSlice.reducer
   ),
   ingredients: persistReducer(ingredientsPersistConfig, ingredientsReducer),
+  ownRecipe: persistReducer(ownRecipePersistConfig, ownRecipeReducer),
 });
 
 export const store = configureStore({
