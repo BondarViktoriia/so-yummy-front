@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import {Clock} from './ClockIcon';
+import { Clock } from './ClockIcon';
 
 import {
   Wrapper,
@@ -10,13 +10,22 @@ import {
   Button,
   Time,
 } from './RecipeDescription.styled';
-import { addToFavorite } from '../../redux/recipePage/recipeOperations';
-import { selectIsFavorite } from '../../redux/recipePage/recipeSelectors';
+import {
+  // addToFavorite,
+  deleteFromFavorite,
+  getFavorites,
+} from '../../redux/favorites/favoritesOperations';
+import { selectFavorites } from '../../redux/favorites/favoritesSelectors';
 
 const RecipeDescription = ({ title, description, time }) => {
   const { recipeId } = useParams();
   const dispatch = useDispatch();
-  const fav = useSelector(selectIsFavorite);
+  const favorites = useSelector(selectFavorites);
+  console.log('RecipeDescription   favorites:', favorites);
+
+  useEffect(() => {
+    dispatch(getFavorites());
+  }, [dispatch]);
 
   return (
     <Wrapper>
@@ -25,9 +34,9 @@ const RecipeDescription = ({ title, description, time }) => {
       <Button
         type="button"
         aria-label="add/remove to favorite"
-        onClick={() => dispatch(addToFavorite(recipeId))}
+        onClick={() => dispatch(deleteFromFavorite(recipeId))}
       >
-        {fav === true ? 'Remove from favorite' : 'Add to favorite'}
+        {'Add to favorite recipes'}
       </Button>
       {time !== '' && (
         <Time>
