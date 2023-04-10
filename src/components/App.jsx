@@ -4,11 +4,11 @@ import Theme from '../Theme';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectTheme } from 'redux/theme/themeSelectors';
 import { selectIsRefreshing } from '../redux/auth/authSelectors';
-import { refreshUser } from '../redux/auth/authOperations';
+import { registrationUser } from '../redux/auth/authOperations';
 import CategoriesByName from '../components/Categories/CategoriesByName';
 import RecipePage from '../pages/RecipePage';
 
-// import StartPage from '../pages/StartPage';
+import StartPage from '../pages/StartPage';
 import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
 import { SignInPage } from '../pages/SignInPage';
 import { RestrictedRoute } from '../components/RestrictedRoute/RestrictedRoute';
@@ -25,15 +25,15 @@ import { SharedLayout } from './SharedLayout/SharedLayout';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const userRefresh = useSelector(selectIsRefreshing);
+  const userLoggedIn = useSelector(selectIsRefreshing);
   useEffect(() => {
-    dispatch(refreshUser());
+    dispatch(registrationUser());
   }, [dispatch]);
   const theme = useSelector(selectTheme);
-  return !userRefresh ? (
+  return !userLoggedIn ? (
     <Theme themeValue={theme}>
       <Routes>
-        {/* <Route path="/" index element={<StartPage />} /> */}
+        <Route path="/" index element={<StartPage />} />
 
         <Route
           path="/register"
