@@ -45,7 +45,7 @@ export const RecipeTitle = styled.h2`
   text-overflow: ellipsis;
   font-weight: 400;
   font-size: 14px;
-  line-height: 1;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   color: ${p => p.theme.colors.textPrimary};
   @media (min-width: 768px) {
@@ -89,6 +89,7 @@ export const RecipeText = styled.p`
 
 export const DeleteButtonFav = styled.button`
   position: absolute;
+  cursor: pointer;
   bottom: 14px;
   right: 14px;
   display: flex;
@@ -96,15 +97,19 @@ export const DeleteButtonFav = styled.button`
   justify-content: center;
   width: 24px;
   height: 24px;
-  background: ${p => p.theme.colors.logoLight};
+  background: ${p => p.theme.colors.deleteIcon};
   border-radius: 4px;
   border: transparent;
-  color: ${p => p.theme.colors.footer};
+  color: ${p => p.theme.colors.darkText};
   transition: all 0.25s ease-out;
+  & svg {
+    width: 24px;
+    height: 24px;
+  }
   &:hover,
   &:focus {
     background: ${p => p.theme.colors.accentGreen};
-    color: ${p => p.theme.colors.background};
+    color: ${p => p.theme.colors.footerText};
   }
   @media (min-width: 768px) {
     top: 28px;
@@ -154,6 +159,7 @@ export const DeleteButtonMy = styled.button`
 
 export const RecipeButtonFav = styled.button`
   position: absolute;
+  cursor: pointer;
   bottom: 14px;
   right: 14px;
   width: 87px;
@@ -163,7 +169,7 @@ export const RecipeButtonFav = styled.button`
   font-size: 10px;
   line-height: 1.5;
   letter-spacing: -0.02em;
-  color: ${p => p.theme.colors.background};
+  color: ${p => p.theme.colors.footerText};
   border-radius: 24px 44px;
   border: transparent;
   transition: background 0.25s ease-out;
