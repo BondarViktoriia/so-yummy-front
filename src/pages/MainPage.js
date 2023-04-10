@@ -6,7 +6,8 @@ const MainPage = () => {
 
         <Container>
             <SectionHero />
-            <MainSection/>
+            <MainSection />
+            {/* <div></> */}
     </Container>
 )
   
