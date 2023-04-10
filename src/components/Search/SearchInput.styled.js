@@ -19,6 +19,8 @@ export const Input = styled.input`
   height: 53px;
   border: 1px solid #f0f0f0;
   border-radius: 24px 44px;
+  border-color: ${props => props.theme.colors.inputSearchBorder};
+  background-color:${props => props.theme.colors.inputSearchBackground};
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
@@ -27,7 +29,7 @@ export const Input = styled.input`
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   outline: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  ${props => props.theme.colors.textPrimary};
+  color: ${props => props.theme.colors.textPrimary};
 
   @media screen and (min-width: 768px) {
     width: 362px;
