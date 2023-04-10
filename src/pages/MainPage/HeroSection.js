@@ -1,4 +1,4 @@
-import { HeroSection, HeroTitle, HeroWrap, HeroText,Form, Input, HeroBox, ArrowPicture,HeroButtont} from './MainPage'
+import { HeroSection,Continer,  HeroTitle, HeroWrap, HeroText,Form, Input, HeroBox, ArrowPicture,HeroButtont} from './MainPage'
 import {HealsyBlockRec} from "./HealsyBlockRec"
 import { Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
@@ -34,7 +34,8 @@ export const SectionHero = () => {
 
     
     return (
-        <HeroSection>               
+        <HeroSection> 
+            <Continer>  
                     <HeroWrap>
                         <HeroBox>
                             < HeroTitle><span>So</span>Yummy</ HeroTitle>
@@ -121,7 +122,8 @@ export const SectionHero = () => {
                                     />                               
                             </ArrowPicture>
                         </HeroBox>
-                    </HeroWrap>                
+                </HeroWrap>
+                </Continer>  
             </HeroSection>
     )
 } 

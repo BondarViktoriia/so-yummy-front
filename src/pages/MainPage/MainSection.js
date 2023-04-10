@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {SectionMain, MainCategories, Link, MainButton, MainTitle, MainList} from "./MainPage"
+import {SectionMain,Continer,MainCategories, Link, MainButton, MainTitle, MainList} from "./MainPage"
 import axios from "axios"
 import MainItem from "./MainItem"
 import { useMediaQuery } from 'react-responsive';
@@ -42,7 +42,8 @@ import { useMediaQuery } from 'react-responsive';
     }
    return (
 
-       <SectionMain>      
+       <SectionMain>
+        <Continer> 
             <MainCategories >
                     {categories && Object.entries(categories).map(([ categoryKey,meals]) => (
                         <li key={categoryKey}>
@@ -61,7 +62,8 @@ import { useMediaQuery } from 'react-responsive';
                         </li>               
                 ))}
            </MainCategories> 
-           <MainButton>Other categories</MainButton>
+               <MainButton>Other categories</MainButton>
+               </Continer>  
      </SectionMain>
   );
 }

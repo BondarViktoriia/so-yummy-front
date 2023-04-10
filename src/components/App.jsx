@@ -9,8 +9,7 @@ export const App = () => {
   return( <Theme themeValue={theme}>
     <>
       <Container/>
-        <MainPage />
-    
+        <MainPage />  
     </>
   </Theme>)
 };

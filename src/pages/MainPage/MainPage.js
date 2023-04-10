@@ -12,12 +12,11 @@ export const HeroSection = styled.section`
   }
   @media screen and (min-width: 1440px) {
       padding-top: 160px; 
-  }
- `;
-// export const Continer = styled.div`
-//     width: 1440px;
-//     margin-left: auto;
-//     margin-right: auto;`
+  } `
+export const Continer = styled.div`
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;`
 
 export const HeroWrap = styled.div`  
     display: flex;
@@ -204,8 +203,9 @@ export const MainButton = styled(NavLink)`
   
   &:hover,
   &:focus {
-    background-color:${props => props.theme.colors.accentGreen};
-    color:${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.background};
+    background-color: ${props => props.theme.colors.accentGreen};
+   
     
    &.active {
       color: ${props => props.theme.colors.accentGreen}; 
