@@ -2,7 +2,6 @@
 import {
   ImageBox,
   ImageInput,
-  Title,
   Wrap,
   Form,
   InputDescriptionWrap,
@@ -23,6 +22,7 @@ import {
 } from './AddRecipeForm.styled';
 import addRecipe from '../../image/addRecipe.png';
 import AddRecipeIngredients from './AddRecipeIngredients';
+import Title from '../Title/Title'
 
 
 const AddRecipeForm = ({ userIngredients,handleDecrement,handleIncrement,handleUserIngredient,handleUnitValue,handleRemove }) => {

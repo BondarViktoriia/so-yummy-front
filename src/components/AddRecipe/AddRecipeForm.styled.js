@@ -24,11 +24,13 @@ export const Title = styled.h2`
   }
 `;
 export const Form = styled.form`
+margin-top:72px;
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-top:100px;
   }
   @media screen and (min-width: 1440px) {
     display: flex;
