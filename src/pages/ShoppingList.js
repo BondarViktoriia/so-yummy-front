@@ -332,8 +332,6 @@ const EmptyList = styled.h2`
   margin-left: 16px;
   margin-right: 16px;
 
-  border-radius: 10px;
-
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
@@ -342,6 +340,10 @@ const EmptyList = styled.h2`
   letter-spacing: -0.02em;
   font-feature-settings: 'liga' off;
   color: ${props => props.theme.colors.title};
+  text-align: center;
+
+  background-color: ${props => props.theme.colors.logoLight};
+  border-radius: 20px;
 
   @media (min-width: 768px) {
     padding-top: 72px;
@@ -350,9 +352,12 @@ const EmptyList = styled.h2`
     margin-right: 32px;
 
     font-size: 32px;
+
+    border-radius: 30px;
   }
 
   @media (min-width: 1440px) {
+    border-radius: 40px;
   }
 `;
 

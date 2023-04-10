@@ -32,9 +32,7 @@ export const shoppingListSlice = createSlice({
     [deleteFromShoppingList.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.shoppingList = state.shoppingList.filter(
-        item => item._id !== action.meta.arg
-      );
+      state.shoppingList = action.payload.data.ingredients;
     },
     [deleteFromShoppingList.rejected](state, action) {
       state.isLoading = false;
