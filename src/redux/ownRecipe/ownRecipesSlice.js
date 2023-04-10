@@ -40,15 +40,14 @@ export const ownRecipesSlice = createSlice({
         state.isOwnRecipesFetching = false;
       })
 
-
       .addCase(getOwnRecipesOperation.pending, pending)
       .addCase(addOwnRecipeOperation.pending, pending)
       .addCase(deleteOwnRecipeOperation.pending, pending)
 
       .addCase(getOwnRecipesOperation.rejected, rejected)
       .addCase(addOwnRecipeOperation.rejected, rejected)
-      .addCase(deleteOwnRecipeOperation.rejected, rejected)
-
+      .addCase(deleteOwnRecipeOperation.rejected, rejected),
 });
 
+export const ownRecipeReducer = ownRecipesSlice.reducer;
 export default ownRecipesSlice.reducer;
