@@ -10,5 +10,6 @@ export const Box = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
+  background-color: ${props => props.theme.colors.background};
 `;
