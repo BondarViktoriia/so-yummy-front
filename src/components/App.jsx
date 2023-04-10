@@ -6,10 +6,10 @@ import { selectTheme } from 'redux/theme/themeSelectors';
 import CategoriesByName from '../components/Categories/CategoriesByName';
 import RecipePage from '../pages/RecipePage';
 
-
-// import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
-// import { SignInPage } from '../pages/SignInPage';
-// import { RestrictedRoute } from '../components/RestrictedRoute/RestrictedRoute';
+import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
+import { SignInPage } from '../pages/SignInPage';
+import StartPage from '../pages/StartPage';
+import { RestrictedRoute } from '../components/RestrictedRoute/RestrictedRoute';
 
 import CategoriesPage from '../pages/CategoriesPage';
 import AddRecipe from '../pages/AddRecipe';
@@ -26,7 +26,7 @@ export const App = () => {
   return (
     <Theme themeValue={theme}>
       <Routes>
-      {/* <Route path="/" element={<StartPage />} />
+        <Route path="/" element={<StartPage />} />
         <Route
           path="/register"
           element={
@@ -36,7 +36,7 @@ export const App = () => {
             />
           }
         />
-        <Route path="/signin" element={<SignInPage />} /> */}
+        <Route path="/signin" element={<SignInPage />} />
 
         <Route path="/" element={<SharedLayout />}>
           <Route path="/categories" element={<CategoriesPage />}>
@@ -55,5 +55,4 @@ export const App = () => {
       </Routes>
     </Theme>
   );
-
 };

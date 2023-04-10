@@ -4,7 +4,7 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://so-yummy-7n94.onrender.com/api';
 
 const setAuthToken = token => {
-  axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmFkNzQ1MDhkYTZiMTllNjZhZWY1MSIsImlhdCI6MTY4MDk4NTM0MiwiZXhwIjoxNjgxMDY4MTQyfQ.ZizToQe-VVskGL2AXf9zNoQ9qVV7pOupv_n55i7ZZ9o`;
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 const clearAuthToken = () => {
