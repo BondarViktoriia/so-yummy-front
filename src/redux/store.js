@@ -13,6 +13,8 @@ import storage from 'redux-persist/lib/storage';
 import { themeReducer } from './theme/themeSlice';
 import { shoppingListSlice } from './shoppingList/shoppingListSlice';
 import { recipeReducer } from './recipePage/recipeSlice';
+import { favoritesReducer } from './favorites/favoritesSlice';
+// import ownRecipesSlice from './ownRecipe/ownRecipesSlice';
 import { ownRecipeReducer } from './ownRecipe/ownRecipesSlice';
 import { authReducer } from './auth/authSlice';
 import { ingredientsReducer } from './ingredients/ingredientsSlice';
@@ -28,15 +30,15 @@ const themePersistedConfig = {
   storage,
 };
 
+const recipePersistedConfig = {
+  key: 'recipe',
+  storage,
+};
+
 const ingredientsPersistConfig = {
   key: 'ingredients',
   storage,
   whitelist: ['ingredients'],
-};
-
-const persistShoppingListConfig = {
-  key: 'shoppingList',
-  storage,
 };
 
 const ownRecipePersistConfig = {
@@ -44,10 +46,21 @@ const ownRecipePersistConfig = {
   storage,
 };
 
+const persistShoppingListConfig = {
+  key: 'shoppingList',
+  storage,
+};
+
+const persistFavoritesConfig = {
+  key: 'favorites',
+  storage,
+};
+
 const rootReducer = combineReducers({
   auth: persistReducer(persistConfig, authReducer),
   theme: persistReducer(themePersistedConfig, themeReducer),
-  recipe: persistReducer(persistConfig, recipeReducer),
+  recipe: persistReducer(recipePersistedConfig, recipeReducer),
+  favorites: persistReducer(persistFavoritesConfig, favoritesReducer),
   shoppingList: persistReducer(
     persistShoppingListConfig,
     shoppingListSlice.reducer
