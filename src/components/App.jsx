@@ -8,7 +8,7 @@ import { refreshUser } from '../redux/auth/authOperations';
 import CategoriesByName from '../components/Categories/CategoriesByName';
 import RecipePage from '../pages/RecipePage';
 
-import StartPage from '../pages/StartPage';
+// import StartPage from '../pages/StartPage';
 import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
 import { SignInPage } from '../pages/SignInPage';
 import { RestrictedRoute } from '../components/RestrictedRoute/RestrictedRoute';
@@ -33,7 +33,7 @@ export const App = () => {
   return !userRefresh ? (
     <Theme themeValue={theme}>
       <Routes>
-        <Route path="/" index element={<StartPage />} />
+        {/* <Route path="/" index element={<StartPage />} /> */}
 
         <Route
           path="/register"
