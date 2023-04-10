@@ -1,26 +1,32 @@
 {
   "files": {
     "main.css": "/so-yummy-front/static/css/main.a887ada5.css",
-    "main.js": "/so-yummy-front/static/js/main.e2600546.js",
+    "main.js": "/so-yummy-front/static/js/main.6dfb6737.js",
     "static/media/bgc-up-desk.png": "/so-yummy-front/static/media/bgc-up-desk.088180e00dd0b716a522.png",
     "static/media/my-recipe-bg-tablet-2x.jpg": "/so-yummy-front/static/media/my-recipe-bg-tablet-2x.9e36cde389427a15b2df.jpg",
+    "static/media/main-pic-dekstop-2x.jpg": "/so-yummy-front/static/media/main-pic-dekstop-2x.5e002b06bc7c8bdac8ed.jpg",
     "static/media/bgc-up-tab.png": "/so-yummy-front/static/media/bgc-up-tab.315208ec35d471abc100.png",
+    "static/media/main-pic-tablet-2x.jpg": "/so-yummy-front/static/media/main-pic-tablet-2x.eeebb3d69ae0a5d66e0a.jpg",
     "static/media/mob-menu-tablet@2x.png": "/so-yummy-front/static/media/mob-menu-tablet@2x.2298c76622e9595503fe.png",
     "static/media/plate-dekstop-2x.png": "/so-yummy-front/static/media/plate-dekstop-2x.24423b53384d0426645e.png",
     "static/media/bgc-desk.png": "/so-yummy-front/static/media/bgc-desk.26cb2842719d4077cf67.png",
     "static/media/my-recipe-bg-dekstop-2x.jpg": "/so-yummy-front/static/media/my-recipe-bg-dekstop-2x.f35df6729099ccdc3dcc.jpg",
     "static/media/bgc-up-mob.png": "/so-yummy-front/static/media/bgc-up-mob.e6bddf98431a062a2c9a.png",
     "static/media/plate-tablet-2x.png": "/so-yummy-front/static/media/plate-tablet-2x.dd96f58bd2873d6f5fdc.png",
+    "static/media/main-pic-mobile-2x.jpg": "/so-yummy-front/static/media/main-pic-mobile-2x.51f379eca370df9b4567.jpg",
+    "static/media/main-pic-dekstop-1x.jpg": "/so-yummy-front/static/media/main-pic-dekstop-1x.943b8efa068ae4040412.jpg",
     "static/media/bgc-tab.png": "/so-yummy-front/static/media/bgc-tab.d0755725e0e15adf9ea0.png",
     "static/media/plate-dekstop-1x.png": "/so-yummy-front/static/media/plate-dekstop-1x.def9cbecf29b6ed85271.png",
     "static/media/search-desktop-2x.png": "/so-yummy-front/static/media/search-desktop-2x.7903c13b52f32f026a0c.png",
     "static/media/search-tablet-2x.png": "/so-yummy-front/static/media/search-tablet-2x.7903c13b52f32f026a0c.png",
+    "static/media/main-pic-tablet-1x.jpg": "/so-yummy-front/static/media/main-pic-tablet-1x.e77ff4d2579be7c96597.jpg",
     "static/media/my-recipe-bg-dekstop-1x.jpg": "/so-yummy-front/static/media/my-recipe-bg-dekstop-1x.881a268869e4e3fc8c9c.jpg",
     "static/media/plate-tablet-1x.png": "/so-yummy-front/static/media/plate-tablet-1x.603e09429028c1b06883.png",
     "static/media/my-recipe-bg-mobile-2x.jpg": "/so-yummy-front/static/media/my-recipe-bg-mobile-2x.558442d4bc17fc6ad4ea.jpg",
     "static/media/bgc-mob.png": "/so-yummy-front/static/media/bgc-mob.b2d8cebd8d8139202231.png",
     "static/media/search-mobile-2x.png": "/so-yummy-front/static/media/search-mobile-2x.572e6ff3ec85d770a456.png",
     "static/media/plate-mobile-1x.png": "/so-yummy-front/static/media/plate-mobile-1x.54f6ae42f726d42ffcb6.png",
+    "static/media/main-pic-mobile-1x.jpg": "/so-yummy-front/static/media/main-pic-mobile-1x.62574199c8d47541a966.jpg",
     "static/media/search-dekstop-1x.png": "/so-yummy-front/static/media/search-dekstop-1x.54254d20f76ac1e2c797.png",
     "static/media/search-tablet-1x.png": "/so-yummy-front/static/media/search-tablet-1x.54254d20f76ac1e2c797.png",
     "static/media/my-recipe-bg-tablet-1x.jpg": "/so-yummy-front/static/media/my-recipe-bg-tablet-1x.9359efa8112d21afc0b4.jpg",
@@ -40,10 +46,10 @@
     "index.html": "/so-yummy-front/index.html",
     "static/media/pick.svg": "/so-yummy-front/static/media/pick.247b86d0e6a26346bf0885b5b0408bd8.svg",
     "main.a887ada5.css.map": "/so-yummy-front/static/css/main.a887ada5.css.map",
-    "main.e2600546.js.map": "/so-yummy-front/static/js/main.e2600546.js.map"
+    "main.6dfb6737.js.map": "/so-yummy-front/static/js/main.6dfb6737.js.map"
   },
   "entrypoints": [
     "static/css/main.a887ada5.css",
-    "static/js/main.e2600546.js"
+    "static/js/main.6dfb6737.js"
   ]
 }
