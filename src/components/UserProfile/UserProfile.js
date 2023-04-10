@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { createPortal } from 'react-dom';
-import { IconContext } from 'react-icons';
-import { FiEdit2, FiArrowRight } from 'react-icons/fi';
 import {
   Backdrop,
   ModalBox,
@@ -10,15 +9,20 @@ import {
   EditText,
   EditBtn,
   EditCont,
+  EditIcon,
   LogoutBtn,
   LogoutText,
   LogoutTextThumb,
+  LogoutIcon,
 } from './UserProfile.styled';
 import { EditProfile } from './EditProfile';
+import { logoutUser } from '../../redux/auth/authOperations';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const UserProfile = ({ onClose }) => {
+const UserProfile = ({ onClose, id, avatar }) => {
+  const dispatch = useDispatch();
+
   const [isEditOpen, setIsEditOpen] = useState(false);
   const openEdit = () => setIsEditOpen(true);
   const closeEdit = () => setIsEditOpen(false);
@@ -45,28 +49,27 @@ const UserProfile = ({ onClose }) => {
         <Cont>
           <EditCont>
             <EditText>Edit profile</EditText>
-            <IconContext.Provider value={{ style: { width: 14, height: 14 } }}>
-              <EditBtn onClick={openEdit}>
-                <FiEdit2 />
-              </EditBtn>
-            </IconContext.Provider>
+            <EditBtn onClick={openEdit}>
+              <EditIcon />
+            </EditBtn>
           </EditCont>
-          <LogoutBtn>
+          <LogoutBtn
+            onClick={() => {
+              dispatch(logoutUser());
+              onClose();
+            }}
+          >
             <LogoutTextThumb>
               <LogoutText>Log out</LogoutText>
-              <IconContext.Provider
-                value={{ style: { width: 14, height: 14, color: '#fafafa' } }}
-              >
-                <span>
-                  <FiArrowRight />
-                </span>
-              </IconContext.Provider>
+              <LogoutIcon />
             </LogoutTextThumb>
           </LogoutBtn>
         </Cont>
       </ModalBox>
 
-      {isEditOpen && <EditProfile closeEdit={closeEdit} />}
+      {isEditOpen && (
+        <EditProfile closeEdit={closeEdit} id={id} avatar={avatar} />
+      )}
     </Backdrop>,
     modalRoot
   );

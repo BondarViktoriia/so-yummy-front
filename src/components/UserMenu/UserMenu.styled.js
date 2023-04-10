@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FiUser } from 'react-icons/fi';
 
 export const UserMenuBox = styled.div`
   display: flex;
@@ -9,15 +10,32 @@ export const UserMenuBox = styled.div`
   }
 `;
 
-export const AvatarCont = styled.div`
-  margin-right: 14px;
+export const Avatar = styled.div`
+  width: 44px;
+  height: 44px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
-export const Avatar = styled.span`
-  display: block;
+
+export const AvatarIcon = styled(FiUser)`
+  width: 24px;
+  height: 24px;
+  color: #c4c4c4;
+`;
+
+export const AvatarCont = styled.div`
+  display: flex;
+  margin-right: 14px;
+  justify-content: center;
+  align-items: center;
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid aqua;
+  background-color: ${props => props.theme.colors.userLogo};
+`;
+export const AvatarPlug = styled.span`
+  display: block;
 `;
 export const UserNameCont = styled.div``;
 export const UserName = styled.span`

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { FiUser } from 'react-icons/fi';
+import { FiUser, FiPlus, FiEdit2 } from 'react-icons/fi';
+import { IoCloseOutline } from 'react-icons/io5';
 
 export const EditProfileCont = styled.div`
   position: relative;
@@ -27,7 +28,16 @@ export const CloseBtn = styled.button`
   background-color: transparent;
 `;
 
-export const AddAvatarBtn = styled.button`
+export const CloseIcon = styled(IoCloseOutline)`
+  width: 24px;
+  height: 24px;
+  color: ${props => props.theme.colors.darkText};
+`;
+
+export const AddAvatarBtn = styled.label`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -36,6 +46,23 @@ export const AddAvatarBtn = styled.button`
   border-radius: 50%;
   width: 24px;
   height: 24px;
+  z-index: 145;
+  @media (min-width: 768px) {
+    bottom: -2px;
+    right: 10px;
+  }
+`;
+
+export const AvatarInput = styled.input`
+  visibility: hidden;
+  width: 0;
+  height: 0;
+`;
+
+export const AddIcon = styled(FiPlus)`
+  width: 24px;
+  height: 24px;
+  color: #fafafa;
 `;
 
 export const AvatarCont = styled.div`
@@ -45,16 +72,42 @@ export const AvatarCont = styled.div`
 `;
 
 export const AvatarThumb = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   width: 88px;
   height: 88px;
   border-radius: 50%;
   background-color: ${props => props.theme.colors.userLogo};
+  @media (min-width: 768px) {
+    width: 103px;
+    height: 103px;
+  }
 `;
 
-export const AvatarImg = styled.div``;
+export const AvatarImg = styled.div`
+  width: 88px;
+  height: 88px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  @media (min-width: 768px) {
+    width: 103px;
+    height: 103px;
+  }
+`;
+export const AvatarPlug = styled(FiUser)`
+  width: 40px;
+  height: 40px;
+  color: #c4c4c4;
+  @media (min-width: 768px) {
+    width: 47px;
+    height: 47px;
+  }
+`;
 
-// export const Form = styled.form``;
+export const Form = styled.form``;
 
 export const FormCont = styled.div`
   display: block;
@@ -89,6 +142,8 @@ export const Input = styled.input`
   height: 48px;
   font-size: 14px;
   line-height: 21px;
+  background-color: transparent;
+  color: ${props => props.theme.colors.darkText};
   &:focus {
     outline: none;
     border: 2px solid ${props => props.theme.colors.placeholder};
@@ -117,4 +172,14 @@ export const UserIcon = styled(FiUser)`
   left: 14px;
   width: 18px;
   height: 18px;
+  color: ${props => props.theme.colors.darkText};
+`;
+
+export const EdinIcon = styled(FiEdit2)`
+  position: absolute;
+  top: 18px;
+  right: 14px;
+  width: 17px;
+  height: 17px;
+  color: ${props => props.theme.colors.darkText};
 `;
