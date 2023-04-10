@@ -60,7 +60,7 @@ const ShoppingList = () => {
                           contactDeleter(_id);
                         }}
                       >
-                        <Cross />
+                        <IoCloseOutline />
                       </DeleteButton>
                     </RightWrapper>
                   </ListItem>
