@@ -1,3 +1,6 @@
+// import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect, useState } from 'react';
+// import { selectShoppingList } from '../../redux/shoppingList/shoppingListSelectors';
 import {
   Wrapper,
   ListTitle,
@@ -11,6 +14,7 @@ import {
   MeasureStyled,
   OriginalCheckbox,
 } from './RecipeList.styled';
+
 // import {
 //   addToShoppingList,
 //   removeFromShoppingList,
@@ -19,10 +23,21 @@ import {
 import RecipeImgPlaceholder from '../../image/recipe-page/recipe-img-tablet2x.png';
 
 const RecipeList = ({ ingreds }) => {
+  // const dispatch = useDispatch();
+  // const shoppingList = useSelector(selectShoppingList);
+
   const handleCheckboxChange = event => {
-    const { id, checked } = event.target;
-    console.log('handleCheckboxChange   id, checked:', id, checked);
+    console.log(event);
   };
+
+  // function getData() {
+  //   const data = dispatch(fetchShoppingList());
+  //   if (data) {
+  //     setShopList(data);
+  //   }
+  // }
+
+  // getData();
 
   return (
     <Wrapper>
