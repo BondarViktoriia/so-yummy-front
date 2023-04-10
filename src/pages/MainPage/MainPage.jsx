@@ -5,7 +5,7 @@ export const MainPage = () => {
     return (
         <> 
         <SectionHero/>    
-        < MainSection/>
+        <MainSection/>
         </>
     
         )

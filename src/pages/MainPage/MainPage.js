@@ -36,7 +36,7 @@ export const HeroTitle = styled.h1`
     font-size: 100px;
     line-height: 100px;    
     letter-spacing: -0.005em;
-    color: ##22252A;
+    color: #22252A;
     margin:0;
 ;
      span {
@@ -210,7 +210,8 @@ export const MainButton = styled(NavLink)`
    &.active {
       color: ${props => props.theme.colors.accentGreen}; 
     
-  }`
+  }}`
+
 export const Block = styled.div`
   position: absolute;
   bottom: 99px;
