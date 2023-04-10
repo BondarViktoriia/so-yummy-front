@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ErrorPage from './ErrorPage';
 import { RecipeDescription } from '../components/Recipe';
@@ -10,8 +10,8 @@ import Container from '../components/Container/Container';
 import {
   selectRecipe,
   selectIsLoading,
-  selectError,
-  selectOwnRecipe,
+  // selectError,
+  // selectOwnRecipe,
 } from '../redux/recipePage/recipeSelectors';
 import { fetchRecipe } from '../redux/recipePage/recipeOperations';
 import { Loader } from '../components/Loader/Loader';

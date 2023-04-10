@@ -11,10 +11,10 @@ import {
   MeasureStyled,
   OriginalCheckbox,
 } from './RecipeList.styled';
-import {
-  addToShoppingList,
-  removeFromShoppingList,
-} from '../../redux/recipePage/recipeOperations';
+// import {
+//   addToShoppingList,
+//   removeFromShoppingList,
+// } from '../../redux/recipePage/recipeOperations';
 
 import RecipeImgPlaceholder from '../../image/recipe-page/recipe-img-tablet2x.png';
 
