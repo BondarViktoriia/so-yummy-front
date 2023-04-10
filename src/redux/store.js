@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -11,25 +11,53 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { themeReducer } from './theme/themeSlice';
-
-const middleware = [
-  ...getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
-];
+import { shoppingListSlice } from './shoppingList/shoppingListSlice';
+import { recipeReducer } from './recipePage/recipeSlice';
+// import ownRecipesSlice from './ownRecipe/ownRecipesSlice';
+import { authReducer } from './auth/authSlice';
+import { ingredientsReducer } from './ingredients/ingredientsSlice';
 
 const persistConfig = {
   key: 'root',
+  storage: storage,
+  whitelist: ['token'],
+};
+
+const themePersistedConfig = {
+  key: 'theme',
   storage,
 };
 
+const ingredientsPersistConfig = {
+  key: 'ingredients',
+  storage,
+  whitelist: ['ingredients'],
+};
+
+const persistShoppingListConfig = {
+  key: 'shoppingList',
+  storage,
+};
+
+const rootReducer = combineReducers({
+  auth: persistReducer(persistConfig, authReducer),
+  theme: persistReducer(themePersistedConfig, themeReducer),
+  recipe: persistReducer(persistConfig, recipeReducer),
+  shoppingList: persistReducer(
+    persistShoppingListConfig,
+    shoppingListSlice.reducer
+  ),
+  ingredients: persistReducer(ingredientsPersistConfig, ingredientsReducer),
+});
+
 export const store = configureStore({
-  reducer: {
-    theme: persistReducer(persistConfig, themeReducer),
-  },
-  middleware,
+  reducer: rootReducer,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);
