@@ -5,12 +5,9 @@ import { getSearchRecipe } from '../services/api/ApiSearchRecipes';
 import { SearchInput } from '../components/Search/SearchInput';
 import { SearchList } from '../components/Search/SearchList';
 import Container from '../components/Container/Container';
-import Title from '../components/Title/Title'
-import {
-  SearchWrapper,
-  PictureSearch,
-  LookingP,
-} from './SearchPage.styled';
+import Title from '../components/Title/Title';
+import { Loader } from '../components/Loader/Loader.jsx';
+import { SearchWrapper, PictureSearch, LookingP } from './SearchPage.styled';
 import searchMob1x from '../image/search-page/search-mobile-1x.png';
 import searchMob2x from '../image/search-page/search-mobile-2x.png';
 import searchTablet1x from '../image/search-page/search-tablet-1x.png';
@@ -64,29 +61,30 @@ const SearchPage = () => {
         <Title>Search</Title>
       </Container>
       <SearchWrapper>
-          <SearchInput submitSearch={submitSearch} />
-          {results.length > 0 && <SearchList results={results} />}
-          {results.length === 0 && (
-            <PictureSearch>
-              <source
-                media="(min-width: 1440px)"
-                srcSet={`${searchDesktop1x}, ${searchDesktop2x} 2x`}
-              />
-              <source
-                media="(min-width: 768px)"
-                srcSet={`${searchTablet1x}, ${searchTablet2x} 2x`}
-              />
-              <img
-                src={searchMob1x}
-                srcSet={`${searchMob1x}, ${searchMob2x} 2x`}
-                alt="Ошибка"
-              />
-            </PictureSearch>
-          )}
-          {results.length === 0 && (
-            <LookingP>Looking for something else</LookingP>
-          )}
-        </SearchWrapper>
+        <SearchInput submitSearch={submitSearch} />
+        {results.length > 0 && <SearchList results={results} />}
+        <Loader visible={Boolean(isLoading)} />
+        {results.length === 0 && (
+          <PictureSearch>
+            <source
+              media="(min-width: 1440px)"
+              srcSet={`${searchDesktop1x}, ${searchDesktop2x} 2x`}
+            />
+            <source
+              media="(min-width: 768px)"
+              srcSet={`${searchTablet1x}, ${searchTablet2x} 2x`}
+            />
+            <img
+              src={searchMob1x}
+              srcSet={`${searchMob1x}, ${searchMob2x} 2x`}
+              alt="Ошибка"
+            />
+          </PictureSearch>
+        )}
+        {results.length === 0 && (
+          <LookingP>Looking for something else</LookingP>
+        )}
+      </SearchWrapper>
     </main>
   );
 };

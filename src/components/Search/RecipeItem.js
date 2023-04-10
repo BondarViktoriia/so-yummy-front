@@ -14,7 +14,7 @@ export const RecipeItem = ({ title, preview, id }) => {
     <ListItem>
       <LinkItem to={{ pathname: `/recipe/${id}` }} state={{ from: location }}>
         <ImgWrapper>
-          {preview && <ImgItem src={preview} alt={title} />}
+          {preview && <ImgItem src={preview} alt={title} loading="lazy"/>}
           <TitleWrapper>
             <ImgTitle color="#fff">{title}</ImgTitle>
           </TitleWrapper>
