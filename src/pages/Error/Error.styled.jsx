@@ -26,7 +26,8 @@ export const TextError = styled.div`
     line-height: 20px;
     letter-spacing: -0.02em;
     font-feature-settings: 'liga' off;
-    color: #000000;
+    color: ${props => props.theme.colors.regTextLight};
+
     margin-bottom: 8px;
 
     @media screen and (min-width: 768px) {
@@ -44,7 +45,7 @@ export const TextError = styled.div`
     text-align: center;
     letter-spacing: -0.02em;
     font-feature-settings: 'liga' off;
-    color: #000000;
+    color: ${props => props.theme.colors.regTextLight};
     opacity: 0.5;
 
     @media screen and (min-width: 768px) {
@@ -62,17 +63,16 @@ export const ImgCont = styled.div`
   width: 259px;
   height: 171px;
   margin: 0 auto;
- margin-top:100px;
+  margin-top: 100px;
 
   @media screen and (min-width: 768px) {
     width: 498px;
     height: 327px;
-
   }
 
   @media screen and (min-width: 1440px) {
     width: 498px;
     height: 331px;
-   margin-top:138px; 
+    margin-top: 138px;
   }
 `;
