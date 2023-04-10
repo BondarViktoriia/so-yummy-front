@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const SearchWrapper = styled.div`
   width: 375px;
   margin-top: 114px;
@@ -55,4 +54,3 @@ export const LookingP = styled.p`
     margin-bottom:200px;
   }
 `;
-

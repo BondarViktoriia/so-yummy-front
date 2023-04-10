@@ -1,18 +1,17 @@
 import { RecipeItem } from './RecipeItem';
-
+import {List} from './SearchList.styled'
 
 export const SearchList = ({ isLoading, results }) => {
   return (
-    <ul>
-      {results.map(({ description, _id, preview }) => (
+    <List>
+      {results.map(({ title, _id, preview }) => (
         <RecipeItem
           key={_id}
           id={_id}
-          description={description}
+          title={title}
           preview={preview}
         />
       ))}
-    </ul>
-
+    </List>
   );
 };

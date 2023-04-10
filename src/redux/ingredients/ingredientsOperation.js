@@ -22,6 +22,7 @@ export const getAllIngredients = createAsyncThunk(
     try {
       const data = await getAllIngredientsAPI();
       console.log('ingredients list', data.meals);
+  
       return data.meals;
     } catch (error) {
       console.log(error.message);

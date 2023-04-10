@@ -1,6 +1,4 @@
-
 import { SelectStyled, SelectWrapper, Label } from './Select.styled';
-
 
 export const SelectComponent = ({ onChange, options, value }) => {
   const defaultValue = (options, value) => {
@@ -8,10 +6,8 @@ export const SelectComponent = ({ onChange, options, value }) => {
   };
 
   return (
-
     <SelectWrapper>
       <Label htmlFor="select">Search by:</Label>
-
       <SelectStyled
         id="select"
         value={defaultValue(options, value)}
@@ -33,4 +29,3 @@ export const SelectComponent = ({ onChange, options, value }) => {
     </SelectWrapper>
   );
 };
-
