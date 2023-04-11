@@ -1,5 +1,6 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import { useDispatch } from 'react-redux';
 
 import { useMedia } from 'hooks/useMedia';
 
@@ -15,10 +16,14 @@ import {
   Wrapper,
 } from './RecipeItem.styled';
 
+import {deleteFromFavorite} from '../../redux/favorites/favoritesOperations'
+
 // DeleteButtonFav, RecipeButtonFav (це для сторінки з favorite)
 
 const RecipeItem = ({ recipe, page }) => {
   const { thumb, description, title, time } = recipe;
+  const dispatch = useDispatch();
+  const { recipeId } = useParams();
 
   const splitDescr = description.split('\n');
 
@@ -61,14 +66,14 @@ const RecipeItem = ({ recipe, page }) => {
       {/* // Кнопка видалити рецепт з favorite */}
 
       {page === 'favorite' && (
-        <DeleteButtonFav type="button">
+        <DeleteButtonFav type="button" onClick={()=> dispatch(deleteFromFavorite(recipeId))}>
           <RiDeleteBinLine size={iconSize()} />
         </DeleteButtonFav>
       )}
 
       {/* // Кнопка see recipe відображається на десктопі та на планшеті */}
 
-      {page === 'favorite' && !media.isMobileScreen && (
+      {page === 'favorite' && (
         <RecipeButtonFav type="button" onClick={handleSubmit}>
           See recipe
         </RecipeButtonFav>
