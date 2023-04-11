@@ -12,15 +12,10 @@ import {
   WrapForContent,
   TitleIngred,
   MeasureStyled,
-  OriginalCheckbox,
 } from './RecipeList.styled';
 
-import {
-  getShoppingList,
-  addToShoppingList,
-  deleteFromShoppingList,
-} from '../../redux/shoppingList/shoppingListOperations';
-
+import { getShoppingList } from '../../redux/shoppingList/shoppingListOperations';
+import { MyCheckbox } from './Checkbox';
 import RecipeImgPlaceholder from '../../image/recipe-page/recipe-img-tablet2x.png';
 
 const RecipeList = ({ ingreds }) => {
@@ -31,21 +26,6 @@ const RecipeList = ({ ingreds }) => {
   }, [dispatch]);
 
   const shoppingList = useSelector(selectShoppingList);
-
-  function checkItemInList(value) {
-    const isInList = shoppingList.find(item => item.ttl === value);
-    return isInList;
-  }
-
-  const handleCheckboxChange = (event, data) => {
-    const id = event.target.id;
-    const isInShopList = checkItemInList(event.target.value);
-    if (isInShopList) {
-      dispatch(deleteFromShoppingList(id));
-    } else {
-      dispatch(addToShoppingList(data));
-    }
-  };
 
   return (
     <Wrapper>
@@ -67,15 +47,10 @@ const RecipeList = ({ ingreds }) => {
               </WrapForContent>
               <WrapForContent>
                 <MeasureStyled>{measure ?? 'Unknown'}</MeasureStyled>
-                <OriginalCheckbox
-                  id={_id}
-                  value={ttl}
-                  type="checkbox"
-                  checked={checkItemInList(ttl)}
-                  onChange={event =>
-                    handleCheckboxChange(event, { ttl, thb, measure })
-                  }
-                ></OriginalCheckbox>
+                <MyCheckbox
+                  ingredient={{ _id, ttl, thb, measure }}
+                  currentShopList={shoppingList}
+                ></MyCheckbox>
               </WrapForContent>
             </ListItemStyled>
           );
