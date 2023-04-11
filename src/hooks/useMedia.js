@@ -26,7 +26,7 @@ export const useMedia = () => {
       setScreenType(type);
       setIsMobileScreen(size < TAB_SCREEN);
       setIsTabletScreen(size >= TAB_SCREEN && size < DESK_SCREEN);
-      setIsDesktopScreen(size > DESK_SCREEN);
+      setIsDesktopScreen(size >= DESK_SCREEN);
     }
   };
   useEffect(() => {
