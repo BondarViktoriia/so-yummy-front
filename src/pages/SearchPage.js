@@ -66,7 +66,7 @@ const SearchPage = () => {
         {/* <SearchList results={results} /> */}
         <SearchInput submitSearch={submitSearch} />
         {results.length > 0 && (
-          <PaginationComp recipes={results} itemsPerPage={3} page="search" />
+          <PaginationComp recipes={results} itemsPerPage={12} page="search" />
         )}
         <Loader visible={Boolean(isLoading)} />
         {results.length === 0 && (
