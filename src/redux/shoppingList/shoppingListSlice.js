@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   getShoppingList,
   deleteFromShoppingList,
+  addToShoppingList
 } from './shoppingListOperations';
 
 const initialState = {
@@ -35,6 +36,19 @@ export const shoppingListSlice = createSlice({
       state.shoppingList = action.payload.data.ingredients;
     },
     [deleteFromShoppingList.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
+    [addToShoppingList.pending](state) {
+      state.isLoading = true;
+    },
+    [addToShoppingList.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.shoppingList = action.payload.data.ingredients;
+    },
+    [addToShoppingList.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
     },

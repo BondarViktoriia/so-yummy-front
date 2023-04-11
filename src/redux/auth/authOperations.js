@@ -7,8 +7,10 @@ import { updateUserData } from '../../services/auth/auth';
 axios.defaults.baseURL = 'https://so-yummy-7n94.onrender.com/api';
 
 const setAuthToken = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3YmRjMGE4MzhmOGUyZTY4ZWI4OCIsImlhdCI6MTY4MTE3MTc5OSwiZXhwIjoxNjgxMjU0NTk5fQ.NhP9IAm10vQ-bjzZ0-CXT1vwjZmZUGV3ZODtV_tTQ6Q`;
 };
+
+setAuthToken();
 
 const clearAuthToken = () => {
   axios.defaults.headers.common.Authorization = '';
@@ -31,6 +33,7 @@ export const loginUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const res = await axios.post('/auth/signin', credentials);
+      console.log('res.data.token:', res.data.token);
       setAuthToken(res.data.token);
 
       return res.data;

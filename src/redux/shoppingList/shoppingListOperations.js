@@ -23,7 +23,19 @@ export const deleteFromShoppingList = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.delete(`shoppingList/${id}`);
+      console.log('response.data in deleteFromShoppingList:', response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
+export const addToShoppingList = createAsyncThunk(
+  'shoppingList/add',
+  async (data, thunkAPI) => {
+    try {
+      const response = await axios.post(`shoppingList`, data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

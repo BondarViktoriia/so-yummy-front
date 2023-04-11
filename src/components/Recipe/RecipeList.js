@@ -1,6 +1,6 @@
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect, useState } from 'react';
-// import { selectShoppingList } from '../../redux/shoppingList/shoppingListSelectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { selectShoppingList } from '../../redux/shoppingList/shoppingListSelectors';
 import {
   Wrapper,
   ListTitle,
@@ -15,29 +15,37 @@ import {
   OriginalCheckbox,
 } from './RecipeList.styled';
 
-// import {
-//   addToShoppingList,
-//   removeFromShoppingList,
-// } from '../../redux/recipePage/recipeOperations';
+import {
+  getShoppingList,
+  addToShoppingList,
+  deleteFromShoppingList,
+} from '../../redux/shoppingList/shoppingListOperations';
 
 import RecipeImgPlaceholder from '../../image/recipe-page/recipe-img-tablet2x.png';
 
 const RecipeList = ({ ingreds }) => {
-  // const dispatch = useDispatch();
-  // const shoppingList = useSelector(selectShoppingList);
+  const dispatch = useDispatch();
 
-  const handleCheckboxChange = event => {
-    console.log(event);
+  useEffect(() => {
+    dispatch(getShoppingList());
+  }, [dispatch]);
+
+  const shoppingList = useSelector(selectShoppingList);
+
+  function checkItemInList(value) {
+    const isInList = shoppingList.find(item => item.ttl === value);
+    return isInList;
+  }
+
+  const handleCheckboxChange = (event, data) => {
+    const id = event.target.id;
+    const isInShopList = checkItemInList(event.target.value);
+    if (isInShopList) {
+      dispatch(deleteFromShoppingList(id));
+    } else {
+      dispatch(addToShoppingList(data));
+    }
   };
-
-  // function getData() {
-  //   const data = dispatch(fetchShoppingList());
-  //   if (data) {
-  //     setShopList(data);
-  //   }
-  // }
-
-  // getData();
 
   return (
     <Wrapper>
@@ -61,10 +69,12 @@ const RecipeList = ({ ingreds }) => {
                 <MeasureStyled>{measure ?? 'Unknown'}</MeasureStyled>
                 <OriginalCheckbox
                   id={_id}
-                  value={_id}
+                  value={ttl}
                   type="checkbox"
-                  checked={true}
-                  onChange={handleCheckboxChange}
+                  checked={checkItemInList(ttl)}
+                  onChange={event =>
+                    handleCheckboxChange(event, { ttl, thb, measure })
+                  }
                 ></OriginalCheckbox>
               </WrapForContent>
             </ListItemStyled>
