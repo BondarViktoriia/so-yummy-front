@@ -83,7 +83,7 @@ export const getOwnRecipes = async (page, per_page) => {
       );
       return response.data;
     }
-    const response = await axios.get('/ownRecipes');
+    const response = await axios.post('/ownRecipes');
     return response.data;
   } catch (error) {
     console.log(error.message);
@@ -92,7 +92,7 @@ export const getOwnRecipes = async (page, per_page) => {
 
 export const addOwnRecipeApi = async body => {
   try {
-    const {data} = await axios.get('/ownRecipes', body);
+    const {data} = await axios.post('/ownRecipes', body);
     return data;
   } catch (error) {
     console.log(error.message);

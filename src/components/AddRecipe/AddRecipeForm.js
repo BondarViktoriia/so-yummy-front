@@ -198,6 +198,7 @@ const AddRecipeForm = () => {
     formData.append('picture', file);
     formData.append('ingredients', JSON.stringify(ingredientsList));
     console.log('formData', formData);
+
     dispatch(addOwnRecipeOperation(formData));
     resetForm();
   };
@@ -341,11 +342,11 @@ const AddRecipeForm = () => {
           <WrapPreparation>
             <TitlePreparation>Recipe Preparation</TitlePreparation>
             <TextAreaPreparation
-              name=""
-              id=""
-              // cols="30"
-              rows="7"
-              placeholder="Enter recipe"
+              name="recipe"
+        value={inputs.recipe}
+        placeholder="Enter recipe"
+        onChange={handleChange}
+
             ></TextAreaPreparation>
           </WrapPreparation>
         </MainWrapIngredients>
