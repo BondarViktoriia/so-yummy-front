@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import styled from 'styled-components';
 
-// import { useMedia } from 'hooks/useMedia';
+import { useMedia } from 'hooks/useMedia';
 // import { PaginationContainer, MyPaginate } from './Pagination.styled';
 
 import RecipesList from 'components/RecipeList/RecipesList';
@@ -22,21 +22,22 @@ const PaginationComp = ({ recipes, itemsPerPage, page, onDelete }) => {
     setItemOffset(newOffset);
   };
 
-  // const media = useMedia();
+  const media = useMedia();
 
-  // const rangeDisplay = () => {
-  //   if (media.isMobileScreen) {
-  //     return 3;
-  //   }
+  const rangeDisplay = () => {
+    if (media.isMobileScreen) {
+      return 3;
+    }
 
-  //   if (media.isTabletScreen) {
-  //     return 5;
-  //   }
+    if (media.isTabletScreen) {
+      return 5;
+    }
 
-  //   if (media.isDesktopScreen) {
-  //     return 6;
-  //   }
-  // };
+    if (media.isDesktopScreen) {
+      return 5;
+    }
+  };
+  // console.log(rangeDisplay());
 
   return (
     <>
@@ -52,7 +53,7 @@ const PaginationComp = ({ recipes, itemsPerPage, page, onDelete }) => {
 
       <MyPaginate
         onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={rangeDisplay()}
         pageCount={pageCount}
         renderOnZeroPageCount={null}
         previousLabel="<"
