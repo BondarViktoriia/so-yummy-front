@@ -23,7 +23,7 @@ import MainPage from '../pages/MainPage';
 import ErrorPage from '../pages/ErrorPage';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { PublicRoute } from '../routes/PublicRoute';
-// import { PrivateRoute } from '../routes/PrivateRoutes';
+import { PrivateRoute } from '../routes/PrivateRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -34,29 +34,52 @@ export const App = () => {
   return (
     <Theme themeValue={theme}>
       <Routes>
-        <Route path="/" element={<PublicRoute component={StartPage} />} />
+        <Route path="/" element={<PublicRoute component={<StartPage />} />} />
 
         <Route
           path="/register"
-          element={<PublicRoute component={RegistrationPage} />}
+          element={<PublicRoute component={<RegistrationPage />} />}
         />
         <Route
           path="/signin"
-          element={<PublicRoute component={SignInPage} />}
+          element={<PublicRoute component={<SignInPage />} />}
         />
 
         <Route path="/" element={<SharedLayout />}>
-          <Route path="/categories" element={<CategoriesPage />}>
+          <Route
+            path="/categories"
+            element={<PrivateRoute component={<CategoriesPage />} />}
+          >
             <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
-          <Route path="/add" element={<AddRecipe />} />
-          <Route path="/my" element={<MyRecipesPage />} />
-          <Route path="/favorite" element={<FavoritesPage />} />
-          <Route path="/shopping-list" element={<ShoppingList />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/recipe/:recipeId" element={<RecipePage />} />
-          <Route path="/error" element={<ErrorPage />} />
+          <Route
+            path="/add"
+            element={<PrivateRoute component={<AddRecipe />} />}
+          />
+          <Route
+            path="/my"
+            element={<PrivateRoute component={<MyRecipesPage />} />}
+          />
+          <Route
+            path="/favorite"
+            element={<PrivateRoute component={<FavoritesPage />} />}
+          />
+          <Route
+            path="/shopping-list"
+            element={<PrivateRoute component={<ShoppingList />} />}
+          />
+          <Route
+            path="/search"
+            element={<PrivateRoute component={<SearchPage />} />}
+          />
+          <Route
+            path="/main"
+            element={<PrivateRoute component={<MainPage />} />}
+          />
+          <Route
+            path="/recipe/:recipeId"
+            element={<PrivateRoute component={<RecipePage />} />}
+          />
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>

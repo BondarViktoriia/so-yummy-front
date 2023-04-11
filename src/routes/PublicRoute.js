@@ -8,5 +8,5 @@ export const PublicRoute = ({
   redirectTo = '/main',
 }) => {
   const token = useSelector(selectToken);
-  return token ? <Navigate to={redirectTo} /> : <Component />;
+  return token ? <Navigate to={redirectTo} /> : Component;
 };
