@@ -10,16 +10,16 @@ export const MyCheckbox = ({ ingredient, currentShopList }) => {
   const dispatch = useDispatch();
   const [checked, setChecked] = useState(false);
 
-  const { _id: id, ttl, thb, measure } = ingredient;
+  const { _id, ttl, thb, measure } = ingredient;
 
   useEffect(() => {
     const isInList = currentShopList.find(item => item.ttl === ttl);
-    setChecked(isInList);
+    setChecked(isInList ? isInList._id : false);
   }, [currentShopList, ttl]);
 
-  const handleCheckboxChange = (_, data) => {
+  const handleCheckboxChange = (event, data) => {
     if (checked) {
-      dispatch(deleteFromShoppingList(id)).then(() => setChecked(false));
+      dispatch(deleteFromShoppingList(checked)).then(() => setChecked(false));
     } else {
       dispatch(addToShoppingList(data)).then(() => setChecked(true));
     }
@@ -27,7 +27,7 @@ export const MyCheckbox = ({ ingredient, currentShopList }) => {
 
   return (
     <OriginalCheckbox
-      id={id}
+      id={_id}
       type="checkbox"
       checked={checked}
       onChange={event => handleCheckboxChange(event, { ttl, thb, measure })}

@@ -7,6 +7,7 @@ import {
   Thumb,
   ImageRecipe,
 } from './RecipePreparation.styled';
+import RecipeImgPlaceholder from '../../image/recipe-page/recipe-img-tablet2x.png';
 
 const RecipePreparation = ({ instructions, image }) => {
   const instructionsArray = instructions.split('\n');
@@ -34,7 +35,10 @@ const RecipePreparation = ({ instructions, image }) => {
       </div>
 
       <Thumb>
-        <ImageRecipe src={image} alt="cooked meal"></ImageRecipe>
+        <ImageRecipe
+          src={image ?? RecipeImgPlaceholder}
+          alt="cooked meal"
+        ></ImageRecipe>
       </Thumb>
     </Wrapper>
   );
