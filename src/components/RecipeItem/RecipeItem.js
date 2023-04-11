@@ -1,6 +1,5 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { RiDeleteBinLine } from 'react-icons/ri';
-import { useDispatch } from 'react-redux';
 
 import { useMedia } from 'hooks/useMedia';
 
@@ -15,8 +14,6 @@ import {
   RecipeText,
   Wrapper,
 } from './RecipeItem.styled';
-
-import {deleteFromFavorite} from '../../redux/favorites/favoritesOperations'
 
 // DeleteButtonFav, RecipeButtonFav (це для сторінки з favorite)
 
