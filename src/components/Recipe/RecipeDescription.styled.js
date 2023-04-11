@@ -87,7 +87,7 @@ export const Button = styled.button`
   cursor: pointer;
   @media only screen and (min-width: 768px) {
     font-size: 16px;
-    width: 278px;
+    max-width: 330px;
     margin-bottom: 60px;
     padding: 18px 44px;
     border: 2px solid ${props => props.theme.colors.accentGreen};
