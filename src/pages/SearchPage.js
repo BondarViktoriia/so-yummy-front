@@ -3,10 +3,10 @@ import { useSearchParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { getSearchRecipe } from '../services/api/ApiSearchRecipes';
 import { SearchInput } from '../components/Search/SearchInput';
-import { SearchList } from '../components/Search/SearchList';
+// import { SearchList } from '../components/Search/SearchList';
 import Container from '../components/Container/Container';
 import Title from '../components/Title/Title';
-import { Loader } from '../components/Loader/Loader.jsx';
+// import { Loader } from '../components/Loader/Loader.jsx';
 import { SearchWrapper, PictureSearch, LookingP } from './SearchPage.styled';
 import searchMob1x from '../image/search-page/search-mobile-1x.png';
 import searchMob2x from '../image/search-page/search-mobile-2x.png';
@@ -14,6 +14,8 @@ import searchTablet1x from '../image/search-page/search-tablet-1x.png';
 import searchTablet2x from '../image/search-page/search-tablet-2x.png';
 import searchDesktop1x from '../image/search-page/search-dekstop-1x.png';
 import searchDesktop2x from '../image/search-page/search-desktop-2x.png';
+
+import PaginationComp from 'components/Pagination/Pagination';
 
 const SearchPage = () => {
   // const location = useLocation();
@@ -66,9 +68,14 @@ const SearchPage = () => {
         <Title>Search</Title>
       </Container>
       <SearchWrapper>
+        {/* <SearchList results={results} /> */}
         <SearchInput submitSearch={submitSearch} />
-        {results.length > 0 && <SearchList results={results} />}
-        { isLoading && <Loader />}
+
+        {results.length > 0 && (
+          <PaginationComp recipes={results} itemsPerPage={12} page="search" />
+        )}
+        {/* <Loader visible={Boolean(isLoading)} /> */}
+
         {results.length === 0 && (
           <PictureSearch>
             <source

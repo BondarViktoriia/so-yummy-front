@@ -3,15 +3,15 @@ import { useEffect } from 'react';
 import Theme from '../Theme';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectTheme } from 'redux/theme/themeSelectors';
-import { selectIsRefreshing } from '../redux/auth/authSelectors';
-import { registrationUser } from '../redux/auth/authOperations';
+// import { selectIsRefreshing } from '../redux/auth/authSelectors';
+import { getCurrentUser } from '../redux/auth/authOperations';
 import CategoriesByName from '../components/Categories/CategoriesByName';
 import RecipePage from '../pages/RecipePage';
 
 import StartPage from '../pages/StartPage';
 import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
 import { SignInPage } from '../pages/SignInPage';
-import { RestrictedRoute } from '../components/RestrictedRoute/RestrictedRoute';
+// import { RestrictedRoute } from '../components/RestrictedRoute/RestrictedRoute';
 
 import CategoriesPage from '../pages/CategoriesPage';
 import AddRecipe from '../pages/AddRecipe';
@@ -22,29 +22,27 @@ import SearchPage from '../pages/SearchPage';
 import MainPage from '../pages/MainPage';
 import ErrorPage from '../pages/ErrorPage';
 import { SharedLayout } from './SharedLayout/SharedLayout';
+import { PublicRoute } from '../routes/PublicRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const userLoggedIn = useSelector(selectIsRefreshing);
   useEffect(() => {
-    dispatch(registrationUser());
+    dispatch(getCurrentUser());
   }, [dispatch]);
   const theme = useSelector(selectTheme);
-  return !userLoggedIn ? (
+  return (
     <Theme themeValue={theme}>
       <Routes>
-        <Route path="/" index element={<StartPage />} />
+        <Route path="/" element={<PublicRoute component={StartPage} />} />
 
         <Route
           path="/register"
-          element={
-            <RestrictedRoute
-              redirectTo="/main"
-              component={<RegistrationPage />}
-            />
-          }
+          element={<PublicRoute component={RegistrationPage} />}
         />
-        <Route path="/signin" element={<SignInPage />} />
+        <Route
+          path="/signin"
+          element={<PublicRoute component={SignInPage} />}
+        />
 
         <Route path="/" element={<SharedLayout />}>
           <Route path="/categories" element={<CategoriesPage />}>
@@ -62,7 +60,5 @@ export const App = () => {
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Theme>
-  ) : (
-    <div>.........</div>
   );
 };
