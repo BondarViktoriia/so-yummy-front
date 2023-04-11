@@ -7,6 +7,8 @@ import { SearchInput } from '../components/Search/SearchInput';
 import Container from '../components/Container/Container';
 import Title from '../components/Title/Title';
 import { Loader } from '../components/Loader/Loader.jsx';
+import { useSelector } from 'react-redux';
+import { selectToken } from '../redux/auth/authSelectors';
 import { SearchWrapper, PictureSearch, LookingP } from './SearchPage.styled';
 import searchMob1x from '../image/search-page/search-mobile-1x.png';
 import searchMob2x from '../image/search-page/search-mobile-2x.png';
@@ -25,6 +27,8 @@ const SearchPage = () => {
   const query = searchParams.get('query');
   const page = searchParams.get('page');
   const options = searchParams.get('options');
+  const token = useSelector(selectToken);
+  console.log(token)
 
   const submitSearch = queryParams => {
     if (queryParams.options === options && queryParams.query === query) {
@@ -48,11 +52,14 @@ const SearchPage = () => {
     if (!query || query.length === 0 || query === '') {
       return;
     }
+    if (!token){
+      return console.error('Error of authorization')
+    }
     async function fetchData() {
       try {
         setIsLoading(true);
-        const result = await getSearchRecipe(query, page, options);
-        if (result === 0 || !result) {
+        const result = await getSearchRecipe(query, page, options, token);
+        if (result === 0 || !result) { 
           console.log('Nothing found for your request :(');
           setIsLoading(false);
           return;
@@ -64,7 +71,7 @@ const SearchPage = () => {
       }
     }
     fetchData();
-  }, [options, page, query]);
+  }, [options, page, query, token]);
 
   return (
     <main>
