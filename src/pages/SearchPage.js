@@ -6,7 +6,7 @@ import { SearchInput } from '../components/Search/SearchInput';
 // import { SearchList } from '../components/Search/SearchList';
 import Container from '../components/Container/Container';
 import Title from '../components/Title/Title';
-import { Loader } from '../components/Loader/Loader.jsx';
+// import { Loader } from '../components/Loader/Loader.jsx';
 import { SearchWrapper, PictureSearch, LookingP } from './SearchPage.styled';
 import searchMob1x from '../image/search-page/search-mobile-1x.png';
 import searchMob2x from '../image/search-page/search-mobile-2x.png';
@@ -66,9 +66,9 @@ const SearchPage = () => {
         {/* <SearchList results={results} /> */}
         <SearchInput submitSearch={submitSearch} />
         {results.length > 0 && (
-          <PaginationComp recipes={results} itemsPerPage={3} page="search" />
+          <PaginationComp recipes={results} itemsPerPage={12} page="search" />
         )}
-        <Loader visible={Boolean(isLoading)} />
+        {/* <Loader visible={Boolean(isLoading)} /> */}
         {results.length === 0 && (
           <PictureSearch>
             <source
