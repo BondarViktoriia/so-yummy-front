@@ -26,8 +26,11 @@ const SearchPage = () => {
   const page = searchParams.get('page');
   const options = searchParams.get('options');
 
-  const submitSearch = ({ query, options }) => {
-    setSearchParams({ options: options, query: query, page: 1 });
+  const submitSearch = (queryParams) => {
+    if (queryParams.options === options && queryParams.query === query) {
+      return
+    }
+    setSearchParams({ options: queryParams.options, query: queryParams.query, page: 1 });
     setResults([]);
   };
 
@@ -47,9 +50,11 @@ const SearchPage = () => {
         const result = await getSearchRecipe(query, page, options);
         if (result === 0 || !result) {
           console.log('Nothing found for your request :(');
+          setIsLoading(false);
           return;
         }
         setResults([...result]);
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -65,10 +70,12 @@ const SearchPage = () => {
       <SearchWrapper>
         {/* <SearchList results={results} /> */}
         <SearchInput submitSearch={submitSearch} />
+
         {results.length > 0 && (
           <PaginationComp recipes={results} itemsPerPage={12} page="search" />
         )}
         {/* <Loader visible={Boolean(isLoading)} /> */}
+
         {results.length === 0 && (
           <PictureSearch>
             <source
