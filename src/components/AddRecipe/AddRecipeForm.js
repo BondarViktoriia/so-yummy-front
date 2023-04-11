@@ -1,7 +1,5 @@
 // import React, { useState } from 'react';
 import { IoCloseOutline } from 'react-icons/io5';
-
-// import { Counter } from './Counter/Counter';
 import {
   ImageBox,
   ImageInput,
@@ -10,31 +8,43 @@ import {
   Form,
   InputDescriptionWrap,
   InputDescription,
-  SelectDescription,
   TitleIngredients,
   WrapIngredients,
   InputIngredientsWrap,
   MainWrapIngredients,
-
   TitlePreparation,
   WrapPreparation,
   TextAreaPreparation,
   ButtonAdd,
   WrapButtonAdd,
   Description,
-  InputWrap,IngredientsTitle,IngredientsList,stylesIngredient,stylesUnit
+  InputWrap,
+  IngredientsTitle,
+  IngredientsList,
+  stylesIngredient,
+  stylesUnit,
+  SelecComponent
 } from './AddRecipeForm.styled';
 import addRecipe from '../../image/addRecipe.png';
 import { Counter } from '../AddRecipe/Counter';
 
-import store from "store";
+import store from 'store';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
-import {IngredientsItem,ValueInputWrapper,InputUnitValue,ButtonRemoveItem} from './AddRecipeForm.styled'
+import {
+  IngredientsItem,
+  ValueInputWrapper,
+  InputUnitValue,
+  ButtonRemoveItem,
+} from './AddRecipeForm.styled';
 import Select from 'react-select';
-import axios from 'axios'
-
+import axios from 'axios';
+import { addOwnRecipeOperation } from '../../redux/ownRecipe/ownRecipesOperation';
+import { stylesMeta } from './selectStyle'
+import { categoriesList } from '../../utilities/categoriesList';
+import { timeOptionsList } from '../../utilities/timeOptionsList';
+import { unitsOptionsList } from '../../utilities/unitsOptionsList';
 const init = {
   recipe: '',
   title: '',
@@ -46,45 +56,47 @@ const init = {
 
 const AddRecipeForm = () => {
   const dispatch = useDispatch();
-    const [inputs, setInputs] = useState(() => {
+  const [inputs, setInputs] = useState(() => {
     const inputs = store.get('userInputs');
     return inputs ? inputs : init;
-    });
-  console.log("inputs",inputs)
+  });
+  console.log('inputs', inputs);
 
-
-
-   const [userIngredients, setUserIngredients] = useState(() => {
+  const [userIngredients, setUserIngredients] = useState(() => {
     const ingredients = store.get('userIngredients');
     return ingredients ? ingredients : [];
-   });
-  const [ingredients,setIngredients]=useState([])
-    useEffect(() => {
+  });
+
+  const [ingredients, setIngredients] = useState([]);
+  useEffect(() => {
     store.set('userInputs', inputs);
     store.set('userIngredients', userIngredients);
   }, [inputs, userIngredients]);
 
+  const [file, setFile] = useState(null);
+  const [path, setPath] = useState('');
 
   useEffect(() => {
     const optionsIngredients = async () => {
       try {
-                const response = await axios.get(
+        const response = await axios.get(
           'https://so-yummy-7n94.onrender.com/api/ingredients/list'
-          );
-        console.log("response", response)
-         if (response) {
-         
+        );
+        console.log('response', response);
+        if (response) {
           setIngredients(response.data);
         }
       } catch (error) {
-         console.log(error.message)
+        console.log(error.message);
       }
-    }
-      optionsIngredients();
-  }, [dispatch])
-  
+    };
+    optionsIngredients();
+  }, [dispatch]);
 
-   const handleDecrement = () => {
+
+
+
+  const handleDecrement = () => {
     if (userIngredients.length <= 0) return;
     setUserIngredients(prev => [...prev.slice(0, prev.length - 1)]);
   };
@@ -96,14 +108,13 @@ const AddRecipeForm = () => {
     ]);
   };
 
-
-const ingredientsOptionsList = list => {
-  return list.map(({ ttl }) => ({
-    label: ttl,
-    value: ttl,
-  }));
+  const ingredientsOptionsList = list => {
+    return list.map(({ ttl }) => ({
+      label: ttl,
+      value: ttl,
+    }));
   };
-    const handleUserIngredient = (...args) => {
+  const handleUserIngredient = (...args) => {
     const [{ value }, { name: dirtyName }] = args;
     const [name, id] = dirtyName.split(' ');
 
@@ -115,7 +126,7 @@ const ingredientsOptionsList = list => {
       return [...prev];
     });
   };
-  
+
   const handleUnitValue = ({ currentTarget }) => {
     const { id, value, name } = currentTarget;
     setInputs(prev => ({
@@ -130,33 +141,89 @@ const ingredientsOptionsList = list => {
       return [...prev];
     });
   };
-  const unitsOptionsList = [
-  { value: 'tbs', label: 'tbs' },
-  { value: 'tsp', label: 'tsp' },
-  { value: 'kg', label: 'kg' },
-  { value: 'g', label: 'g' },
-  ];
-   const handleRemove = ({ currentTarget }) => {
+
+
+  const handleRemove = ({ currentTarget }) => {
     const newList = userIngredients.filter(el => el.id !== currentTarget.id);
     setUserIngredients(newList);
   };
 
-console.log("userIngredients",userIngredients)
-    const userIngredientsList = userIngredients.map(
-    ({ id, ttl,qty,unitValue }) => {
+  const handleFile = ({ currentTarget }) => {
+    const { files } = currentTarget;
+    const [file] = files;
+
+    if (!file || !file.type.includes('image')) {
+      setFile(null);
+      setPath('');
+      return;
+    }
+    setFile(file);
+    setPath(URL.createObjectURL(file));
+  };
+
+  const handleChange = ({ currentTarget }) => {
+    const { name, value } = currentTarget;
+    setInputs(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  const handleSelect = (...arg) => {
+    const [valueObj, nameObj] = arg;
+    const { value } = valueObj;
+    const { name } = nameObj;
+    setInputs(prev => ({ ...prev, [name]: value }));
+  };
+  const handleSubmit = e => {
+    e.preventDefault();
+    const formData = new FormData();
+    const { recipe, time, category, about, title } = inputs;
+    const ingredientsList = userIngredients.map(
+      ({ unitValue, ingredient, qty: unit }) => ({
+        ingredient,
+        qty: `${unitValue} ${unit}`,
+      })
+    );
+
+    if (!recipe || !time || !category || !about || !title) {
+      console.log('INVALID FORM DATA');
+      return;
+    }
+
+    formData.append('description', recipe);
+    formData.append('cookingTime', time);
+    formData.append('category', category);
+    formData.append('about', about);
+    formData.append('title', title);
+    formData.append('picture', file);
+    formData.append('ingredients', JSON.stringify(ingredientsList));
+    console.log('formData', formData);
+    dispatch(addOwnRecipeOperation(formData));
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setInputs(init);
+    setUserIngredients([]);
+    setFile(null);
+  };
+
+
+
+  const userIngredientsList = userIngredients.map(
+    ({ id, ttl, qty, unitValue }) => {
       return (
         <IngredientsItem key={id}>
           <Select
             styles={stylesIngredient}
             options={ingredientsOptionsList(ingredients)}
-            defaultValue={{  value: ttl }}
+            defaultValue={{ value: ttl }}
             placeholder=" "
             onChange={handleUserIngredient}
             name={`ttl ${id}`}
           />
-          <ValueInputWrapper >
+          <ValueInputWrapper>
             <InputUnitValue
-
               type="text"
               name="unitValue"
               onChange={handleUnitValue}
@@ -165,7 +232,7 @@ console.log("userIngredients",userIngredients)
               id={id}
             />
             <Select
-                  styles={stylesUnit}
+              styles={stylesUnit}
               options={unitsOptionsList}
               defaultValue={{ label: qty, value: qty }}
               placeholder=" "
@@ -175,18 +242,18 @@ console.log("userIngredients",userIngredients)
             />
           </ValueInputWrapper>
           <ButtonRemoveItem type="button" id={id} onClick={handleRemove}>
-           <IoCloseOutline/>
+            <IoCloseOutline />
           </ButtonRemoveItem>
         </IngredientsItem>
       );
     }
   );
-  const counter = userIngredients.length
+  const counter = userIngredients.length;
   return (
     <Wrap>
       <Title>Add recipe</Title>
-      <Form>
-        <Description>
+      <Form onSubmit={handleSubmit} enctype="multipart/form-data">
+        <Description path={path}>
           <ImageBox>
             <label htmlFor="file-input">
               <img src={addRecipe} alt="addRecipe" />
@@ -195,90 +262,81 @@ console.log("userIngredients",userIngredients)
               id="file-input"
               type="file"
               accept="image/png, image/jpeg"
+              onChange={handleFile}
             />
           </ImageBox>
           <InputWrap>
             <InputDescriptionWrap>
               <InputDescription
                 type="text"
-                name=""
-                id=""
+                name="title"
                 placeholder="Enter item title"
+                value={inputs.title}
+                onChange={handleChange}
               />
             </InputDescriptionWrap>
             <InputDescriptionWrap>
               <InputDescription
                 type="text"
-                name=""
-                id=""
+                name="about"
                 placeholder="Enter about recipe"
+                value={inputs.about}
+                onChange={handleChange}
               />
             </InputDescriptionWrap>
             <InputDescriptionWrap>
-              <InputDescription
-                type="text"
-                name=""
-                id=""
-                placeholder="Category"
-                disabled
-              />
-              <SelectDescription name="categories" id="categories">
-                <option value="Breakfast">Breakfast</option>
-                <option value="Beef">Beef</option>
-                <option value="Dessert">Dessert</option>
-                <option value="Goat">Goat</option>
-                <option value="Lamb">Lamb</option>
-                <option value="Miscellaneous">Miscellaneous</option>
-              </SelectDescription>
+                                   <SelecComponent>
+            Categories
+            <Select
+              styles={stylesMeta}
+              options={categoriesList}
+              defaultValue={{ label: 'Breakfast', value: 'Breakfast' }}
+              placeholder=" "
+              onChange={handleSelect}
+              name="category"
+            />
+          </SelecComponent>
             </InputDescriptionWrap>
             <InputDescriptionWrap>
-              <InputDescription
-                type="text"
-                name=""
-                id="cooking-time"
-                placeholder="Cooking time"
-                disabled
-              />
-              <SelectDescription name="cooking-time" id="cooking-time">
-                <option value="">40 min</option>
-                <option value="">30 min</option>
-                <option value="">20 min</option>
-                <option value="">15 min</option>
-                <option value="">10 min</option>
-                <option value="">5 min</option>
-              </SelectDescription>
+                                    <SelecComponent
+            hiddenLabel
+            fullWidth
+            size="normal"
+            variant="standard"
+            placeholder="Time"
+            name="time"
+            value={inputs.time}
+            readOnly
+            autoComplete="off"
+          >
+            Cooking time
+            <Select
+              styles={stylesMeta}
+              options={timeOptionsList()}
+              defaultValue={timeOptionsList()[2]}
+              placeholder=" "
+              onChange={handleSelect}
+              name="time"
+            />
+          </SelecComponent>
             </InputDescriptionWrap>
           </InputWrap>
         </Description>
         <MainWrapIngredients>
           <WrapIngredients>
             <TitleIngredients>Ingredients</TitleIngredients>
-
           </WrapIngredients>
 
           <InputIngredientsWrap>
-                  <IngredientsTitle>
-        <Counter
-          counter={counter}
-          handleDecrement={handleDecrement}
-          handleIncrement={handleIncrement}
-        />
-      </IngredientsTitle>
-      <IngredientsList>{userIngredientsList}</IngredientsList>
+            <IngredientsTitle>
+              <Counter
+                counter={counter}
+                handleDecrement={handleDecrement}
+                handleIncrement={handleIncrement}
+              />
+            </IngredientsTitle>
+            <IngredientsList>{userIngredientsList}</IngredientsList>
           </InputIngredientsWrap>
-          {/* <InputIngredientsWrap>
-            <div>
-              <InputIngredients type="text" name="" id="" placeholder="" />
-              <SelectIngredients name="ingredients" id="ingredients">
-                <option value="Beef">tbs</option>
-                <option value="Breakfast">tsp</option>
-                <option value="Dessert">kg</option>
-                <option value="Goat">g</option>
-              </SelectIngredients>
-                          <IoCloseOutline size={18} />
-
-            </div>
-          </InputIngredientsWrap> */}
 
           <WrapPreparation>
             <TitlePreparation>Recipe Preparation</TitlePreparation>
