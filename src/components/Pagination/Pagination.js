@@ -20,6 +20,7 @@ const PaginationComp = ({ recipes, itemsPerPage, page, onDelete }) => {
   const handlePageClick = event => {
     const newOffset = (event.selected * itemsPerPage) % recipes.length;
     setItemOffset(newOffset);
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   const media = useMedia();
@@ -85,9 +86,14 @@ const MyPaginate = styled(ReactPaginate).attrs({
   border-radius: 26px;
   max-width: 275px;
   margin: 0 auto;
+  margin-bottom: 100px;
   background: ${p => p.theme.colors.background};
   @media screen and (min-width: 768px) {
     max-width: 436px;
+    margin-bottom: 200px;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 100px;
   }
   li {
     margin-top: 12px;
@@ -146,9 +152,9 @@ const MyPaginate = styled(ReactPaginate).attrs({
   li.disabled a {
     cursor: not-allowed;
   }
-  @media screen and (min-width: 768px) {
-    margin-top: 14px;
-    margin-bottom: 14px;
+  // @media screen and (min-width: 768px) {
+  //   margin-top: 14px;
+  //   margin-bottom: 14px;
   }
   //   @media screen and (min-width: 1440px) {
   //     padding: 14px 24px;
