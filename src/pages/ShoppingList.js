@@ -322,6 +322,9 @@ const EmptyList = styled.h2`
   background-color: ${props => props.theme.colors.logoLight};
   border-radius: 20px;
 
+  margin-bottom: 100px;
+  margin-top: 100px;
+
   @media (min-width: 768px) {
     padding-top: 72px;
     padding-bottom: 72px;
@@ -331,10 +334,16 @@ const EmptyList = styled.h2`
     font-size: 32px;
 
     border-radius: 30px;
+
+    margin-bottom: 200px;
+    margin-top: 200px;
   }
 
   @media (min-width: 1440px) {
     border-radius: 40px;
+
+    margin-bottom: 195px;
+    margin-top: 195px;
   }
 `;
 
