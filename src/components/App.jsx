@@ -23,6 +23,7 @@ import MainPage from '../pages/MainPage';
 import ErrorPage from '../pages/ErrorPage';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { PublicRoute } from '../routes/PublicRoute';
+// import { PrivateRoute } from '../routes/PrivateRoutes';
 
 export const App = () => {
   const dispatch = useDispatch();
