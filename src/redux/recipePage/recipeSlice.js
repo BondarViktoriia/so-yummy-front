@@ -28,6 +28,11 @@ const recipeSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.recipe = action.payload[0];
+      if (action.payload[0].owner) {
+        state.ownRecipe = true;
+      } else {
+        state.ownRecipe = false;
+      }
     },
     [fetchRecipe.rejected]: handleRejected,
   },
