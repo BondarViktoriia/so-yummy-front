@@ -16,7 +16,6 @@ export const EditProfileCont = styled.div`
     width: 500px;
   }
 `;
-
 export const CloseBtnCont = styled.div`
   position: absolute;
   top: 18px;
@@ -33,59 +32,11 @@ export const CloseIcon = styled(IoCloseOutline)`
   height: 24px;
   color: ${props => props.theme.colors.darkText};
 `;
-
-export const AddAvatarBtn = styled.label`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  border: none;
-  background-color: ${props => props.theme.colors.accentGreen};
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  z-index: 145;
-  @media (min-width: 768px) {
-    bottom: -2px;
-    right: 10px;
-  }
-`;
-
-export const AvatarInput = styled.input`
-  visibility: hidden;
-  width: 0;
-  height: 0;
-`;
-
-export const AddIcon = styled(FiPlus)`
-  width: 24px;
-  height: 24px;
-  color: #fafafa;
-`;
-
 export const AvatarCont = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 54px;
 `;
-
-export const AvatarThumb = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  background-color: ${props => props.theme.colors.userLogo};
-  @media (min-width: 768px) {
-    width: 103px;
-    height: 103px;
-  }
-`;
-
 export const AvatarImg = styled.div`
   width: 88px;
   height: 88px;
@@ -107,33 +58,60 @@ export const AvatarPlug = styled(FiUser)`
   }
 `;
 
-export const Form = styled.form``;
-
-export const FormCont = styled.div`
-  display: block;
-`;
-
-export const SubmitBtn = styled.button`
-  width: 100%;
-  padding-top: 14px;
-  padding-bottom: 14px;
+export const AddAvatarBtn = styled.label`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: none;
   background-color: ${props => props.theme.colors.accentGreen};
-  border-radius: 6px;
-  border-color: transparent;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  z-index: 145;
+  @media (min-width: 768px) {
+    bottom: -2px;
+    right: 10px;
+  }
 `;
 
-export const BtnText = styled.span`
-  color: ${props => props.theme.colors.footerText};
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
+export const AddIcon = styled(FiPlus)`
+  width: 24px;
+  height: 24px;
+  color: #fafafa;
+`;
+export const AvatarInput = styled.input`
+  visibility: hidden;
+  width: 0;
+  height: 0;
 `;
 
-export const InputCont = styled.div`
+export const AvatarThumb = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background-color: ${props => props.theme.colors.userLogo};
+  @media (min-width: 768px) {
+    width: 103px;
+    height: 103px;
+  }
+`;
+
+export const InputCont = styled.label`
+  display: block;
   position: relative;
   margin-bottom: 24px;
 `;
 
+export const FormCont = styled.div`
+  display: block;
+`;
 export const Input = styled.input`
   padding: 8px 8px 8px 36px;
   border: 1px solid ${props => props.theme.colors.placeholder};
@@ -182,4 +160,20 @@ export const EdinIcon = styled(FiEdit2)`
   width: 17px;
   height: 17px;
   color: ${props => props.theme.colors.darkText};
+`;
+
+export const SubmitBtn = styled.button`
+  width: 100%;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  background-color: ${props => props.theme.colors.accentGreen};
+  border-radius: 6px;
+  border-color: transparent;
+`;
+
+export const BtnText = styled.span`
+  color: ${props => props.theme.colors.footerText};
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
 `;

@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { updateUser } from '../../redux/auth/authOperations';
+import { selectUser } from '../../redux/auth/authSelectors';
 
 import {
   CloseBtn,
@@ -21,13 +22,14 @@ import {
   InputCont,
   UserIcon,
   EdinIcon,
-  Form,
   AvatarInput,
 } from './EditProfile.styled';
 
 export const EditProfile = ({ closeEdit, id, name, avatar }) => {
-  const [image, setImage] = useState(avatar);
+  const currentUser = useSelector(selectUser);
+  const [image, setImage] = useState(null);
   const [username, setUsername] = useState(name);
+  const [path, setPath] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
     window.addEventListener('keydown', handleEsc);
@@ -41,30 +43,35 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
     }
   };
 
-  const changeAvatar = e => {
-    if (e.target.files[0]) {
-      const path = window.URL.createObjectURL(e.target.files[0]);
-      setImage(path);
-      console.log(path);
-      console.log(e.target.files[0]);
+  const changeAvatar = ({ currentTarget }) => {
+    const { files } = currentTarget;
+    const [file] = files;
+
+    if (!file || !file.type.includes('image')) {
+      setImage(null);
+      setPath('');
+      return;
     }
+    setImage(file);
+    setPath(URL.createObjectURL(file));
   };
+
   const changeName = e => {
     setUsername(e.target.value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(e.target.elements[0].files[0]);
-    const file = e.target.files[0];
-    const formData = new FormData();
-    if (file) {
-      formData.append('avatar', file);
-    }
-    if (username) {
-      formData.append('name', username);
-    }
-    dispatch(updateUser(formData));
+    console.log(currentUser);
+    // const formData = new FormData();
+    // if (image) {
+    //   formData.append('avatar', image);
+    // }
+    // if (username) {
+    //   formData.append('name', username);
+    // }
+    // console.log(formData);
+    // dispatch(updateUser(formData));
   };
 
   return (
@@ -74,18 +81,17 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
           <CloseIcon />
         </CloseBtn>
       </CloseBtnCont>
-      <Form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <AvatarCont>
           <AvatarThumb>
             {image ? (
-              <AvatarImg style={{ backgroundImage: `${avatar}` }} />
+              <AvatarImg style={{ backgroundImage: `${path}` }} />
             ) : (
               <AvatarPlug />
             )}
-            <AddAvatarBtn htmlFor="file-input">
+            <AddAvatarBtn>
               <AddIcon />
               <AvatarInput
-                id="file-input"
                 type="file"
                 accept="image/*"
                 onChange={changeAvatar}
@@ -96,14 +102,14 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
         <FormCont>
           <InputCont>
             <UserIcon />
-            <Input value={username} onChange={changeName} />
+            <Input onChange={changeName} />
             <EdinIcon />
           </InputCont>
           <SubmitBtn type="submit">
             <BtnText>Save changes</BtnText>
           </SubmitBtn>
         </FormCont>
-      </Form>
+      </form>
     </EditProfileCont>
   );
 };

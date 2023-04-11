@@ -78,9 +78,11 @@ export const updateUser = createAsyncThunk(
   'auth/update',
   async (credentials, { rejectWithValue }) => {
     try {
+      console.log('прийшло', credentials);
       const data = await updateUserData(credentials);
       return data;
     } catch (error) {
+      console.log('помилка', credentials);
       return rejectWithValue(error.message);
     }
   }
