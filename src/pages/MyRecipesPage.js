@@ -31,7 +31,7 @@ const MyRecipesPage = () => {
           <RecipesList
             recipes={recipes.recipes}
             page="my"
-            onDeleteOwnRecipe={removeOwnRecipe}
+            onDelete={removeOwnRecipe}
           />
         )}
         {recipes.recipes.length === 0 && (
