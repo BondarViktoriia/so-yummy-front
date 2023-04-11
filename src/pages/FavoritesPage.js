@@ -1,12 +1,19 @@
-import { useEffect, useState } from 'react';
-import { getFavorite } from '../services/api/apiRecipe';
-// import Favorite from '../components/Favorites';
+
+import {useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import {getFavorites} from '../redux/favorites/favoritesOperations'
+import Favorite from '../components/Favorites';
+import Title from '../components/Title/Title'
+
 import Container from '../components/Container/Container';
+import {EmptyList} from '../components/Favorites/Favorotes.styled'
+import {selectFavorites, selectError, selectIsLoading} from '../redux/favorites/favoritesSelectors'
 
 import PaginationComp from 'components/Pagination/Pagination';
 
 const recipesTest = [
   {
+
     _id: '640cd5ac2d9fecf12e8897fc',
     title: 'Spaghetti Bolognese',
     description:
@@ -59,11 +66,21 @@ const FavoritesPage = () => {
   });
 
   return (
-    <Container>
-      <PaginationComp recipes={recipesTest} itemsPerPage={2} page="favorite" />
-      {/* <Favorite recipes={recipesTest} page="favorite" /> */}
+
+
     </Container>
+          <Container>
+          <Title>Favorites</Title>
+                <PaginationComp recipes={recipesTest} itemsPerPage={2} page="favorite" />
+      {/* <Favorite recipes={recipesTest} page="favorite" /> */}
+          {/* {favorites.length > 0 && <Favorite recipes={favorites} page="favorite"/>} */}
+          {favorites.length === 0 && !isLoading && !error && (<EmptyList>The list is empty</EmptyList>)}
+      </Container>  
   );
+
+ 
+
+
 };
 
 export default FavoritesPage;

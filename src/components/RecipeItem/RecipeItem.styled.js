@@ -5,6 +5,7 @@ export const Item = styled.li`
   display: flex;
   gap: 15px;
   padding: 15px;
+  border-radius: 8px;
   background: ${p => p.theme.colors.listItemBcg};
   @media (min-width: 768px) {
     gap: 24px;
@@ -90,8 +91,7 @@ export const RecipeText = styled.p`
 export const DeleteButtonFav = styled.button`
   position: absolute;
   cursor: pointer;
-  bottom: 14px;
-  right: 14px;
+  right: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
