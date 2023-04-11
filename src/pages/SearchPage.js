@@ -4,7 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { getSearchRecipe } from '../services/api/ApiSearchRecipes';
 import { SearchInput } from '../components/Search/SearchInput';
 import { SearchList } from '../components/Search/SearchList';
-import { SearchWrapper, Title, PictureSearch, LookingP } from './SearchPage.styled';
+import Container from '../components/Container/Container';
+import Title from '../components/Title/Title';
+import { Loader } from '../components/Loader/Loader.jsx';
+import { SearchWrapper, PictureSearch, LookingP } from './SearchPage.styled';
 import searchMob1x from '../image/search-page/search-mobile-1x.png';
 import searchMob2x from '../image/search-page/search-mobile-2x.png';
 import searchTablet1x from '../image/search-page/search-tablet-1x.png';
@@ -54,10 +57,13 @@ const SearchPage = () => {
 
   return (
     <main>
-      <SearchWrapper>
+      <Container>
         <Title>Search</Title>
+      </Container>
+      <SearchWrapper>
         <SearchInput submitSearch={submitSearch} />
         {results.length > 0 && <SearchList results={results} />}
+        <Loader visible={Boolean(isLoading)} />
         {results.length === 0 && (
           <PictureSearch>
             <source
@@ -75,7 +81,9 @@ const SearchPage = () => {
             />
           </PictureSearch>
         )}
-        {results.length === 0 && <LookingP>Looking for something else</LookingP>}
+        {results.length === 0 && (
+          <LookingP>Looking for something else</LookingP>
+        )}
       </SearchWrapper>
     </main>
   );

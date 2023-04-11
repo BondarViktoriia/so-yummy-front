@@ -30,6 +30,13 @@ const lightTheme = {
     inputError: '#E74A3B',
     deleteIcon: '#EBF3D4',
     placeholder: '#C4C4C4',
+
+    inputSearchBorder: '1px solid #F0F0F0',
+    inputSearchBackground: '#FAFAFA',
+    menuIsSelectedBG: 'transparent',
+    menuIsFocusedBG: 'transparent',
+    menuIsActive: '#8BAA36',
+    selectMenuBG: '#D9D9D9',
   },
 };
 
@@ -63,6 +70,15 @@ const darkTheme = {
     inputError: '#E74A3B',
     deleteIcon: '#1E1F28',
     placeholder: '#C4C4C4',
+
+    inputSearchBorder: 'border: 1px solid rgba(250, 250, 250, 0.5)',
+    inputSearchBackground: 'transparent',
+    menuIsSelectedBG: '#8BAA36',
+    menuIsFocusedBG: '#8BAA36',
+    menuIsActive: 'transparent',
+    selectMenuBG: 'transparent',
+
+    
   },
 };
 
