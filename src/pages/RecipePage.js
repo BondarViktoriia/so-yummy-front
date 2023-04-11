@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ErrorPage from './ErrorPage';
 import { RecipeDescription } from '../components/Recipe';
@@ -10,32 +10,35 @@ import Container from '../components/Container/Container';
 import {
   selectRecipe,
   selectIsLoading,
-  // selectError,
+  selectError,
   // selectOwnRecipe,
 } from '../redux/recipePage/recipeSelectors';
-import {
-  fetchRecipe,
-  fetchShoppingList,
-} from '../redux/recipePage/recipeOperations';
+import { fetchRecipe } from '../redux/recipePage/recipeOperations';
 import { Loader } from '../components/Loader/Loader';
 
 const RecipePage = () => {
   const dispatch = useDispatch();
   const currentRecipe = useSelector(selectRecipe);
-  console.log('RecipePage   currentRecipe:', currentRecipe);
+
   const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const [fetched, setFetched] = useState(false);
+
   // const ownRecipe = useSelector(selectOwnRecipe);
 
   const { recipeId } = useParams();
 
   useEffect(() => {
-    dispatch(fetchRecipe(recipeId));
-    dispatch(fetchShoppingList());
+    dispatch(fetchRecipe(recipeId)).then(setFetched(true));
   }, [dispatch, recipeId]);
+
+  const showError = error || !currentRecipe;
 
   return (
     <Container>
-      {currentRecipe !== null && !isLoading ? (
+      {isLoading && <Loader></Loader>}
+      {showError && <ErrorPage></ErrorPage>}
+      {fetched && !isLoading && currentRecipe && !showError && (
         <>
           <RecipeDescription
             title={currentRecipe.title}
@@ -48,10 +51,7 @@ const RecipePage = () => {
             image={currentRecipe.thumb}
           ></RecipePreparation>
         </>
-      ) : (
-        <ErrorPage></ErrorPage>
       )}
-      {isLoading && <Loader></Loader>}
     </Container>
   );
 };
