@@ -3,6 +3,7 @@ import {
   getOwnRecipesOperation,
   deleteOwnRecipeOperation,
   addOwnRecipeOperation,
+  getCategoryListOperation
 } from '../ownRecipe/ownRecipesOperation';
 
 const pending = state => {
@@ -17,6 +18,8 @@ const initialState = {
   ownRecipes: { recipes: [], total: 0 },
   favorites: { recipes: [], total: 0 },
   singleRecipe: null,
+  categoryList: [],
+  isCategoryFetching: false,
 };
 
 export const ownRecipesSlice = createSlice({
@@ -38,6 +41,10 @@ export const ownRecipesSlice = createSlice({
           recipe => recipe.idMeal !== payload.id
         );
         state.isOwnRecipesFetching = false;
+      })
+       .addCase(getCategoryListOperation.fulfilled, (state, { payload }) => {
+        state.categoryList = payload;
+        state.isCategoryFetching = false;
       })
 
       .addCase(getOwnRecipesOperation.pending, pending)

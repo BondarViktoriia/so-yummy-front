@@ -20,10 +20,9 @@ import {deleteFromFavorite} from '../../redux/favorites/favoritesOperations'
 
 // DeleteButtonFav, RecipeButtonFav (це для сторінки з favorite)
 
-const RecipeItem = ({ recipe, page }) => {
-  const { thumb, description, title, time } = recipe;
-  const dispatch = useDispatch();
-  const { recipeId } = useParams();
+
+const RecipeItem = ({ recipe, page, onDelete }) => {
+  const { _id, thumb, description, title, time } = recipe;
 
   const splitDescr = description.split('\n');
 
@@ -46,7 +45,7 @@ const RecipeItem = ({ recipe, page }) => {
   };
 
   const handleSubmit = () => {
-    navigate(`/recipe/${recipe._id}`);
+    navigate(`/recipe/${_id}`);
   };
 
   return (
@@ -66,7 +65,7 @@ const RecipeItem = ({ recipe, page }) => {
       {/* // Кнопка видалити рецепт з favorite */}
 
       {page === 'favorite' && (
-        <DeleteButtonFav type="button" onClick={()=> dispatch(deleteFromFavorite(recipeId))}>
+        <DeleteButtonFav type="button" onClick={() => onDelete(_id)}>
           <RiDeleteBinLine size={iconSize()} />
         </DeleteButtonFav>
       )}
@@ -80,7 +79,7 @@ const RecipeItem = ({ recipe, page }) => {
       )}
       {page === 'my' && (
         <>
-          <DeleteButtonMy type="button">
+          <DeleteButtonMy type="button" onClick={() => onDelete(_id)}>
             <RiDeleteBinLine size={iconSize()} />
           </DeleteButtonMy>
           <RecipeButtonMy type="button" onClick={handleSubmit}>

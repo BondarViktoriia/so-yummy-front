@@ -596,3 +596,19 @@ export const stylesUnit = {
     margin: 0,
   }),
 };
+
+export const SelecComponent = styled.p`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid gray;
+  color: rgba(0, 0, 0, 0.5);
+
+  /* padding-bottom: 19px;
+  width: 343px;
+  height: 43px;
+  border: none;
+  border-bottom: 1px solid grey;
+  background: transparent; */
+`;
