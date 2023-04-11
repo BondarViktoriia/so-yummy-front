@@ -37,6 +37,9 @@ const lightTheme = {
     menuIsFocusedBG: 'transparent',
     menuIsActive: '#8BAA36',
     selectMenuBG: '#D9D9D9',
+
+    paginationShadow: '0px 4px 4px rgba(135, 135, 135, 0.2)',
+    arrowColor: 'rgba(169, 169, 169, 0.73)',
   },
 };
 
@@ -78,7 +81,7 @@ const darkTheme = {
     menuIsActive: 'transparent',
     selectMenuBG: 'transparent',
 
-    
+    paginationShadow: '0px 4px 4px rgba(31, 30, 30, 0.2)',
   },
 };
 
