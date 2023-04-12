@@ -14,7 +14,7 @@ export const getRecipeById = async id => {
 
 export const fetchAllCategories = async () => {
   try {
-    const { data } = await axios.get('/recipes/category-list');
+    const { data } = await axios.get('/recipes/recipe/category-list');
     return data;
   } catch (error) {
     console.log(error.message);
@@ -29,7 +29,7 @@ export const getRecipeByCategory = async (
 ) => {
   try {
     const { data } = await axios.get(
-      `/recipes/recipe/${categoryName}?limit=${limit}&page=${page}`
+      `/recipes/recipe/categories/${categoryName}?limit=${limit}&page=${page}`
     );
     return data;
   } catch (error) {
