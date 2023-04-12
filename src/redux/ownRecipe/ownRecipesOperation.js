@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import {
   getOwnRecipes,
   deleteOwnRecipe,
   addOwnRecipeApi,
-  getAllCategoriesApi
+  getAllCategoriesApi,
 } from 'services/api/apiRecipe';
 
 export const token = {
@@ -48,6 +48,7 @@ export const addOwnRecipeOperation = createAsyncThunk(
     token.set(persistedAccessToken);
     try {
       const data = await addOwnRecipeApi(body);
+      console.log('data.status:', data.status);
       console.log('own recipe successfully added', data);
       return data;
     } catch (error) {

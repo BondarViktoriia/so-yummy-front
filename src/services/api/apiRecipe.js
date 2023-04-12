@@ -91,8 +91,10 @@ export const getOwnRecipes = async (page, per_page) => {
 };
 
 export const addOwnRecipeApi = async body => {
+  console.log('addOwnRecipeApi   body:', body);
   try {
     const { data } = await axios.post('/ownRecipes', body);
+
     return data;
   } catch (error) {
     console.log(error.message);

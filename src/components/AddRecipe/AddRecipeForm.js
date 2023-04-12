@@ -22,8 +22,6 @@ import {
   stylesUnit,
   SelecComponent,
   TitlePreparation,
-
-  
 } from './AddRecipeForm.styled';
 import addRecipe from '../../image/addRecipe.png';
 import { Counter } from '../AddRecipe/Counter';
@@ -41,10 +39,11 @@ import {
 import Select from 'react-select';
 import axios from 'axios';
 // import { addOwnRecipeOperation } from '../../redux/ownRecipe/ownRecipesOperation';
-import { stylesMeta } from './selectStyle'
+import { stylesMeta } from './selectStyle';
 import { categoriesList } from '../../utilities/categoriesList';
 import { timeOptionsList } from '../../utilities/timeOptionsList';
 import { unitsOptionsList } from '../../utilities/unitsOptionsList';
+// import Title from '../Title/Title';
 
 const init = {
   recipe: '',
@@ -61,7 +60,6 @@ const AddRecipeForm = () => {
     const inputs = store.get('userInputs');
     return inputs ? inputs : init;
   });
-  console.log('inputs', inputs);
 
   const [userIngredients, setUserIngredients] = useState(() => {
     const ingredients = store.get('userIngredients');
@@ -69,22 +67,21 @@ const AddRecipeForm = () => {
   });
 
   const [ingredients, setIngredients] = useState([]);
+
   useEffect(() => {
-    store.set('userInputs', inputs);
     store.set('userIngredients', userIngredients);
   }, [inputs, userIngredients]);
 
   const [file, setFile] = useState(null);
   const [path, setPath] = useState('');
 
-  console.log(file)
   useEffect(() => {
     const optionsIngredients = async () => {
       try {
         const response = await axios.get(
           'https://so-yummy-7n94.onrender.com/api/ingredients/list'
         );
-        console.log('response', response);
+
         if (response) {
           setIngredients(response.data);
         }
@@ -95,19 +92,15 @@ const AddRecipeForm = () => {
     optionsIngredients();
   }, [dispatch]);
 
-
-
-
   const handleDecrement = () => {
     if (userIngredients.length <= 0) return;
     setUserIngredients(prev => [...prev.slice(0, prev.length - 1)]);
   };
 
   const handleIncrement = () => {
-    setUserIngredients(prev => [
-      ...prev,
-      { id: nanoid(), ttl: 'Beef', unitValue: 100, qty: 'g' },
-    ]);
+    setUserIngredients(prev => {
+      return [...prev, { id: nanoid(), ttl: 'Beef', unitValue: 100, qty: 'g' }];
+    });
   };
 
   const ingredientsOptionsList = list => {
@@ -137,13 +130,15 @@ const AddRecipeForm = () => {
     }));
     setUserIngredients(prev => {
       const idx = prev.findIndex(el => el.id === id);
+
       const [item] = prev.filter(el => el.id === id);
+
       item[name] = value;
+
       prev[idx] = item;
       return [...prev];
     });
   };
-
 
   const handleRemove = ({ currentTarget }) => {
     const newList = userIngredients.filter(el => el.id !== currentTarget.id);
@@ -178,13 +173,17 @@ const AddRecipeForm = () => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    // const formData = new FormData();
+
     const { recipe, time, category, about, title } = inputs;
+
     const ingredientsList = userIngredients.map(
-      ({ unitValue, ingredient, qty: unit }) => ({
-        ingredient,
-        qty: `${unitValue} ${unit}`,
-      })
+      ({ id, unitValue, ttl, qty: unit }) => {
+        const selectedItem = ingredients.find(item => item.ttl === ttl);
+        return {
+          _id: selectedItem._id,
+          measure: `${unitValue} ${unit}`,
+        };
+      }
     );
 
     if (!recipe || !time || !category || !about || !title) {
@@ -192,53 +191,43 @@ const AddRecipeForm = () => {
       return;
     }
 
-  //   formData.append('description', recipe);
-  //   formData.append('time', time);
-  //   formData.append('category', category);
-  //   formData.append('instructions', about);
-  //   formData.append('title', title);
-  // formData.append('preview', path);
-  //   formData.append('thumb', path);
-  //   formData.append('ingredients', JSON.stringify(ingredientsList));
-  //   console.log('formData', formData);
-    const myRecipe = {
-      description: recipe,
-      time: time.toString(),
-      category: category,
-      instructions: about,
-      title: about,
-      ingredients: JSON.stringify(ingredientsList),
-      preview: path,
-      thumb:path,
-    }
+    // const myRecipe = {
+    //   description: recipe,
+    //   time: time.toString(),
+    //   category: category,
+    //   instructions: about,
+    //   title: about,
+    //   ingredients: JSON.stringify(ingredientsList),
+    // };
 
+    const formData = new FormData();
 
-    console.log("myRecipe", myRecipe)
-   
+    formData.append('imgURL', file);
+    formData.append('description', recipe);
+    formData.append('time', time);
+    formData.append('category', category);
+    formData.append('instructions', about);
+    formData.append('title', title);
+    formData.append('ingredients', JSON.stringify(ingredientsList));
 
-   const addOwnRecipeApi = async body => {
-  try {
-    const {data} = await axios.post('/ownRecipes', body);
-    return data;
-  } catch (error) {
-    console.log(error.message);
-     }
- 
-};
-   addOwnRecipeApi(myRecipe)
+    const addOwnRecipeApi = async body => {
+      try {
+        const data = await axios.post('/ownRecipes', body);
+        return data;
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    addOwnRecipeApi(formData);
 
     resetForm();
   };
 
-  console.log("file", file);
-  console.log("path",path.toString())
   const resetForm = () => {
     setInputs(init);
     setUserIngredients([]);
     setFile(null);
   };
-
-
 
   const userIngredientsList = userIngredients.map(
     ({ id, ttl, qty, unitValue }) => {
@@ -271,10 +260,9 @@ const AddRecipeForm = () => {
               name={`qty ${id}`}
             />
           </ValueInputWrapper>
-                    <ButtonRemoveItem type="button" id={id} onClick={handleRemove}>
+          <ButtonRemoveItem type="button" id={id} onClick={handleRemove}>
             <IoCloseOutline />
           </ButtonRemoveItem>
-
         </IngredientsItem>
       );
     }
@@ -282,7 +270,6 @@ const AddRecipeForm = () => {
   const counter = userIngredients.length;
   return (
     <Wrap>
-   
       <Form onSubmit={handleSubmit} enctype="multipart/form-data">
         <Description path={path}>
           <ImageBox>
@@ -316,55 +303,54 @@ const AddRecipeForm = () => {
               />
             </InputDescriptionWrap>
             <InputDescriptionWrap>
-                                   <SelecComponent>
-            Categories
-            <Select
-              styles={stylesMeta}
-              options={categoriesList}
-              defaultValue={{ label: 'Breakfast', value: 'Breakfast' }}
-              placeholder=" "
-              onChange={handleSelect}
-              name="category"
-            />
-          </SelecComponent>
+              <SelecComponent>
+                Categories
+                <Select
+                  styles={stylesMeta}
+                  options={categoriesList}
+                  defaultValue={{ label: 'Breakfast', value: 'Breakfast' }}
+                  placeholder=" "
+                  onChange={handleSelect}
+                  name="category"
+                />
+              </SelecComponent>
             </InputDescriptionWrap>
             <InputDescriptionWrap>
-                                    <SelecComponent
-            hiddenLabel
-            fullWidth
-            size="normal"
-            variant="standard"
-            placeholder="Time"
-            name="time"
-            value={inputs.time}
-            readOnly
-            autoComplete="off"
-          >
-            Cooking time
-            <Select
-              styles={stylesMeta}
-              options={timeOptionsList()}
-              defaultValue={timeOptionsList()[2]}
-              placeholder=" "
-              onChange={handleSelect}
-              name="time"
-            />
-          </SelecComponent>
+              <SelecComponent
+                hiddenLabel
+                fullWidth
+                size="normal"
+                variant="standard"
+                placeholder="Time"
+                name="time"
+                value={inputs.time}
+                readOnly
+                autoComplete="off"
+              >
+                Cooking time
+                <Select
+                  styles={stylesMeta}
+                  options={timeOptionsList()}
+                  defaultValue={timeOptionsList()[2]}
+                  placeholder=" "
+                  onChange={handleSelect}
+                  name="time"
+                />
+              </SelecComponent>
             </InputDescriptionWrap>
           </InputWrap>
         </Description>
         <MainWrapIngredients>
           <WrapIngredients>
             <TitleIngredients>Ingredients</TitleIngredients>
-               <Counter
-                counter={counter}
-                handleDecrement={handleDecrement}
-                handleIncrement={handleIncrement}
-              />
+            <Counter
+              counter={counter}
+              handleDecrement={handleDecrement}
+              handleIncrement={handleIncrement}
+            />
           </WrapIngredients>
 
           <InputIngredientsWrap>
-
             <IngredientsList>{userIngredientsList}</IngredientsList>
           </InputIngredientsWrap>
 
@@ -372,10 +358,9 @@ const AddRecipeForm = () => {
             <TitlePreparation>Recipe Preparation</TitlePreparation>
             <TextAreaPreparation
               name="recipe"
-        value={inputs.recipe}
-        placeholder="Enter recipe"
-        onChange={handleChange}
-
+              value={inputs.recipe}
+              placeholder="Enter recipe"
+              onChange={handleChange}
             ></TextAreaPreparation>
           </WrapPreparation>
         </MainWrapIngredients>
