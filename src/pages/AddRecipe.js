@@ -7,6 +7,7 @@ import {
   TitleFollowUs,
   WrapperFollowUs,
   FollowUsThumb,
+  AddRecipeWrapper
 } from './AddREcipe.styled';
 import Container from '../components/Container/Container'
 
@@ -16,7 +17,7 @@ import { useDispatch } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
 import { getAllIngredients } from '../redux/ingredients/ingredientsOperation';
-
+import Title from '../components/Title/Title'
 
 const init = {
   recipe: '',
@@ -94,7 +95,9 @@ const AddRecipe = () => {
   };
   return (
     <Container>
-      <AddRecipeForm
+         <Title>Add recipe</Title>
+      <AddRecipeWrapper>
+              <AddRecipeForm
                     counter={userIngredients.length}
             userIngredients={userIngredients}
             handleDecrement={handleDecrement}
@@ -113,6 +116,7 @@ const AddRecipe = () => {
         <PopularRecipe />
       
       </WrapperFollowUs>
+</AddRecipeWrapper>
 
     </Container>
   );

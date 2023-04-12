@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const AddRecipeWrapper = styled.div``;
+export const AddRecipeWrapper = styled.div`
+ @media screen and (min-width: 1440px){
+display:flex;
+ }
+`;
 export const TitleFollowUs = styled.h3`
   @media screen and (max-width: 1439px) {
     display: none;
@@ -19,8 +23,8 @@ export const WrapperFollowUs = styled.div`
   margin-top: 72px;
 
   @media screen and (min-width: 1440px) {
-    margin-top: 244px;
-    margin-left: 161px;
+    margin-top: 93px;
+    margin-left: 322px;
   }
 `;
 

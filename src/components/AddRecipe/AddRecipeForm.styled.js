@@ -131,8 +131,19 @@ color: ${props => props.theme.colors.textPrimary};
 
   }
   @media only screen and (min-width: 1440px) {
-    margin-left: 65px;
+    /* margin-left: 65px; */
     margin-right: 362px;
+  }
+`;
+export const TitlePreparation = styled.h2`
+color: ${props => props.theme.colors.textPrimary};
+
+  @media only screen and (min-width: 768px) {
+
+  }
+  @media only screen and (min-width: 1440px) {
+    /* margin-left: 65px; */
+    /* margin-right: 362px; */
   }
 `;
 
@@ -187,6 +198,10 @@ export const WrapPreparation = styled.div`
     margin-top: 100px;
     text-align:start;
   }
+  @media only screen and (min-width: 768px){
+    width:505px;
+  }
+
 `;
 
 export const TextAreaPreparation = styled.textarea`
@@ -195,8 +210,9 @@ export const TextAreaPreparation = styled.textarea`
   width: 100%;
   height:154px;
   margin-top:24px;
+  resize:none;
   @media only screen and (min-width: 1440px) {
-    width: 505px;
+    width: 570px;
     height: 224px;
   }
 `;
@@ -227,6 +243,10 @@ export const ButtonAdd = styled.button`
   /* margin-left: 30px; */
   &:hover,
   &:focus {
+  }
+    @media only screen and (min-width: 1440px) {
+  margin-top:32px;
+  margin-bottom:200px;
   }
 `;
 

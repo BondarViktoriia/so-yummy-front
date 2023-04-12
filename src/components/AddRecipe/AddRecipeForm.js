@@ -20,7 +20,9 @@ import {
   IngredientsList,
   stylesIngredient,
   stylesUnit,
-  SelecComponent
+  SelecComponent,
+  TitlePreparation
+  
 } from './AddRecipeForm.styled';
 import addRecipe from '../../image/addRecipe.png';
 import { Counter } from '../AddRecipe/Counter';
@@ -42,7 +44,6 @@ import { stylesMeta } from './selectStyle'
 import { categoriesList } from '../../utilities/categoriesList';
 import { timeOptionsList } from '../../utilities/timeOptionsList';
 import { unitsOptionsList } from '../../utilities/unitsOptionsList';
-import Title from '../Title/Title'
 
 const init = {
   recipe: '',
@@ -273,7 +274,7 @@ const AddRecipeForm = () => {
   const counter = userIngredients.length;
   return (
     <Wrap>
-      <Title>Add recipe</Title>
+   
       <Form onSubmit={handleSubmit} enctype="multipart/form-data">
         <Description path={path}>
           <ImageBox>
@@ -360,7 +361,7 @@ const AddRecipeForm = () => {
           </InputIngredientsWrap>
 
           <WrapPreparation>
-            <TitleIngredients>Recipe Preparation</TitleIngredients>
+            <TitlePreparation>Recipe Preparation</TitlePreparation>
             <TextAreaPreparation
               name="recipe"
         value={inputs.recipe}
