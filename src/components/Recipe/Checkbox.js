@@ -13,7 +13,7 @@ export const MyCheckbox = ({ ingredient, currentShopList }) => {
   const { _id, ttl, thb, measure } = ingredient;
 
   useEffect(() => {
-    if (currentShopList) {
+    if (currentShopList.length > 0) {
       const isInList = currentShopList.find(item => item.ttl === ttl);
       setChecked(isInList ? isInList._id : false);
     }
