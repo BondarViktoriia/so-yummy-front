@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-// import { IoCloseOutline } from 'react-icons/io5';
+import Select from 'react-select';
+
 
 export const Wrap = styled.div`
   padding-top: 50px;
@@ -49,6 +50,7 @@ export const ImageInput = styled.input`
 `;
 
 export const Description = styled.div`
+
   @media screen and(max-width:767px) {
     justify-content: center;
   }
@@ -79,6 +81,7 @@ export const InputDescriptionWrap = styled.div`
   margin-top: 32px;
   text-align: center;
 
+
   @media screen and (min-width: 768px) {
     margin-top: 24px;
     margin-left: 32px;
@@ -97,6 +100,8 @@ export const InputDescription = styled.input`
   border-bottom: 1px solid grey;
   background: transparent;
   width:100%;
+  color:${props => props.theme.colors.inputText};
+
 `;
 
 export const SelectDescription = styled.select`
@@ -225,7 +230,7 @@ export const ButtonAdd = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: #22252a;
+  background-color: ${props => props.theme.colors.addButton};
   color: #fafafa;
 
   right: 25px;
@@ -609,12 +614,11 @@ export const SelecComponent = styled.p`
   align-items: center;
   width: 100%;
   border-bottom: 1px solid gray;
-  color: rgba(0, 0, 0, 0.5);
-
-  /* padding-bottom: 19px;
-  width: 343px;
-  height: 43px;
-  border: none;
-  border-bottom: 1px solid grey;
-  background: transparent; */
+  color: ${props => props.theme.colors.inputText};
 `;
+
+export const SelectOptions = styled(Select)`
+  color: ${props => props.theme.colors.inputText};
+
+
+`

@@ -6,8 +6,12 @@ display:flex;
  }
 `;
 export const TitleFollowUs = styled.h3`
+  color: ${props => props.theme.colors.textPrimary};
+
   @media screen and (max-width: 1439px) {
     display: none;
+      color: ${props => props.theme.colors.textPrimary};
+
   }
   @media screen and (min-width: 1440px) {
     margin-bottom: 32px;
@@ -16,6 +20,8 @@ export const TitleFollowUs = styled.h3`
     font-size: 24px;
     line-height: 1;
     letter-spacing: -0.24px;
+      color: ${props => props.theme.colors.textPrimary};
+
   }
 `;
 

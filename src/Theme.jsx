@@ -40,6 +40,9 @@ const lightTheme = {
 
     paginationShadow: '0px 4px 4px rgba(135, 135, 135, 0.2)',
     arrowColor: 'rgba(169, 169, 169, 0.73)',
+    inputText: '#000000',
+    addButton: '#22252a',
+    iconFollow:'#8baa36'
   },
 };
 
@@ -82,6 +85,9 @@ const darkTheme = {
     selectMenuBG: 'transparent',
 
     paginationShadow: '0px 4px 4px rgba(31, 30, 30, 0.2)',
+    inputText: '#FAFAFA',
+    addButton: '#8BAA36',
+    iconFollow:'#FAFAFA',
   },
 };
 
