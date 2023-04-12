@@ -30,6 +30,19 @@ const lightTheme = {
     inputError: '#E74A3B',
     deleteIcon: '#EBF3D4',
     placeholder: '#C4C4C4',
+
+    inputSearchBorder: '1px solid #F0F0F0',
+    inputSearchBackground: '#FAFAFA',
+    menuIsSelectedBG: 'transparent',
+    menuIsFocusedBG: 'transparent',
+    menuIsActive: '#8BAA36',
+    selectMenuBG: '#D9D9D9',
+
+    paginationShadow: '0px 4px 4px rgba(135, 135, 135, 0.2)',
+    arrowColor: 'rgba(169, 169, 169, 0.73)',
+    inputText: '#000000',
+    addButton: '#22252a',
+    iconFollow:'#8baa36'
   },
 };
 
@@ -63,6 +76,18 @@ const darkTheme = {
     inputError: '#E74A3B',
     deleteIcon: '#1E1F28',
     placeholder: '#C4C4C4',
+
+    inputSearchBorder: 'border: 1px solid rgba(250, 250, 250, 0.5)',
+    inputSearchBackground: 'transparent',
+    menuIsSelectedBG: '#8BAA36',
+    menuIsFocusedBG: '#8BAA36',
+    menuIsActive: 'transparent',
+    selectMenuBG: 'transparent',
+
+    paginationShadow: '0px 4px 4px rgba(31, 30, 30, 0.2)',
+    inputText: '#FAFAFA',
+    addButton: '#8BAA36',
+    iconFollow:'#FAFAFA',
   },
 };
 

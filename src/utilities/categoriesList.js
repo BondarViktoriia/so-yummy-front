@@ -1,0 +1,16 @@
+export const categoriesList = [
+  { value: 'Beef', label: 'Beef' },
+  { value: 'Breakfast', label: 'Breakfast' },
+  { value: 'Chicken', label: 'Chicken' },
+  { value: 'Dessert', label: 'Dessert' },
+  { value: 'Goat', label: 'Goat' },
+  { value: 'Lamb', label: 'Lamb' },
+  { value: 'Miscellaneous', label: 'Miscellaneous' },
+  { value: 'Pasta', label: 'Pasta' },
+  { value: 'Pork', label: 'Pork' },
+  { value: 'Seafood', label: 'Seafood' },
+  { value: 'Side', label: 'Side' },
+  { value: 'Starter', label: 'Starter' },
+  { value: 'Vegan', label: 'Vegan' },
+  { value: 'Vegetarian', label: 'Vegetarian' },
+];

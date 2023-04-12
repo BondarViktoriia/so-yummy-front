@@ -4,7 +4,7 @@ export const FollowUsContainer = styled.div`
   display: flex;
   gap: 20px;
   svg {
-    fill: #8baa36;
+    fill: ${props => props.theme.colors.iconFollow};
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
     :hover,
     :focus {

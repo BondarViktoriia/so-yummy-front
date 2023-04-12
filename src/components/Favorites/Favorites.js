@@ -1,8 +1,17 @@
-import Container from "../Container/Container"
+import RecipeItem from '../RecipeItem/RecipeItem';
+import { ListSt } from '../RecipeList/RecipesList.styled';
 
-const Favorites = () => {
+
+const Favorites = ({recipes, page}) => {
     return (
-        <Container/>
+
+            <ListSt>
+               {recipes.map(recipe => {
+                 return <RecipeItem key={recipe._id} recipe={recipe} page={page}/>;
+               })}
+            </ListSt>
+
+        
     )
 }
 

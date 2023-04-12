@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { selectShoppingList } from '../../redux/shoppingList/shoppingListSelectors';
 import {
   Wrapper,
   ListTitle,
@@ -9,20 +12,19 @@ import {
   WrapForContent,
   TitleIngred,
   MeasureStyled,
-  OriginalCheckbox,
 } from './RecipeList.styled';
-// import {
-//   addToShoppingList,
-//   removeFromShoppingList,
-// } from '../../redux/recipePage/recipeOperations';
-
-import RecipeImgPlaceholder from '../../image/recipe-page/recipe-img-tablet2x.png';
+import IngredPlaceholder from '../../image/plugs/fish-dekstop-2x.png';
+import { getShoppingList } from '../../redux/shoppingList/shoppingListOperations';
+import { MyCheckbox } from './Checkbox';
 
 const RecipeList = ({ ingreds }) => {
-  const handleCheckboxChange = event => {
-    const { id, checked } = event.target;
-    console.log('handleCheckboxChange   id, checked:', id, checked);
-  };
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getShoppingList());
+  }, [dispatch]);
+
+  const shoppingList = useSelector(selectShoppingList);
 
   return (
     <Wrapper>
@@ -37,20 +39,17 @@ const RecipeList = ({ ingreds }) => {
             <ListItemStyled key={_id}>
               <WrapForContent>
                 <Thumb>
-                  <Image src={thb ?? RecipeImgPlaceholder} alt={ttl}></Image>
+                  <Image src={thb ?? IngredPlaceholder} alt={ttl}></Image>
                 </Thumb>
 
                 <TitleIngred>{ttl}</TitleIngred>
               </WrapForContent>
               <WrapForContent>
                 <MeasureStyled>{measure ?? 'Unknown'}</MeasureStyled>
-                <OriginalCheckbox
-                  id={_id}
-                  value={_id}
-                  type="checkbox"
-                  checked={true}
-                  onChange={handleCheckboxChange}
-                ></OriginalCheckbox>
+                <MyCheckbox
+                  ingredient={{ _id, ttl, thb, measure }}
+                  currentShopList={shoppingList}
+                ></MyCheckbox>
               </WrapForContent>
             </ListItemStyled>
           );

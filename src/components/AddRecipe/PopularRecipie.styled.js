@@ -11,7 +11,8 @@ export const WrapperPopular = styled.div`
 `;
 
 export const TitlePopular = styled.h3`
-  color: #3E4462;
+  color: ${props => props.theme.colors.textPrimary};
+
   font-weight: 600;
   font-size: 24px;
   line-height: 1;

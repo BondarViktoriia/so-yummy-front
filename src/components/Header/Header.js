@@ -1,5 +1,7 @@
 import { useState } from 'react';
+
 import { useMediaQuery } from 'react-responsive';
+
 import Container from '../Container/Container';
 import { HeaderBox, BurgerOpen, MenuThumb, BurgerIcon } from './Header.styled';
 import { Logo } from '../Logo/Logo';
@@ -14,6 +16,7 @@ export const Header = () => {
   const closeModal = () => setIsModalOpen(false);
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1439px)' });
+
   return (
     <Container>
       <HeaderBox>

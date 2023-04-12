@@ -14,7 +14,7 @@ export const getRecipeById = async id => {
 
 export const fetchAllCategories = async () => {
   try {
-    const { data } = await axios.get(`/recipes/recipe/category-list`);
+    const { data } = await axios.get('/recipes/recipe/category-list');
     return data;
   } catch (error) {
     console.log(error.message);
@@ -29,7 +29,7 @@ export const getRecipeByCategory = async (
 ) => {
   try {
     const { data } = await axios.get(
-      `/recipes/recipe/${categoryName}?limit=${limit}&page=${page}`
+      `/recipes/recipe/categories/${categoryName}?limit=${limit}&page=${page}`
     );
     return data;
   } catch (error) {
@@ -83,17 +83,19 @@ export const getOwnRecipes = async (page, per_page) => {
       );
       return response.data;
     }
-    const response = await axios.get('/ownRecipes');
+    const response = await axios.post('/ownRecipes');
     return response.data;
   } catch (error) {
     console.log(error.message);
   }
 };
 
-export const addOwnRecipe = async body => {
+export const addOwnRecipeApi = async body => {
+  console.log('addOwnRecipeApi   body:', body);
   try {
-    const response = await axios.get('/ownRecipes', body);
-    return response.data;
+    const { data } = await axios.post('/ownRecipes', body);
+
+    return data;
   } catch (error) {
     console.log(error.message);
   }
@@ -121,4 +123,13 @@ export const getAllIngredientsAPI = () => {
   return axios.get('/ingredients/list').then(({ data }) => {
     return data;
   });
+};
+
+export const getAllCategoriesApi = async () => {
+  try {
+    const response = await axios.delete('recipes/recipe/category-list"');
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+  }
 };

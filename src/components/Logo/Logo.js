@@ -6,7 +6,7 @@ import { LogoImg, LogoLightImg } from './Logo.styled';
 export const Logo = () => {
   return (
     <div>
-      <Link aria-current="page" to="/">
+      <Link aria-current="page" to="/main">
         <LogoImg src={logo} alt="logo" />
       </Link>
     </div>
@@ -16,7 +16,7 @@ export const Logo = () => {
 export const LogoLight = () => {
   return (
     <div>
-      <Link aria-current="page" to="/">
+      <Link aria-current="page" to="/main">
         <LogoLightImg src={logoLight} alt="logo" />
       </Link>
     </div>

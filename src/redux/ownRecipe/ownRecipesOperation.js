@@ -1,10 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import {
   getOwnRecipes,
   deleteOwnRecipe,
-  addOwnRecipe,
+  addOwnRecipeApi,
+  getAllCategoriesApi,
 } from 'services/api/apiRecipe';
 
 export const token = {
@@ -46,7 +47,8 @@ export const addOwnRecipeOperation = createAsyncThunk(
     }
     token.set(persistedAccessToken);
     try {
-      const data = await addOwnRecipe(body);
+      const data = await addOwnRecipeApi(body);
+      console.log('data.status:', data.status);
       console.log('own recipe successfully added', data);
       return data;
     } catch (error) {
@@ -69,6 +71,26 @@ export const deleteOwnRecipeOperation = createAsyncThunk(
       const data = await deleteOwnRecipe(id);
       console.log('own recipe successfully deleted', data);
       return data;
+    } catch (error) {
+      console.log(error.message);
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+export const getCategoryListOperation = createAsyncThunk(
+  'outerRecipes/categoryList',
+  async (_, { rejectWithValue, getState }) => {
+    const state = getState();
+    const persistedAccessToken = state.auth.accessToken;
+    if (!persistedAccessToken) {
+      return rejectWithValue();
+    }
+    token.set(persistedAccessToken);
+    try {
+      const data = await getAllCategoriesApi();
+      // console.log('categories list', data.meals);
+      return data.meals;
     } catch (error) {
       console.log(error.message);
       return rejectWithValue(error.response.status);

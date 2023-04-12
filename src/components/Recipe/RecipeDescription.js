@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import {Clock} from './ClockIcon';
+import { Clock } from './ClockIcon';
 
 import {
   Wrapper,
@@ -10,25 +10,48 @@ import {
   Button,
   Time,
 } from './RecipeDescription.styled';
-import { addToFavorite } from '../../redux/recipePage/recipeOperations';
-import { selectIsFavorite } from '../../redux/recipePage/recipeSelectors';
+import {
+  addToFavorite,
+  deleteFromFavorite,
+  getFavorites,
+} from '../../redux/favorites/favoritesOperations';
+import { selectFavorites } from '../../redux/favorites/favoritesSelectors';
+import { selectOwnRecipe } from '../../redux/recipePage/recipeSelectors';
 
 const RecipeDescription = ({ title, description, time }) => {
   const { recipeId } = useParams();
   const dispatch = useDispatch();
-  const fav = useSelector(selectIsFavorite);
+  const favorites = useSelector(selectFavorites);
+  const isOwn = useSelector(selectOwnRecipe);
 
+  useEffect(() => {
+    dispatch(getFavorites());
+  }, [dispatch]);
+
+  const isInFavCollection = favorites.find(item => item._id === recipeId);
+
+  function toggleFav() {
+    if (isInFavCollection) {
+      dispatch(deleteFromFavorite(recipeId));
+    } else {
+      dispatch(addToFavorite(recipeId));
+    }
+  }
   return (
     <Wrapper>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <Button
-        type="button"
-        aria-label="add/remove to favorite"
-        onClick={() => dispatch(addToFavorite(recipeId))}
-      >
-        {fav === true ? 'Remove from favorite' : 'Add to favorite'}
-      </Button>
+      {!isOwn && (
+        <Button
+          type="button"
+          aria-label="add/remove to favorite"
+          onClick={toggleFav}
+        >
+          {isInFavCollection
+            ? 'Remove from favorite recipes'
+            : 'Add to favorite recipes'}
+        </Button>
+      )}
       {time !== '' && (
         <Time>
           <Clock></Clock>

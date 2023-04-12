@@ -1,34 +1,19 @@
 import styled from 'styled-components';
-// import { IoCloseOutline } from 'react-icons/io5';
+import Select from 'react-select';
+
 
 export const Wrap = styled.div`
   padding-top: 50px;
 `;
-export const Title = styled.h2`
-  line-height: 1;
-  letter-spacing: -0.02em;
-  font-feature-settings: 'liga' off;
-  margin-bottom: 50px;
-  margin-top: 72px;
-  margin-left: 16px;
-  font-weight: 600;
-  font-size: 44px;
 
-  @media only screen and (min-width: 768px) {
-    margin-bottom: 72px;
-    margin-left: 32px;
-  }
-  @media only screen and (min-width: 1440px) {
-    margin-top: 100px;
-    margin-left: 100px;
-  }
-`;
 export const Form = styled.form`
+margin-top:65px;
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-top:97px;
   }
   @media screen and (min-width: 1440px) {
     display: flex;
@@ -65,6 +50,7 @@ export const ImageInput = styled.input`
 `;
 
 export const Description = styled.div`
+
   @media screen and(max-width:767px) {
     justify-content: center;
   }
@@ -95,6 +81,7 @@ export const InputDescriptionWrap = styled.div`
   margin-top: 32px;
   text-align: center;
 
+
   @media screen and (min-width: 768px) {
     margin-top: 24px;
     margin-left: 32px;
@@ -112,6 +99,9 @@ export const InputDescription = styled.input`
   border: none;
   border-bottom: 1px solid grey;
   background: transparent;
+  width:100%;
+  color:${props => props.theme.colors.inputText};
+
 `;
 
 export const SelectDescription = styled.select`
@@ -134,19 +124,30 @@ export const WrapIngredients = styled.div`
     margin-right: 32px;
   }
   @media only screen and (max-width: 1439px) {
-    margin-left: 32px;
+  
     justify-content: space-between;
   }
 `;
 
 export const TitleIngredients = styled.h2`
-  margin-left: 16px;
+color: ${props => props.theme.colors.textPrimary};
+
   @media only screen and (min-width: 768px) {
-    margin-left: 32px;
+
   }
   @media only screen and (min-width: 1440px) {
-    margin-left: 65px;
-    margin-right: 362px;
+  margin-right: 530px;
+  }
+`;
+export const TitlePreparation = styled.h2`
+color: ${props => props.theme.colors.textPrimary};
+
+  @media only screen and (min-width: 768px) {
+
+  }
+  @media only screen and (min-width: 1440px) {
+    /* margin-left: 65px; */
+    /* margin-right: 362px; */
   }
 `;
 
@@ -198,23 +199,24 @@ export const WrapPreparation = styled.div`
   width: 100%;
   @media only screen and (min-width: 768px) {
     width: 510px;
-    margin-left: 33px;
     margin-top: 100px;
+    text-align:start;
   }
-`;
+  @media only screen and (min-width: 768px){
+    width:505px;
+  }
 
-export const TitlePreparation = styled.h2`
-  margin: 0;
-  text-align: start;
-  margin-bottom: 24px;
 `;
 
 export const TextAreaPreparation = styled.textarea`
   padding-top: 10px;
   padding-left: 16px;
   width: 100%;
+  height:154px;
+  margin-top:24px;
+  resize:none;
   @media only screen and (min-width: 1440px) {
-    width: 505px;
+    width: 570px;
     height: 224px;
   }
 `;
@@ -228,7 +230,7 @@ export const ButtonAdd = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: #22252a;
+  background-color: ${props => props.theme.colors.addButton};
   color: #fafafa;
 
   right: 25px;
@@ -241,10 +243,14 @@ export const ButtonAdd = styled.button`
   font-size: 16px;
   line-height: 1.5;
 
-  margin-top: 32px;
-  margin-left: 30px;
+  margin-top: 18px;
+  /* margin-left: 30px; */
   &:hover,
   &:focus {
+  }
+    @media only screen and (min-width: 1440px) {
+  margin-top:32px;
+  margin-bottom:200px;
   }
 `;
 
@@ -286,11 +292,6 @@ export const RecipeForm = styled.form`
   }
 `;
 
-export const IngredientsTitle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
 
 export const AddRecepiSection = styled.div`
   display: flex;
@@ -404,6 +405,11 @@ export const ValueInputWrapper = styled.div`
   justify-content: flex-start;
   background-color: rgb(217, 217, 217);
   border-radius: 6px;
+      margin-left:32px;
+
+    @media only screen and (max-width: 767px) {
+    margin-left:32px;
+  }
   /* margin-left: ${({ isMobile }) => (isMobile ? '14px' : '32px')}; */
 `;
 
@@ -432,45 +438,17 @@ export const PopularItem = styled.li`
   }
 `;
 
-export const RecipeTitle = styled.p`
-  /* font-weight: ${({ theme }) => theme.fontWeights[1]}; */
-  font-size: 16px;
-  /* line-height: ${({ theme }) => theme.lineHeights.description};
-  letter-spacing: ${({ theme }) => theme.letterSpacings.subheader}; */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 200px;
-`;
 
-export const RecipeText = styled.p`
-  margin-top: 3px;
-  white-space: normal;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: 50px;
-  /* color: ${({ theme }) => theme.colors.mainGrey};
-  font-weight: ${({ theme }) => theme.fontWeights[0]}; */
-  font-size: 12px;
-  /* line-height: ${({ theme }) => theme.lineHeights.content};
-  letter-spacing: ${({ theme }) => theme.letterSpacings.subheader}; */
-`;
-
-export const RecepiImg = styled.img`
-  border-radius: 8px;
-  height: 85px;
-  width: 100px;
-  margin-right: 12px;
-`;
 
 export const ButtonRemoveItem = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
+    margin-left: 30px;
+    border: none;
+    @media only screen and (min-width: 768px) {
+        margin-left: 135px;
+  }
 `;
 
 export const stylesIngredient = {
@@ -596,3 +574,18 @@ export const stylesUnit = {
     margin: 0,
   }),
 };
+
+export const SelecComponent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid gray;
+  color: ${props => props.theme.colors.inputText};
+`;
+
+export const SelectOptions = styled(Select)`
+  color: ${props => props.theme.colors.inputText};
+
+
+`

@@ -1,7 +1,10 @@
 import {MainLi, MainImage, MainImageTitle, MainImageText} from "./MainItem.styled"
+
 // import { Link } from 'react-router-dom';
 
+
 const MainItem = ({ meal }) => {
+      const location = useLocation();
     return (<>
         <MainLi key={meal._id}>
              {/* <Link to={`/recipe/:id`} state={{ from: '/' }}> */}
@@ -10,6 +13,7 @@ const MainItem = ({ meal }) => {
                     <MainImageText>{meal.title}</MainImageText>
                 </MainImageTitle>
             {/* </Link> */}
+
             </MainLi>
     </>
     )
