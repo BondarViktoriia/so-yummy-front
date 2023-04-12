@@ -13,9 +13,9 @@ export const MyCheckbox = ({ ingredient, currentShopList }) => {
   const { _id, ttl, thb, measure } = ingredient;
 
   useEffect(() => {
-    const isInList = currentShopList.find(item => item.ttl === ttl);
+      const isInList = currentShopList.find(item => item.ttl === ttl);
     setChecked(isInList ? isInList._id : false);
-  }, [currentShopList, ttl]);
+},[currentShopList, dispatch, ttl])
 
   const handleCheckboxChange = (event, data) => {
     if (checked) {

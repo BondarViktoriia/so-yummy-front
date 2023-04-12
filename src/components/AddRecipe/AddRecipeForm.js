@@ -192,18 +192,25 @@ const AddRecipeForm = () => {
       return;
     }
 
-    // formData.append('description', recipe);
-    // formData.append('cookingTime', time);
-    // formData.append('category', category);
-    // formData.append('about', about);
-    // formData.append('title', title);
-    // formData.append('preview', file);
-    // formData.append('thumb', file);
-    // formData.append('ingredients', JSON.stringify(ingredientsList));
-    // console.log('formData', formData);
-    // console.log('formData.getAll', formData.getAll('title'))
-    // formData.append('cookingTime', time);
-    const myRecipe = { description: recipe, time: time.toString(), category:category,instructions:about,title:about,ingredients:JSON.stringify(ingredientsList)}
+  //   formData.append('description', recipe);
+  //   formData.append('time', time);
+  //   formData.append('category', category);
+  //   formData.append('instructions', about);
+  //   formData.append('title', title);
+  // formData.append('preview', path);
+  //   formData.append('thumb', path);
+  //   formData.append('ingredients', JSON.stringify(ingredientsList));
+  //   console.log('formData', formData);
+    const myRecipe = {
+      description: recipe,
+      time: time.toString(),
+      category: category,
+      instructions: about,
+      title: about,
+      ingredients: JSON.stringify(ingredientsList),
+      preview: path,
+      thumb:path,
+    }
 
 
     console.log("myRecipe", myRecipe)
