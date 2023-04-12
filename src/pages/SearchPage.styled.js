@@ -46,6 +46,7 @@ export const PictureSearch = styled.picture`
 
 export const LookingP = styled.p`
   @media screen and (min-width: 768px) {
+    color: ${props => props.theme.colors.textPrimary};
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;

@@ -37,12 +37,11 @@ const SearchPage = () => {
     setSearchParams({
       options: queryParams.options,
       query: queryParams.query,
-      page: 1,
     });
     setResults([]);
   };
 
-  console.log(isLoading);
+
 
   // const incrementPage = () => {
   //   setSearchParams({ options: options, query: query, page: Number(page) + 1 });
@@ -58,7 +57,7 @@ const SearchPage = () => {
     async function fetchData() {
       try {
         setIsLoading(true);
-        const result = await getSearchRecipe(query, page, options, token);
+        const result = await getSearchRecipe(query, options, token);
         if (result === 0 || !result) { 
           console.log('Nothing found for your request :(');
           setIsLoading(false);
@@ -71,7 +70,7 @@ const SearchPage = () => {
       }
     }
     fetchData();
-  }, [options, page, query, token]);
+  }, [options, query, token]);
 
   return (
     <main>

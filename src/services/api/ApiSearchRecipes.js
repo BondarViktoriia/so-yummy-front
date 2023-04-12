@@ -7,7 +7,7 @@ axios.defaults.baseURL = 'https://so-yummy-7n94.onrender.com/api';
 
 
 
-export const getSearchRecipe = async (query, page, options, token) => {
+export const getSearchRecipe = async (query, options, token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`
   
   try {
