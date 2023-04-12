@@ -78,7 +78,7 @@ export const updateUser = createAsyncThunk(
   'auth/edit',
   async (user, { rejectWithValue }) => {
     try {
-      const { data } = await axios.patch(`auth/edit`, user, {
+      const { data } = await axios.patch(`/auth/edit`, user, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

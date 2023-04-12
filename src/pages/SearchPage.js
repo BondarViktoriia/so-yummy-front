@@ -27,7 +27,7 @@ const SearchPage = () => {
   const query = searchParams.get('query');
   const options = searchParams.get('options');
   const token = useSelector(selectToken);
-  console.log(token)
+  console.log(token);
 
   const submitSearch = queryParams => {
     if (queryParams.options === options && queryParams.query === query) {
@@ -40,8 +40,6 @@ const SearchPage = () => {
     setResults([]);
   };
 
-
-
   // const incrementPage = () => {
   //   setSearchParams({ options: options, query: query, page: Number(page) + 1 });
   // };
@@ -50,14 +48,14 @@ const SearchPage = () => {
     if (!query || query.length === 0 || query === '') {
       return;
     }
-    if (!token){
-      return console.error('Error of authorization')
+    if (!token) {
+      return console.error('Error of authorization');
     }
     async function fetchData() {
       try {
         setIsLoading(true);
         const result = await getSearchRecipe(query, options, token);
-        if (result === 0 || !result) { 
+        if (result === 0 || !result) {
           console.log('Nothing found for your request :(');
           setIsLoading(false);
           return;

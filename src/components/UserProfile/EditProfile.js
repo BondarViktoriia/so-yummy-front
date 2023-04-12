@@ -27,7 +27,8 @@ import {
 export const EditProfile = ({ closeEdit, id, name, avatar }) => {
   const currentUser = useSelector(selectUser);
   const [username, setUsername] = useState('');
-  const [path, setPath] = useState('');
+  const [file, setFile] = useState(null);
+  // const [path, setPath] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
     window.addEventListener('keydown', handleEsc);
@@ -45,11 +46,13 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
     const { files } = e.currentTarget;
     const [file] = files;
 
+    setFile(file);
+
     if (!file || !file.type.includes('image')) {
-      setPath('');
+      // setPath('');
       return;
     }
-    setPath(URL.createObjectURL(file));
+    // setPath(URL.createObjectURL(file));
   };
 
   const changeName = e => {
@@ -59,7 +62,7 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
   const handleSubmit = e => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('avatar', path);
+    formData.append('avatar', file);
     formData.append('name', username);
     dispatch(updateUser(formData));
     closeEdit();
