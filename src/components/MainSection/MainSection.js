@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Container from '../Container/Container'
+import Container from '../Container/Container';
 import {
   SectionMain,
   MainCategories,
@@ -7,6 +7,7 @@ import {
   MainButton,
   MainTitle,
   MainList,
+  Wrap,
 } from './MainSection.styled';
 import axios from 'axios';
 import MainItem from './MainItem';
@@ -48,25 +49,33 @@ const MainSection = () => {
   return (
     <SectionMain>
       <Container>
-        <MainCategories>
-          {categories &&
-            Object.entries(categories).map(([categoryKey, meals]) => (
-              <li key={categoryKey}>
-                {meals.slice(3).map(meal => (
-                  <MainTitle>{meal.category}</MainTitle>
-                ))}
-
-                <MainList>
-                  {meals.slice(0, numCard).map(meal => (
-                    <MainItem key={meal._id} meal={meal} />
+        <Wrap>
+          <MainCategories>
+            {categories &&
+              Object.entries(categories).map(([categoryKey, meals]) => (
+                <li key={categoryKey}>
+                  {meals.slice(3).map(meal => (
+                    <MainTitle>{meal.category}</MainTitle>
                   ))}
-                </MainList>
-                <Link to={`/categories/${meals.category}`} style={isActive => ({ color: isActive ? "#8AA936" : "#BDBDBD"})}>See all</Link>
-             
-              </li>
-            ))}
-        </MainCategories>
-        <MainButton to="/categories/Beef">Other categories</MainButton>
+
+                  <MainList>
+                    {meals.slice(0, numCard).map(meal => (
+                      <MainItem key={meal._id} meal={meal} />
+                    ))}
+                  </MainList>
+                  <Link
+                    to={`/categories/${meals.category}`}
+                    style={isActive => ({
+                      color: isActive ? '#8AA936' : '#BDBDBD',
+                    })}
+                  >
+                    See all
+                  </Link>
+                </li>
+              ))}
+          </MainCategories>
+          <MainButton to="/categories/Beef">Other categories</MainButton>
+        </Wrap>
       </Container>
     </SectionMain>
   );
