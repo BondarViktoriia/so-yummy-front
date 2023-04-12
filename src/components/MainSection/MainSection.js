@@ -65,7 +65,7 @@ const MainSection = () => {
               </li>
             ))}
         </MainCategories>
-        <MainButton to="/categories/Beef">Other categories</MainButton>
+        <MainButton to="/categories/Beef">Other  categories</MainButton>
       </Container>
     </SectionMain>
   );
