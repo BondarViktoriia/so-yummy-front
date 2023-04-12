@@ -1,14 +1,16 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { useParams } from 'react-router-dom';
+
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import * as API from 'services/api/apiRecipe';
 
 import { Loader } from '../Loader/Loader';
 
 const CategoryList = () => {
+  const { categoryName: category } = useParams();
   const [tabValue, setTabValue] = useState(0);
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +22,12 @@ const CategoryList = () => {
         setIsLoading(true);
         const { categoriesList } = await API.fetchAllCategories();
         setCategories(categoriesList);
+        if (category) {
+          const categoryCapitalize =
+            category[0].toUpperCase() + category.slice(1);
+          const indexOfCategory = categoriesList.indexOf(categoryCapitalize);
+          if (indexOfCategory > 0) setTabValue(indexOfCategory);
+        }
       } catch (error) {
         console.log(error.message);
       } finally {
@@ -27,7 +35,7 @@ const CategoryList = () => {
       }
     }
     getAllCategories();
-  }, []);
+  }, [category]);
 
   useEffect(() => {
     if (categories.length > 0) {
