@@ -180,7 +180,7 @@ const AddRecipeForm = () => {
       ({ id, unitValue, ttl, qty: unit }) => {
         const selectedItem = ingredients.find(item => item.ttl === ttl);
         return {
-          _id: selectedItem._id,
+          id: selectedItem._id,
           measure: `${unitValue} ${unit}`,
         };
       }
