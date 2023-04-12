@@ -46,11 +46,8 @@ export const App = () => {
         />
 
         <Route path="/" element={<SharedLayout />}>
-          <Route
-            path="/categories"
-            element={<PrivateRoute component={<CategoriesPage />} />}
-          >
-            <Route path="/categories/:categoryName" element={<CategoriesByName />} />
+          <Route path="/categories" element={<CategoriesPage />}>
+            <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
           <Route
             path="/add"
