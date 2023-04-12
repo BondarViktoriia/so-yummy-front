@@ -5,9 +5,6 @@ import { FiMail } from 'react-icons/fi';
 import BgMob from '../../image/footer/bgc-mob.png';
 import BgTab from '../../image/footer/bgc-tab.png';
 import BgDesk from '../../image/footer/bgc-desk.png';
-import BgUpMob from '../../image/footer/bgc-up-mob.png';
-import BgUpTab from '../../image/footer/bgc-up-tab.png';
-import BgUpDesk from '../../image/footer/bgc-up-desk.png';
 
 export const FooterSection = styled.section`
   background-color: ${props => props.theme.colors.footer};
@@ -368,24 +365,29 @@ export const BgImg = styled.div`
   }
 `;
 
-export const BgUpImg = styled.div`
-  background-image: url('${BgUpMob}');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left bottom;
+export const BgUpImg = styled.img`
   position: absolute;
   left: 0;
-  top: -250px;
-  width: 256px;
-  height: 100%;
+  bottom: 0;
+`;
+
+export const BgUpImgThumb = styled.div`
+  outline: 1px solid green;
+  width: 146px;
+  height: 134px;
+  background-color: transparent;
+  position: absolute;
+  left: 0;
+  top: -134px;
+  overflow: hidden;
   @media (min-width: 768px) {
-    background-image: url('${BgUpTab}');
-    width: 350px;
-    top: -150px;
+    width: 225px;
+    height: 210px;
+    top: -210px;
   }
   @media (min-width: 1440px) {
-    background-image: url('${BgUpDesk}');
-    width: 500px;
-    top: -50px;
+    width: 247px;
+    height: 230px;
+    top: -230px;
   }
 `;
