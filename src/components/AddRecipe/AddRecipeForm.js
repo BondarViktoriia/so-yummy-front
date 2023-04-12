@@ -11,7 +11,6 @@ import {
   WrapIngredients,
   InputIngredientsWrap,
   MainWrapIngredients,
-  TitlePreparation,
   WrapPreparation,
   TextAreaPreparation,
   ButtonAdd,
@@ -205,7 +204,9 @@ const AddRecipeForm = () => {
     const myRecipe = { description: recipe, time: time.toString(), category:category,instructions:about,title:about,ingredients:JSON.stringify(ingredientsList)}
 
 
-    console.log("myRecipe",myRecipe)
+    console.log("myRecipe", myRecipe)
+   
+
    const addOwnRecipeApi = async body => {
   try {
     const {data} = await axios.post('/ownRecipes', body);
@@ -220,6 +221,8 @@ const AddRecipeForm = () => {
     resetForm();
   };
 
+  console.log("file", file);
+  console.log("path",path.toString())
   const resetForm = () => {
     setInputs(init);
     setUserIngredients([]);
@@ -259,9 +262,10 @@ const AddRecipeForm = () => {
               name={`qty ${id}`}
             />
           </ValueInputWrapper>
-          <ButtonRemoveItem type="button" id={id} onClick={handleRemove}>
+                    <ButtonRemoveItem type="button" id={id} onClick={handleRemove}>
             <IoCloseOutline />
           </ButtonRemoveItem>
+
         </IngredientsItem>
       );
     }
@@ -356,7 +360,7 @@ const AddRecipeForm = () => {
           </InputIngredientsWrap>
 
           <WrapPreparation>
-            <TitlePreparation>Recipe Preparation</TitlePreparation>
+            <TitleIngredients>Recipe Preparation</TitleIngredients>
             <TextAreaPreparation
               name="recipe"
         value={inputs.recipe}

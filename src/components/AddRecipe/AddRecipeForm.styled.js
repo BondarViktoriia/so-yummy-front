@@ -124,6 +124,7 @@ export const WrapIngredients = styled.div`
 `;
 
 export const TitleIngredients = styled.h2`
+color: ${props => props.theme.colors.textPrimary};
 
   @media only screen and (min-width: 768px) {
     margin-left: 32px;
@@ -187,16 +188,12 @@ export const WrapPreparation = styled.div`
   }
 `;
 
-export const TitlePreparation = styled.h2`
-  margin: 0;
-  text-align: start;
-  margin-bottom: 24px;
-`;
-
 export const TextAreaPreparation = styled.textarea`
   padding-top: 10px;
   padding-left: 16px;
   width: 100%;
+  height:154px;
+  margin-top:24px;
   @media only screen and (min-width: 1440px) {
     width: 505px;
     height: 224px;
@@ -225,8 +222,8 @@ export const ButtonAdd = styled.button`
   font-size: 16px;
   line-height: 1.5;
 
-  margin-top: 32px;
-  margin-left: 30px;
+  margin-top: 18px;
+  /* margin-left: 30px; */
   &:hover,
   &:focus {
   }
@@ -444,6 +441,7 @@ export const RecepiImg = styled.img`
   width: 100px;
   margin-right: 12px;
 `;
+
 
 export const ButtonRemoveItem = styled.button`
   display: flex;
