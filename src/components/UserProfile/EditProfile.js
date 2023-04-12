@@ -28,7 +28,7 @@ import {
 export const EditProfile = ({ closeEdit, id, name, avatar }) => {
   const currentUser = useSelector(selectUser);
   const [image, setImage] = useState(null);
-  const [username, setUsername] = useState(name);
+  const [username, setUsername] = useState('');
   const [path, setPath] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
@@ -43,8 +43,8 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
     }
   };
 
-  const changeAvatar = ({ currentTarget }) => {
-    const { files } = currentTarget;
+  const changeAvatar = e => {
+    const { files } = e.currentTarget;
     const [file] = files;
 
     if (!file || !file.type.includes('image')) {
@@ -57,21 +57,18 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
   };
 
   const changeName = e => {
+    console.log('1', e.target.value);
     setUsername(e.target.value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(currentUser);
-    // const formData = new FormData();
-    // if (image) {
-    //   formData.append('avatar', image);
-    // }
-    // if (username) {
-    //   formData.append('name', username);
-    // }
-    // console.log(formData);
-    // dispatch(updateUser(formData));
+    console.log(currentUser.email);
+    const formData = new FormData();
+    formData.append('avatar', image);
+    formData.append('name', username);
+    dispatch(updateUser(formData));
+    closeEdit();
   };
 
   return (
