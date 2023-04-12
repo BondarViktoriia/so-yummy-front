@@ -11,7 +11,6 @@ import {
   AvatarCont,
   AvatarThumb,
   AvatarImg,
-  AvatarPlug,
   EditProfileCont,
   CloseBtnCont,
   CloseIcon,
@@ -27,7 +26,6 @@ import {
 
 export const EditProfile = ({ closeEdit, id, name, avatar }) => {
   const currentUser = useSelector(selectUser);
-  const [image, setImage] = useState(null);
   const [username, setUsername] = useState('');
   const [path, setPath] = useState('');
   const dispatch = useDispatch();
@@ -48,24 +46,20 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
     const [file] = files;
 
     if (!file || !file.type.includes('image')) {
-      setImage(null);
       setPath('');
       return;
     }
-    setImage(file);
     setPath(URL.createObjectURL(file));
   };
 
   const changeName = e => {
-    console.log('1', e.target.value);
     setUsername(e.target.value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(currentUser.email);
     const formData = new FormData();
-    formData.append('avatar', image);
+    formData.append('avatar', path);
     formData.append('name', username);
     dispatch(updateUser(formData));
     closeEdit();
@@ -81,11 +75,7 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <AvatarCont>
           <AvatarThumb>
-            {image ? (
-              <AvatarImg style={{ backgroundImage: `${path}` }} />
-            ) : (
-              <AvatarPlug />
-            )}
+            <AvatarImg style={{ backgroundImage: `${currentUser.avatar}` }} />
             <AddAvatarBtn>
               <AddIcon />
               <AvatarInput
@@ -99,7 +89,7 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
         <FormCont>
           <InputCont>
             <UserIcon />
-            <Input onChange={changeName} />
+            <Input plaseholder={currentUser.name} onChange={changeName} />
             <EdinIcon />
           </InputCont>
           <SubmitBtn type="submit">

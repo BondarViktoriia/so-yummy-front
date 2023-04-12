@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-import { updateUserData } from '../../services/auth/auth';
+// import { updateUserData } from '../../services/auth/auth';
 
 axios.defaults.baseURL = 'https://so-yummy-7n94.onrender.com/api';
 
@@ -75,10 +75,14 @@ export const refreshUser = createAsyncThunk(
 );
 
 export const updateUser = createAsyncThunk(
-  'auth/update',
-  async (credentials, { rejectWithValue }) => {
+  'auth/edit',
+  async (user, { rejectWithValue }) => {
     try {
-      const data = await updateUserData(credentials);
+      const { data } = await axios.patch(`auth/edit`, user, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
