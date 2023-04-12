@@ -1,4 +1,4 @@
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { RiDeleteBinLine } from 'react-icons/ri';
 
 import { useMedia } from 'hooks/useMedia';
@@ -16,7 +16,6 @@ import {
 } from './RecipeItem.styled';
 
 // DeleteButtonFav, RecipeButtonFav (це для сторінки з favorite)
-
 
 const RecipeItem = ({ recipe, page, onDelete }) => {
   const { _id, thumb, description, title, time } = recipe;
