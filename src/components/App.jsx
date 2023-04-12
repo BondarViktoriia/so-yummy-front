@@ -50,7 +50,7 @@ export const App = () => {
             path="/categories"
             element={<PrivateRoute component={<CategoriesPage />} />}
           >
-            <Route path=":categoryName" element={<CategoriesByName />} />
+            <Route path="/categories/:categoryName" element={<CategoriesByName />} />
           </Route>
           <Route
             path="/add"
