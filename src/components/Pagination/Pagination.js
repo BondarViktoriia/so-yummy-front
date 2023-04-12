@@ -153,7 +153,7 @@ const MyPaginate = styled(ReactPaginate).attrs({
   // @media screen and (min-width: 768px) {
   //   margin-top: 14px;
   //   margin-bottom: 14px;
-  }
+  /* } */
   //   @media screen and (min-width: 1440px) {
   //     padding: 14px 24px;
   //   }
