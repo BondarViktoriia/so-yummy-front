@@ -3,7 +3,6 @@ import ReactPaginate from 'react-paginate';
 import styled from 'styled-components';
 
 import { useMedia } from 'hooks/useMedia';
-// import { PaginationContainer, MyPaginate } from './Pagination.styled';
 
 import RecipesList from 'components/RecipeList/RecipesList';
 import Favorite from 'components/Favorites';
@@ -38,7 +37,6 @@ const PaginationComp = ({ recipes, itemsPerPage, page, onDelete }) => {
       return 5;
     }
   };
-  // console.log(rangeDisplay());
 
   return (
     <>
