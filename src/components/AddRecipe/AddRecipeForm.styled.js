@@ -12,6 +12,7 @@ margin-top:65px;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-top:97px;
   }
   @media screen and (min-width: 1440px) {
     display: flex;
@@ -127,7 +128,7 @@ export const TitleIngredients = styled.h2`
 color: ${props => props.theme.colors.textPrimary};
 
   @media only screen and (min-width: 768px) {
-    margin-left: 32px;
+
   }
   @media only screen and (min-width: 1440px) {
     margin-left: 65px;
@@ -183,8 +184,8 @@ export const WrapPreparation = styled.div`
   width: 100%;
   @media only screen and (min-width: 768px) {
     width: 510px;
-    margin-left: 33px;
     margin-top: 100px;
+    text-align:start;
   }
 `;
 
