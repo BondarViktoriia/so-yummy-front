@@ -28,7 +28,7 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
   const currentUser = useSelector(selectUser);
   const [username, setUsername] = useState('');
   const [file, setFile] = useState(null);
-  const [path, setPath] = useState('');
+  // const [path, setPath] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
     window.addEventListener('keydown', handleEsc);
@@ -49,10 +49,10 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
     setFile(file);
 
     if (!file || !file.type.includes('image')) {
-      setPath('');
+      // setPath('');
       return;
     }
-    setPath(URL.createObjectURL(file));
+    // setPath(URL.createObjectURL(file));
   };
 
   const changeName = e => {
