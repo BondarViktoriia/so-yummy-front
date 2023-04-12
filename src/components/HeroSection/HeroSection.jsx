@@ -14,9 +14,9 @@ import {
 import Container from '../../components/Container/Container'
 import { HealsyBlockRec } from './HealsyBlockRec';
 import { Formik } from 'formik';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 export const SectionHero = () => {
-  const navigate = useNavigate(); 
+  // const navigate = useNavigate(); 
 
   return (
     <HeroSection>
