@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import UserProfile from '../UserProfile/UserProfile';
 import { selectUser } from '../../redux/auth/authSelectors';
 import {
-  // AvatarIcon,
   AvatarCont,
   Avatar,
   UserName,
