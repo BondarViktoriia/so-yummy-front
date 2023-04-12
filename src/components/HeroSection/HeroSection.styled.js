@@ -36,7 +36,7 @@ export const HeroSection = styled.section`
       padding: 204px 0 195px 0; 
     }
     @media screen and (min-width: 1440px) {
-      padding-top: 160px; 
+      padding-top: 226px; 
     } `
 
 
