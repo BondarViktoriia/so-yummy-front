@@ -438,39 +438,6 @@ export const PopularItem = styled.li`
   }
 `;
 
-export const RecipeTitle = styled.p`
-  /* font-weight: ${({ theme }) => theme.fontWeights[1]}; */
-  font-size: 16px;
-  /* line-height: ${({ theme }) => theme.lineHeights.description};
-  letter-spacing: ${({ theme }) => theme.letterSpacings.subheader}; */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 200px;
-`;
-
-export const RecipeText = styled.p`
-  margin-top: 3px;
-  white-space: normal;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: 50px;
-  /* color: ${({ theme }) => theme.colors.mainGrey};
-  font-weight: ${({ theme }) => theme.fontWeights[0]}; */
-  font-size: 12px;
-  /* line-height: ${({ theme }) => theme.lineHeights.content};
-  letter-spacing: ${({ theme }) => theme.letterSpacings.subheader}; */
-`;
-
-export const RecepiImg = styled.img`
-  border-radius: 8px;
-  height: 85px;
-  width: 100px;
-  margin-right: 12px;
-`;
 
 
 export const ButtonRemoveItem = styled.button`
@@ -608,7 +575,7 @@ export const stylesUnit = {
   }),
 };
 
-export const SelecComponent = styled.p`
+export const SelecComponent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
