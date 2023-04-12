@@ -103,7 +103,7 @@ export const getCurrentUser = createAsyncThunk(
     }
     try {
       // If there is a token, add it to the HTTP header and perform the request
-      setAuthToken(persistedToken);
+      persistedToken && setAuthToken(persistedToken);
       const res = await axios.get('/auth/current');
       return res.data;
     } catch (error) {

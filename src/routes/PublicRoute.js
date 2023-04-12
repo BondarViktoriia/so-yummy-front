@@ -1,13 +1,14 @@
+
 // import { selectToken } from '../redux/auth/authSelectors';
-import {selectIsLoggedIn} from '../redux/auth/authSelectors'
+import { selectToken } from '../redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 export const PublicRoute = ({
-  component: Component,
+  component,
 
   redirectTo = '/main',
 }) => {
-  const token = useSelector(selectIsLoggedIn);
-  return token ? <Navigate to={redirectTo} /> : Component;
+  const token = useSelector(selectToken);
+  return token ? <Navigate to={redirectTo} /> : component;
 };

@@ -1,8 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import Theme from '../Theme';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectTheme } from 'redux/theme/themeSelectors';
+
 // import { selectIsRefreshing } from '../redux/auth/authSelectors';
+import { getCurrentUser } from 'redux/auth/authOperations' ;
+
 import CategoriesByName from '../components/Categories/CategoriesByName';
 import RecipePage from '../pages/RecipePage';
 
@@ -22,12 +26,14 @@ import ErrorPage from '../pages/ErrorPage';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { PublicRoute } from '../routes/PublicRoute';
 import { PrivateRoute } from '../routes/PrivateRoute';
+import { selectToken } from 'redux/auth/authSelectors'
 
 export const App = () => {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getCurrentUser());
-  // }, [dispatch]);
+  const dispatch = useDispatch();
+  const token = useSelector(selectToken);
+  useEffect(() => {
+    token && dispatch(getCurrentUser());
+  }, [dispatch,token]);
   const theme = useSelector(selectTheme);
   return (
     <Theme themeValue={theme}>
@@ -79,7 +85,7 @@ export const App = () => {
         <Route path="*" element={<ErrorPage />} />
       </Routes> */}
             <Routes>
-                <Route path="/" element={<PublicRoute component={<StartPage />} />} />
+                <Route index element={<PublicRoute component={<StartPage />} />} />
 
           <Route
           path="/register"
@@ -92,21 +98,21 @@ export const App = () => {
         <Route
           path="/"
           element={
-            <PrivateRoute component={ <SharedLayout />}/>
+            <SharedLayout/>
              
           }
         >
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/categories" element={<CategoriesPage />}>
-            <Route path=":categoryName" element={<CategoriesByName />} />
+          <Route path="main" element={<PrivateRoute component={<MainPage />} />} />
+          <Route path="categories" element={<PrivateRoute component={<CategoriesPage />} />}>
+            <Route path=":categoryName" element={<PrivateRoute component={<CategoriesByName/>} />} />
           </Route>
-          <Route path="/add" element={<AddRecipe />} />
-          <Route path="/my" element={<MyRecipesPage />} />
-          <Route path="/favorite" element={<FavoritesPage />} />
-          <Route path="/shopping-list" element={<ShoppingList />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/recipe/:recipeId" element={<RecipePage />} />
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="add" element={<PrivateRoute component={<AddRecipe />} />} />
+          <Route path="my" element={<PrivateRoute component={<MyRecipesPage/>} />} />
+          <Route path="favorite" element={<PrivateRoute component={<FavoritesPage />} />} />
+          <Route path="shopping-list" element={<PrivateRoute component={<ShoppingList/>} />} />
+          <Route path="search" element={<PrivateRoute component={<SearchPage />} />} />
+          <Route path="recipe/:recipeId" element={<PrivateRoute component={<RecipePage />} />} />
+          <Route path="*" element={<PrivateRoute component={<ErrorPage/>} />} />
         </Route>
       </Routes>
     </Theme>
