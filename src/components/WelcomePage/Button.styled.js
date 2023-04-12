@@ -5,8 +5,8 @@ export const ButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 132;
-  height: 45;
+  width: 100%;
+  height: 45px;
 
   font-family: 'Poppins', sans-serif;
   font-style: normal;
@@ -14,7 +14,6 @@ export const ButtonStyled = styled.button`
   font-size: ${({ fontSize }) => (fontSize ? fontSize : '16px')};
   line-height: 21px;
   @media screen and (min-width: 768px) {
-    width: 184px;
     height: 67px;
     font-size: 16px;
   }
