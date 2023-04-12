@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import * as API from '../../services/api/apiRecipe';
 
 import RecipeItem from 'components/RecipeItem/RecipeItem';
+import { Loader } from '../Loader/Loader';
 
 import { RecipesList } from './CategoriesByName.styled';
 
@@ -33,6 +34,7 @@ const CategoriesByName = () => {
 
   return (
     <>
+      {isLoading && <Loader />}
       {recipes.length > 0 && !error && !isLoading && (
         <RecipesList>
           {recipes.map(recipe => {
