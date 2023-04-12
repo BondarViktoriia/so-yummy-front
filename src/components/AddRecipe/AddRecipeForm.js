@@ -40,7 +40,7 @@ import {
 } from './AddRecipeForm.styled';
 import Select from 'react-select';
 import axios from 'axios';
-import { addOwnRecipeOperation } from '../../redux/ownRecipe/ownRecipesOperation';
+// import { addOwnRecipeOperation } from '../../redux/ownRecipe/ownRecipesOperation';
 import { stylesMeta } from './selectStyle'
 import { categoriesList } from '../../utilities/categoriesList';
 import { timeOptionsList } from '../../utilities/timeOptionsList';
@@ -176,7 +176,7 @@ const AddRecipeForm = () => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    const formData = new FormData();
+    // const formData = new FormData();
     const { recipe, time, category, about, title } = inputs;
     const ingredientsList = userIngredients.map(
       ({ unitValue, ingredient, qty: unit }) => ({
@@ -190,24 +190,39 @@ const AddRecipeForm = () => {
       return;
     }
 
-    formData.append('description', recipe);
-    formData.append('cookingTime', time);
-    formData.append('category', category);
-    formData.append('about', about);
-    formData.append('title', title);
-    formData.append('preview', file);
-    formData.append('thumb', file);
-    formData.append('ingredients', JSON.stringify(ingredientsList));
-    console.log('formData', formData);
+    // formData.append('description', recipe);
+    // formData.append('cookingTime', time);
+    // formData.append('category', category);
+    // formData.append('about', about);
+    // formData.append('title', title);
+    // formData.append('preview', file);
+    // formData.append('thumb', file);
+    // formData.append('ingredients', JSON.stringify(ingredientsList));
+    // console.log('formData', formData);
+    // console.log('formData.getAll', formData.getAll('title'))
+    // formData.append('cookingTime', time);
+    const myRecipe = { description: recipe, time: time.toString(), category:category,instructions:about,title:about,preview:"file",thumb:"file",ingredients:JSON.stringify(ingredientsList)}
 
-    dispatch(addOwnRecipeOperation(formData));
+
+    console.log("myRecipe",myRecipe)
+   const addOwnRecipeApi = async body => {
+  try {
+    const {data} = await axios.post('/ownRecipes', body);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+     }
+ 
+};
+   addOwnRecipeApi(myRecipe)
+
     resetForm();
   };
 
   const resetForm = () => {
     setInputs(init);
     setUserIngredients([]);
-    setFile(null);
+    // setFile(null);
   };
 
 
@@ -264,7 +279,7 @@ const AddRecipeForm = () => {
               id="file-input"
               type="file"
               accept="image/png, image/jpeg"
-              onChange={handleFile}
+              // onChange={handleFile}
             />
           </ImageBox>
           <InputWrap>
