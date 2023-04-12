@@ -17,7 +17,7 @@ export const MainLi = styled.li`
     position: absolute;
     bottom: 26px;
     left: 59px; 
-    width: 256px;
+    min-width: 256px;
     height: 52px;
     padding: 16px;
     border-radius: 8px;
@@ -46,3 +46,5 @@ export const MainLi = styled.li`
     height: 100%;
     border-radius: 8px;
     object-fit: cover; `
+
+  

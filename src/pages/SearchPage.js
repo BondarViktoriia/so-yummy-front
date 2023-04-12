@@ -25,7 +25,6 @@ const SearchPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
-  // const page = searchParams.get('page');
   const options = searchParams.get('options');
   const token = useSelector(selectToken);
   console.log(token);

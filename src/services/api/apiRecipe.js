@@ -77,14 +77,15 @@ export const deleteFromFavorite = async id => {
 
 export const getOwnRecipes = async (page, per_page) => {
   try {
-    if (page && per_page) {
-      const response = await axios.get(
-        `/ownRecipes?page=${page}&per_page=${per_page}`
-      );
-      return response.data;
-    }
-    const response = await axios.post('/ownRecipes');
-    return response.data;
+    // if (page && per_page) {
+    const { data } = await axios.get(
+      `/ownRecipes?page=${page}&per_page=${per_page}`
+    );
+    // console.log(data.data);
+    return data.data;
+    // }
+    // const response = await axios.post('/ownRecipes');
+    // return response.data;
   } catch (error) {
     console.log(error.message);
   }

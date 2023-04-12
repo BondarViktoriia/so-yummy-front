@@ -61,11 +61,12 @@ const MainSection = () => {
                     <MainItem key={meal._id} meal={meal} />
                   ))}
                 </MainList>
-                <Link to={`/categories/${meals.category}`}>See all</Link>
+                <Link to={`/categories/${meals.category}`} style={isActive => ({ color: isActive ? "#8AA936" : "#BDBDBD"})}>See all</Link>
+             
               </li>
             ))}
         </MainCategories>
-        <MainButton to="/categories/Beef">Other  categories</MainButton>
+        <MainButton to="/categories/Beef">Other categories</MainButton>
       </Container>
     </SectionMain>
   );
