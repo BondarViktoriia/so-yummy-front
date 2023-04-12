@@ -1,5 +1,4 @@
-import { Block, BlockText, BlockLink } from './MainPage.styled'
-// import { FaBeer  } from  'react-icons/fa';
+import { Block, BlockText, BlockLink } from './HealsyBlockRec.styled'
 import { BsArrowRight } from "react-icons/bs";
 
 export const HealsyBlockRec = () => {

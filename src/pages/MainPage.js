@@ -1,13 +1,12 @@
 import Container from '../components/Container/Container'
-import { SectionHero } from './MainPage1/HeroSection'
-import MainSection from './MainPage1/MainSection'
+import { SectionHero } from '../components/HeroSection/HeroSection'
+import MainSection from '../components/MainSection/MainSection'
 const MainPage = () => {
     return (
 
         <Container>
             <SectionHero />
-            <MainSection />
-            {/* <div></> */}
+            <MainSection />           
     </Container>
 )
   

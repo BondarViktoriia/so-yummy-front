@@ -1,13 +1,14 @@
+import {MainLi, MainImage, MainImageTitle, MainImageText} from "./MainItem.styled"
 
-
-
-const MainItem = ({meal}) => {
-    return (<div>
-       <li key={meal._id}>
-                <img src={meal.preview} alt="title" />
-                <h5>{meal.title} </h5>
-            </li>
-    </div>
+const MainItem = ({ meal }) => {
+    return (<>
+       <MainLi key={meal._id}>
+                <MainImage src={meal.preview} alt="title" />
+            <MainImageTitle>
+                <MainImageText>{meal.title}</MainImageText>
+            </MainImageTitle>
+            </MainLi>
+    </>
     )
 
 
