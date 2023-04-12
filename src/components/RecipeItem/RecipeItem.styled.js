@@ -60,7 +60,7 @@ export const RecipeTitle = styled.h2`
 `;
 
 export const RecipeText = styled.p`
-  width: 163px;
+ max-width: 163px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -76,12 +76,41 @@ export const RecipeText = styled.p`
     -webkit-line-clamp: 4;
   }
   @media (min-width: 768px) {
-    width: 353px;
+    max-width: 353px;
     font-size: 14px;
     line-height: 1.29;
   }
   @media (min-width: 1440px) {
-    width: 679px;
+    max-width: 679px;
+    display: block;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+`;
+export const RecipeTime = styled.p`
+ /* max-width: 163px; */
+     text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: ${p => p.theme.colors.darkText};
+  &:first-child {
+    margin-bottom: 15px;
+    -webkit-line-clamp: 4;
+  }
+  @media (min-width: 768px) {
+    /* max-width: 353px; */
+    font-size: 14px;
+    line-height: 1.29;
+  }
+  @media (min-width: 1440px) {
+    /* max-width: 679px; */
     display: block;
     font-size: 18px;
     line-height: 1.33;

@@ -13,6 +13,7 @@ import {
   RecipeTitle,
   RecipeText,
   Wrapper,
+  RecipeTime
 } from './RecipeItem.styled';
 
 // DeleteButtonFav, RecipeButtonFav (це для сторінки з favorite)
@@ -56,7 +57,7 @@ const RecipeItem = ({ recipe, page, onDelete }) => {
             })}
           </div>
         </div>
-        <RecipeText>{time} min</RecipeText>
+        <RecipeTime>{time} min</RecipeTime>
       </Wrapper>
       {/* // Кнопка видалити рецепт з favorite */}
 
