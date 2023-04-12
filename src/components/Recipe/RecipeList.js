@@ -13,10 +13,9 @@ import {
   TitleIngred,
   MeasureStyled,
 } from './RecipeList.styled';
-
+import IngredPlaceholder from '../../image/plugs/fish-dekstop-2x.png';
 import { getShoppingList } from '../../redux/shoppingList/shoppingListOperations';
 import { MyCheckbox } from './Checkbox';
-import RecipeImgPlaceholder from '../../image/recipe-page/recipe-img-tablet2x.png';
 
 const RecipeList = ({ ingreds }) => {
   const dispatch = useDispatch();
@@ -40,7 +39,7 @@ const RecipeList = ({ ingreds }) => {
             <ListItemStyled key={_id}>
               <WrapForContent>
                 <Thumb>
-                  <Image src={thb ?? RecipeImgPlaceholder} alt={ttl}></Image>
+                  <Image src={thb ?? IngredPlaceholder} alt={ttl}></Image>
                 </Thumb>
 
                 <TitleIngred>{ttl}</TitleIngred>
