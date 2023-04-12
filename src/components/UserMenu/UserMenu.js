@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import UserProfile from '../UserProfile/UserProfile';
 import { selectUser } from '../../redux/auth/authSelectors';
 import {
-  AvatarIcon,
+  // AvatarIcon,
   AvatarCont,
   Avatar,
   UserName,
@@ -15,16 +15,12 @@ export const UserMenu = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const openProfile = () => setIsProfileOpen(true);
   const closeProfile = () => setIsProfileOpen(false);
-  const { _id, name, avatarURL } = useSelector(selectUser);
+  const { _id, name, avatar } = useSelector(selectUser);
   return (
     <>
       <UserMenuBox onClick={openProfile}>
         <AvatarCont>
-          {avatarURL ? (
-            <Avatar style={{ backgroundImage: `url(${avatarURL})` }} />
-          ) : (
-            <AvatarIcon />
-          )}
+          <Avatar style={{ backgroundImage: `url(${avatar})` }} />
         </AvatarCont>
         <UserNameCont>
           <UserName>{name || 'UserName'}</UserName>
@@ -35,7 +31,7 @@ export const UserMenu = () => {
           onClose={closeProfile}
           id={_id}
           name={name}
-          avatar={avatarURL}
+          avatar={avatar}
         />
       )}
     </>

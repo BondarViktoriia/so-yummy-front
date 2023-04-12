@@ -8,7 +8,6 @@ import BgDesk from '../../image/footer/bgc-desk.png';
 
 export const FooterSection = styled.section`
   background-color: ${props => props.theme.colors.footer};
-  z-index: 9999;
 `;
 
 export const FooterThumb = styled.div`
@@ -372,7 +371,6 @@ export const BgUpImg = styled.img`
 `;
 
 export const BgUpImgThumb = styled.div`
-  outline: 1px solid green;
   width: 146px;
   height: 134px;
   background-color: transparent;
