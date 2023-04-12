@@ -131,8 +131,7 @@ color: ${props => props.theme.colors.textPrimary};
 
   }
   @media only screen and (min-width: 1440px) {
-    /* margin-left: 65px; */
-    margin-right: 362px;
+  margin-right: 530px;
   }
 `;
 export const TitlePreparation = styled.h2`
@@ -401,6 +400,11 @@ export const ValueInputWrapper = styled.div`
   justify-content: flex-start;
   background-color: rgb(217, 217, 217);
   border-radius: 6px;
+      margin-left:32px;
+
+    @media only screen and (max-width: 767px) {
+    margin-left:32px;
+  }
   /* margin-left: ${({ isMobile }) => (isMobile ? '14px' : '32px')}; */
 `;
 
@@ -468,7 +472,11 @@ export const ButtonRemoveItem = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
+    margin-left: 30px;
+    border: none;
+    @media only screen and (min-width: 768px) {
+        margin-left: 135px;
+  }
 `;
 
 export const stylesIngredient = {
