@@ -76,6 +76,7 @@ const AddRecipeForm = () => {
   const [file, setFile] = useState(null);
   const [path, setPath] = useState('');
 
+  console.log(file)
   useEffect(() => {
     const optionsIngredients = async () => {
       try {
@@ -222,7 +223,7 @@ const AddRecipeForm = () => {
   const resetForm = () => {
     setInputs(init);
     setUserIngredients([]);
-    // setFile(null);
+    setFile(null);
   };
 
 
@@ -279,7 +280,7 @@ const AddRecipeForm = () => {
               id="file-input"
               type="file"
               accept="image/png, image/jpeg"
-              // onChange={handleFile}
+              onChange={handleFile}
             />
           </ImageBox>
           <InputWrap>
