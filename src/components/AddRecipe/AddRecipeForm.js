@@ -3,7 +3,6 @@ import { IoCloseOutline } from 'react-icons/io5';
 import {
   ImageBox,
   ImageInput,
-  Title,
   Wrap,
   Form,
   InputDescriptionWrap,
@@ -19,7 +18,6 @@ import {
   WrapButtonAdd,
   Description,
   InputWrap,
-  IngredientsTitle,
   IngredientsList,
   stylesIngredient,
   stylesUnit,
@@ -45,6 +43,8 @@ import { stylesMeta } from './selectStyle'
 import { categoriesList } from '../../utilities/categoriesList';
 import { timeOptionsList } from '../../utilities/timeOptionsList';
 import { unitsOptionsList } from '../../utilities/unitsOptionsList';
+import Title from '../Title/Title'
+
 const init = {
   recipe: '',
   title: '',
@@ -202,7 +202,7 @@ const AddRecipeForm = () => {
     // console.log('formData', formData);
     // console.log('formData.getAll', formData.getAll('title'))
     // formData.append('cookingTime', time);
-    const myRecipe = { description: recipe, time: time.toString(), category:category,instructions:about,title:about,preview:"file",thumb:"file",ingredients:JSON.stringify(ingredientsList)}
+    const myRecipe = { description: recipe, time: time.toString(), category:category,instructions:about,title:about,ingredients:JSON.stringify(ingredientsList)}
 
 
     console.log("myRecipe",myRecipe)
@@ -343,16 +343,15 @@ const AddRecipeForm = () => {
         <MainWrapIngredients>
           <WrapIngredients>
             <TitleIngredients>Ingredients</TitleIngredients>
-          </WrapIngredients>
-
-          <InputIngredientsWrap>
-            <IngredientsTitle>
-              <Counter
+               <Counter
                 counter={counter}
                 handleDecrement={handleDecrement}
                 handleIncrement={handleIncrement}
               />
-            </IngredientsTitle>
+          </WrapIngredients>
+
+          <InputIngredientsWrap>
+
             <IngredientsList>{userIngredientsList}</IngredientsList>
           </InputIngredientsWrap>
 

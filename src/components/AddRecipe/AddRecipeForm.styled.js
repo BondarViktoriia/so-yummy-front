@@ -4,26 +4,9 @@ import styled from 'styled-components';
 export const Wrap = styled.div`
   padding-top: 50px;
 `;
-export const Title = styled.h2`
-  line-height: 1;
-  letter-spacing: -0.02em;
-  font-feature-settings: 'liga' off;
-  margin-bottom: 50px;
-  margin-top: 72px;
-  margin-left: 16px;
-  font-weight: 600;
-  font-size: 44px;
 
-  @media only screen and (min-width: 768px) {
-    margin-bottom: 72px;
-    margin-left: 32px;
-  }
-  @media only screen and (min-width: 1440px) {
-    margin-top: 100px;
-    margin-left: 100px;
-  }
-`;
 export const Form = styled.form`
+margin-top:65px;
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
@@ -112,6 +95,7 @@ export const InputDescription = styled.input`
   border: none;
   border-bottom: 1px solid grey;
   background: transparent;
+  width:100%;
 `;
 
 export const SelectDescription = styled.select`
@@ -134,13 +118,13 @@ export const WrapIngredients = styled.div`
     margin-right: 32px;
   }
   @media only screen and (max-width: 1439px) {
-    margin-left: 32px;
+  
     justify-content: space-between;
   }
 `;
 
 export const TitleIngredients = styled.h2`
-  margin-left: 16px;
+
   @media only screen and (min-width: 768px) {
     margin-left: 32px;
   }
@@ -286,11 +270,6 @@ export const RecipeForm = styled.form`
   }
 `;
 
-export const IngredientsTitle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
 
 export const AddRecepiSection = styled.div`
   display: flex;
