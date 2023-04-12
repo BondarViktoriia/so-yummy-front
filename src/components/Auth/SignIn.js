@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+// import { useRef, useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { registrationUser, loginUser } from '../../redux/auth/authOperations';
@@ -19,8 +19,8 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 
 export const SignIn = ({ login }) => {
-  const signInPasswordInput = useRef(null);
-  const [visibility, setVisibility] = useState(true);
+  // const signInPasswordInput = useRef(null);
+  // const [visibility, setVisibility] = useState(true);
   const dispatch = useDispatch();
 
   const initialValuesRegister = {
@@ -78,17 +78,17 @@ export const SignIn = ({ login }) => {
       setSubmitting(false);
     },
   });
-  const isValid = signinSchema.isValidSync(formik.values);
-  const togglePasswordVisibility = () => {
-    if (signInPasswordInput.current.type === 'password') {
-      signInPasswordInput.current.type = 'text';
-    } else {
-      signInPasswordInput.current.type = 'password';
-    }
-  };
-  const hendleButtonShown = () => {
-    setVisibility(!visibility);
-  };
+  // const isValid = signinSchema.isValidSync(formik.values);
+  // const togglePasswordVisibility = () => {
+  //   if (signInPasswordInput.current.type === 'password') {
+  //     signInPasswordInput.current.type = 'text';
+  //   } else {
+  //     signInPasswordInput.current.type = 'password';
+  //   }
+  // };
+  // const hendleButtonShown = () => {
+  //   setVisibility(!visibility);
+  // };
 
   const handleSubmit = values => {
     login ? dispatch(registrationUser(values)) : dispatch(loginUser(values));
