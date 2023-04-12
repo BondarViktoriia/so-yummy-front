@@ -30,17 +30,28 @@ import {
   ArrText,
   TermsText,
   BgImg,
-  // BgUpImg,
+  BgUpImg,
+  BgUpImgThumb,
 } from './Footer.styled';
 
+import BgUpMob from '../../image/footer/bgc-up-mob.png';
+import BgUpTab from '../../image/footer/bgc-up-tab.png';
+import BgUpDesk from '../../image/footer/bgc-up-desk-new.png';
+
 export const Footer = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
   const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 768px)' });
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   return (
     <footer>
       <FooterSection>
         <Container>
-          {/* <BgUpImg /> */}
+          <BgUpImgThumb>
+            {isMobile && <BgUpImg src={`${BgUpMob}`} alt="img" />}
+            {isTablet && <BgUpImg src={`${BgUpTab}`} alt="img" />}
+            {isDesktop && <BgUpImg src={`${BgUpDesk}`} alt="img" />}
+          </BgUpImgThumb>
           <FooterThumb>
             <DeskWrap>
               <NavWrap>
