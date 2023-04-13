@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import { useDispatch } from 'react-redux';
+import { deleteFromFavorite } from '../../redux/favorites/favoritesOperations';
 
 import { useMedia } from 'hooks/useMedia';
 
@@ -20,6 +22,7 @@ import {
 
 const RecipeItem = ({ recipe, page, onDelete }) => {
   const { _id, thumb, description, title, time } = recipe;
+  const dispatch = useDispatch();
 
   const splitDescr = description.split('\n');
 
@@ -62,7 +65,7 @@ const RecipeItem = ({ recipe, page, onDelete }) => {
       {/* // Кнопка видалити рецепт з favorite */}
 
       {page === 'favorite' && (
-        <DeleteButtonFav type="button" onClick={() => onDelete(_id)}>
+        <DeleteButtonFav type="button" onClick={() => dispatch(deleteFromFavorite(_id))}>
           <RiDeleteBinLine size={iconSize()} />
         </DeleteButtonFav>
       )}
