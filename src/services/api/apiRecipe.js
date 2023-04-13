@@ -22,15 +22,12 @@ export const fetchAllCategories = async () => {
   }
 };
 
-export const getRecipeByCategory = async (
-  categoryName,
-  limit = 8,
-  page = 1
-) => {
+export const getRecipeByCategory = async (category = 'beef', token) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  console.log(token);
   try {
-    const { data } = await axios.get(
-      `/recipes/recipe/categories/${categoryName}?limit=${limit}&page=${page}`
-    );
+    console.log(category);
+    const { data } = await axios.get(`/recipes/categories/${category}`);
     return data;
   } catch (error) {
     console.log(error.message);
