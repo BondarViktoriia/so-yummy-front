@@ -22,7 +22,7 @@ import { ingredientsReducer } from './ingredients/ingredientsSlice';
 const persistConfig = {
   key: 'root',
   storage: storage,
-  whitelist: ['token'],
+  whitelist: ['token', "user", "isLoggedIn"],
 };
 
 const themePersistedConfig = {
