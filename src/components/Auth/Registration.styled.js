@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Field } from 'formik';
+import { Field, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi';
 import { HiOutlineMail } from 'react-icons/hi';
@@ -135,4 +135,11 @@ export const FormLink = styled(Link)`
     /* font-size: */
     /* line-height:  */
   }
+`;
+
+export const ErrorCont = styled(ErrorMessage)`
+  margin-top: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
 `;
