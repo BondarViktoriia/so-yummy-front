@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { registrationUser, loginUser } from '../../redux/auth/authOperations';
 import { Formik, Form } from 'formik';
-
+import { regSchema } from "../../utilities/authValidationSchemas";
 import { Button } from '../../components/WelcomePage/Button';
 import {
   FormChange,
@@ -14,6 +14,7 @@ import {
   IconName,
   IconEmail,
   IconPassword,
+  ErrorCont
 } from './Registration.styled';
 
 export const AuthForm = ({ login }) => {
@@ -36,24 +37,31 @@ export const AuthForm = ({ login }) => {
     <Formik
       initialValues={!login ? initialValuesRegister : initialValuesLogin}
       onSubmit={handleSubmit}
+      validationSchema={regSchema}
     >
       <FormChange>
         <Title>{!login ? 'Registration' : 'Sign In'}</Title>
-        <Form>
+        <Form autoComplete='off'>
           <FormInputWrapper>
             {!login && (
-              <FormLabel>
+              <div>
+                <FormLabel>
                 <IconName />
                 <FormInput type="text" name="name" placeholder="Name" />
               </FormLabel>
+              </div>
             )}
 
-            <FormLabel>
+            <div>
+              <FormLabel>
               <IconEmail />
               <FormInput type="email" name="email" placeholder="Email" />
             </FormLabel>
+              <ErrorCont name='email' component='div' />
+            </div>
 
-            <FormLabel>
+            <div>
+              <FormLabel>
               <IconPassword />
               <FormInput
                 type="password"
@@ -61,6 +69,8 @@ export const AuthForm = ({ login }) => {
                 placeholder="Password"
               />
             </FormLabel>
+            <ErrorCont name='password' component='div' />
+            </div>
           </FormInputWrapper>
           <Button
             type="submit"
