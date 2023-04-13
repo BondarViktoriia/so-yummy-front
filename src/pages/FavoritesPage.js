@@ -33,6 +33,7 @@ const FavoritesPage = () => {
 
   const deleteFavorite = id => {
     dispatch(deleteFromFavorite(id));
+    console.log(id)
   };
 
   return (

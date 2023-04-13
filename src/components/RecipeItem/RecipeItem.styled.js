@@ -36,6 +36,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-align: start;
 `;
 
 export const RecipeTitle = styled.h2`
