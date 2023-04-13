@@ -203,10 +203,10 @@ const AddRecipeForm = () => {
     const formData = new FormData();
 
     formData.append('imgURL', file);
-    formData.append('description', recipe);
+    formData.append('description', about);
     formData.append('time', time);
     formData.append('category', category);
-    formData.append('instructions', about);
+    formData.append('instructions', recipe);
     formData.append('title', title);
     formData.append('ingredients', JSON.stringify(ingredientsList));
 
@@ -268,13 +268,15 @@ const AddRecipeForm = () => {
     }
   );
   const counter = userIngredients.length;
+  console.log("file", file)
+   console.log("path",path)
   return (
     <Wrap>
       <Form onSubmit={handleSubmit} enctype="multipart/form-data">
         <Description path={path}>
           <ImageBox>
             <label htmlFor="file-input">
-              <img src={addRecipe} alt="addRecipe" />
+             {!file? <img src={addRecipe} alt="addRecipe" />:<img src={path} alt='addRecipe'/>}
             </label>
             <ImageInput
               id="file-input"

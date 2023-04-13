@@ -25,7 +25,7 @@ export const ImageBox = styled.div`
   width: 279px;
   height: 268px;
   margin: 0 auto;
-  background-color: grey;
+  background-color: ${props => props.theme.colors.background};
   border-radius: 8px;
   display: flex;
 
