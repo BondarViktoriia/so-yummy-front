@@ -31,17 +31,16 @@ const FavoritesPage = () => {
     dispatch(getFavorites());
   }, [dispatch]);
 
-  const deleteFavorite = id => {
-    dispatch(deleteFromFavorite(id));
-    console.log(id)
-  };
+  // const deleteFavorite = id => {
+  //   dispatch(deleteFromFavorite(id));
+  // };
 
   return (
     <Container>
             <Title>Favorites</Title>
       <SearchWrapper>
       {/* <Favorite recipes={recipesTest} page="favorite" /> */}
-      {favorites.length > 0 && (<PaginationComp recipes={favorites} itemsPerPage={4} page="favorite" onDelete={deleteFavorite}/>)}
+      {favorites.length > 0 && (<PaginationComp recipes={favorites} itemsPerPage={4} page="favorite"/>)}
               {favorites.length === 0 && !isLoading && !error && (
           <>
           <PictureSearch>
