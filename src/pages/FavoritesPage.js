@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFavorites, deleteFromFavorite } from '../redux/favorites/favoritesOperations';
+import { getFavorites } from '../redux/favorites/favoritesOperations';
 // import Favorite from '../components/Favorites';
 import Title from '../components/Title/Title';
 import Container from '../components/Container/Container';
