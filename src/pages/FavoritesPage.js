@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFavorites } from '../redux/favorites/favoritesOperations';
+import { getFavorites, deleteFromFavorite } from '../redux/favorites/favoritesOperations';
 // import Favorite from '../components/Favorites';
 import Title from '../components/Title/Title';
 import Container from '../components/Container/Container';
@@ -31,15 +31,18 @@ const FavoritesPage = () => {
     dispatch(getFavorites());
   }, [dispatch]);
 
+  const deleteFavorite = id => {
+    dispatch(deleteFromFavorite(id));
+  };
+
   return (
     <Container>
             <Title>Favorites</Title>
       <SearchWrapper>
-
-      <PaginationComp recipes={favorites} itemsPerPage={2} page="favorite" />
       {/* <Favorite recipes={recipesTest} page="favorite" /> */}
-      {/* {favorites.length > 0 && <Favorite recipes={favorites} page="favorite"/>} */}
-              {favorites.length === 0 && (
+      {favorites.length > 0 && (<PaginationComp recipes={favorites} itemsPerPage={4} page="favorite" onDelete={deleteFavorite}/>)}
+              {favorites.length === 0 && !isLoading && !error && (
+          <>
           <PictureSearch>
             <source
               media="(min-width: 1440px)"
@@ -55,9 +58,7 @@ const FavoritesPage = () => {
               alt="Ошибка"
             />
           </PictureSearch>
-        )}
-      {favorites.length === 0 && !isLoading && !error && (
-        <EmptyList>The list is empty</EmptyList>
+          <EmptyList>The list is empty</EmptyList></>
         )}
         </SearchWrapper>
     </Container>
