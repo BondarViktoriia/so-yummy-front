@@ -36,7 +36,7 @@ export const WrapperFollowUs = styled.div`
 
   @media screen and (min-width: 1440px) {
     margin-top: 93px;
-    margin-left: 322px;
+    margin-left: 161px;
   }
 `;
 
