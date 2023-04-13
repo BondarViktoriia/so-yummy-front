@@ -105,6 +105,10 @@ export const App = () => {
           <Route path="main" element={<PrivateRoute component={<MainPage />} />} />
           <Route path="categories" element={<PrivateRoute component={<CategoriesPage />} />}>
             <Route path=":categoryName" element={<PrivateRoute component={<CategoriesByName/>} />} />
+            <Route
+              path=":beef"
+              element={<PrivateRoute component={<CategoriesByName />} />}
+            />
           </Route>
           <Route path="add" element={<PrivateRoute component={<AddRecipe />} />} />
           <Route path="my" element={<PrivateRoute component={<MyRecipesPage/>} />} />

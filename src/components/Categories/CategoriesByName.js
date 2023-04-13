@@ -1,8 +1,12 @@
+import axios from 'axios';
+
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { useSelector } from 'react-redux';
+import { selectToken } from '../../redux/auth/authSelectors';
 import * as API from '../../services/api/apiRecipe';
 
-import RecipeItem from 'components/RecipeItem/RecipeItem';
+import { RecipeItem } from '../Search/RecipeItem';
 import { Loader } from '../Loader/Loader';
 
 import { RecipesList } from './CategoriesByName.styled';
@@ -12,16 +16,19 @@ const CategoriesByName = () => {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const token = useSelector(selectToken);
 
   useEffect(() => {
-    async function getRecipesByCategory() {
+    async function getRecipesByCategory(token) {
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
       try {
         setIsLoading(true);
         const {
           data: {
             data: { result },
           },
-        } = await API.getRecipeByCategory(category);
+        } = await API.getRecipeByCategory(category, token);
         setRecipes(result);
       } catch (error) {
         setError({ error });
@@ -29,8 +36,9 @@ const CategoriesByName = () => {
         setIsLoading(false);
       }
     }
-    getRecipesByCategory();
-  }, [category]);
+    console.log(token);
+    getRecipesByCategory(token);
+  }, [category, token]);
 
   return (
     <>
@@ -38,11 +46,10 @@ const CategoriesByName = () => {
       {recipes.length > 0 && !error && !isLoading && (
         <RecipesList>
           {recipes.map(recipe => {
-            return <RecipeItem dish={recipe} key={recipe._id} />;
+            return <RecipeItem recipe={recipe} key={recipe._id} />;
           })}
         </RecipesList>
       )}
-      {!isLoading && !error && recipes.length === 0};
     </>
   );
 };
