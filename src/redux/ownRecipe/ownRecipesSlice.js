@@ -3,7 +3,7 @@ import {
   getOwnRecipesOperation,
   deleteOwnRecipeOperation,
   addOwnRecipeOperation,
-  getCategoryListOperation
+  getCategoryListOperation,
 } from '../ownRecipe/ownRecipesOperation';
 
 const pending = state => {
@@ -15,7 +15,7 @@ const rejected = state => {
 
 const initialState = {
   isOwnRecipesFetching: false,
-  ownRecipes: { recipes: [], total: 0 },
+  ownRecipes: [],
   favorites: { recipes: [], total: 0 },
   singleRecipe: null,
   categoryList: [],
@@ -24,25 +24,26 @@ const initialState = {
 
 export const ownRecipesSlice = createSlice({
   name: 'ownRecipes',
-  initialState,
+  initialState: { ...initialState },
   extraReducers: builder =>
     builder
       .addCase(getOwnRecipesOperation.fulfilled, (state, { payload }) => {
-        state.ownRecipes.recipes = payload.recipes;
-        state.ownRecipes.total = payload.total;
+        state.ownRecipes = payload;
+
         state.isOwnRecipesFetching = false;
       })
       .addCase(addOwnRecipeOperation.fulfilled, (state, { payload }) => {
-        state.ownRecipes.unshift(payload);
+        state.ownRecipes.push(payload);
         state.isOwnRecipesFetching = false;
       })
-      .addCase(deleteOwnRecipeOperation.fulfilled, (state, { payload }) => {
-        state.ownRecipes = state.ownRecipes.filter(
-          recipe => recipe.idMeal !== payload.id
+      .addCase(deleteOwnRecipeOperation.fulfilled, (state, action) => {
+        const index = state.ownRecipes.findIndex(
+          recipe => recipe._id === action.payload._id
         );
+        state.ownRecipes.splice(index, 1);
         state.isOwnRecipesFetching = false;
       })
-       .addCase(getCategoryListOperation.fulfilled, (state, { payload }) => {
+      .addCase(getCategoryListOperation.fulfilled, (state, { payload }) => {
         state.categoryList = payload;
         state.isCategoryFetching = false;
       })
