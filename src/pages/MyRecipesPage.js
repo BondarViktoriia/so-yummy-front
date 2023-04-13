@@ -1,60 +1,45 @@
 import styled from 'styled-components';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import {
-  // useSelector,
-  useDispatch,
-} from 'react-redux';
-import {
-  // getOwnRecipesOperation,
+  getOwnRecipesOperation,
   deleteOwnRecipeOperation,
 } from 'redux/ownRecipe/ownRecipesOperation';
+import { getRecipes, getIsLoading } from 'redux/ownRecipe/ownRecipesSelectors';
 
-// import { getRecipes } from 'redux/ownRecipe/ownRecipesSelectors';
-import { getOwnRecipes } from 'services/api/apiRecipe';
-
+import Container from '../components/Container/Container';
 import Title from 'components/Title/Title';
-import { ContainerStyled } from 'components/Container/Container.styled';
-
 import PaginationComp from 'components/Pagination/Pagination';
+import { Loader } from '../components/Loader/Loader.jsx';
 
-// 1. Підключити лоадер
-// 2. Доробити кнопку видалення
+import searchMob1x from '../image/search-page/search-mobile-1x.png';
+import searchMob2x from '../image/search-page/search-mobile-2x.png';
+import searchTablet1x from '../image/search-page/search-tablet-1x.png';
+import searchTablet2x from '../image/search-page/search-tablet-2x.png';
+import searchDesktop1x from '../image/search-page/search-dekstop-1x.png';
+import searchDesktop2x from '../image/search-page/search-desktop-2x.png';
 
 const MyRecipesPage = () => {
-  // const recipes = useSelector(getRecipes);
+  const recipe = useSelector(getRecipes);
 
-  const [recipe, setRecipe] = useState([]);
+  const isLoading = useSelector(getIsLoading);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        // setIsLoading(true);
-        const result = await getOwnRecipes();
-        // if (result === 0 || !result) {
-        //   console.log('Nothing found for your request :(');
-        //   // setIsLoading(false);
-        //   return;
-        // }
-        setRecipe([...result]);
-        // setIsLoading(false);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetchData();
-  }, [setRecipe]);
+    dispatch(getOwnRecipesOperation());
+  }, [dispatch]);
 
   const removeOwnRecipe = id => {
     dispatch(deleteOwnRecipeOperation(id));
   };
 
   return (
-    <ContainerStyled>
+    <Container>
       <Title>My recipes</Title>
-      <div>
+      {isLoading && <Loader />}
+      <OwnWrapper>
         {recipe.length > 0 && (
           <PaginationComp
             recipes={recipe}
@@ -64,10 +49,27 @@ const MyRecipesPage = () => {
           />
         )}
         {recipe.length === 0 && (
-          <EmptyList>We are sorry, but You do not have own recipes.</EmptyList>
+          <>
+            <PictureSearch>
+              <source
+                media="(min-width: 1440px)"
+                srcSet={`${searchDesktop1x}, ${searchDesktop2x} 2x`}
+              />
+              <source
+                media="(min-width: 768px)"
+                srcSet={`${searchTablet1x}, ${searchTablet2x} 2x`}
+              />
+              <img
+                src={searchMob1x}
+                srcSet={`${searchMob1x}, ${searchMob2x} 2x`}
+                alt="Ошибка"
+              />
+            </PictureSearch>
+            <EmptyList>You do not have own recipes.</EmptyList>
+          </>
         )}
-      </div>
-    </ContainerStyled>
+      </OwnWrapper>
+    </Container>
   );
 };
 
@@ -79,14 +81,14 @@ const EmptyList = styled.h2`
 
   border-radius: 10px;
 
+  color: ${props => props.theme.colors.textPrimary};
   font-family: 'Poppins';
   font-style: normal;
-  font-weight: 600;
-  font-size: 28px;
+  font-weight: 500;
+  font-size: 24px;
   line-height: 1;
-  letter-spacing: -0.02em;
+  margin-bottom: 200px;
   font-feature-settings: 'liga' off;
-  color: ${props => props.theme.colors.title};
 
   @media (min-width: 768px) {
     padding-top: 72px;
@@ -98,6 +100,29 @@ const EmptyList = styled.h2`
   }
 
   @media (min-width: 1440px) {
+  }
+`;
+
+const PictureSearch = styled.picture`
+  display: inline-block;
+  margin-bottom: 32px;
+`;
+
+const OwnWrapper = styled.div`
+  width: 375px;
+  margin-top: 114px;
+  padding: 0 16px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding: 0 32px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
+    padding: 0 100px;
   }
 `;
 
