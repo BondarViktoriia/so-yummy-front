@@ -23,8 +23,9 @@ const Welcome = () => {
           <WelcomeTextFormat>
             <WelcomeTitle>Welcome to the app!</WelcomeTitle>
             <WelcomeText>
-              Is not only a recipe app, it is, in fact, your cookbook. You can
-              add your own recipes to save them for the future.
+              This app offers more than just a collection of recipes - it is
+              designed to be your very own digital cookbook. You can easily save
+              and retrieve your own recipes at any time.
             </WelcomeText>
           </WelcomeTextFormat>
 
