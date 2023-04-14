@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi';
 import { HiOutlineMail } from 'react-icons/hi';
 import { FiLock } from 'react-icons/fi';
+import { ReactComponent as ErrorIcon } from '../../image/icons/Error-logo.svg';
+import { ReactComponent as CheckIcon } from '../../image/icons/Check.svg';
+import { ReactComponent as WarnIcon } from '../../image/icons/Warning-logo.svg';
 
 export const FormChange = styled.div`
   position: absolute;
@@ -65,6 +68,11 @@ export const IconName = styled(FiUser)`
   top: 50%;
   color: #fafafa;
   transform: translate(13px, -50%);
+  pointer-events: none;
+  ${p => p.color === 'normal' && `stroke: #FAFAFA30`};
+  ${p => p.color === 'inValid' && `stroke: #E74A3B`};
+  ${p => p.color === 'notSecure' && `stroke: #F6C23E`};
+  ${p => p.color === 'valid' && `stroke: #3CBC81`};
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
@@ -76,6 +84,11 @@ export const IconEmail = styled(HiOutlineMail)`
   top: 50%;
   color: #fafafa;
   transform: translate(13px, -50%);
+  pointer-events: none;
+  ${p => p.color === 'normal' && `stroke: #FAFAFA30`};
+  ${p => p.color === 'inValid' && `stroke: #E74A3B`};
+  ${p => p.color === 'notSecure' && `stroke: #F6C23E`};
+  ${p => p.color === 'valid' && `stroke: #3CBC81`};
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
@@ -86,6 +99,11 @@ export const IconPassword = styled(FiLock)`
   top: 50%;
   color: #fafafa;
   transform: translate(13px, -50%);
+  pointer-events: none;
+  ${p => p.color === 'normal' && `stroke: #FAFAFA30`};
+  ${p => p.color === 'inValid' && `stroke: #E74A3B`};
+  ${p => p.color === 'notSecure' && `stroke: #F6C23E`};
+  ${p => p.color === 'valid' && `stroke: #3CBC81`};
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
@@ -101,6 +119,10 @@ export const FormInput = styled(Field)`
   border: 1px solid #fafafa;
   border-radius: 6px;
   opacity: 0.8;
+  ${p => p.color === 'normal' && `border-color: #FAFAFA30`};
+  ${p => p.color === 'inValid' && `border-color: #E74A3B`};
+  ${p => p.color === 'notSecure' && `border-color: #F6C23E`};
+  ${p => p.color === 'valid' && `border-color: #3CBC81`};
   ::placeholder {
     font-family: 'Poppins';
     /* font-size:  */
@@ -142,4 +164,78 @@ export const ErrorCont = styled(ErrorMessage)`
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
+`;
+
+export const ErrorIconStyled = styled(ErrorIcon)`
+  position: absolute;
+  top: 16px;
+  right: 14px;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+    right: 18px;
+    top: 20px;
+  }
+`;
+
+export const CheckIconStyled = styled(CheckIcon)`
+  position: absolute;
+  top: 16px;
+  right: 14px;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+    right: 18px;
+    top: 20px;
+  }
+`;
+
+export const PassWarnIconStyled = styled(WarnIcon)`
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+export const PassErrorIconStyled = styled(ErrorIcon)`
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+export const PassValidIconStyled = styled(CheckIcon)`
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+export const StatusBox = styled.div`
+  font-size: 12px;
+  margin-top: 8px;
+  /* font-weight: ${p => p.theme.fontWeights[0]}; */
+  /* line-height: ${p => p.theme.lineHeights.searchSelect}; */
+  /* transition: ${p => p.theme.transitions.main}; */
+  color: #e74a3b;
+  ${p => p.color === 'notSecure' && `color: #F6C23E`};
+  ${p => p.color === 'valid' && `color: #3CBC81`};
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
 `;
