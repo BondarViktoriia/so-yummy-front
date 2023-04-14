@@ -37,7 +37,7 @@ export const AvatarCont = styled.div`
   justify-content: center;
   margin-bottom: 54px;
 `;
-export const AvatarImg = styled.div`
+export const AvatarImg = styled.img`
   width: 88px;
   height: 88px;
   border-radius: 50%;
@@ -142,14 +142,6 @@ export const Input = styled.input`
     size: 18px;
   }
   ::placeholder {
-    width: 52px;
-    height: 27px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 27px;
-    letter-spacing: -0.02em;
     color: ${props => props.theme.colors.darkText};
     opacity: 0.8;
     flex: none;

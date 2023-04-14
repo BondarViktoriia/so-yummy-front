@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { updateUser } from '../../redux/auth/authOperations';
-import { selectUser } from '../../redux/auth/authSelectors';
 
 import {
   CloseBtn,
@@ -26,7 +25,6 @@ import {
 } from './EditProfile.styled';
 
 export const EditProfile = ({ closeEdit, id, name, avatar }) => {
-  const currentUser = useSelector(selectUser);
   const [username, setUsername] = useState('');
   const [file, setFile] = useState(null);
   const [path, setPath] = useState('');
@@ -50,7 +48,7 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
     setFile(file);
 
     if (!file || !file.type.includes('image')) {
-      // setPath('');
+      setPath('');
       return;
     }
     setPath(URL.createObjectURL(file));
@@ -62,6 +60,8 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    console.log(name);
+    console.log(avatar);
     const formData = new FormData();
     formData.append('avatar', file);
     formData.append('name', username);
@@ -79,12 +79,17 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <AvatarCont>
           <AvatarThumb>
-          {!file? <AvatarImg style={{ backgroundImage: `${currentUser.avatar}` }} /> :<AvatarImgPath src={path} alt="description"/>} 
+            {!file ? (
+              <AvatarImg src={avatar} alt="avatar" />
+            ) : (
+              <AvatarImgPath src={path} alt="new avatar" />
+            )}
             <AddAvatarBtn>
               <AddIcon />
               <AvatarInput
                 type="file"
                 accept="image/*"
+                required
                 onChange={changeAvatar}
               />
             </AddAvatarBtn>
@@ -93,7 +98,11 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
         <FormCont>
           <InputCont>
             <UserIcon />
-            <Input plaseholder={currentUser.name} onChange={changeName} />
+            <Input
+              placeholder="Enter your name"
+              required
+              onChange={changeName}
+            />
             <EdinIcon />
           </InputCont>
           <SubmitBtn type="submit">
