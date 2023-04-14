@@ -13,6 +13,7 @@ export const UserMenuBox = styled.div`
 export const Avatar = styled.div`
   width: 44px;
   height: 44px;
+  border-radius: 50%;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -32,10 +33,6 @@ export const AvatarCont = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: ${props => props.theme.colors.userLogo};
-`;
-export const AvatarPlug = styled.span`
-  display: block;
 `;
 export const UserNameCont = styled.div``;
 export const UserName = styled.span`

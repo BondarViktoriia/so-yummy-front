@@ -40,9 +40,11 @@ export const AvatarCont = styled.div`
 export const AvatarImg = styled.div`
   width: 88px;
   height: 88px;
+  border-radius: 50%;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: ${props => props.theme.colors.userLogo};
   @media (min-width: 768px) {
     width: 103px;
     height: 103px;
@@ -96,7 +98,6 @@ export const AvatarThumb = styled.div`
   width: 88px;
   height: 88px;
   border-radius: 50%;
-  background-color: ${props => props.theme.colors.userLogo};
   @media (min-width: 768px) {
     width: 103px;
     height: 103px;
