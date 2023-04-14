@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import icon from '../../image/icons/symbol.svg';
 import { FollowUsContainer } from './FollowUs.styled';
 
- const FollowUs = () => {
+const FollowUs = () => {
   return (
     <FollowUsContainer>
       <Link to="https://www.facebook.com/">

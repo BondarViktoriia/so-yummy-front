@@ -1,7 +1,5 @@
-import {Counter}  from './Counter';
-// import { SubTitle } from 'components/SubTitle/SubTitle';
+import { Counter } from './Counter';
 import Select from 'react-select';
-// import icons from '../../images/sprite.svg';
 
 import {
   ButtonRemoveItem,
@@ -12,13 +10,12 @@ import {
   InputUnitValue,
   ValueInputWrapper,
   stylesIngredient,
-  stylesUnit
+  stylesUnit,
 } from './AddRecipeForm.styled';
 import { useSelector } from 'react-redux';
 import { getIngredients } from 'redux/ingredients/ingredientsSelectors';
 
-
- const AddRecipeIngredients = ({
+const AddRecipeIngredients = ({
   counter,
   userIngredients,
   isMobile,
@@ -30,16 +27,16 @@ import { getIngredients } from 'redux/ingredients/ingredientsSelectors';
 }) => {
   const optionsIngredients = useSelector(getIngredients);
   const ingredientsOptionsList = list => {
-  return list.map(({ ttl }) => ({
-    label: ttl,
-    value: ttl,
-  }));
+    return list.map(({ ttl }) => ({
+      label: ttl,
+      value: ttl,
+    }));
   };
-    const unitsOptionsList = [
-  { value: 'tbs', label: 'tbs' },
-  { value: 'tsp', label: 'tsp' },
-  { value: 'kg', label: 'kg' },
-  { value: 'g', label: 'g' },
+  const unitsOptionsList = [
+    { value: 'tbs', label: 'tbs' },
+    { value: 'tsp', label: 'tsp' },
+    { value: 'kg', label: 'kg' },
+    { value: 'g', label: 'g' },
   ];
 
   const userIngredientsList = userIngredients.map(
@@ -74,11 +71,11 @@ import { getIngredients } from 'redux/ingredients/ingredientsSelectors';
               name={`qty ${id}`}
             />
           </ValueInputWrapper>
-          <ButtonRemoveItem type="button" id={id} onClick={handleRemove}>
-            {/* <svg width={20} height={20}>
-              <use href={icons + '#icon-cross'}></use>
-            </svg> */}
-          </ButtonRemoveItem>
+          <ButtonRemoveItem
+            type="button"
+            id={id}
+            onClick={handleRemove}
+          ></ButtonRemoveItem>
         </IngredientsItem>
       );
     }

@@ -12,12 +12,10 @@ import {
   TitlePopular,
   WrapperPopular,
 } from './PopularRecipie.styled';
-// import {getPopularRecipes} from '../../services/api/apiRecipe'
-import {useMediaQuery } from 'react-responsive';
+import { useMediaQuery } from 'react-responsive';
 
- const PopularRecipe = () => {
+const PopularRecipe = () => {
   const [recipes, setRecipes] = useState([]);
-
 
   const location = useLocation();
 
@@ -26,25 +24,24 @@ import {useMediaQuery } from 'react-responsive';
       try {
         const response = await axios.get(
           'https://so-yummy-7n94.onrender.com/api/popular-recipe'
-          );
+        );
 
         if (response) {
-         
           setRecipes(response.data);
         }
-      } catch(error) {
-          console.log(error.message)
+      } catch (error) {
+        console.log(error.message);
       }
     };
     popularRecipes();
   }, []);
 
-   
-  const isTablet = useMediaQuery({ minWidth:768, maxWidth:1439 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
   return (
     <WrapperPopular>
       <TitlePopular>Popular recipe</TitlePopular>
-      {isTablet?(<ListPopular>
+      {isTablet ? (
+        <ListPopular>
           {recipes.slice(0, 2).map(({ _id, title, description, thumb }) => (
             <ListItemPopular key={_id}>
               <ListLinkPopular to={`/recipe/${_id}`} state={{ from: location }}>
@@ -56,7 +53,9 @@ import {useMediaQuery } from 'react-responsive';
               </ListLinkPopular>
             </ListItemPopular>
           ))}
-                </ListPopular>):<ListPopular>
+        </ListPopular>
+      ) : (
+        <ListPopular>
           {recipes.slice(0, 4).map(({ _id, title, description, thumb }) => (
             <ListItemPopular key={_id}>
               <ListLinkPopular to={`/recipe/${_id}`} state={{ from: location }}>
@@ -68,9 +67,8 @@ import {useMediaQuery } from 'react-responsive';
               </ListLinkPopular>
             </ListItemPopular>
           ))}
-                </ListPopular>}
-
-
+        </ListPopular>
+      )}
     </WrapperPopular>
   );
 };

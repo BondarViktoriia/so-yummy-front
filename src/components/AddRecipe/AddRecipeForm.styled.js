@@ -1,19 +1,18 @@
 import styled from 'styled-components';
 import Select from 'react-select';
 
-
 export const Wrap = styled.div`
   padding-top: 50px;
 `;
 
 export const Form = styled.form`
-margin-top:65px;
+  margin-top: 65px;
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top:97px;
+    margin-top: 97px;
   }
   @media screen and (min-width: 1440px) {
     display: flex;
@@ -50,7 +49,6 @@ export const ImageInput = styled.input`
 `;
 
 export const Description = styled.div`
-
   @media screen and(max-width:767px) {
     justify-content: center;
   }
@@ -81,7 +79,6 @@ export const InputDescriptionWrap = styled.div`
   margin-top: 32px;
   text-align: center;
 
-
   @media screen and (min-width: 768px) {
     margin-top: 24px;
     margin-left: 32px;
@@ -99,9 +96,8 @@ export const InputDescription = styled.input`
   border: none;
   border-bottom: 1px solid grey;
   background: transparent;
-  width:100%;
-  color:${props => props.theme.colors.inputText};
-
+  width: 100%;
+  color: ${props => props.theme.colors.inputText};
 `;
 
 export const SelectDescription = styled.select`
@@ -124,26 +120,23 @@ export const WrapIngredients = styled.div`
     margin-right: 32px;
   }
   @media only screen and (max-width: 1439px) {
-  
     justify-content: space-between;
   }
 `;
 
 export const TitleIngredients = styled.h2`
-color: ${props => props.theme.colors.textPrimary};
+  color: ${props => props.theme.colors.textPrimary};
 
   @media only screen and (min-width: 768px) {
-
   }
   @media only screen and (min-width: 1440px) {
-  margin-right: 530px;
+    margin-right: 530px;
   }
 `;
 export const TitlePreparation = styled.h2`
-color: ${props => props.theme.colors.textPrimary};
+  color: ${props => props.theme.colors.textPrimary};
 
   @media only screen and (min-width: 768px) {
-
   }
   @media only screen and (min-width: 1440px) {
     /* margin-left: 65px; */
@@ -200,29 +193,24 @@ export const WrapPreparation = styled.div`
   @media only screen and (min-width: 768px) {
     width: 510px;
     margin-top: 100px;
-    text-align:start;
+    text-align: start;
   }
-  @media only screen and (min-width: 768px){
-    width:505px;
+  @media only screen and (min-width: 768px) {
+    width: 505px;
   }
-
 `;
 
 export const TextAreaPreparation = styled.textarea`
   padding-top: 10px;
   padding-left: 16px;
   width: 100%;
-  height:154px;
-  margin-top:24px;
-  resize:none;
+  height: 154px;
+  margin-top: 24px;
+  resize: none;
   @media only screen and (min-width: 1440px) {
     width: 570px;
     height: 224px;
   }
-`;
-
-export const WrapButtonAdd = styled.div`
-  margin-right: auto;
 `;
 
 export const ButtonAdd = styled.button`
@@ -248,17 +236,13 @@ export const ButtonAdd = styled.button`
   &:hover,
   &:focus {
   }
-    @media only screen and (min-width: 1440px) {
-  margin-top:32px;
-  margin-bottom:200px;
+  @media only screen and (min-width: 1440px) {
+    margin-top: 32px;
+    margin-bottom: 200px;
   }
 `;
 
-
 ////////////////////////////////////////////
-
-
-
 
 export const MainWrapper = styled.div`
   /* display: ${({ isDesktop }) => (isDesktop ? 'flex' : 'unset')}; */
@@ -288,10 +272,10 @@ export const RecipeForm = styled.form`
   }
 
   .css-l4u8b9-MuiInputBase-root-MuiInput-root::after {
-    /* border-bottom: ${({ theme }) => `2px solid ${theme.colors.mainAccent}`}; */
+    /* border-bottom: ${({ theme }) =>
+      `2px solid ${theme.colors.mainAccent}`}; */
   }
 `;
-
 
 export const AddRecepiSection = styled.div`
   display: flex;
@@ -405,10 +389,10 @@ export const ValueInputWrapper = styled.div`
   justify-content: flex-start;
   background-color: rgb(217, 217, 217);
   border-radius: 6px;
-      margin-left:32px;
+  margin-left: 32px;
 
-    @media only screen and (max-width: 767px) {
-    margin-left:32px;
+  @media only screen and (max-width: 767px) {
+    margin-left: 32px;
   }
   /* margin-left: ${({ isMobile }) => (isMobile ? '14px' : '32px')}; */
 `;
@@ -438,16 +422,14 @@ export const PopularItem = styled.li`
   }
 `;
 
-
-
 export const ButtonRemoveItem = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-    margin-left: 30px;
-    border: none;
-    @media only screen and (min-width: 768px) {
-        margin-left: 135px;
+  margin-left: 30px;
+  border: none;
+  @media only screen and (min-width: 768px) {
+    margin-left: 135px;
   }
 `;
 
@@ -586,6 +568,4 @@ export const SelecComponent = styled.div`
 
 export const SelectOptions = styled(Select)`
   color: ${props => props.theme.colors.inputText};
-
-
-`
+`;

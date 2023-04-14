@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 export const WrapperPopular = styled.div`
   margin-top: 72px;
-  margin-bottom:100px;
- 
+  margin-bottom: 100px;
+
   @media screen and (min-width: 1440px) {
     margin-top: 100px;
   }
@@ -12,7 +12,6 @@ export const WrapperPopular = styled.div`
 
 export const TitlePopular = styled.h3`
   color: ${props => props.theme.colors.textPrimary};
-
   font-weight: 600;
   font-size: 24px;
   line-height: 1;
@@ -49,7 +48,7 @@ export const ListItemPopular = styled.li`
       margin-top: 24px;
     }
   }
-  @media screen and (min-width:768px ) {
+  @media screen and (min-width: 768px) {
     max-width: 336px;
   }
 `;
@@ -62,14 +61,13 @@ export const ListLinkPopular = styled(NavLink)`
 export const ItemImg = styled.img`
   width: 104px;
   border-radius: 8px;
-
 `;
 
 export const ItemWrapper = styled.div``;
 
 export const ItemTitle = styled.h4`
   margin-bottom: 3px;
-color: ${props => props.theme.colors.textPrimary};
+  color: ${props => props.theme.colors.textPrimary};
   font-size: 16px;
   line-height: 1.25;
   letter-spacing: -0.24px;

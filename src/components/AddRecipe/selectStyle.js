@@ -15,7 +15,7 @@ export const stylesMeta = {
     textAlign: 'right',
     width: '146px',
     height: '50px',
-    color:state.theme ? '#FAFAFA':'#000000',
+    color: state.theme ? '#FAFAFA' : '#000000',
     '@media (min-width: 768px)': {
       fontSize: '16px',
       lineHeight: '1.3',
@@ -31,8 +31,7 @@ export const stylesMeta = {
     textAlign: 'right',
     letterSpacing: '-0.02em',
     maxHeight: '230px',
-        color:state.theme ? '#000000':'#FAFAFA',
-
+    color: state.theme ? '#000000' : '#FAFAFA',
 
     '@media (min-width: 768px)': {
       fontSize: '16px',
@@ -42,10 +41,8 @@ export const stylesMeta = {
 
   option: (baseStyles, state) => ({
     ...baseStyles,
-    // color: state.isSelected ? '#8BAA36' : baseStyles.color,
     backgroundColor: 'transparent',
-        color:state.theme ? '#000000':'#FAFAFA',
-
+    color: state.theme ? '#000000' : '#FAFAFA',
   }),
 
   dropdownIndicator: baseStyles => ({
