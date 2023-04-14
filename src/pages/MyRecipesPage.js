@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 
 import {
   getOwnRecipesOperation,
@@ -27,6 +28,13 @@ const MyRecipesPage = () => {
 
   const dispatch = useDispatch();
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = searchParams.get('page');
+
+  const onSetPage = currentPage => {
+    setSearchParams({ page: currentPage });
+  };
+
   useEffect(() => {
     dispatch(getOwnRecipesOperation());
   }, [dispatch]);
@@ -42,6 +50,8 @@ const MyRecipesPage = () => {
       <OwnWrapper>
         {recipe.length > 0 && (
           <PaginationComp
+            currentPage={page ? page : 0}
+            onSetPage={onSetPage}
             recipes={recipe}
             page="my"
             onDelete={removeOwnRecipe}

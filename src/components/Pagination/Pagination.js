@@ -8,7 +8,7 @@ import Favorite from 'components/Favorites';
 import { SearchList } from 'components/Search/SearchList';
 import { MyPaginate } from './Pagination.styled';
 
-const PaginationComp = ({ recipes, itemsPerPage, page, onDelete }) => {
+const PaginationComp = ({ recipes, itemsPerPage, page, onDelete, currentPage, onSetPage }) => {
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + itemsPerPage;
@@ -19,6 +19,8 @@ const PaginationComp = ({ recipes, itemsPerPage, page, onDelete }) => {
     const newOffset = (event.selected * itemsPerPage) % recipes.length;
     setItemOffset(newOffset);
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    currentPage = event.selected + 1;
+    onSetPage(currentPage)
   };
 
   const media = useMedia();
@@ -68,6 +70,7 @@ const PaginationComp = ({ recipes, itemsPerPage, page, onDelete }) => {
         marginPagesDisplayed={0}
         containerClassName="pagination"
         activeClassName="active"
+        initialPage={Number(currentPage)}
       />
     </>
   );

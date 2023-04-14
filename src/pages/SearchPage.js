@@ -26,8 +26,14 @@ const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
   const options = searchParams.get('options');
+  const page = searchParams.get('page');
   const token = useSelector(selectToken);
   console.log(token);
+
+  const onSetPage = currentPage => {
+    setSearchParams({options: options, query: query, page: currentPage});
+  };
+  console.log(page);
 
   const submitSearch = queryParams => {
     if (queryParams.options === options && queryParams.query === query) {
@@ -76,10 +82,16 @@ const SearchPage = () => {
       </Container>
       <SearchWrapper>
         {/* <SearchList results={results} /> */}
-        <SearchInput submitSearch={submitSearch} />
+        <SearchInput query={query ? query : ''} submitSearch={submitSearch} />
 
         {results.length > 0 && (
-          <PaginationComp recipes={results} itemsPerPage={12} page="search" />
+          <PaginationComp
+            recipes={results}
+            itemsPerPage={12}
+            currentPage={page ? page : 0}
+            page="search"
+            onSetPage={onSetPage}
+          />
         )}
         {isLoading && <Loader />}
 
