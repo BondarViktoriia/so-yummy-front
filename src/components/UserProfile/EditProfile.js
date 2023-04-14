@@ -11,6 +11,7 @@ import {
   AvatarCont,
   AvatarThumb,
   AvatarImg,
+  AvatarImgPath,
   EditProfileCont,
   CloseBtnCont,
   CloseIcon,
@@ -28,7 +29,7 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
   const currentUser = useSelector(selectUser);
   const [username, setUsername] = useState('');
   const [file, setFile] = useState(null);
-  // const [path, setPath] = useState('');
+  const [path, setPath] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
     window.addEventListener('keydown', handleEsc);
@@ -52,7 +53,7 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
       // setPath('');
       return;
     }
-    // setPath(URL.createObjectURL(file));
+    setPath(URL.createObjectURL(file));
   };
 
   const changeName = e => {
@@ -78,7 +79,7 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <AvatarCont>
           <AvatarThumb>
-            <AvatarImg style={{ backgroundImage: `${currentUser.avatar}` }} />
+          {!file? <AvatarImg style={{ backgroundImage: `${currentUser.avatar}` }} /> :<AvatarImgPath src={path} alt="description"/>} 
             <AddAvatarBtn>
               <AddIcon />
               <AvatarInput

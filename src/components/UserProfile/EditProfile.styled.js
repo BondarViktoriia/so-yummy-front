@@ -50,6 +50,19 @@ export const AvatarImg = styled.div`
     height: 103px;
   }
 `;
+export const AvatarImgPath = styled.img`
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: ${props => props.theme.colors.userLogo};
+  @media (min-width: 768px) {
+    width: 103px;
+    height: 103px;
+  }
+`;
 export const AvatarPlug = styled(FiUser)`
   width: 40px;
   height: 40px;
