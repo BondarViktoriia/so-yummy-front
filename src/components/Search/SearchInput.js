@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import { SelectComponent } from './Select';
 import { Input, Button, InputWrapper, Form, InputWrapperBlock } from './SearchInput.styled';
 
-export const SearchInput = ({ submitSearch }) => {
+export const SearchInput = ({ submitSearch, query }) => {
   const options = [
     { value: 'recipes', label: 'Title' },
     { value: 'ingredients', label: 'Ingredients' },
@@ -11,7 +11,7 @@ export const SearchInput = ({ submitSearch }) => {
 
   const formik = useFormik({
     initialValues: {
-      query: '',
+      query: query,
       options: 'recipes',
     },
     onSubmit: values => {

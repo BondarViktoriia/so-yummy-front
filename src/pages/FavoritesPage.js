@@ -1,10 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import { getFavorites } from '../redux/favorites/favoritesOperations';
 // import Favorite from '../components/Favorites';
 import Title from '../components/Title/Title';
 import Container from '../components/Container/Container';
-import { EmptyList,PictureSearch,SearchWrapper } from '../components/Favorites/Favorotes.styled';
+import {
+  EmptyList,
+  PictureSearch,
+  SearchWrapper,
+} from '../components/Favorites/Favorotes.styled';
 import {
   selectFavorites,
   selectError,
@@ -19,13 +24,17 @@ import searchTablet2x from '../image/search-page/search-tablet-2x.png';
 import searchDesktop1x from '../image/search-page/search-dekstop-1x.png';
 import searchDesktop2x from '../image/search-page/search-desktop-2x.png';
 
-
-
 const FavoritesPage = () => {
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = searchParams.get('page');
+
+  const onSetPage = currentPage => {
+    setSearchParams({ page: currentPage});
+  };
 
   useEffect(() => {
     dispatch(getFavorites());
@@ -37,30 +46,39 @@ const FavoritesPage = () => {
 
   return (
     <Container>
-            <Title>Favorites</Title>
+      <Title>Favorites</Title>
       <SearchWrapper>
-      {/* <Favorite recipes={recipesTest} page="favorite" /> */}
-      {favorites.length > 0 && (<PaginationComp recipes={favorites} itemsPerPage={4} page="favorite"/>)}
-              {favorites.length === 0 && !isLoading && !error && (
-          <>
-          <PictureSearch>
-            <source
-              media="(min-width: 1440px)"
-              srcSet={`${searchDesktop1x}, ${searchDesktop2x} 2x`}
-            />
-            <source
-              media="(min-width: 768px)"
-              srcSet={`${searchTablet1x}, ${searchTablet2x} 2x`}
-            />
-            <img
-              src={searchMob1x}
-              srcSet={`${searchMob1x}, ${searchMob2x} 2x`}
-              alt="Ошибка"
-            />
-          </PictureSearch>
-          <EmptyList>The list is empty</EmptyList></>
+        {/* <Favorite recipes={recipesTest} page="favorite" /> */}
+        {favorites.length > 0 && (
+          <PaginationComp
+            recipes={favorites}
+            itemsPerPage={4}
+            page="favorite"
+            currentPage={page ? page : 0}
+            onSetPage={onSetPage}
+          />
         )}
-        </SearchWrapper>
+        {favorites.length === 0 && !isLoading && !error && (
+          <>
+            <PictureSearch>
+              <source
+                media="(min-width: 1440px)"
+                srcSet={`${searchDesktop1x}, ${searchDesktop2x} 2x`}
+              />
+              <source
+                media="(min-width: 768px)"
+                srcSet={`${searchTablet1x}, ${searchTablet2x} 2x`}
+              />
+              <img
+                src={searchMob1x}
+                srcSet={`${searchMob1x}, ${searchMob2x} 2x`}
+                alt="Ошибка"
+              />
+            </PictureSearch>
+            <EmptyList>The list is empty</EmptyList>
+          </>
+        )}
+      </SearchWrapper>
     </Container>
   );
 };
