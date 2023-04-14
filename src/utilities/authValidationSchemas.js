@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 
 export const ErrorMessages = {
+  name: 'The name must contain only letters, spaces and dashes',
   email: 'Is not valid email. The email must be for example: email@example.com',
   password:
     'Is not valid password. The password must contain at least one uppercase letter, one lowercase letter and one number',
