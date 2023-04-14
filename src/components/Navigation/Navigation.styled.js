@@ -19,11 +19,12 @@ export const NavItem = styled.li`
   }
 `;
 export const Link = styled(NavLink)`
-  color: ${props => props.theme.colors.darkText};
+  color: ${props => (props.color ? props.color : props.theme.colors.darkText)};
   font-weight: 500;
   font-size: 18px;
   line-height: 18px;
   letter-spacing: -0.02em;
+
   &.active {
     color: ${props => props.theme.colors.accentGreen};
     font-weight: 600;

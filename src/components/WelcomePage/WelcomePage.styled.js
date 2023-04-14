@@ -96,6 +96,12 @@ export const WelcomeTextFormat = styled.div`
   margin: 0 auto 40px;
   text-align: center;
   max-width: 305px;
+  @media screen and (min-width: 768px) {
+    max-width: 500px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 550px;
+  }
 `;
 
 export const WelcomeTitle = styled.h1`
