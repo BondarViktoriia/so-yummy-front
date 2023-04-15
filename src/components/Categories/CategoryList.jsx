@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
-import * as API from 'services/api/apiRecipe';
+import { fetchAllCategories } from 'services/api/apiRecipe';
 
 import { Loader } from '../Loader/Loader';
 
@@ -20,7 +20,8 @@ const CategoryList = () => {
     async function getAllCategories() {
       try {
         setIsLoading(true);
-        const { categoriesList } = await API.fetchAllCategories();
+        const { categoriesList } = await fetchAllCategories();
+        // console.log(categoriesList);
         setCategories(categoriesList);
         if (category) {
           const categoryCapitalize =
@@ -35,6 +36,7 @@ const CategoryList = () => {
       }
     }
     getAllCategories();
+    // console.log(category);
   }, [category]);
 
   useEffect(() => {
