@@ -5,6 +5,7 @@ import { getFavorites } from '../redux/favorites/favoritesOperations';
 // import Favorite from '../components/Favorites';
 import Title from '../components/Title/Title';
 import Container from '../components/Container/Container';
+import {Loader} from '../components/Loader/Loader'
 import {
   EmptyList,
   PictureSearch,
@@ -48,6 +49,7 @@ const FavoritesPage = () => {
     <Container>
       <Title>Favorites</Title>
       <SearchWrapper>
+      {isLoading && <Loader />}
         {/* <Favorite recipes={recipesTest} page="favorite" /> */}
         {favorites.length > 0 && (
           <PaginationComp
