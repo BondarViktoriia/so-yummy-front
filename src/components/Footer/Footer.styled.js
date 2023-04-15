@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { FiMail } from 'react-icons/fi';
+import { Field, Form, ErrorMessage } from 'formik';
 
 import BgMob from '../../image/footer/bgc-mob.png';
 import BgTab from '../../image/footer/bgc-tab.png';
@@ -160,19 +161,23 @@ export const SubscrText = styled.p`
   color: ${props => props.theme.colors.footerText};
 `;
 
-export const Form = styled.form`
+export const SubscrForm = styled(Form)``;
+
+export const FormThumb = styled.div`
   display: flex;
   flex-direction: column;
   @media (min-width: 768px) {
     flex-direction: row;
+    justify-content: center;
   }
   @media (min-width: 1440px) {
     flex-direction: column;
   }
 `;
 
-export const InputCont = styled.div`
+export const InputCont = styled.label`
   position: relative;
+  display: block;
   margin-bottom: 8px;
   margin-right: 0;
   @media (min-width: 768px) {
@@ -191,6 +196,8 @@ export const LetterIcon = styled(FiMail)`
   left: 14px;
   width: 20px;
   height: 20px;
+  color: #ffffff;
+  opacity: 0.3;
   @media (min-width: 768px) {
     top: 15px;
     left: 15px;
@@ -201,22 +208,28 @@ export const LetterIcon = styled(FiMail)`
     width: 25px;
     height: 25px;
   }
+  &:focus,
+  &:hover {
+    opacity: 1;
+  }
 `;
 
-export const Input = styled.input`
+export const Input = styled(Field)`
   width: 204px;
   padding-top: 11px;
   padding-bottom: 11px;
   padding-left: 42px;
-  border: 1px solid ${props => props.theme.colors.placeholder};
+  border: 1px solid #ffffff;
+  opacity: 0.3;
   border-radius: 8px;
   height: 38px;
   font-size: 10px;
   line-height: 15px;
+  background-color: transparent;
+  color: #ffffff;
   &:focus {
     outline: none;
-    border: 2px solid ${props => props.theme.colors.placeholder};
-    size: 18px;
+    opacity: 1;
   }
   ::placeholder {
     font-family: 'Poppins';
@@ -225,7 +238,7 @@ export const Input = styled.input`
     font-size: 10px;
     line-height: 15px;
     letter-spacing: -0.02em;
-    color: ${props => props.theme.colors.darkText};
+    color: #ffffff;
     opacity: 0.8;
     flex: none;
     order: 1;
@@ -388,4 +401,12 @@ export const BgUpImgThumb = styled.div`
     height: 230px;
     top: -230px;
   }
+`;
+
+export const ErrorCont = styled(ErrorMessage)`
+  color: #fafafa;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  margin-top: 12px;
 `;

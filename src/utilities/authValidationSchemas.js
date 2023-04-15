@@ -44,5 +44,5 @@ export const regSchema = Yup.object().shape({
 export const subscrSchema = Yup.object().shape({
   email: Yup.string()
     .required('Required')
-    .email(regExp.email, ErrorMessages.email),
+    .email(ErrorMessages.email, regExp.email),
 });
