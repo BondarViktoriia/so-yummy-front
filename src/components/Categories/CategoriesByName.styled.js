@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const RecipesList = styled.ul`
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   margin-bottom: 100px;
