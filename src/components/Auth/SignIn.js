@@ -1,17 +1,8 @@
-import React from 'react';
-import { useEffect } from 'react';
+// import { useRef, useState } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoading } from '../../redux/auth/authSelectors';
+import { useDispatch } from 'react-redux';
 import { registrationUser, loginUser } from '../../redux/auth/authOperations';
-import { userSlice } from '../../redux/auth/authSlice';
-import { useAuth } from '../../hooks/useAuth';
 import { Formik, Form } from 'formik';
-import { logSchema } from '../../utilities/authValidationSchemas';
-import {
-  // ErrorStatus,
-  getPassErrorStatus,
-} from '../../services/auth/errorStatus';
 
 import { Button } from '../../components/WelcomePage/Button';
 import {
@@ -21,30 +12,16 @@ import {
   FormInput,
   FormLabel,
   FormLink,
-  // IconName,
   IconEmail,
   IconPassword,
-  ErrorCont,
-  // ErrorIconStyled,
-  // CheckIconStyled,
-  // PassWarnIconStyled,
-  // PassErrorIconStyled,
-  // PassValidIconStyled,
-  // StatusBox,
 } from './Registration.styled';
+import * as yup from 'yup';
+import { useFormik } from 'formik';
 
 export const SignIn = ({ login }) => {
-  const isLoading = useSelector(selectIsLoading);
+  // const signInPasswordInput = useRef(null);
+  // const [visibility, setVisibility] = useState(true);
   const dispatch = useDispatch();
-  const { error } = useAuth();
-
-  useEffect(() => {
-    if (error !== null) {
-      setTimeout(() => {
-        dispatch(userSlice(null));
-      }, 5000);
-    }
-  }, [dispatch, error]);
 
   const initialValuesRegister = {
     name: '',
@@ -56,95 +33,117 @@ export const SignIn = ({ login }) => {
     password: '',
   };
 
+  const myEmailRegex =
+    /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+
+  let signinSchema = yup.object().shape({
+    email: yup
+      .string()
+      .lowercase()
+      .matches(myEmailRegex, {
+        message: 'Your email must be valid',
+        name: 'email',
+        excludeEmptyString: true,
+      })
+      .min(5, 'Your email is too short')
+      .required('Type your email please'),
+    password: yup
+      .string()
+      .trim()
+      .matches(
+        /^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ0-9]+(([' -][a-zA-Zа-яА-Я0-9 ])?[a-zA-Zа-яА-Я0-9]*)*$/,
+        'Special symbols are not allowed'
+      )
+      .min(6, 'Your password is too short')
+      .max(16, 'Your password must be 16 characters max')
+      .required('Type your password please'),
+  });
+
+  yup.addMethod(yup.string, 'email', function validateEmail(message) {
+    return this.matches(myEmailRegex, {
+      message,
+      name: 'email',
+      excludeEmptyString: true,
+    });
+  });
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: signinSchema,
+    onSubmit: (values, { setSubmitting, resetForm }) => {
+      const { email, password } = values;
+      dispatch(loginUser({ email, password }));
+      setSubmitting(false);
+    },
+  });
+  // const isValid = signinSchema.isValidSync(formik.values);
+  // const togglePasswordVisibility = () => {
+  //   if (signInPasswordInput.current.type === 'password') {
+  //     signInPasswordInput.current.type = 'text';
+  //   } else {
+  //     signInPasswordInput.current.type = 'password';
+  //   }
+  // };
+  // const hendleButtonShown = () => {
+  //   setVisibility(!visibility);
+  // };
+
   const handleSubmit = values => {
     login ? dispatch(registrationUser(values)) : dispatch(loginUser(values));
   };
-
-  // const statusIcon = {
-  //   valid: <CheckIconStyled />,
-  //   inValid: <ErrorIconStyled />,
-  //   notSecure: <PassWarnIconStyled />,
-  // };
-
-  // const passStatusIcon = {
-  //   valid: <PassValidIconStyled />,
-  //   inValid: <PassErrorIconStyled />,
-  //   notSecure: <PassWarnIconStyled />,
-  // };
-
   return (
-    <>
-      <Formik
-        initialValues={login ? initialValuesRegister : initialValuesLogin}
-        onSubmit={handleSubmit}
-        validationSchema={logSchema}
-        validateOnBlur
-      >
-        {({ errors, touched, isValid, dirty }) => (
-          <FormChange>
-            <Title>{login ? 'Registration' : 'Sign In'}</Title>
-            {/* {error && <ErrorCont>{ErrorStatus[error]}</ErrorCont>} */}
-            <Form autoComplete="off">
-              <FormInputWrapper>
-                <FormLabel htmlFor="email">
-                  <div>
-                    <IconEmail
-                      color={
-                        touched.email && getPassErrorStatus(errors.email, dirty)
-                      }
-                    />
-                    <FormInput
-                      type="email"
-                      name="email"
-                      placeholder="Email"
-                      disabled={isLoading}
-                      color={
-                        touched.email && getPassErrorStatus(errors.email, dirty)
-                      }
-                    />
-                  </div>
-                  <ErrorCont name="email" component="div" />
-                </FormLabel>
+    <Formik
+      initialValues={login ? initialValuesRegister : initialValuesLogin}
+      onSubmit={handleSubmit}
+    >
+      <FormChange>
+        <Title>{login ? 'Registration' : 'Sign In'}</Title>
+        <Form>
+          <FormInputWrapper>
+            <FormLabel>
+              <IconEmail />
+              <FormInput
+                autoComplete="email"
+                type="email"
+                name="email"
+                placeholder="Email"
+                erorr={formik.errors.email}
+                id="standard-required-register-email"
+                formik={formik}
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+            </FormLabel>
 
-                <FormLabel htmlFor="password">
-                  <IconPassword
-                    color={
-                      touched.password &&
-                      getPassErrorStatus(errors.password, dirty)
-                    }
-                  />
-                  <FormInput
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    disabled={isLoading}
-                    color={
-                      touched.password &&
-                      getPassErrorStatus(errors.password, dirty)
-                    }
-                  />
-                </FormLabel>
-                <ErrorCont name="password" component="div" />
-              </FormInputWrapper>
-              <Button
-                type="submit"
-                look="subscribe"
-                width="100%"
-                heigth="45px"
-                heigthTablet="59px"
-                fontSize="16px"
-              >
-                {login ? 'Sign up' : 'Sign In'}
-              </Button>
-            </Form>
-            {login ? (
-              <FormLink to="/signin">Sign In</FormLink>
-            ) : (
-              <FormLink to="/register">Registration</FormLink>
-            )}
-          </FormChange>
+            <FormLabel>
+              <IconPassword />
+              <FormInput
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+            </FormLabel>
+          </FormInputWrapper>
+          <Button
+            type="submit"
+            look="subscribe"
+            width="100%"
+            heigth="45px"
+            heigthTablet="59px"
+            fontSize="16px"
+          >
+            {login ? 'Sign up' : 'Sign In'}
+          </Button>
+        </Form>
+        {login ? (
+          <FormLink to="/signin">Sign In</FormLink>
+        ) : (
+          <FormLink to="/register">Registration</FormLink>
         )}
-      </Formik>
-    </>
+      </FormChange>
+    </Formik>
   );
 };

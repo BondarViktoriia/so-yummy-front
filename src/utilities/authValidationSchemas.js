@@ -28,18 +28,18 @@ export const regSchema = Yup.object().shape({
     .matches(regExp.password, ErrorMessages.password),
 });
 
-export const logSchema = Yup.object().shape({
-  email: Yup.string()
-    .required('Required')
-    .email(regExp.email, ErrorMessages.email),
-  password: Yup.string()
-    .required('Required')
-    .min(
-      6,
-      'The password must contain at least one uppercase letter, one lowercase letter and one number'
-    )
-    .matches(regExp.password, ErrorMessages.password),
-});
+// export const logSchema = Yup.object().shape({
+//   email: Yup.string()
+//     .required('Required')
+//     .email(regExp.email, ErrorMessages.email),
+//   password: Yup.string()
+//     .required('Required')
+//     .min(
+//       6,
+//       'The password must contain at least one uppercase letter, one lowercase letter and one number'
+//     )
+//     .matches(regExp.password, ErrorMessages.password),
+// });
 
 export const subscrSchema = Yup.object().shape({
   email: Yup.string()
