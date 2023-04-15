@@ -164,6 +164,7 @@ export const ErrorCont = styled(ErrorMessage)`
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
+  color: white;
 `;
 
 export const ErrorIconStyled = styled(ErrorIcon)`
