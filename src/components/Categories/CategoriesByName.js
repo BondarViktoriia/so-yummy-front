@@ -19,7 +19,7 @@ const CategoriesByName = () => {
   const token = useSelector(selectToken);
 
   useEffect(() => {
-    async function getRecipesByCategory(token) {
+    async function getRecipesByCategory(category = 'beef',token) {
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
       try {
