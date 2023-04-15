@@ -156,7 +156,7 @@ const AddRecipe = () => {
       }
     );
 
-    if (!recipe || !time || !category || !about || !title|| !file)  {
+    if (!recipe || !time || !category || !about || !title) {
       toast.error('INVALID FORM DATA!', {
         position: 'top-right',
         autoClose: 5000,
@@ -172,7 +172,10 @@ const AddRecipe = () => {
     }
 
     const formData = new FormData();
+    if (file !== null) {
       formData.append('imgURL', file);
+    }
+
     formData.append('description', about);
     formData.append('time', time);
     formData.append('category', category);
