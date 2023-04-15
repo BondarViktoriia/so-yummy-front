@@ -156,12 +156,13 @@ const AddRecipe = () => {
       }
     );
 
-    if (!recipe || !time || !category || !about || !title) {
+    if (!recipe || !time || !category || !about || !title|| !file)  {
       toast.error('INVALID FORM DATA!', {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
+
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
@@ -171,8 +172,7 @@ const AddRecipe = () => {
     }
 
     const formData = new FormData();
-
-    formData.append('imgURL', file);
+      formData.append('imgURL', file);
     formData.append('description', about);
     formData.append('time', time);
     formData.append('category', category);
@@ -183,13 +183,14 @@ const AddRecipe = () => {
     const addOwnRecipeApi = async body => {
       try {
         const data = await axios.post('/ownRecipes', body);
-        setIsLoadind(true);
+
         return data;
       } catch (error) {
         console.log(error.message);
       }
     };
     addOwnRecipeApi(formData);
+    setIsLoadind(true);
     toast.success('Your Recipe successful added!', {
       position: 'top-right',
       autoClose: 5000,
