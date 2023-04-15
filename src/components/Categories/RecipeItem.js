@@ -8,16 +8,16 @@ import {
   TitleWrapper,
 } from './RecipeItem.styled';
 
-const RecipeItem = ({ title, preview, _id }) => {
-  console.log(_id);
+const RecipeItem = ({recipe }) => {
+  console.log(recipe._id);
   const location = useLocation();
   return (
     <ListItem>
-      <LinkItem to={{ pathname: `/recipe/${_id}` }} state={{ from: location }}>
+      <LinkItem to={{ pathname: `/recipe/${recipe._id}` }} state={{ from: location }}>
         <ImgWrapper>
-          {preview && <ImgItem src={preview} alt={title} loading="lazy" />}
+          {recipe.preview && <ImgItem src={recipe.preview} alt={recipe.title}  />}
           <TitleWrapper>
-            <ImgTitle color="#fff">{title}</ImgTitle>
+            <ImgTitle color="#fff">{recipe.title}</ImgTitle>
           </TitleWrapper>
         </ImgWrapper>
       </LinkItem>

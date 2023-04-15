@@ -7,7 +7,7 @@ import { selectToken } from '../../redux/auth/authSelectors';
 // import * as API from '../../services/api/apiRecipe';
 import { getRecipeByCategory } from '../../services/api/apiRecipe';
 
-import { RecipeItem } from '../Search/RecipeItem';
+import  RecipeItem  from './RecipeItem';
 import { Loader } from '../Loader/Loader';
 
 import { RecipesList } from './CategoriesByName.styled';
@@ -35,17 +35,18 @@ const CategoriesByName = () => {
       }
     }
     getRecipesByCategory(category, token);
-    console.log(token);
-    console.log(category);
+    // console.log(token);
+    // console.log(category);
   }, [category, token]);
+
+  const recipesArray = recipes.result
 
   return (
     <>
       {isLoading && <Loader />}
-      {recipes.length > 0 && !error && !isLoading && (
+      {recipesArray && !error && !isLoading && (
         <RecipesList>
-          {recipes.map(recipe => {
-            console.log(recipe);
+          {recipesArray.map(recipe => {
             return <RecipeItem recipe={recipe} key={recipe._id} />;
           })}
         </RecipesList>
