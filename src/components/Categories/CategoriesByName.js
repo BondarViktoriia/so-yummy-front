@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
 import { selectToken } from '../../redux/auth/authSelectors';
+// import * as API from '../../services/api/apiRecipe';
 import { getRecipeByCategory } from '../../services/api/apiRecipe';
 
-import RecipeItem from './RecipeItem';
+import  RecipeItem  from './RecipeItem';
 import { Loader } from '../Loader/Loader';
 
 import { RecipesList } from './CategoriesByName.styled';
@@ -38,14 +39,14 @@ const CategoriesByName = () => {
     // console.log(category);
   }, [category, token]);
 
-  const recipesArray = recipes.result;
+  const recipesArray = recipes.result
 
   return (
     <>
       {isLoading && <Loader />}
       {recipesArray && !error && !isLoading && (
         <RecipesList>
-          {recipesArray.slice(0, 8).map(recipe => {
+          {recipesArray.map(recipe => {
             return <RecipeItem recipe={recipe} key={recipe._id} />;
           })}
         </RecipesList>

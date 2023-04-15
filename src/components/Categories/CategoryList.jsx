@@ -63,18 +63,12 @@ const CategoryList = () => {
           aria-label="scrollable auto tabs example"
           sx={{
             marginTop: '50px',
-            marginLeft: '10px',
-            marginRight: '10px',
 
             '@media (min-width: 768px)': {
               marginTop: '72px',
-              marginLeft: '25px',
-              marginRight: '25px',
             },
             '@media (min-width: 1440px)': {
               marginTop: '100px',
-              marginLeft: '100px',
-              marginRight: '100px',
             },
 
             '& .MuiTabs-scroller': {
