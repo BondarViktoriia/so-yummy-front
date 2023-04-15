@@ -1,16 +1,29 @@
 import styled from 'styled-components';
 import bgdekstop1 from '../../image/home-page/home-bg-1x.png';
+// import bgdekstop2 from '../../image/home-page/home-bg-2x.png';
 import bgtablet1 from '../../image/home-page/bgtablet-1x.png';
+// import bgtablet2 from '../../image/home-page/home-bg-tablet-2x.png';
 import mobile1 from '../../image/home-page/home-bg-mobile-1x.png';
-import dekleaf1 from '../../image/home-page/deskspinach-1x.png';
-import tableaf1 from '../../image/home-page/tabkspinach-1x.png';
-import mobleaf1 from '../../image/home-page/mobilspinach-1x.png';
-import platedekstop1 from '../../image/home-page/plate-dekstop-1x.png';
-import platetablet1 from '../../image/home-page/plate-tablet-1x.png';
-import platemobile1 from '../../image/home-page/plate-mobile-1x.png';
-import arrowdekstop1 from '../../image/home-page/arrow-dekstop-1x.png';
-import arrowtablet1 from '../../image/home-page/arrow-tablet-1x.png';
+// import mobile2 from '../../image/home-page/home-bg-mobile-2x.png';
 
+import dekleaf1 from '../../image/home-page/deskspinach-1x.png';
+// import dekleaf2 from '../../image/home-page/deskspinach-2x.png';
+import tableaf1 from '../../image/home-page/tabkspinach-1x.png';
+// import tableaf2 from '../../image/home-page/tabkspinach-2x.png';
+import mobleaf1 from '../../image/home-page/mobilspinach-1x.png';
+// import mobleaf2 from '../../image/home-page/mobilspinach-2x.png';
+
+import platedekstop1 from '../../image/home-page/plate-dekstop-1x.png';
+// import platedekstop2 from '../../image/home-page/plate-dekstop-2x.png';
+import platetablet1 from '../../image/home-page/plate-tablet-1x.png';
+// import platetablet2 from '../../image/home-page/plate-tablet-2x.png';
+import platemobile1 from '../../image/home-page/plate-mobile-1x.png';
+// import platemobile2 from '../../image/home-page/plate-mobile-1x.png';
+
+import arrowdekstop1 from '../../image/home-page/arrow-dekstop-1x.png';
+// import arrowdekstop2 from '../../image/home-page/arrow-dekstop-2x.png';
+import arrowtablet1 from '../../image/home-page/arrow-tablet-1x.png';
+// import arrowtablet2 from '../../image/home-page/arrow-tablet-2x.png';
 
 export const HeroSection = styled.section`
   padding: 132px 0 83px 0;
@@ -31,8 +44,8 @@ export const BgImgdesckTop = styled.div`
   background-position: right top;
   background-repeat: no-repeat;
   position: absolute;
-  top: 146px;
-  left: 129px;
+  top: 162px;
+  left: 107px;
   width: 269px;
   height: 678px;
 
@@ -48,7 +61,7 @@ export const BgImgdesckTop = styled.div`
     width: 725px;
     height: 689px;
     top: 0;
-    left: 770px;
+    left: 715px;
   }
 `;
 
@@ -59,7 +72,7 @@ export const BgLeafdesckTop = styled.div`
   background-repeat: no-repeat;
   position: absolute;
   top: 104px;
-  left: 22px;
+  left: 0px;
   width: 375px;
   height: 814px;
 
@@ -74,8 +87,8 @@ export const BgLeafdesckTop = styled.div`
     background-image: url('${dekleaf1}');
     width: 913px;
     height: 780px;
-    top: -39px;
-    left: 582px;
+    top: 18px;
+    left: 528px;
   }
 `;
 
@@ -102,7 +115,7 @@ export const BgImgPlate = styled.div`
     width: 578px;
     height: 539px;
     top: 105px;
-    left: 660px;
+    left: 575px;
   }
 `;
 
@@ -123,8 +136,8 @@ export const BgImgArrow = styled.div`
   }
   @media (min-width: 1440px) {
     background-image: url('${arrowdekstop1}');
-    top: 494px;
-    right: 136px;
+    top: 542px;
+    right: 346px;
     width: 186px;
     height: 148px;
   }
@@ -166,7 +179,7 @@ export const HeroTitle = styled.h1`
 
   @media screen and (min-width: 768px) {
     width: 364px;
-    font-size: 72px;
+    font-size: 100px;
     letter-spacing: -0.005em;
     margin-bottom: 24px;
   }
@@ -222,22 +235,15 @@ export const Input = styled.input`
   width: 295px;
   height: 52px;
   padding: 17px 32px;
-  border-radius: 15px 50px;  
-  font-size: 12px;
-  line-height: 18px;
-  font-style: normal;
-  font-weight: 400;
-  
-  letter-spacing: 0.5px;
+  border-radius: 15px 50px;
+  line-height: 24px;
   background: ${props => props.theme.colors.background};
-  color: #BDBDBD; 
+  color: ${props => props.theme.colors.userLogo};
   :focus-visible {
     outline: none;
   }
   @media screen and (min-width: 768px) {
     width: 369px;
-    line-height: 24px;
-    font-size: 16px;  
   }
   @media screen and (min-width: 1440px) {
     width: 510px;

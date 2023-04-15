@@ -6,39 +6,31 @@ export const MainLi = styled.li`
     border-radius: 8px;
     
     @media (min-width: 768px) {
-      width: 336px;
-      height: 323px;
       flex-basis: calc((100% - 60px) / 2);
     }
     @media (min-width: 1440px) {
-        width: 300px;
-        height: 323px;
+        width: 288px;
         flex-basis: calc((100% - 60px) / 4);
     }`
 
-export const MainImageTitle = styled.div`
-    width: 307px;
-    min-height: 52px;
-    background-color: ${props => props.theme.colors.listItemBcg};
-    border-radius: 8px;
+    export const MainImageTitle = styled.div`
     position: absolute;
     bottom: 26px;
-    display: inline-block;
-    margin-left: 18px;
-    margin-right: 18px;
+    left: 59px; 
+    min-width: 256px;
+    height: 52px;
     padding: 16px;
-    display: flex;
-    align-items: center; 
+    border-radius: 8px;
+    background-color: background;
+    font-weight: 500;
+    font-size: 16px;
     
 
     @media (min-width: 768px) {
-      width: 300px;
-      min-height: 52px;
+      
     }
     @media (min-width: 1440px) {
-      width: 268px;
-      min-height: 59px;
-       
+       left: 18px; 
     } `
 
     export const MainImageText = styled.h5`    
@@ -46,7 +38,7 @@ export const MainImageTitle = styled.div`
     font-size: 16px;
     line-height: 1.25;
     letter-spacing: -0.24px;
-    color: ${props => props.theme.colors.textPrimary};
+    color: #3E4462;
     margin:0; `
 
     export const MainImage = styled.img`

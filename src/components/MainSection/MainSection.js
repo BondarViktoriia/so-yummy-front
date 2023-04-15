@@ -13,14 +13,11 @@ import axios from 'axios';
 import MainItem from './MainItem';
 import { useMediaQuery } from 'react-responsive';
 
-
 const MainSection = () => {
   const [categories, setCategories] = useState([]);
 
- 
   useEffect(() => {
     const getMainRecipes = async () => {
- 
       try {
         const response = await axios.get(
           'https://so-yummy-7n94.onrender.com/api/recipes/main'
@@ -49,8 +46,6 @@ const MainSection = () => {
   } else {
     numCard = 1;
   }
-
-    
   return (
     <SectionMain>
       <Container>
@@ -60,7 +55,7 @@ const MainSection = () => {
               Object.entries(categories).map(([categoryKey, meals]) => (
                 <li key={categoryKey}>
                   {meals.slice(3).map(meal => (
-                    <MainTitle key={meal.category}>{meal.category}</MainTitle>
+                    <MainTitle>{meal.category}</MainTitle>
                   ))}
 
                   <MainList>
