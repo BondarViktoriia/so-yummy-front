@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import {
   ListItem,
   LinkItem,
@@ -11,6 +12,11 @@ import {
 const RecipeItem = ({ recipe }) => {
   // console.log(recipe._id);
   const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <ListItem>
       <LinkItem

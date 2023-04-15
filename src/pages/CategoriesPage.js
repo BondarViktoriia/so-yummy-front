@@ -10,7 +10,7 @@ import { Loader } from 'components/Loader/Loader';
 const CategoriesPage = () => {
   return (
     <Container>
-      <Title>Category</Title>
+      <Title>Categories</Title>
       <CategoryList />
       <CategoriesByName />
       <Suspense fallback={<Loader />}>
