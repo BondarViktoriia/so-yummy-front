@@ -12,16 +12,19 @@ import {
 import axios from 'axios';
 import MainItem from './MainItem';
 import { useMediaQuery } from 'react-responsive';
+import { Loader } from '../Loader/Loader';    
+
 
 
 const MainSection = () => {
   const [categories, setCategories] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(false);
  
   useEffect(() => {
     const getMainRecipes = async () => {
  
       try {
+        setIsLoading(true);
         const response = await axios.get(
           'https://so-yummy-7n94.onrender.com/api/recipes/main'
         );
@@ -31,7 +34,9 @@ const MainSection = () => {
         }
       } catch (error) {
         console.log(error.message);
-      }
+       } finally {
+         setIsLoading(false);
+       }
     };
     getMainRecipes();
   }, []);
@@ -50,26 +55,27 @@ const MainSection = () => {
     numCard = 1;
   }
 
-    
+
   return (
+  <>
+    {isLoading && <Loader />}
     <SectionMain>
       <Container>
         <Wrap>
           <MainCategories>
             {categories &&
-              Object.entries(categories).map(([categoryKey, meals]) => (
-                <li key={categoryKey}>
-                  {meals.slice(3).map(meal => (
-                    <MainTitle key={meal.category}>{meal.category}</MainTitle>
-                  ))}
-
-                  <MainList>
-                    {meals.slice(0, numCard).map(meal => (
+              categories.map(categoryResalt => (
+                <li key={categoryResalt.category}>
+                  <MainTitle key={categoryResalt.category}>
+                    {categoryResalt.category}
+                  </MainTitle>
+                   <MainList>
+                    {categoryResalt.results.map(meal => (
                       <MainItem key={meal._id} meal={meal} />
                     ))}
-                  </MainList>
-                  <Link
-                    to={`/categories/${meals.category}`}
+                  </MainList>                 
+                     <Link
+                    to={`/categories/${categoryResalt.category}`}
                     style={isActive => ({
                       color: isActive ? '#8AA936' : '#BDBDBD',
                     })}
@@ -82,7 +88,8 @@ const MainSection = () => {
           <MainButton to="/categories/Beef">Other categories</MainButton>
         </Wrap>
       </Container>
-    </SectionMain>
+      </SectionMain>
+      </>
   );
 };
 
