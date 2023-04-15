@@ -22,6 +22,7 @@ export const MainSearch = () => {
     onSubmit: values => {
         submitSearchRedirect(values)
     },
+    
     validationSchema: Yup.object().shape({
       query: Yup.string().required('Please enter query'),
     }),
