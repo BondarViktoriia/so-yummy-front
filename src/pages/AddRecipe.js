@@ -1,5 +1,5 @@
 import { useMediaQuery } from 'react-responsive';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import AddRecipeForm from '../components/AddRecipe/AddRecipeForm';
 import PopularRecipe from '../components/AddRecipe/PopularRecipe';
 import FollowUs from '../components/AddRecipe/FollowUs';
@@ -48,7 +48,7 @@ const AddRecipe = () => {
   const [path, setPath] = useState('');
   const [isLoading, setIsLoadind] = useState(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     store.set('userInputs', inputs);
@@ -206,7 +206,7 @@ const AddRecipe = () => {
       theme: 'light',
     });
     resetForm();
-    navigate('/my');
+    // navigate('/my');
   };
   const resetForm = () => {
     setInputs(init);
