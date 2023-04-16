@@ -11,7 +11,7 @@ import {
 } from './MainSection.styled';
 import axios from 'axios';
 import MainItem from './MainItem';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
 import { Loader } from '../Loader/Loader';    
 
 
@@ -41,19 +41,18 @@ const MainSection = () => {
     getMainRecipes();
   }, []);
 
-  console.log('categoriesObj', Object.entries(categories));
 
-  const isDesktop = useMediaQuery({ minWidth: 1440 });
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
+  // const isDesktop = useMediaQuery({ minWidth: 1440 });
+  // const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
 
-  let numCard;
-  if (isDesktop) {
-    numCard = 4;
-  } else if (isTablet) {
-    numCard = 2;
-  } else {
-    numCard = 1;
-  }
+  // let numCard;
+  // if (isDesktop) {
+  //   numCard = 4;
+  // } else if (isTablet) {
+  //   numCard = 2;
+  // } else if (isMobile){
+  //   numCard = 1;
+  // }
 
 
   return (
