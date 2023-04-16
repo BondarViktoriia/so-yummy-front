@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { selectToken } from '../../redux/auth/authSelectors';
 import { getRecipeByCategory } from '../../services/api/apiRecipe';
 
@@ -15,7 +16,7 @@ const CategoriesByName = () => {
   const { categoryName: category } = useParams();
   const [recipes, setRecipes] = useState([]);
   const [error] = useState(null);
-  const [isLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const token = useSelector(selectToken);
 
   useEffect(() => {
@@ -27,10 +28,13 @@ const CategoriesByName = () => {
 
         if (response) {
           setRecipes(response.data);
-          console.log(response.data);
+          // console.log(response.data);
         }
       } catch (error) {
         console.log(error.message);
+        toast.error(`Something went wrong. Plese try again...`);
+      } finally {
+        setIsLoading(false);
       }
     }
     getRecipesByCategory(category, token);
