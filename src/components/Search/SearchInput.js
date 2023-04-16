@@ -1,7 +1,13 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { SelectComponent } from './Select';
-import { Input, Button, InputWrapper, Form, InputWrapperBlock } from './SearchInput.styled';
+import {
+  Input,
+  Button,
+  InputWrapper,
+  Form,
+  InputWrapperBlock,
+} from './SearchInput.styled';
 
 export const SearchInput = ({ submitSearch, query }) => {
   const options = [
@@ -31,7 +37,6 @@ export const SearchInput = ({ submitSearch, query }) => {
             type="text"
             onChange={formik.handleChange}
             value={formik.values.query}
-            
           />
           <Button type="submit">Search</Button>
         </InputWrapper>
