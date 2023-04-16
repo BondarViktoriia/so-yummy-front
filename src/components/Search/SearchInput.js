@@ -9,16 +9,19 @@ import {
   InputWrapperBlock,
 } from './SearchInput.styled';
 
-export const SearchInput = ({ submitSearch, query }) => {
+export const SearchInput = ({ submitSearch, query, selectCurrentOtions }) => {
   const options = [
     { value: 'recipes', label: 'Title' },
     { value: 'ingredients', label: 'Ingredients' },
   ];
-
+  let initialSelectValue = 'recipes'
+if (selectCurrentOtions) {
+  initialSelectValue = selectCurrentOtions
+}
   const formik = useFormik({
     initialValues: {
       query: query,
-      options: 'recipes',
+      options: initialSelectValue,
     },
     onSubmit: values => {
       submitSearch(values);
@@ -45,6 +48,7 @@ export const SearchInput = ({ submitSearch, query }) => {
         options={options}
         value={formik.values.options}
         onChange={value => formik.setFieldValue('options', value.value)}
+        selectCurrentOtions = {selectCurrentOtions}
       />
     </Form>
   );

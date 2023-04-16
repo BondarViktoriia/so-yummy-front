@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 
 // import { updateUserData } from '../../services/auth/auth';
 
@@ -113,13 +112,6 @@ export const getCurrentUser = createAsyncThunk(
         clearAuthToken();
         thunkAPI.dispatch({ type: 'persist/PURGE', key: 'persist:auth' });
       }
-      toast.error(`${error.response.data.message}`, {
-        position: 'top-center',
-        autoClose: 2500,
-        closeOnClick: true,
-        pauseOnHover: true,
-        theme: 'colored',
-      });
       return thunkAPI.rejectWithValue(error.message);
     }
   }

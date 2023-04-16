@@ -117,6 +117,10 @@ export const Link = styled(NavLink)`
   line-height: 18px;
   letter-spacing: -0.02em;
   color: ${props => props.theme.colors.footerText};
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.colors.footerHover};
+  }
 `;
 
 export const NavItem = styled.li`
@@ -283,6 +287,7 @@ export const SubmitBtn = styled.button`
   background-color: ${props => props.theme.colors.subscrButton};
   border-radius: 6px;
   border-color: transparent;
+  cursor: pointer;
   @media (min-width: 768px) {
     width: 171px;
     height: 50px;
@@ -290,6 +295,11 @@ export const SubmitBtn = styled.button`
   @media (min-width: 1440px) {
     width: 339px;
     height: 60px;
+  }
+  &:hover,
+  &:focus {
+    background-color: ${props => props.theme.colors.logoutBtn};
+    border: 1px solid #ffffff;
   }
 `;
 

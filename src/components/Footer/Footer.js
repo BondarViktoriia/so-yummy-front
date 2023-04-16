@@ -90,7 +90,7 @@ export const Footer = () => {
                 <FooterNav>
                   <ul>
                     <NavItem>
-                      <Link to="/search">Ingredients</Link>
+                      <Link to="/search?options=ingredients">Ingredients</Link>
                     </NavItem>
                     <NavItem>
                       <Link to="/add">Add recipes</Link>
