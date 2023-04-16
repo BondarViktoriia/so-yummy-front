@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 // import { updateUserData } from '../../services/auth/auth';
 
@@ -18,8 +19,10 @@ export const registrationUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const res = await axios.post('/auth/signup', credentials);
+      toast.success(`You successfully registered. Go to sign in page!`);
       return res.data;
     } catch (error) {
+      toast.error(`No success registration, try again!`);
       return rejectWithValue(error);
     }
   }

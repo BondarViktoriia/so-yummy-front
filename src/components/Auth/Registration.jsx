@@ -23,6 +23,7 @@ import {
   PassValidIconStyled,
   StatusBox,
 } from './Registration.styled';
+import { ToastContainer } from 'react-toastify';
 
 export const AuthForm = ({ login }) => {
   const isLoading = useSelector(selectIsLoading);
@@ -164,6 +165,7 @@ export const AuthForm = ({ login }) => {
           </FormChange>
         )}
       </Formik>
+      <ToastContainer />
     </>
   );
 };
