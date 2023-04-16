@@ -65,7 +65,8 @@ export const FormLabel = styled.label`
 
 export const IconName = styled(FiUser)`
   position: absolute;
-  top: 50%;
+  top: 10px;
+
   color: #fafafa;
   transform: translate(13px, -50%);
   pointer-events: none;
@@ -81,7 +82,7 @@ export const IconName = styled(FiUser)`
 
 export const IconEmail = styled(HiOutlineMail)`
   position: absolute;
-  top: 50%;
+  top: 10px;
   color: #fafafa;
   transform: translate(13px, -50%);
   pointer-events: none;
@@ -96,7 +97,7 @@ export const IconEmail = styled(HiOutlineMail)`
 `;
 export const IconPassword = styled(FiLock)`
   position: absolute;
-  top: 50%;
+  top: 10px;
   color: #fafafa;
   transform: translate(13px, -50%);
   pointer-events: none;
@@ -169,7 +170,7 @@ export const ErrorCont = styled(ErrorMessage)`
 
 export const ErrorIconStyled = styled(ErrorIcon)`
   position: absolute;
-  top: 16px;
+  top: 0px;
   right: 14px;
   width: 14px;
   height: 14px;
@@ -178,13 +179,13 @@ export const ErrorIconStyled = styled(ErrorIcon)`
     width: 20px;
     height: 20px;
     right: 18px;
-    top: 20px;
+    top: 0px;
   }
 `;
 
 export const CheckIconStyled = styled(CheckIcon)`
   position: absolute;
-  top: 16px;
+  top: 4px;
   right: 14px;
   width: 14px;
   height: 14px;
@@ -193,46 +194,60 @@ export const CheckIconStyled = styled(CheckIcon)`
     width: 20px;
     height: 20px;
     right: 18px;
-    top: 20px;
+    top: 4px;
   }
 `;
 
 export const PassWarnIconStyled = styled(WarnIcon)`
+  position: absolute;
+  top: 4px;
   width: 14px;
   height: 14px;
   pointer-events: none;
+  right: 18px;
   @media screen and (min-width: 768px) {
     width: 20px;
     height: 20px;
+    right: 18px;
+    top: 4px;
   }
 `;
 
 export const PassErrorIconStyled = styled(ErrorIcon)`
+  position: absolute;
+  top: 4px;
   width: 14px;
   height: 14px;
   pointer-events: none;
+  top: 0px;
+  right: 18px;
   @media screen and (min-width: 768px) {
     width: 20px;
     height: 20px;
+    right: 18px;
+    top: 4px;
   }
 `;
 
 export const PassValidIconStyled = styled(CheckIcon)`
+  position: absolute;
+  top: 4px;
   width: 14px;
   height: 14px;
   pointer-events: none;
+  right: 18px;
   @media screen and (min-width: 768px) {
     width: 20px;
     height: 20px;
+    right: 18px;
+    top: 4px;
   }
 `;
 
 export const StatusBox = styled.div`
   font-size: 12px;
   margin-top: 8px;
-  /* font-weight: ${p => p.theme.fontWeights[0]}; */
-  /* line-height: ${p => p.theme.lineHeights.searchSelect}; */
-  /* transition: ${p => p.theme.transitions.main}; */
+
   color: #e74a3b;
   ${p => p.color === 'notSecure' && `color: #F6C23E`};
   ${p => p.color === 'valid' && `color: #3CBC81`};
