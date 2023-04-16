@@ -15,20 +15,7 @@ export const SelectComponent = ({ onChange, options, value }) => {
         onChange={value => onChange(value)}
         options={options}
         classNamePrefix={'Select'}
-        // menuIsOpen={true}
-        // styles={{
-        //   control: (baseStyles, state) => ({
-        //     ...baseStyles,
-        //     border: state.isFocused ? 0 : state.border,
-        //     boxShadow: state.isFocused ? 0 : 0,
-        //     // backgroundColor: state.isFocused ? 'lightGrey' : 'white',
-        //   }),
-        //   option: (baseStyles, state) => ({
-        //     ...baseStyles,
-        //     backgroundColor: state.isFocused ? 'lightGrey' : 'white',
-        //   }),
-        // }}
-      />
+     />
     </SelectWrapper>
   );
 };

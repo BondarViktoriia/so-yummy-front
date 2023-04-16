@@ -74,7 +74,7 @@ const SearchPage = () => {
         <Title>Search</Title>
       </Container>
       <SearchWrapper>
-        <SearchInput query={query ? query : ''} submitSearch={submitSearch} />
+        <SearchInput query={query ? query : ''} submitSearch={submitSearch} selectCurrentOtions={options}/>
         {results.length > 0 && (
           <PaginationComp
             recipes={results}
