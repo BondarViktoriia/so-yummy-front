@@ -143,7 +143,7 @@ const AddRecipe = () => {
     setInputs(prev => ({ ...prev, [name]: value }));
   };
   const handleSubmit = e => {
-    // e.preventDefault();
+    e.preventDefault();
 
     const { recipe, time, category, about, title } = inputs;
 

@@ -25,12 +25,12 @@ import {
   IconEmail,
   IconPassword,
   ErrorCont,
-  // ErrorIconStyled,
-  // CheckIconStyled,
-  // PassWarnIconStyled,
-  // PassErrorIconStyled,
-  // PassValidIconStyled,
-  // StatusBox,
+  ErrorIconStyled,
+  CheckIconStyled,
+  PassWarnIconStyled,
+  PassErrorIconStyled,
+  PassValidIconStyled,
+  StatusBox,
 } from './Registration.styled';
 
 export const SignIn = ({ login }) => {
@@ -60,17 +60,17 @@ export const SignIn = ({ login }) => {
     login ? dispatch(registrationUser(values)) : dispatch(loginUser(values));
   };
 
-  // const statusIcon = {
-  //   valid: <CheckIconStyled />,
-  //   inValid: <ErrorIconStyled />,
-  //   notSecure: <PassWarnIconStyled />,
-  // };
+  const statusIcon = {
+    valid: <CheckIconStyled />,
+    inValid: <ErrorIconStyled />,
+    notSecure: <PassWarnIconStyled />,
+  };
 
-  // const passStatusIcon = {
-  //   valid: <PassValidIconStyled />,
-  //   inValid: <PassErrorIconStyled />,
-  //   notSecure: <PassWarnIconStyled />,
-  // };
+  const passStatusIcon = {
+    valid: <PassValidIconStyled />,
+    inValid: <PassErrorIconStyled />,
+    notSecure: <PassWarnIconStyled />,
+  };
 
   return (
     <>
@@ -83,7 +83,6 @@ export const SignIn = ({ login }) => {
         {({ errors, touched, isValid, dirty }) => (
           <FormChange>
             <Title>{login ? 'Registration' : 'Sign In'}</Title>
-            {/* {error && <ErrorCont>{ErrorStatus[error]}</ErrorCont>} */}
             <Form autoComplete="off">
               <FormInputWrapper>
                 <FormLabel htmlFor="email">
@@ -103,7 +102,11 @@ export const SignIn = ({ login }) => {
                       }
                     />
                   </div>
-                  <ErrorCont name="email" component="div" />
+                  {touched.email &&
+                    statusIcon[getPassErrorStatus(errors.email, dirty)]}
+                  {errors.email && touched.email ? (
+                    <StatusBox>{errors.email}</StatusBox>
+                  ) : null}
                 </FormLabel>
 
                 <FormLabel htmlFor="password">
@@ -123,8 +126,9 @@ export const SignIn = ({ login }) => {
                       getPassErrorStatus(errors.password, dirty)
                     }
                   />
+                  {touched.password &&
+                    passStatusIcon[getPassErrorStatus(errors.password, dirty)]}
                 </FormLabel>
-                <ErrorCont name="password" component="div" />
               </FormInputWrapper>
               <Button
                 type="submit"

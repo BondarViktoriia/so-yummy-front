@@ -22,13 +22,13 @@ import {
   IconName,
   IconEmail,
   IconPassword,
-  ErrorCont,
-  // ErrorIconStyled,
-  // CheckIconStyled,
-  // PassWarnIconStyled,
-  // PassErrorIconStyled,
-  // PassValidIconStyled,
-  // StatusBox,
+  // ErrorCont,
+  ErrorIconStyled,
+  CheckIconStyled,
+  PassWarnIconStyled,
+  PassErrorIconStyled,
+  PassValidIconStyled,
+  StatusBox,
 } from './Registration.styled';
 
 export const AuthForm = ({ login }) => {
@@ -58,17 +58,17 @@ export const AuthForm = ({ login }) => {
     !login ? dispatch(registrationUser(values)) : dispatch(loginUser(values));
   };
 
-  // const statusIcon = {
-  //   valid: <CheckIconStyled />,
-  //   inValid: <ErrorIconStyled />,
-  //   notSecure: <PassWarnIconStyled />,
-  // };
+  const statusIcon = {
+    valid: <CheckIconStyled />,
+    inValid: <ErrorIconStyled />,
+    notSecure: <PassWarnIconStyled />,
+  };
 
-  // const passStatusIcon = {
-  //   valid: <PassValidIconStyled />,
-  //   inValid: <PassErrorIconStyled />,
-  //   notSecure: <PassWarnIconStyled />,
-  // };
+  const passStatusIcon = {
+    valid: <PassValidIconStyled />,
+    inValid: <PassErrorIconStyled />,
+    notSecure: <PassWarnIconStyled />,
+  };
 
   return (
     <>
@@ -81,7 +81,6 @@ export const AuthForm = ({ login }) => {
         {({ errors, touched, isValid, dirty }) => (
           <FormChange>
             <Title>{!login ? 'Registration' : 'Sign In'}</Title>
-            {/* {error && <ErrorCont>{ErrorStatus[error]}</ErrorCont>} */}
             <Form autoComplete="off">
               <FormInputWrapper>
                 {!login && (
@@ -102,11 +101,11 @@ export const AuthForm = ({ login }) => {
                           touched.name && getPassErrorStatus(errors.name, dirty)
                         }
                       />
-                      {/* {touched.name &&
+                      {touched.name &&
                         statusIcon[getPassErrorStatus(errors.name, dirty)]}
                       {errors.name && touched.name ? (
                         <StatusBox>{errors.name}</StatusBox>
-                      ) : null} */}
+                      ) : null}
                     </FormLabel>
                   </div>
                 )}
@@ -118,6 +117,7 @@ export const AuthForm = ({ login }) => {
                         touched.email && getPassErrorStatus(errors.email, dirty)
                       }
                     />
+
                     <FormInput
                       type="email"
                       name="email"
@@ -127,8 +127,12 @@ export const AuthForm = ({ login }) => {
                         touched.email && getPassErrorStatus(errors.email, dirty)
                       }
                     />
+                    {touched.email &&
+                      statusIcon[getPassErrorStatus(errors.email, dirty)]}
+                    {errors.email && touched.email ? (
+                      <StatusBox>{errors.email}</StatusBox>
+                    ) : null}
                   </FormLabel>
-                  <ErrorCont name="email" component="div" />
                 </div>
 
                 <div>
@@ -139,6 +143,7 @@ export const AuthForm = ({ login }) => {
                         getPassErrorStatus(errors.password, dirty)
                       }
                     />
+
                     <FormInput
                       type="password"
                       name="password"
@@ -149,8 +154,11 @@ export const AuthForm = ({ login }) => {
                         getPassErrorStatus(errors.password, dirty)
                       }
                     />
+                    {touched.password &&
+                      passStatusIcon[
+                        getPassErrorStatus(errors.password, dirty)
+                      ]}
                   </FormLabel>
-                  <ErrorCont name="password" component="div" />
                 </div>
               </FormInputWrapper>
               <Button
