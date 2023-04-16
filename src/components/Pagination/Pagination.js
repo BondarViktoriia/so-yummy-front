@@ -19,7 +19,7 @@ const PaginationComp = ({ recipes, itemsPerPage, page, onDelete, currentPage, on
     const newOffset = (event.selected * itemsPerPage) % recipes.length;
     setItemOffset(newOffset);
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    currentPage = event.selected + 1;
+    currentPage = event.selected;
     onSetPage(currentPage)
   };
 
