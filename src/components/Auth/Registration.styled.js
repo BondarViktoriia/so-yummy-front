@@ -158,6 +158,11 @@ export const FormLink = styled(Link)`
     /* font-size: */
     /* line-height:  */
   }
+  :hover,
+  :focus {
+    color: rgb(139, 170, 54);
+    font-size: 16px;
+  }
 `;
 
 export const ErrorCont = styled(ErrorMessage)`
