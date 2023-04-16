@@ -29,6 +29,7 @@ export const CloseBtn = styled.button`
   width: 32px;
   height: 32px;
   z-index: 9999;
+  cursor: pointer;
 `;
 export const NavCont = styled.div`
   display: flex;
