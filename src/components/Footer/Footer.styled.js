@@ -138,6 +138,11 @@ export const NavItem = styled.li`
 export const FormCont = styled.div`
   display: flex;
   justify-content: center;
+  @media (max-width: 767px) {
+    width: 204px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   @media (min-width: 1440px) {
     flex-direction: column;
     justify-content: flex-start;
@@ -275,7 +280,7 @@ export const Input = styled(Field)`
 export const SubmitBtn = styled.button`
   width: 204px;
   height: 38px;
-  background-color: ${props => props.theme.colors.accentGreen};
+  background-color: ${props => props.theme.colors.subscrButton};
   border-radius: 6px;
   border-color: transparent;
   @media (min-width: 768px) {
