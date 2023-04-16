@@ -65,7 +65,7 @@ const ShoppingList = () => {
                   <ListItem key={_id}>
                     <LeftWrapper>
                       <ImgThumb>
-                        <img src={thb} />
+                        <img src={thb} alt={ttl } />
                       </ImgThumb>
                       <IngredTtl>{ttl}</IngredTtl>
                     </LeftWrapper>
