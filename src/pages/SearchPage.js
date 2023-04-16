@@ -1,9 +1,9 @@
-// import Container from '../components/Container/Container';
 import { useSearchParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { getSearchRecipe } from '../services/api/ApiSearchRecipes';
 import { SearchInput } from '../components/Search/SearchInput';
-// import { SearchList } from '../components/Search/SearchList';
 import Container from '../components/Container/Container';
 import Title from '../components/Title/Title';
 import { Loader } from '../components/Loader/Loader.jsx';
@@ -20,7 +20,6 @@ import searchDesktop2x from '../image/search-page/search-desktop-2x.png';
 import PaginationComp from 'components/Pagination/Pagination';
 
 const SearchPage = () => {
-  // const location = useLocation();
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -28,12 +27,10 @@ const SearchPage = () => {
   const options = searchParams.get('options');
   const page = searchParams.get('page');
   const token = useSelector(selectToken);
-  console.log(token);
 
   const onSetPage = currentPage => {
-    setSearchParams({options: options, query: query, page: currentPage});
+    setSearchParams({ options: options, query: query, page: currentPage });
   };
-  console.log(page);
 
   const submitSearch = queryParams => {
     if (queryParams.options === options && queryParams.query === query) {
@@ -46,10 +43,6 @@ const SearchPage = () => {
     setResults([]);
   };
 
-  // const incrementPage = () => {
-  //   setSearchParams({ options: options, query: query, page: Number(page) + 1 });
-  // };
-
   useEffect(() => {
     if (!query || query.length === 0 || query === '') {
       return;
@@ -61,8 +54,8 @@ const SearchPage = () => {
       try {
         setIsLoading(true);
         const result = await getSearchRecipe(query, options, token);
-        if (result === 0 || !result) {
-          console.log('Nothing found for your request :(');
+        if (result.length === 0 || !result) {
+          toast.warning('Nothing found for your request :(');
           setIsLoading(false);
           return;
         }
@@ -81,9 +74,7 @@ const SearchPage = () => {
         <Title>Search</Title>
       </Container>
       <SearchWrapper>
-        {/* <SearchList results={results} /> */}
         <SearchInput query={query ? query : ''} submitSearch={submitSearch} />
-
         {results.length > 0 && (
           <PaginationComp
             recipes={results}
@@ -94,7 +85,6 @@ const SearchPage = () => {
           />
         )}
         {isLoading && <Loader />}
-
         {results.length === 0 && (
           <PictureSearch>
             <source
@@ -116,6 +106,7 @@ const SearchPage = () => {
           <LookingP>Looking for something else</LookingP>
         )}
       </SearchWrapper>
+      <ToastContainer />
     </main>
   );
 };
