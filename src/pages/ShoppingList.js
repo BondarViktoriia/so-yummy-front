@@ -278,6 +278,7 @@ const Measure = styled.p`
 `;
 
 const DeleteButton = styled.button`
+  cursor: pointer;
   background-color: transparent;
   border: none;
   padding: 0;
