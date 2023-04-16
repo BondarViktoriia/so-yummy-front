@@ -186,6 +186,7 @@ export const OriginalCheckbox = styled.input`
   appearance: none;
   width: 18px;
   height: 18px;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 35px;
