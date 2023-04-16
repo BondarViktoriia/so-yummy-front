@@ -38,6 +38,7 @@ import {
   BgUpImgThumb,
   ErrorCont,
   FormThumb,
+  TermsCont,
 } from './Footer.styled';
 
 import BgUpMob from '../../image/footer/bgc-up-mob.png';
@@ -58,12 +59,12 @@ export const Footer = () => {
   return (
     <footer>
       <FooterSection>
+        <BgUpImgThumb>
+          {isMobile && <BgUpImg src={`${BgUpMob}`} alt="img" />}
+          {isTablet && <BgUpImg src={`${BgUpTab}`} alt="img" />}
+          {isDesktop && <BgUpImg src={`${BgUpDesk}`} alt="img" />}
+        </BgUpImgThumb>
         <Container>
-          <BgUpImgThumb>
-            {isMobile && <BgUpImg src={`${BgUpMob}`} alt="img" />}
-            {isTablet && <BgUpImg src={`${BgUpTab}`} alt="img" />}
-            {isDesktop && <BgUpImg src={`${BgUpDesk}`} alt="img" />}
-          </BgUpImgThumb>
           <FooterThumb>
             <DeskWrap>
               <NavWrap>
@@ -173,17 +174,19 @@ export const Footer = () => {
           theme="light"
         />
       </FooterSection>
-      <Container>
-        <InfoList>
-          <InfoItem>
-            <ArrText>&copy; 2023 All Rights Reserved.</ArrText>
-          </InfoItem>
-          <InfoItem>
-            <TermsText>Terms of Service</TermsText>
-          </InfoItem>
-        </InfoList>
+      <TermsCont>
+        <Container>
+          <InfoList>
+            <InfoItem>
+              <ArrText>&copy; 2023 All Rights Reserved.</ArrText>
+            </InfoItem>
+            <InfoItem>
+              <TermsText>Terms of Service</TermsText>
+            </InfoItem>
+          </InfoList>
+        </Container>
         <BgImg />
-      </Container>
+      </TermsCont>
     </footer>
   );
 };

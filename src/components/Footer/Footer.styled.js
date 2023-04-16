@@ -8,6 +8,7 @@ import BgTab from '../../image/footer/bgc-tab.png';
 import BgDesk from '../../image/footer/bgc-desk.png';
 
 export const FooterSection = styled.section`
+  position: relative;
   background-color: ${props => props.theme.colors.footer};
 `;
 
@@ -424,4 +425,8 @@ export const ErrorCont = styled(ErrorMessage)`
   font-size: 14px;
   line-height: 21px;
   margin-top: 12px;
+`;
+
+export const TermsCont = styled.div`
+  position: relative;
 `;
