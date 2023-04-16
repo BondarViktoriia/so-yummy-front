@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { createPortal } from 'react-dom';
 import {
   Backdrop,
@@ -16,16 +15,18 @@ import {
   LogoutIcon,
 } from './UserProfile.styled';
 import { EditProfile } from './EditProfile';
-import { logoutUser } from '../../redux/auth/authOperations';
+import { LogOut } from './LogOut';
 
 const modalRoot = document.querySelector('#modal-root');
 
 const UserProfile = ({ onClose, id, avatar }) => {
-  const dispatch = useDispatch();
-
   const [isEditOpen, setIsEditOpen] = useState(false);
   const openEdit = () => setIsEditOpen(true);
   const closeEdit = () => setIsEditOpen(false);
+
+  const [isLogoutOpen, setIsLogoutOpen] = useState(false);
+  const openLogout = () => setIsLogoutOpen(true);
+  const closeLogout = () => setIsLogoutOpen(false);
 
   useEffect(() => {
     window.addEventListener('keydown', handleEsc);
@@ -53,12 +54,7 @@ const UserProfile = ({ onClose, id, avatar }) => {
               <EditIcon />
             </EditBtn>
           </EditCont>
-          <LogoutBtn
-            onClick={() => {
-              dispatch(logoutUser());
-              onClose();
-            }}
-          >
+          <LogoutBtn onClick={openLogout}>
             <LogoutTextThumb>
               <LogoutText>Log out</LogoutText>
               <LogoutIcon />
@@ -70,6 +66,7 @@ const UserProfile = ({ onClose, id, avatar }) => {
       {isEditOpen && (
         <EditProfile closeEdit={closeEdit} id={id} avatar={avatar} />
       )}
+      {isLogoutOpen && <LogOut closeLogout={closeLogout} />}
     </Backdrop>,
     modalRoot
   );
