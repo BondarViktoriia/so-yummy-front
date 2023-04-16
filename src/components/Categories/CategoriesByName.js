@@ -20,21 +20,25 @@ const CategoriesByName = () => {
   const token = useSelector(selectToken);
 
   useEffect(() => {
-    async function getRecipesByCategory(category = 'beef',token) {
+    async function getRecipesByCategory(category, token) {
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-      try {
-        const response = await getRecipeByCategory(category, token);
+      if (category === ':categoryName') {
+        return;
+      } else {
+        try {
+          const response = await getRecipeByCategory(category ?? 'beef', token);
 
-        if (response) {
-          setRecipes(response.data);
-          // console.log(response.data);
+          if (response) {
+            setRecipes(response.data);
+            // console.log(response.data);
+          }
+        } catch (error) {
+          console.log(error.message);
+          toast.error(`Something went wrong. Plese try again...`);
+        } finally {
+          setIsLoading(false);
         }
-      } catch (error) {
-        console.log(error.message);
-        toast.error(`Something went wrong. Plese try again...`);
-      } finally {
-        setIsLoading(false);
       }
     }
     getRecipesByCategory(category, token);

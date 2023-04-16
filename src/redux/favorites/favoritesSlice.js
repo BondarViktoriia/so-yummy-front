@@ -30,7 +30,7 @@ const favoritesSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.favorites.push(action.payload.data);
-      console.log('action.payload at Add recipe:', action.payload);
+
     },
     [addToFavorite.rejected]: handleRejected,
 
@@ -46,7 +46,6 @@ const favoritesSlice = createSlice({
 
     [getFavorites.pending]: handlePending,
     [getFavorites.fulfilled](state, action) {
-      console.log('action.payload at Get Recipes:', action.payload);
       state.isLoading = false;
       state.error = null;
       state.favorites = action.payload;
