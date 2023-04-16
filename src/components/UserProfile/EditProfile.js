@@ -32,7 +32,7 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     setUsername(user.name);
-  }, [user.name]);
+  }, [user]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleEsc);
@@ -67,7 +67,9 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
     e.preventDefault();
 
     const formData = new FormData();
+
     formData.append('avatar', file);
+
     formData.append('name', username);
     dispatch(updateUser(formData));
     closeEdit();
@@ -91,9 +93,9 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
             <AddAvatarBtn>
               <AddIcon />
               <AvatarInput
+                name="avatar"
                 type="file"
                 accept="image/*"
-                required
                 onChange={changeAvatar}
               />
             </AddAvatarBtn>
@@ -104,6 +106,7 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
             <UserIcon />
             <Input
               placeholder="Enter your name"
+              name="name"
               required
               onChange={changeName}
               value={username}
