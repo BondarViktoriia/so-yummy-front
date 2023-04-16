@@ -35,6 +35,7 @@ export const BurgerOpen = styled.button`
   background-color: transparent;
   width: 32px;
   height: 32px;
+  cursor: pointer;
 `;
 export const BurgerIcon = styled(HiOutlineMenuAlt2)`
   width: 24px;

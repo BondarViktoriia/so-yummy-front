@@ -27,6 +27,7 @@ export const CloseBtnCont = styled.div`
 export const CloseBtn = styled.button`
   border: none;
   background-color: transparent;
+  cursor: pointer;
 `;
 
 export const CloseIcon = styled(IoCloseOutline)`
@@ -65,13 +66,20 @@ export const LogoutBtn = styled.button`
   padding-top: 21px;
   padding-bottom: 21px;
   margin-right: 8px;
+  border: 1px solid transparent;
   background-color: ${props => props.theme.colors.btnGreen};
   color: ${props => props.theme.colors.footerText};
-  border-color: transparent;
+
   border-radius: 6px;
+  cursor: pointer;
   @media (min-width: 768px) {
     margin-right: 16px;
     width: 192px;
+  }
+  &:hover,
+  &:focus {
+    background-color: ${props => props.theme.colors.logoutBtn};
+    border: 1px solid ${props => props.theme.colors.logoutBorder};
   }
 `;
 export const CancelBtn = styled.button`
@@ -80,9 +88,16 @@ export const CancelBtn = styled.button`
   padding-bottom: 21px;
   background-color: ${props => props.theme.colors.userLogo};
   color: #23262a;
-  border-color: transparent;
+  border: 1px solid transparent;
   border-radius: 6px;
+  cursor: pointer;
   @media (min-width: 768px) {
     width: 192px;
+  }
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    border: 1px solid ${props => props.theme.colors.darkText};
+    color: ${props => props.theme.colors.darkText};
   }
 `;

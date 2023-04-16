@@ -38,6 +38,10 @@ export const Link = styled(NavLink)`
     line-height: 22px;
     letter-spacing: 0;
   }
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.colors.accentGreen};
+  }
 `;
 
 export const SearchThumb = styled.div`
