@@ -37,6 +37,7 @@ export const loginUser = createAsyncThunk(
 
       return res.data;
     } catch (error) {
+      toast.error(`Email or password wrong!`);
       return rejectWithValue(error);
     }
   }
