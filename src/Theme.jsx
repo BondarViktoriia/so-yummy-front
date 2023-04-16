@@ -4,6 +4,7 @@ const lightTheme = {
   colors: {
     background: '#FAFAFA',
     footer: '#22252A',
+    footerHover: '#8BAA36',
     listItemBcg: '#FFFFFF',
     accentGreen: '#8BAA36',
     mobMenuBgc: '#EBF3D4',
@@ -44,6 +45,8 @@ const lightTheme = {
     addButton: '#22252a',
     iconFollow: '#8baa36',
     subscrButton: '#8BAA36',
+    logoutBtn: '#22252a',
+    logoutBorder: 'transparent',
   },
 };
 
@@ -51,6 +54,7 @@ const darkTheme = {
   colors: {
     background: '#1E1F28',
     footer: '#8BAA36',
+    footerHover: '#22252A',
     listItemBcg: '#2A2C36',
     accentGreen: '#8BAA36',
     mobMenuBgc: '#2A2C36',
@@ -90,6 +94,8 @@ const darkTheme = {
     addButton: '#8BAA36',
     iconFollow: '#FAFAFA',
     subscrButton: '#1E1F28',
+    logoutBtn: 'transparent',
+    logoutBorder: '#8BAA36'
   },
 };
 

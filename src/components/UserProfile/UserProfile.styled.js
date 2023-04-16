@@ -47,6 +47,7 @@ export const EditText = styled.span`
 export const EditBtn = styled.button`
   border: none;
   background-color: transparent;
+  cursor: pointer;
 `;
 
 export const EditIcon = styled(FiEdit2)`
@@ -63,16 +64,21 @@ export const EditCont = styled.div`
 export const LogoutBtn = styled.button`
   border: none;
   background-color: ${props => props.theme.colors.accentGreen};
-  padding: 40px 36px;
+  color: ${props => props.theme.colors.footerText};
   clip-path: inset(25% 0 25% 0 round 15% 35% 15% 30%);
+  padding: 50px 42px;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background-color: ${props => props.theme.colors.darkText};
+    color: ${props => props.theme.colors.background};
+  }
 `;
 
 export const LogoutText = styled.span`
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
-  color: ${props => props.theme.colors.footerText};
-  /* margin-right: 2px; */
 `;
 
 export const LogoutTextThumb = styled.div`
@@ -85,5 +91,4 @@ export const LogoutTextThumb = styled.div`
 export const LogoutIcon = styled(FiArrowRight)`
   width: 14px;
   height: 14px;
-  color: #fafafa;
 `;

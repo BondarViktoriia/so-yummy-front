@@ -25,6 +25,7 @@ export const CloseBtnCont = styled.div`
 export const CloseBtn = styled.button`
   border: none;
   background-color: transparent;
+  cursor: pointer;
 `;
 
 export const CloseIcon = styled(IoCloseOutline)`
@@ -86,6 +87,7 @@ export const AddAvatarBtn = styled.label`
   width: 24px;
   height: 24px;
   z-index: 145;
+  cursor: pointer;
   @media (min-width: 768px) {
     bottom: -2px;
     right: 10px;
@@ -175,6 +177,7 @@ export const SubmitBtn = styled.button`
   background-color: ${props => props.theme.colors.accentGreen};
   border-radius: 6px;
   border-color: transparent;
+  cursor: pointer;
 `;
 
 export const BtnText = styled.span`
