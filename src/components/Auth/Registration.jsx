@@ -1,16 +1,10 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { registrationUser, loginUser } from '../../redux/auth/authOperations';
 import { selectIsLoading } from '../../redux/auth/authSelectors';
-import { userSlice } from '../../redux/auth/authSlice';
-import { useAuth } from '../../hooks/useAuth';
 import { Formik, Form } from 'formik';
 import { regSchema } from '../../utilities/authValidationSchemas';
-import {
-  // ErrorStatus,
-  getPassErrorStatus,
-} from '../../services/auth/errorStatus';
+import { getPassErrorStatus } from '../../services/auth/errorStatus';
 import { Button } from '../../components/WelcomePage/Button';
 import {
   FormChange,
@@ -22,7 +16,6 @@ import {
   IconName,
   IconEmail,
   IconPassword,
-  // ErrorCont,
   ErrorIconStyled,
   CheckIconStyled,
   PassWarnIconStyled,
@@ -34,15 +27,6 @@ import {
 export const AuthForm = ({ login }) => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
-  const { error } = useAuth();
-
-  useEffect(() => {
-    if (error !== null) {
-      setTimeout(() => {
-        dispatch(userSlice(null));
-      }, 5000);
-    }
-  }, [dispatch, error]);
 
   const initialValuesRegister = {
     name: '',
