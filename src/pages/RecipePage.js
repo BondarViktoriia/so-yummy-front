@@ -30,6 +30,7 @@ const RecipePage = () => {
 
   useEffect(() => {
     dispatch(fetchRecipe(recipeId)).then(setFetched(true));
+    window.scrollTo(0, 0);
   }, [dispatch, recipeId]);
 
   const showError = error || !currentRecipe;
