@@ -11,7 +11,6 @@ import platemobile1 from '../../image/home-page/plate-mobile-1x.png';
 import arrowdekstop1 from '../../image/home-page/arrow-dekstop-1x.png';
 import arrowtablet1 from '../../image/home-page/arrow-tablet-1x.png';
 
-
 export const HeroSection = styled.section`
   padding: 132px 0 83px 0;
 
@@ -25,10 +24,7 @@ export const HeroSection = styled.section`
   }
 `;
 
-
-
 export const BgImgdesckTop = styled.div`
-
   background-image: url('${mobile1}');
   background-size: cover;
   background-position: right top;
@@ -39,17 +35,17 @@ export const BgImgdesckTop = styled.div`
   width: 269px;
   height: 678px;
 
-  @media (min-width: 768px) {  
+  @media (min-width: 768px) {
     background-image: url('${bgtablet1}');
     top: 0;
-    right: 0;   
+    right: 0;
     width: 332px;
     height: 640px;
   }
   @media (min-width: 1440px) {
     background-image: url('${bgdekstop1}');
     width: 725px;
-    height: 689px;   
+    height: 689px;
     top: 0;
     right: 0;
   }
@@ -67,13 +63,11 @@ export const BgLeafdesckTop = styled.div`
   height: 814px;
 
   @media (min-width: 768px) {
-    
     background-image: url('${tableaf1}');
     width: 583px;
     height: 640px;
     top: 0;
     right: 0;
-    
   }
   @media (min-width: 1440px) {
     background-image: url('${dekleaf1}');
@@ -81,8 +75,6 @@ export const BgLeafdesckTop = styled.div`
     height: 780px;
     top: 0;
     right: 0;
-   
-    
   }
 `;
 
@@ -92,27 +84,27 @@ export const BgImgPlate = styled.div`
   background-position: right top;
   background-repeat: no-repeat;
   position: absolute;
-  
+
   top: 4%;
   right: 7%;
   width: 320px;
   height: 296px;
 
   @media (min-width: 768px) {
-     max-width: 768px;
+    max-width: 768px;
     background-image: url('${platetablet1}');
     width: 368px;
-    height: 351px;   
+    height: 351px;
     top: 3%;
-     right: 0;
+    right: 0;
   }
   @media (min-width: 1440px) {
-     max-width: 1440px;
+    max-width: 1440px;
     background-image: url('${platedekstop1}');
     width: 578px;
-    height: 539px;   
+    height: 539px;
     top: 3%;
-     right: 16%;
+    right: 16%;
   }
 `;
 
@@ -132,7 +124,7 @@ export const BgImgArrow = styled.div`
     display: block;
   }
   @media (min-width: 1440px) {
-    background-image: url('${arrowdekstop1}');    
+    background-image: url('${arrowdekstop1}');
     top: 13%;
     right: 13%;
     width: 186px;
@@ -232,22 +224,22 @@ export const Input = styled.input`
   width: 295px;
   height: 52px;
   padding: 17px 32px;
-  border-radius: 15px 50px;  
+  border-radius: 15px 50px;
   font-size: 12px;
   line-height: 18px;
   font-style: normal;
   font-weight: 400;
-  
+
   letter-spacing: 0.5px;
   background: ${props => props.theme.colors.background};
-  color: #BDBDBD; 
+  color: #bdbdbd;
   :focus-visible {
     outline: none;
   }
   @media screen and (min-width: 768px) {
     width: 369px;
     line-height: 24px;
-    font-size: 16px;  
+    font-size: 16px;
   }
   @media screen and (min-width: 1440px) {
     width: 510px;
@@ -255,6 +247,7 @@ export const Input = styled.input`
 `;
 
 export const HeroButtont = styled.button`
+  cursor: pointer;
   position: absolute;
   clip-path: inset(25% 0px round 15% 35% 15% 30%);
   padding: 47px 37px;

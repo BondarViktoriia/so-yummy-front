@@ -10,7 +10,7 @@ import {
 } from './HeroSection.styled';
 import Container from '../Container/Container';
 import { HealsyBlockRec } from './HealsyBlockRec';
-import { MainSearch } from "../MainSearch";
+import { MainSearch } from "./MainSearch";
 
 export const SectionHero = () => {
 

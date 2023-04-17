@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
-import { Form, Input, HeroButtont } from './HeroSection/HeroSection.styled';
+import { Form, Input, HeroButtont } from './HeroSection.styled';
 
 export const MainSearch = () => {
   const navigate = useNavigate();
