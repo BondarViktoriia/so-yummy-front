@@ -34,13 +34,16 @@ if (selectCurrentOtions) {
     <Form onSubmit={formik.handleSubmit} position="relative">
       <InputWrapperBlock>
         <InputWrapper>
-          <Input
+          <label htmlFor='query'  aria-label='search'>
+                <Input
             id="query"
             name="query"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.query}
+              value={formik.values.query}
+               aria-label='search'
           />
+      </label>
           <Button type="submit">Search</Button>
         </InputWrapper>
       </InputWrapperBlock>

@@ -30,7 +30,8 @@ export const MainSearch = () => {
         name="query"
         type="text"
         onChange={formik.handleChange}
-        value={formik.values.query}
+          value={formik.values.query}
+           aria-label='search'
       />
 </label>
       <HeroButtont type="submit">Search</HeroButtont>
