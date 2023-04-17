@@ -40,9 +40,6 @@ const MainSection = () => {
     getMainRecipes();
   }, []);
 
-  console.log('categoriesObj', Object.entries(categories));
-
- 
 
   return (
   <>

@@ -1,18 +1,27 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { SelectComponent } from './Select';
-import { Input, Button, InputWrapper, Form, InputWrapperBlock } from './SearchInput.styled';
+import {
+  Input,
+  Button,
+  InputWrapper,
+  Form,
+  InputWrapperBlock,
+} from './SearchInput.styled';
 
-export const SearchInput = ({ submitSearch, query }) => {
+export const SearchInput = ({ submitSearch, query, selectCurrentOtions }) => {
   const options = [
     { value: 'recipes', label: 'Title' },
     { value: 'ingredients', label: 'Ingredients' },
   ];
-
+  let initialSelectValue = 'recipes'
+if (selectCurrentOtions) {
+  initialSelectValue = selectCurrentOtions
+}
   const formik = useFormik({
     initialValues: {
       query: query,
-      options: 'recipes',
+      options: initialSelectValue,
     },
     onSubmit: values => {
       submitSearch(values);
@@ -31,7 +40,6 @@ export const SearchInput = ({ submitSearch, query }) => {
             type="text"
             onChange={formik.handleChange}
             value={formik.values.query}
-            
           />
           <Button type="submit">Search</Button>
         </InputWrapper>
@@ -40,6 +48,7 @@ export const SearchInput = ({ submitSearch, query }) => {
         options={options}
         value={formik.values.options}
         onChange={value => formik.setFieldValue('options', value.value)}
+        selectCurrentOtions = {selectCurrentOtions}
       />
     </Form>
   );

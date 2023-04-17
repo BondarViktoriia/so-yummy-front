@@ -5,6 +5,7 @@ export const UserMenuBox = styled.div`
   display: flex;
   align-items: center;
   margin-right: 24px;
+  cursor: pointer;
   @media (min-width: 768px) {
     margin-right: 50px;
   }

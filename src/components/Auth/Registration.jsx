@@ -1,16 +1,10 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { registrationUser, loginUser } from '../../redux/auth/authOperations';
 import { selectIsLoading } from '../../redux/auth/authSelectors';
-import { userSlice } from '../../redux/auth/authSlice';
-import { useAuth } from '../../hooks/useAuth';
 import { Formik, Form } from 'formik';
 import { regSchema } from '../../utilities/authValidationSchemas';
-import {
-  // ErrorStatus,
-  getPassErrorStatus,
-} from '../../services/auth/errorStatus';
+import { getPassErrorStatus } from '../../services/auth/errorStatus';
 import { Button } from '../../components/WelcomePage/Button';
 import {
   FormChange,
@@ -22,27 +16,18 @@ import {
   IconName,
   IconEmail,
   IconPassword,
-  ErrorCont,
-  // ErrorIconStyled,
-  // CheckIconStyled,
-  // PassWarnIconStyled,
-  // PassErrorIconStyled,
-  // PassValidIconStyled,
-  // StatusBox,
+  ErrorIconStyled,
+  CheckIconStyled,
+  PassWarnIconStyled,
+  PassErrorIconStyled,
+  PassValidIconStyled,
+  StatusBox,
 } from './Registration.styled';
+import { ToastContainer } from 'react-toastify';
 
 export const AuthForm = ({ login }) => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
-  const { error } = useAuth();
-
-  useEffect(() => {
-    if (error !== null) {
-      setTimeout(() => {
-        dispatch(userSlice(null));
-      }, 5000);
-    }
-  }, [dispatch, error]);
 
   const initialValuesRegister = {
     name: '',
@@ -58,17 +43,17 @@ export const AuthForm = ({ login }) => {
     !login ? dispatch(registrationUser(values)) : dispatch(loginUser(values));
   };
 
-  // const statusIcon = {
-  //   valid: <CheckIconStyled />,
-  //   inValid: <ErrorIconStyled />,
-  //   notSecure: <PassWarnIconStyled />,
-  // };
+  const statusIcon = {
+    valid: <CheckIconStyled />,
+    inValid: <ErrorIconStyled />,
+    notSecure: <PassWarnIconStyled />,
+  };
 
-  // const passStatusIcon = {
-  //   valid: <PassValidIconStyled />,
-  //   inValid: <PassErrorIconStyled />,
-  //   notSecure: <PassWarnIconStyled />,
-  // };
+  const passStatusIcon = {
+    valid: <PassValidIconStyled />,
+    inValid: <PassErrorIconStyled />,
+    notSecure: <PassWarnIconStyled />,
+  };
 
   return (
     <>
@@ -81,7 +66,6 @@ export const AuthForm = ({ login }) => {
         {({ errors, touched, isValid, dirty }) => (
           <FormChange>
             <Title>{!login ? 'Registration' : 'Sign In'}</Title>
-            {/* {error && <ErrorCont>{ErrorStatus[error]}</ErrorCont>} */}
             <Form autoComplete="off">
               <FormInputWrapper>
                 {!login && (
@@ -102,11 +86,11 @@ export const AuthForm = ({ login }) => {
                           touched.name && getPassErrorStatus(errors.name, dirty)
                         }
                       />
-                      {/* {touched.name &&
+                      {touched.name &&
                         statusIcon[getPassErrorStatus(errors.name, dirty)]}
                       {errors.name && touched.name ? (
                         <StatusBox>{errors.name}</StatusBox>
-                      ) : null} */}
+                      ) : null}
                     </FormLabel>
                   </div>
                 )}
@@ -118,6 +102,7 @@ export const AuthForm = ({ login }) => {
                         touched.email && getPassErrorStatus(errors.email, dirty)
                       }
                     />
+
                     <FormInput
                       type="email"
                       name="email"
@@ -127,8 +112,12 @@ export const AuthForm = ({ login }) => {
                         touched.email && getPassErrorStatus(errors.email, dirty)
                       }
                     />
+                    {touched.email &&
+                      statusIcon[getPassErrorStatus(errors.email, dirty)]}
+                    {errors.email && touched.email ? (
+                      <StatusBox>{errors.email}</StatusBox>
+                    ) : null}
                   </FormLabel>
-                  <ErrorCont name="email" component="div" />
                 </div>
 
                 <div>
@@ -139,6 +128,7 @@ export const AuthForm = ({ login }) => {
                         getPassErrorStatus(errors.password, dirty)
                       }
                     />
+
                     <FormInput
                       type="password"
                       name="password"
@@ -149,8 +139,11 @@ export const AuthForm = ({ login }) => {
                         getPassErrorStatus(errors.password, dirty)
                       }
                     />
+                    {touched.password &&
+                      passStatusIcon[
+                        getPassErrorStatus(errors.password, dirty)
+                      ]}
                   </FormLabel>
-                  <ErrorCont name="password" component="div" />
                 </div>
               </FormInputWrapper>
               <Button
@@ -172,6 +165,7 @@ export const AuthForm = ({ login }) => {
           </FormChange>
         )}
       </Formik>
+      <ToastContainer />
     </>
   );
 };

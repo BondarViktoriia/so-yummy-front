@@ -3,11 +3,10 @@ import styled from 'styled-components';
 export const Form = styled.form`
   margin-bottom: 50px;
   @media screen and (min-width: 768px) {
-    
   }
 
   @media screen and (min-width: 1440px) {
-    margin-bottom:90px;
+    margin-bottom: 90px;
   }
 `;
 
@@ -20,7 +19,7 @@ export const Input = styled.input`
   border: 1px solid #f0f0f0;
   border-radius: 24px 44px;
   border-color: ${props => props.theme.colors.inputSearchBorder};
-  background-color:${props => props.theme.colors.inputSearchBackground};
+  background-color: ${props => props.theme.colors.inputSearchBackground};
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
@@ -35,7 +34,7 @@ export const Input = styled.input`
     width: 362px;
     height: 57px;
     padding-left: 38px;
-  padding-right: 170px;
+    padding-right: 170px;
     font-size: 14px;
   }
 
@@ -48,6 +47,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
+  cursor: pointer;
   width: 113px;
   height: 53px;
   font-family: 'Poppins';

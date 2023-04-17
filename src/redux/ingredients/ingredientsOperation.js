@@ -21,7 +21,6 @@ export const getAllIngredients = createAsyncThunk(
     token.set(persistedAccessToken);
     try {
       const data = await getAllIngredientsAPI();
-      console.log('ingredients list', data.meals);
   
       return data.meals;
     } catch (error) {

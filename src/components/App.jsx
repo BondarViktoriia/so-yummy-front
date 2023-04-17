@@ -104,7 +104,10 @@ export const App = () => {
             path="categories/:categoryName?"
             element={<PrivateRoute component={<CategoriesPage />} />}
           >
-            {/* <Route path=":categoryName" element={<PrivateRoute component={<CategoriesByName/>} />} /> */}
+            {/* <Route
+              path=":categoryName"
+              element={<PrivateRoute component={<CategoriesByName />} />}
+            /> */}
             {/* <Route
               path=":beef"
               element={<PrivateRoute component={<CategoriesByName />} />}

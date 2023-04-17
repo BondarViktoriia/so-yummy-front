@@ -1,4 +1,4 @@
-// 
+
 import { SectionHero } from '../components/HeroSection/HeroSection'
 import MainSection from '../components/MainSection/MainSection'
 const MainPage = () => {
@@ -10,7 +10,6 @@ const MainPage = () => {
       
     </>
 )
-  
-};
+
 
 export default MainPage;

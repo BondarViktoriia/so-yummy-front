@@ -1,5 +1,5 @@
 import { useMediaQuery } from 'react-responsive';
-
+// import { useNavigate } from 'react-router-dom';
 import AddRecipeForm from '../components/AddRecipe/AddRecipeForm';
 import PopularRecipe from '../components/AddRecipe/PopularRecipe';
 import FollowUs from '../components/AddRecipe/FollowUs';
@@ -48,6 +48,7 @@ const AddRecipe = () => {
   const [path, setPath] = useState('');
   const [isLoading, setIsLoadind] = useState(false);
 
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     store.set('userInputs', inputs);
@@ -156,7 +157,7 @@ const AddRecipe = () => {
       }
     );
 
-    if (!recipe || !time || !category || !about || !title|| !file)  {
+    if (!recipe || !time || !category || !about || !title) {
       toast.error('INVALID FORM DATA!', {
         position: 'top-right',
         autoClose: 5000,
@@ -172,7 +173,10 @@ const AddRecipe = () => {
     }
 
     const formData = new FormData();
+    if (file !== null) {
       formData.append('imgURL', file);
+    }
+
     formData.append('description', about);
     formData.append('time', time);
     formData.append('category', category);
@@ -202,6 +206,7 @@ const AddRecipe = () => {
       theme: 'light',
     });
     resetForm();
+    // navigate('/my');
   };
   const resetForm = () => {
     setInputs(init);

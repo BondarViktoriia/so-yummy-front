@@ -47,6 +47,7 @@ export const Title = styled.h2`
   margin-bottom: 18px;
   margin-top: 80px;
   letter-spacing: -0.02em;
+  text-align: center;
   @media only screen and (min-width: 768px) {
     font-size: 44px;
     line-height: 1;

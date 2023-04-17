@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { IconContext } from 'react-icons';
-import { IoCloseOutline } from 'react-icons/io5';
+
 import {
   MobileMenuContainer,
+  CloseIcon,
   MobNav,
   CloseBtn,
   NavCont,
@@ -42,11 +42,9 @@ export const MobileMenu = ({ onClose }) => {
         <MobileMenuContainer>
           <MobNav>
             <Logo />
-            <IconContext.Provider value={{ style: { width: 32, height: 32 } }}>
-              <CloseBtn onClick={onClose}>
-                <IoCloseOutline />
-              </CloseBtn>
-            </IconContext.Provider>
+            <CloseBtn onClick={onClose}>
+              <CloseIcon />
+            </CloseBtn>
           </MobNav>
           <NavCont onClick={onClose}>
             <NavThumb>

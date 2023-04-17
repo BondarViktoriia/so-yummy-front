@@ -1,4 +1,8 @@
 import { useMediaQuery } from 'react-responsive';
+import { Formik } from 'formik';
+import { ToastContainer, toast } from 'react-toastify';
+import { subscrSchema } from '../../utilities/authValidationSchemas';
+import { getPassErrorStatus } from '../../services/auth/errorStatus';
 import { LogoLight } from '../Logo/Logo';
 import FollowUs from '../AddRecipe/FollowUs';
 import Container from '../Container/Container';
@@ -18,7 +22,7 @@ import {
   FormCont,
   SubscrTitle,
   SubscrText,
-  Form,
+  SubscrForm,
   InputCont,
   Input,
   LetterIcon,
@@ -32,6 +36,9 @@ import {
   BgImg,
   BgUpImg,
   BgUpImgThumb,
+  ErrorCont,
+  FormThumb,
+  TermsCont,
 } from './Footer.styled';
 
 import BgUpMob from '../../image/footer/bgc-up-mob.png';
@@ -43,15 +50,21 @@ export const Footer = () => {
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
   const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 768px)' });
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
+
+  const handleSubmit = (values, { resetForm }) => {
+    toast.success('You have successfully subscribed to the newsletter!');
+    resetForm();
+  };
+
   return (
     <footer>
       <FooterSection>
+        <BgUpImgThumb>
+          {isMobile && <BgUpImg src={`${BgUpMob}`} alt="img" />}
+          {isTablet && <BgUpImg src={`${BgUpTab}`} alt="img" />}
+          {isDesktop && <BgUpImg src={`${BgUpDesk}`} alt="img" />}
+        </BgUpImgThumb>
         <Container>
-          <BgUpImgThumb>
-            {isMobile && <BgUpImg src={`${BgUpMob}`} alt="img" />}
-            {isTablet && <BgUpImg src={`${BgUpTab}`} alt="img" />}
-            {isDesktop && <BgUpImg src={`${BgUpDesk}`} alt="img" />}
-          </BgUpImgThumb>
           <FooterThumb>
             <DeskWrap>
               <NavWrap>
@@ -78,7 +91,7 @@ export const Footer = () => {
                 <FooterNav>
                   <ul>
                     <NavItem>
-                      <Link to="/search">Ingredients</Link>
+                      <Link to="/search?options=ingredients">Ingredients</Link>
                     </NavItem>
                     <NavItem>
                       <Link to="/add">Add recipes</Link>
@@ -105,15 +118,42 @@ export const Footer = () => {
                     </SubscrText>
                   </div>
                 )}
-                <Form>
-                  <InputCont>
-                    <LetterIcon />
-                    <Input placeholder="Enter your email address" />
-                  </InputCont>
-                  <SubmitBtn type="submit">
-                    <BtnText>Subcribe</BtnText>
-                  </SubmitBtn>
-                </Form>
+                <Formik
+                  initialValues={{
+                    email: '',
+                  }}
+                  validationSchema={subscrSchema}
+                  validateOnBlur
+                  onSubmit={handleSubmit}
+                >
+                  {({ errors, touched, isValid, dirty }) => (
+                    <SubscrForm autoComplete="off">
+                      <FormThumb>
+                        <InputCont htmlFor="email">
+                          <LetterIcon
+                            color={
+                              touched.email &&
+                              getPassErrorStatus(errors.email, dirty)
+                            }
+                          />
+                          <Input
+                            type="email"
+                            placeholder="Enter your email address"
+                            name="email"
+                            color={
+                              touched.email &&
+                              getPassErrorStatus(errors.email, dirty)
+                            }
+                          />
+                        </InputCont>
+                        <SubmitBtn type="submit">
+                          <BtnText>Subscribe</BtnText>
+                        </SubmitBtn>
+                      </FormThumb>
+                      <ErrorCont name="email" component="div" />
+                    </SubscrForm>
+                  )}
+                </Formik>
               </FormCont>
             </DeskWrap>
             <FollowUsCont>
@@ -121,18 +161,32 @@ export const Footer = () => {
             </FollowUsCont>
           </FooterThumb>
         </Container>
+        <ToastContainer
+          position="top-right"
+          autoClose={2500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </FooterSection>
-      <Container>
-        <InfoList>
-          <InfoItem>
-            <ArrText>&copy; 2023 All Rights Reserved.</ArrText>
-          </InfoItem>
-          <InfoItem>
-            <TermsText>Terms of Service</TermsText>
-          </InfoItem>
-        </InfoList>
+      <TermsCont>
+        <Container>
+          <InfoList>
+            <InfoItem>
+              <ArrText>&copy; 2023 All Rights Reserved.</ArrText>
+            </InfoItem>
+            <InfoItem>
+              <TermsText>Terms of Service</TermsText>
+            </InfoItem>
+          </InfoList>
+        </Container>
         <BgImg />
-      </Container>
+      </TermsCont>
     </footer>
   );
 };

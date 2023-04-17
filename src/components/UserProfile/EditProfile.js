@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/authSelectors';
 import { updateUser } from '../../redux/auth/authOperations';
 
 import {
@@ -25,10 +25,15 @@ import {
 } from './EditProfile.styled';
 
 export const EditProfile = ({ closeEdit, id, name, avatar }) => {
+  const user = useSelector(selectUser);
   const [username, setUsername] = useState('');
   const [file, setFile] = useState(null);
   const [path, setPath] = useState('');
   const dispatch = useDispatch();
+  useEffect(() => {
+    setUsername(user.name);
+  }, [user]);
+
   useEffect(() => {
     window.addEventListener('keydown', handleEsc);
     return () => {
@@ -60,10 +65,11 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(name);
-    console.log(avatar);
+
     const formData = new FormData();
+
     formData.append('avatar', file);
+
     formData.append('name', username);
     dispatch(updateUser(formData));
     closeEdit();
@@ -87,9 +93,9 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
             <AddAvatarBtn>
               <AddIcon />
               <AvatarInput
+                name="avatar"
                 type="file"
                 accept="image/*"
-                required
                 onChange={changeAvatar}
               />
             </AddAvatarBtn>
@@ -100,8 +106,10 @@ export const EditProfile = ({ closeEdit, id, name, avatar }) => {
             <UserIcon />
             <Input
               placeholder="Enter your name"
+              name="name"
               required
               onChange={changeName}
+              value={username}
             />
             <EdinIcon />
           </InputCont>

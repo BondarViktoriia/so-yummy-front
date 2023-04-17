@@ -4,6 +4,7 @@ const lightTheme = {
   colors: {
     background: '#FAFAFA',
     footer: '#22252A',
+    footerHover: '#8BAA36',
     listItemBcg: '#FFFFFF',
     accentGreen: '#8BAA36',
     mobMenuBgc: '#EBF3D4',
@@ -42,7 +43,10 @@ const lightTheme = {
     arrowColor: 'rgba(169, 169, 169, 0.73)',
     inputText: '#000000',
     addButton: '#22252a',
-    iconFollow:'#8baa36'
+    iconFollow: '#8baa36',
+    subscrButton: '#8BAA36',
+    logoutBtn: '#22252a',
+    logoutBorder: 'transparent',
   },
 };
 
@@ -50,6 +54,7 @@ const darkTheme = {
   colors: {
     background: '#1E1F28',
     footer: '#8BAA36',
+    footerHover: '#22252A',
     listItemBcg: '#2A2C36',
     accentGreen: '#8BAA36',
     mobMenuBgc: '#2A2C36',
@@ -87,7 +92,10 @@ const darkTheme = {
     paginationShadow: '0px 4px 4px rgba(31, 30, 30, 0.2)',
     inputText: '#FAFAFA',
     addButton: '#8BAA36',
-    iconFollow:'#FAFAFA',
+    iconFollow: '#FAFAFA',
+    subscrButton: '#1E1F28',
+    logoutBtn: 'transparent',
+    logoutBorder: '#8BAA36'
   },
 };
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { IoCloseOutline } from 'react-icons/io5';
 import bgImg from '../../image/shared-layout/mob-menu-tablet@2x.png';
 
 export const MobileMenuContainer = styled.div`
@@ -9,6 +10,13 @@ export const MobileMenuContainer = styled.div`
   padding: 18px 16px;
   height: 100%;
 `;
+
+export const CloseIcon = styled(IoCloseOutline)`
+  width: 32px;
+  height: 32px;
+  color: ${props => props.theme.colors.darkText};
+`;
+
 export const MobNav = styled.div`
   display: flex;
   justify-content: space-between;
@@ -21,6 +29,7 @@ export const CloseBtn = styled.button`
   width: 32px;
   height: 32px;
   z-index: 9999;
+  cursor: pointer;
 `;
 export const NavCont = styled.div`
   display: flex;

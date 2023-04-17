@@ -19,8 +19,10 @@ export const registrationUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const res = await axios.post('/auth/signup', credentials);
+      toast.success(`You successfully registered. Go to sign in page!`);
       return res.data;
     } catch (error) {
+      toast.error(`No success registration, try again!`);
       return rejectWithValue(error);
     }
   }
@@ -31,11 +33,11 @@ export const loginUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const res = await axios.post('/auth/signin', credentials);
-      console.log('res.data.token:', res.data.token);
       setAuthToken(res.data.token);
 
       return res.data;
     } catch (error) {
+      toast.error(`Email or password wrong!`);
       return rejectWithValue(error);
     }
   }
@@ -113,13 +115,6 @@ export const getCurrentUser = createAsyncThunk(
         clearAuthToken();
         thunkAPI.dispatch({ type: 'persist/PURGE', key: 'persist:auth' });
       }
-      toast.error(`${error.response.data.message}`, {
-        position: 'top-center',
-        autoClose: 2500,
-        closeOnClick: true,
-        pauseOnHover: true,
-        theme: 'colored',
-      });
       return thunkAPI.rejectWithValue(error.message);
     }
   }

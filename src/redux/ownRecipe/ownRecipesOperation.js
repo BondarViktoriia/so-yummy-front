@@ -17,7 +17,6 @@ export const getOwnRecipesOperation = createAsyncThunk(
   async thunkAPI => {
     try {
       const data = await axios.get(`/ownRecipes`);
-      console.log(data.data.data);
       return data?.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -42,8 +41,6 @@ export const addOwnRecipeOperation = createAsyncThunk(
     token.set(persistedAccessToken);
     try {
       const data = await addOwnRecipeApi(body);
-      console.log('data.status:', data.status);
-      console.log('own recipe successfully added', data);
       return data;
     } catch (error) {
       console.log(error.message);
@@ -82,7 +79,6 @@ export const getCategoryListOperation = createAsyncThunk(
     token.set(persistedAccessToken);
     try {
       const data = await getAllCategoriesApi();
-      // console.log('categories list', data.meals);
       return data.meals;
     } catch (error) {
       console.log(error.message);
