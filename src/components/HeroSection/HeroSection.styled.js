@@ -57,8 +57,8 @@ export const BgLeafdesckTop = styled.div`
   background-position: right top;
   background-repeat: no-repeat;
   position: absolute;
-  top: 4%;
-  right: 7%;
+  top: 0;
+  right: 0;
   width: 375px;
   height: 814px;
 
