@@ -37,14 +37,10 @@ export const FormChange = styled.div`
 
 export const Title = styled.h1`
   margin-bottom: 18px;
-  /* font-weight: 
-  font-size: 
-  line-height:  */
   letter-spacing: -0.02em;
   color: #fafafa;
   @media screen and (min-width: 768px) {
     margin-bottom: 32px;
-    /* font-size:  */
   }
 `;
 
