@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { registrationUser, loginUser } from '../../redux/auth/authOperations';
 import { selectIsLoading } from '../../redux/auth/authSelectors';
 import { Formik, Form } from 'formik';
@@ -29,6 +30,7 @@ import { ToastContainer } from 'react-toastify';
 export const AuthForm = ({ login }) => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const initialValuesRegister = {
     name: '',
@@ -41,7 +43,13 @@ export const AuthForm = ({ login }) => {
   };
 
   const handleSubmit = values => {
-    !login ? dispatch(registrationUser(values)) : dispatch(loginUser(values));
+    // !login ? dispatch(registrationUser(values)) : dispatch(loginUser(values));
+    if (!login) {
+      dispatch(registrationUser(values));
+      return navigate(`/signin`);
+    }
+    dispatch(loginUser(values))
+    
   };
 
   const statusIcon = {
