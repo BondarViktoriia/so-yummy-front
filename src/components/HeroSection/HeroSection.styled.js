@@ -30,7 +30,7 @@ export const BgImgdesckTop = styled.div`
   background-position: right top;
   background-repeat: no-repeat;
   position: absolute;
-  top: 0;
+  top: 125px;
   right: 0;
   width: 269px;
   height: 678px;
@@ -57,7 +57,7 @@ export const BgLeafdesckTop = styled.div`
   background-position: right top;
   background-repeat: no-repeat;
   position: absolute;
-  top: 0;
+  top: 83px;
   right: 0;
   width: 375px;
   height: 814px;
@@ -204,19 +204,9 @@ export const HeroText = styled.p`
 `;
 
 export const Form = styled.form`
-  position: relative;
-  // width: 295px;
-  // height: 52px;
-  // margin-top: 50px;
+  position: relative; 
   border-radius: 15px 50px;
-  border: 1px solid #f0f0f0;
-
-  @media screen and (min-width: 768px) {
-    width: 369px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 510px;
-  }
+  border: 1px solid #f0f0f0; 
 `;
 
 export const Input = styled.input`

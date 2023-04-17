@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const SectionMain = styled.section`
-  padding: 132px 0 100px 0;
+  padding: 64px 0 100px 0;
   background: ${props => props.theme.colors.background};
 
   @media (min-width: 768px) {
