@@ -24,13 +24,15 @@ export const MainSearch = () => {
 
   return (
     <Form onSubmit={formik.handleSubmit} position="relative">
-    <Input
+      <label htmlFor='query'   aria-label='search'>
+            <Input
         id="query"
         name="query"
         type="text"
         onChange={formik.handleChange}
         value={formik.values.query}
       />
+</label>
       <HeroButtont type="submit">Search</HeroButtont>
     </Form>
   );
