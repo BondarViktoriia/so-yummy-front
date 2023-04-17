@@ -51,11 +51,19 @@ export const Title = styled.h1`
 export const FormInputWrapper = styled.label`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  /* gap: 12px; */
   margin-bottom: 28px;
   @media screen and (min-width: 768px) {
-    gap: 24px;
+    /* gap: 24px; */
     margin-bottom: 50px;
+  }
+`;
+
+export const ErrorBox = styled.div`
+  display: block;
+  height: 12px;
+  @media (min-width: 768px) {
+    height: 24px;
   }
 `;
 
@@ -250,13 +258,13 @@ export const PassValidIconStyled = styled(CheckIcon)`
 `;
 
 export const StatusBox = styled.div`
-  font-size: 12px;
-  margin-top: 8px;
+  font-size: 10px;
+  /* margin-top: 8px; */
 
   color: #e74a3b;
   ${p => p.color === 'notSecure' && `color: #F6C23E`};
   ${p => p.color === 'valid' && `color: #3CBC81`};
   @media screen and (min-width: 768px) {
-    font-size: 14px;
+    font-size: 11px;
   }
 `;
