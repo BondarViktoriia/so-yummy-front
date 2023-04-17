@@ -28,7 +28,7 @@ export const RecipesList = styled.ul`
   }
 
   @media (min-width: 1440px) {
-    /* justify-content: center; */
+    justify-content: flex-start;
     padding-left: 99px;
     padding-right: 99px;
     gap: 14px;
