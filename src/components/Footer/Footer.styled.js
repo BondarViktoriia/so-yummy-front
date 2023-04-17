@@ -206,6 +206,10 @@ export const LetterIcon = styled(FiMail)`
   width: 20px;
   height: 20px;
   color: #ffffff;
+  ${p => p.color === 'normal' && `stroke: #FAFAFA30`};
+  ${p => p.color === 'inValid' && `stroke: #E74A3B`};
+  ${p => p.color === 'notSecure' && `stroke: #F6C23E`};
+  ${p => p.color === 'valid' && `stroke: #3CBC81`};
   opacity: 0.3;
   @media (min-width: 768px) {
     top: 15px;
@@ -229,6 +233,10 @@ export const Input = styled(Field)`
   padding-bottom: 11px;
   padding-left: 42px;
   border: 1px solid #ffffff;
+  ${p => p.color === 'normal' && `border-color: #FAFAFA30`};
+  ${p => p.color === 'inValid' && `border-color: #E74A3B`};
+  ${p => p.color === 'notSecure' && `border-color: #F6C23E`};
+  ${p => p.color === 'valid' && `border-color: #3CBC81`};
   opacity: 0.3;
   border-radius: 8px;
   height: 38px;
