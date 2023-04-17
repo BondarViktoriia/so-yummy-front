@@ -24,7 +24,7 @@ export const MainSearch = () => {
 
   return (
     <Form onSubmit={formik.handleSubmit} position="relative">
-      <Input
+    <Input
         id="query"
         name="query"
         type="text"

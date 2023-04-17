@@ -12,11 +12,13 @@ export const ThemeToggler = () => {
 
   return (
     <Switcher>
-      <Label>
+      <Label htmlFor="theme-switcher">
         <Checkbox
           type="checkbox"
           id="theme-switcher"
           checked={selectedMode === 'dark'}
+                      aria-label='theme-switcher'
+
           onChange={() => {
             changeTheme();
           }}

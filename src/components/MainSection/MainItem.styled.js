@@ -41,7 +41,7 @@ export const MainImageTitle = styled.div`
        
     } `
 
-    export const MainImageText = styled.h5`    
+    export const MainImageText = styled.h3`    
     font-weight: 500;
     font-size: 16px;
     line-height: 1.25;

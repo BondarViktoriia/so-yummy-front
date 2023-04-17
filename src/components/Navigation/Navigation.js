@@ -22,22 +22,29 @@ export const Navigation = Х => {
           <Link
             to="/categories/:categoryName"
             color={isRecipePage ? '#23262A' : undefined}
+            aria-label='categories'
           >
             Categories
           </Link>
         </NavItem>
         <NavItem>
-          <Link to="/add" color={isRecipePage ? '#23262A' : undefined}>
+          <Link to="/add" color={isRecipePage ? '#23262A' : undefined}       aria-label='add'
+>
             Add recipes
           </Link>
         </NavItem>
         <NavItem>
-          <Link to="/my" color={isRecipePage ? '#23262A' : undefined}>
+          <Link to="/my" color={isRecipePage ? '#23262A' : undefined}
+                                  aria-label='my'
+>
             My recipes
           </Link>
         </NavItem>
         <NavItem>
-          <Link to="/favorite" color={isRecipePage ? '#23262A' : undefined}>
+          <Link to="/favorite" color={isRecipePage ? '#23262A' : undefined}
+                        aria-label='favorite'
+
+          >
             Favorites
           </Link>
         </NavItem>
@@ -45,13 +52,14 @@ export const Navigation = Х => {
           <Link
             to="/shopping-list"
             color={isRecipePage ? '#23262A' : undefined}
+            aria-label='shopping-list'
           >
             Shopping list
           </Link>
         </NavItem>
         <NavItem>
           <IconContext.Provider value={{ style: { width: 24, height: 24 } }}>
-            <Link to="/search" color={isRecipePage ? '#23262A' : undefined}>
+            <Link to="/search" aria-label='search' color={isRecipePage ? '#23262A' : undefined}>
               <SearchThumb>
                 <FiSearch />
                 {isTabletOrMobile && <SearchText>Search</SearchText>}

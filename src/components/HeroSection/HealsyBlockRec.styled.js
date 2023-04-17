@@ -25,8 +25,9 @@ export const Block = styled.div`
     height: 114px;
     padding: 16px;
     top: 11%;
-    right: 11%;`
-
+    right: 11%;
+    }`
+    
 
 export const BlockText = styled.p`
   font-family: 'Poppins';
