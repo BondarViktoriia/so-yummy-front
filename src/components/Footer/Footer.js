@@ -39,6 +39,8 @@ import {
   ErrorCont,
   FormThumb,
   TermsCont,
+  ErrorBox,
+  ErrorBoxDesk,
 } from './Footer.styled';
 
 import BgUpMob from '../../image/footer/bgc-up-mob.png';
@@ -47,6 +49,7 @@ import BgUpDesk from '../../image/footer/bgc-up-desk-new.png';
 
 export const Footer = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isMobileOrTablet = useMediaQuery({ query: '(max-width: 1439px)' });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
   const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 768px)' });
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
@@ -146,11 +149,20 @@ export const Footer = () => {
                             }
                           />
                         </InputCont>
+                        {isDesktop && (
+                          <ErrorBoxDesk>
+                            <ErrorCont name="email" component="div" />
+                          </ErrorBoxDesk>
+                        )}
                         <SubmitBtn type="submit">
                           <BtnText>Subscribe</BtnText>
                         </SubmitBtn>
                       </FormThumb>
-                      <ErrorCont name="email" component="div" />
+                      {isMobileOrTablet && (
+                        <ErrorBox>
+                          <ErrorCont name="email" component="div" />
+                        </ErrorBox>
+                      )}
                     </SubscrForm>
                   )}
                 </Formik>

@@ -22,6 +22,7 @@ import {
   PassErrorIconStyled,
   PassValidIconStyled,
   StatusBox,
+  ErrorBox,
 } from './Registration.styled';
 import { ToastContainer } from 'react-toastify';
 
@@ -88,9 +89,11 @@ export const AuthForm = ({ login }) => {
                       />
                       {touched.name &&
                         statusIcon[getPassErrorStatus(errors.name, dirty)]}
-                      {errors.name && touched.name ? (
+                      <ErrorBox>
+                        {errors.name && touched.name ? (
                         <StatusBox>{errors.name}</StatusBox>
                       ) : null}
+                      </ErrorBox>
                     </FormLabel>
                   </div>
                 )}
@@ -114,9 +117,11 @@ export const AuthForm = ({ login }) => {
                     />
                     {touched.email &&
                       statusIcon[getPassErrorStatus(errors.email, dirty)]}
-                    {errors.email && touched.email ? (
+                    <ErrorBox>
+                      {errors.email && touched.email ? (
                       <StatusBox>{errors.email}</StatusBox>
                     ) : null}
+                    </ErrorBox>
                   </FormLabel>
                 </div>
 
@@ -143,6 +148,11 @@ export const AuthForm = ({ login }) => {
                       passStatusIcon[
                         getPassErrorStatus(errors.password, dirty)
                       ]}
+                    <ErrorBox>
+                      {errors.password && touched.password ? (
+                      <StatusBox>{errors.password}</StatusBox>
+                    ) : null}
+                    </ErrorBox>
                   </FormLabel>
                 </div>
               </FormInputWrapper>

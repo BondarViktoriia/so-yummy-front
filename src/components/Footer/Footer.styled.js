@@ -195,7 +195,6 @@ export const InputCont = styled.label`
     margin-bottom: 0;
   }
   @media (min-width: 1440px) {
-    margin-bottom: 16px;
     margin-right: 0;
   }
 `;
@@ -420,13 +419,26 @@ export const BgUpImgThumb = styled.div`
 `;
 
 export const ErrorCont = styled(ErrorMessage)`
-  color: #fafafa;
+  color: ${props => props.theme.colors.inputError};
   font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
-  margin-top: 12px;
+  font-size: 10px;
+  line-height: 15px;
+  /* margin-top: 12px; */
 `;
 
 export const TermsCont = styled.div`
   position: relative;
+`;
+
+export const ErrorBox = styled.div`
+  display: block;
+  height: 30px;
+  @media (min-width: 768px) {
+    height: 15px;
+  }
+`;
+
+export const ErrorBoxDesk = styled.div`
+  display: block;
+  height: 16px;
 `;
