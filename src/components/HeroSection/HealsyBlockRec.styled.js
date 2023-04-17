@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Block = styled.div`
-  position: absolute;  
-  top: 303px;
-  right: 31px;
+  position: absolute; 
+  top: 5.5%;
+  right: 8%;
   width: 233px;
   height: 92px; 
   border-radius: 8px;
@@ -12,8 +12,9 @@ export const Block = styled.div`
   padding: 8px 8px 30px 8px;
   
    @media (min-width: 768px) {
-    top: 187px;
-    right: 19px;
+   
+    top: 7.5%;
+    right: 6%;
     width: 261px;        
     height: 100px;
     padding: 12px 12px 34px 12px;
@@ -23,8 +24,8 @@ export const Block = styled.div`
     width: 298px;
     height: 114px;
     padding: 16px;
-    top: 174px;
-    right: 103px;`
+    top: 11%;
+    right: 11%;`
 
 
 export const BlockText = styled.p`

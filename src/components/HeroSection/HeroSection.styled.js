@@ -25,30 +25,33 @@ export const HeroSection = styled.section`
   }
 `;
 
+
+
 export const BgImgdesckTop = styled.div`
+
   background-image: url('${mobile1}');
   background-size: cover;
   background-position: right top;
   background-repeat: no-repeat;
   position: absolute;
-  top: 146px;
-  left: 129px;
+  top: 0;
+  right: 0;
   width: 269px;
   height: 678px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 768px) {  
     background-image: url('${bgtablet1}');
     top: 0;
-    left: 438px;
+    right: 0;   
     width: 332px;
     height: 640px;
   }
   @media (min-width: 1440px) {
     background-image: url('${bgdekstop1}');
     width: 725px;
-    height: 689px;
+    height: 689px;   
     top: 0;
-    left: 770px;
+    right: 0;
   }
 `;
 
@@ -58,24 +61,28 @@ export const BgLeafdesckTop = styled.div`
   background-position: right top;
   background-repeat: no-repeat;
   position: absolute;
-  top: 104px;
-  left: 22px;
+  top: 4%;
+  right: 7%;
   width: 375px;
   height: 814px;
 
   @media (min-width: 768px) {
+    
     background-image: url('${tableaf1}');
     width: 583px;
     height: 640px;
-    top: 0px;
-    left: 186px;
+    top: 0;
+    right: 0;
+    
   }
   @media (min-width: 1440px) {
     background-image: url('${dekleaf1}');
     width: 913px;
     height: 780px;
-    top: -39px;
-    left: 582px;
+    top: 0;
+    right: 0;
+   
+    
   }
 `;
 
@@ -85,24 +92,27 @@ export const BgImgPlate = styled.div`
   background-position: right top;
   background-repeat: no-repeat;
   position: absolute;
-  top: 324px;
-  left: 26px;
+  
+  top: 4%;
+  right: 7%;
   width: 320px;
   height: 296px;
 
   @media (min-width: 768px) {
+     max-width: 768px;
     background-image: url('${platetablet1}');
     width: 368px;
-    height: 351px;
-    top: 193px;
-    left: 401px;
+    height: 351px;   
+    top: 3%;
+     right: 0;
   }
   @media (min-width: 1440px) {
+     max-width: 1440px;
     background-image: url('${platedekstop1}');
     width: 578px;
-    height: 539px;
-    top: 105px;
-    left: 660px;
+    height: 539px;   
+    top: 3%;
+     right: 16%;
   }
 `;
 
@@ -112,8 +122,8 @@ export const BgImgArrow = styled.div`
   background-position: right top;
   background-repeat: no-repeat;
   position: absolute;
-  top: 467px;
-  right: 61px;
+  top: 9%;
+  right: 8%;
   width: 186px;
   height: 115px;
   display: none;
@@ -122,9 +132,9 @@ export const BgImgArrow = styled.div`
     display: block;
   }
   @media (min-width: 1440px) {
-    background-image: url('${arrowdekstop1}');
-    top: 494px;
-    right: 136px;
+    background-image: url('${arrowdekstop1}');    
+    top: 13%;
+    right: 13%;
     width: 186px;
     height: 148px;
   }

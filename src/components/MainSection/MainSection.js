@@ -11,7 +11,6 @@ import {
 } from './MainSection.styled';
 import axios from 'axios';
 import MainItem from './MainItem';
-// import { useMediaQuery } from 'react-responsive';
 import { Loader } from '../Loader/Loader';    
 
 
@@ -42,19 +41,6 @@ const MainSection = () => {
   }, []);
 
 
-  // const isDesktop = useMediaQuery({ minWidth: 1440 });
-  // const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
-
-  // let numCard;
-  // if (isDesktop) {
-  //   numCard = 4;
-  // } else if (isTablet) {
-  //   numCard = 2;
-  // } else if (isMobile){
-  //   numCard = 1;
-  // }
-
-
   return (
   <>
     {isLoading && <Loader />}
@@ -62,7 +48,7 @@ const MainSection = () => {
       <Container>
         <Wrap>
           <MainCategories>
-            {categories &&
+            {categories &&  
               categories.map(categoryResalt => (
                 <li key={categoryResalt.category}>
                   <MainTitle key={categoryResalt.category}>
