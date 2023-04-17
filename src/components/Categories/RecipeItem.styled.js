@@ -8,6 +8,15 @@ export const ListItem = styled.li`
   }
   @media screen and (min-width: 1440px) {
   }
+  a {
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    :hover img {
+      transform: scale(1.05);
+      filter: contrast(120%);
+    }
+  }
 `;
 export const LinkItem = styled(Link)`
   text-decoration: none;
@@ -16,6 +25,7 @@ export const ImgItem = styled.img`
   border-radius: 8px;
   max-width: 343px;
   display: inline-block;
+  transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (min-width: 768px) {
     max-width: 336px;

@@ -17,6 +17,7 @@ const CategoriesByName = () => {
   const [recipes, setRecipes] = useState([]);
   const [error] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
   const token = useSelector(selectToken);
 
   useEffect(() => {

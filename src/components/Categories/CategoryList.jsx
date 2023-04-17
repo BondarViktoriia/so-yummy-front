@@ -10,12 +10,13 @@ import { toast } from 'react-toastify';
 
 import { fetchAllCategories } from 'services/api/apiRecipe';
 
-// import { Loader } from '../Loader/Loader';
+import { Loader } from '../Loader/Loader';
 
 const CategoryList = () => {
   const { categoryName: category } = useParams();
   const [tabValue, setTabValue] = useState(0);
   const [categories, setCategories] = useState([]);
+  const [isLoadingRecipes, setIsLoadingRecipes] = useState(false);
   // const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -47,18 +48,21 @@ const CategoryList = () => {
   useEffect(() => {
     if (categories.length > 0) {
       const lowerCaseCategory = categories[tabValue].toLowerCase();
+      setIsLoadingRecipes(true);
+      setTimeout(() => setIsLoadingRecipes(false), 1000);
       navigate(`/categories/${lowerCaseCategory}`);
     }
   }, [categories, navigate, tabValue]);
 
   const handleChange = (event, newCategory) => {
     navigate(`/categories/${event.target.textContent}`);
+    setIsLoadingRecipes(true);
     setTabValue(newCategory);
   };
 
   return (
     <>
-      {/* {isLoading && <Loader />} */}
+      {isLoadingRecipes && <Loader />}
       {categories && (
         <div>
           <Box
