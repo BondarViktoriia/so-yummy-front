@@ -25,6 +25,7 @@ export const userSlice = createSlice({
       .addCase(registrationUser.pending, state => state)
       .addCase(registrationUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
+        state.token = action.payload.token;
         state.error = null;
       })
       .addCase(registrationUser.rejected, (state, action) => {

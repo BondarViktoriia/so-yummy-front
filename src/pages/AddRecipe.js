@@ -195,7 +195,7 @@ const AddRecipe = () => {
     };
     addOwnRecipeApi(formData);
     setIsLoadind(true);
-    toast.success('Your Recipe successful added!', {
+    toast.success('Your Recipe successfully added!', {
       position: 'top-right',
       autoClose: 5000,
       hideProgressBar: false,
