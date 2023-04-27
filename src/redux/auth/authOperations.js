@@ -18,11 +18,12 @@ export const registrationUser = createAsyncThunk(
   'auth/registrationUser',
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await axios.post('/auth/signup', credentials);
-      toast.success(`You successfully registered. Go to sign in page!`);
+      await axios.post('/auth/signup', credentials);
+      const res = await axios.post('/auth/signin', credentials);
+      setAuthToken(res.data.token);
       return res.data;
     } catch (error) {
-      toast.error(`No success registration, try again!`);
+      toast.error(`Not registered, please try again!`);
       return rejectWithValue(error);
     }
   }
@@ -33,11 +34,12 @@ export const loginUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const res = await axios.post('/auth/signin', credentials);
+
       setAuthToken(res.data.token);
 
       return res.data;
     } catch (error) {
-      toast.error(`Email or password wrong!`);
+      toast.error(`Email or password are wrong!`);
       return rejectWithValue(error);
     }
   }
