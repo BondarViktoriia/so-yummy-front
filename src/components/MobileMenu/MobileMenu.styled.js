@@ -58,8 +58,9 @@ export const Backdrop = styled.div`
 `;
 
 export const ModalBox = styled.div`
-  width: 375px;
   height: 100vh;
+  width: 100%;
+  padding: 0 15px;
   @media (min-width: 768px) {
     width: 768px;
   }

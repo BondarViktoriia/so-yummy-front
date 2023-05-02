@@ -40,5 +40,5 @@ export const UserName = styled.span`
   font-weight: 600;
   font-size: 14px;
   line-height: 170%;
-  color: ${props => props.theme.colors.darkText};
+  color: ${props => (props.color ? props.color : props.theme.colors.darkText)};
 `;

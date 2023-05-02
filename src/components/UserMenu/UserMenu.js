@@ -9,12 +9,17 @@ import {
   UserNameCont,
   UserMenuBox,
 } from './UserMenu.styled';
+import { useLocation } from 'react-router-dom';
 
 export const UserMenu = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const openProfile = () => setIsProfileOpen(true);
   const closeProfile = () => setIsProfileOpen(false);
   const { _id, name, avatar } = useSelector(selectUser);
+  const location = useLocation();
+
+  const isRecipePage = location.pathname.includes('/recipe/');
+
   return (
     <>
       <UserMenuBox onClick={openProfile}>
@@ -22,7 +27,7 @@ export const UserMenu = () => {
           <Avatar style={{ backgroundImage: `url(${avatar})` }} />
         </AvatarCont>
         <UserNameCont>
-          <UserName>{name || 'UserName'}</UserName>
+          <UserName color={isRecipePage ? '#23262A' : undefined}>{name || 'UserName'}</UserName>
         </UserNameCont>
       </UserMenuBox>
       {isProfileOpen && (
