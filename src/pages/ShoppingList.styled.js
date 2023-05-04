@@ -239,7 +239,7 @@ const EmptyList = styled.h2`
   line-height: 1;
   letter-spacing: -0.02em;
   font-feature-settings: 'liga' off;
-  color: ${props => props.theme.colors.title};
+  color: #001833;
   text-align: center;
 
   background-color: ${props => props.theme.colors.logoLight};
